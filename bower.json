@@ -1,0 +1,21 @@
+{
+  "name": "main_wearhacks",
+  "version": "0.0.0",
+  "authors": [
+    "nadim <i.nadim@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.3",
+    "swiper": "~3.1.7",
+    "vivus": "~0.2.3",
+    "photoswipe": "~4.1.0"
+  }
+}

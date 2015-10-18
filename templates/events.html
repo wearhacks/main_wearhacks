@@ -1,0 +1,461 @@
+
+{% extends "_base.html" %}
+
+{% load staticfiles%}
+{% block title %} Events {% endblock %}
+{% block stylesheets %}
+    <link href="{% static 'scss/events.scss' %}" media="screen, projection" rel="stylesheet" type="text/x-scss" />
+{% endblock %}
+{% block script_section %}
+<script src="{% static 'bower_components/vivus/dist/vivus.min.js' %}"></script>
+
+<script src="{% static 'javascript/events.js' %}"></script>
+<script>
+
+        var markers = [
+        {% for event in events %}
+                {
+                    name:"{{ event.event_name }}",
+                    position: {lat:{{ event.location.latitude}},lng:{{ event.location.longitude}} } ,
+                    date:"{{ event.date }}",
+                    address:"{{ event.address }}",
+                    city:"{{ event.city }}",
+                    url:"{{ event.url }}"
+                },
+        {% endfor %}
+        ];
+
+
+function initMap() {
+  var myLatLng = {lat: -25.363, lng: 131.044};
+  var customMapType = new google.maps.StyledMapType([
+    {
+        "featureType": "all",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "saturation": "0"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "visibility": "on"
+            },
+            {
+                "gamma": "1"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "saturation": 36
+            },
+            {
+                "color": "#e0e9f2"
+            },
+            {
+                "lightness": 40
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "all",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "lightness": 20
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#454e57"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "visibility": "on"
+            },
+            {
+                "weight": "1.00"
+            },
+            {
+                "gamma": "1"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#515a63"
+            },
+            {
+                "lightness": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.attraction",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.attraction",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.attraction",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.business",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "lightness": "0"
+            },
+            {
+                "color": "#384147"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "weight": 0.2
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway.controlled_access",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#9c2020"
+            },
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "lightness": "0"
+            },
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#384147"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#384147"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#373f48"
+            },
+            {
+                "lightness": "0"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#6a737c"
+            },
+            {
+                "lightness": "0"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#1e2227"
+            },
+            {
+                "lightness": "0"
+            }
+        ]
+    }
+], {name: 'wearhacks'});
+  var customMapTypeId = 'wearhacks';
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 3,
+    center: {lat:40,lng:0},
+    disableDefaultUI: true,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, customMapTypeId]
+    }
+
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+
+
+
+  var addMarker = function (event, map) {
+        var contentString = '<div class="map-tag-content">' +
+
+                '<h4 id="firstHeading" class="firstHeading">'+event.name+'</h4>' +
+                '<div id="bodyContent">' +
+                '<p>'+event.date+'</p><p>'+event.address+'</p><p>'+event.city+'</p>' +
+                '<a href="'+event.url+'">' +
+                'Sign up' +'</a>' +
+                '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+      console.log(event.position);
+      console.log(map);
+        var marker = new google.maps.Marker({
+            position: event.position,
+            map: map,
+            title: event.name
+        });
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+      console.log(marker);
+    };
+  markers.forEach(function(event) {
+      addMarker(event,map);
+      console.log(event);
+  });
+  map.mapTypes.set(customMapTypeId, customMapType);
+  map.setMapTypeId(customMapTypeId);
+}
+
+
+    </script>
+{% endblock %}
+{% block content %}
+
+<section id="body">
+
+    <div class="columns small-12 top-header" style="background-image: url({% static 'images/stage.jpg' %}); background-position-y: 70%" alt="">
+            <div class="row"><h2 class="sub-header"><span>Home &gt; </span> {{ title }}</h2></div>
+    </div>
+    <div class="row" style="text-align:center"><img width="200px" src="{% static 'images/wolf_large.png' %}" alt=""></div>
+    <div class="row">
+
+       <div class="small-12 large-10 large-offset-1 columns" style="text-align: center">
+         <h2 class="wearhacks-header col-sm-6 col-sm-offset-3"><b>WEARHACKS</b> Hackathons</h2>
+           <div class="small-brk"></div>
+         <h6 class="maindesc col-sm-12"> WearHacks Hackathons bring together developers, designers, project managers, students, and engineers with an entrepreneurial and creative mind. For an intensive 48 hours, they will learn new tools, meet industry experts, collaborate with other talented students and young professionals and build new wearable and connected technology.&nbsp;
+         </h6>
+       </div>
+
+       <div id="unique-section" class="columns small-12">
+            <div class="columns large-3 medium-6 small-12">
+                <div class="uniqueIcon" style="background-image:url(images/iot.png);">
+                    <svg id="svg-icon-4" class="svg-icon" viewBox="0 0 1024 1024">
+                        <path class="path1" d="M588.8 716.8h-409.6c-42.347 0-76.8-34.451-76.8-76.8v-409.6c0-42.347 34.453-76.8 76.8-76.8h665.6c42.349 0 76.8 34.453 76.8 76.8v51.2c0 14.138-11.461 25.6-25.6 25.6s-25.6-11.462-25.6-25.6v-51.2c0-14.115-11.485-25.6-25.6-25.6h-665.6c-14.115 0-25.6 11.485-25.6 25.6v409.6c0 14.115 11.485 25.6 25.6 25.6h409.6c14.139 0 25.6 11.461 25.6 25.6s-11.461 25.6-25.6 25.6z"></path><path class="path2" d="M588.8 921.6h-512c-42.347 0-76.8-34.453-76.8-76.8v-51.2c0-14.139 11.462-25.6 25.6-25.6h563.2c14.139 0 25.6 11.461 25.6 25.6s-11.461 25.6-25.6 25.6h-537.6v25.6c0 14.115 11.485 25.6 25.6 25.6h512c14.139 0 25.6 11.461 25.6 25.6s-11.461 25.6-25.6 25.6z"></path><path class="path3" d="M947.2 921.6h-204.8c-42.347 0-76.8-34.453-76.8-76.8v-409.6c0-42.347 34.453-76.8 76.8-76.8h204.8c42.347 0 76.8 34.453 76.8 76.8v409.6c0 42.347-34.453 76.8-76.8 76.8zM742.4 409.6c-14.115 0-25.6 11.485-25.6 25.6v409.6c0 14.115 11.485 25.6 25.6 25.6h204.8c14.115 0 25.6-11.485 25.6-25.6v-409.6c0-14.115-11.485-25.6-25.6-25.6h-204.8z"></path><path class="path4" d="M844.8 819.2c-6.736 0-13.328-2.736-18.098-7.504-4.766-4.768-7.502-11.36-7.502-18.096s2.736-13.344 7.502-18.098c4.754-4.766 11.362-7.502 18.098-7.502s13.344 2.736 18.096 7.502c4.768 4.754 7.504 11.346 7.504 18.098 0 6.736-2.736 13.344-7.504 18.096-4.768 4.768-11.36 7.504-18.096 7.504z"></path>
+                </div>
+                <h5>Wearables &amp; IoT</h5>
+                <p>Focus on wearables and Internet of Things, we feature the latest technology available. </p>
+            </div>
+             <div class="columns large-3 medium-6 small-12">
+            <div class="uniqueIcon" style="background-image:url(images/people.png);">
+                    <svg id="svg-icon-1" class="svg-icon" viewBox="0 0 20 20">
+							<path fill="none" d="M16.853,8.355V5.888c0-3.015-2.467-5.482-5.482-5.482H8.629c-3.015,0-5.482,2.467-5.482,5.482v2.467l-2.741,7.127c0,1.371,4.295,4.112,9.594,4.112s9.594-2.741,9.594-4.112L16.853,8.355z M5.888,17.367c-0.284,0-0.514-0.23-0.514-0.514c0-0.284,0.23-0.514,0.514-0.514c0.284,0,0.514,0.23,0.514,0.514C6.402,17.137,6.173,17.367,5.888,17.367z M5.203,10c0-0.377,0.19-0.928,0.423-1.225c0,0,0.651-0.831,1.976-0.831c0.672,0,1.141,0.309,1.141,0.309C9.057,8.46,9.315,8.938,9.315,9.315v1.028c0,0.188-0.308,0.343-0.685,0.343H5.888C5.511,10.685,5.203,10.377,5.203,10z M7.944,16.853H7.259v-1.371l0.685-0.685V16.853z M9.657,16.853H8.629v-2.741h1.028V16.853zM8.972,13.426v-1.028c0-0.568,0.46-1.028,1.028-1.028c0.568,0,1.028,0.46,1.028,1.028v1.028H8.972z M11.371,16.853h-1.028v-2.741h1.028V16.853z M12.741,16.853h-0.685v-2.056l0.685,0.685V16.853z M14.112,17.367c-0.284,0-0.514-0.23-0.514-0.514c0-0.284,0.23-0.514,0.514-0.514c0.284,0,0.514,0.23,0.514,0.514C14.626,17.137,14.396,17.367,14.112,17.367z M14.112,10.685h-2.741c-0.377,0-0.685-0.154-0.685-0.343V9.315c0-0.377,0.258-0.855,0.572-1.062c0,0,0.469-0.309,1.141-0.309c1.325,0,1.976,0.831,1.976,0.831c0.232,0.297,0.423,0.848,0.423,1.225S14.489,10.685,14.112,10.685z M18.347,15.801c-0.041,0.016-0.083,0.023-0.124,0.023c-0.137,0-0.267-0.083-0.319-0.218l-2.492-6.401c-0.659-1.647-1.474-2.289-2.905-2.289c-0.95,0-1.746,0.589-1.754,0.595c-0.422,0.317-1.084,0.316-1.507,0C9.239,7.505,8.435,6.916,7.492,6.916c-1.431,0-2.246,0.642-2.906,2.292l-2.491,6.398c-0.069,0.176-0.268,0.264-0.443,0.195c-0.176-0.068-0.264-0.267-0.195-0.444l2.492-6.401c0.765-1.911,1.824-2.726,3.543-2.726c1.176,0,2.125,0.702,2.165,0.731c0.179,0.135,0.506,0.135,0.685,0c0.04-0.029,0.99-0.731,2.165-0.731c1.719,0,2.779,0.814,3.542,2.723l2.493,6.404C18.611,15.534,18.524,15.733,18.347,15.801z"></path>
+						</svg>
+
+            </div>
+            <h5>All backgrounds</h5>
+            <div class="smallsep"></div>
+            <p>We gather all kind of innovators and industry experts, not only developers (e.g: engineers, designers, neuroscientists, etc)  </p>
+          </div>
+             <div class="columns large-3 medium-6  small-12">
+            <div class="uniqueIcon" style="background-image:url(images/ref.png);">
+                 <svg id="svg-icon-2" class="svg-icon" viewBox="0 0 20 20">
+                    <path fill="none" d="M4.68,13.716v-0.169H4.554C4.592,13.605,4.639,13.658,4.68,13.716z M11.931,6.465
+                    c-0.307-0.087-0.623,0.106-0.706,0.432l-1.389,5.484c-0.901,0.084-1.609,0.833-1.609,1.757c0,0.979,0.793,1.773,1.773,1.773
+                    c0.979,0,1.773-0.794,1.773-1.773c0-0.624-0.324-1.171-0.812-1.486l1.377-5.439C12.422,6.887,12.239,6.552,11.931,6.465z
+                    M10.591,14.729H9.408v-1.182h1.183V14.729z M15.32,13.716c0.04-0.058,0.087-0.11,0.126-0.169H15.32V13.716z M10,3.497
+                    c-3.592,0-6.503,2.911-6.503,6.503H4.68c0-2.938,2.382-5.32,5.32-5.32s5.32,2.382,5.32,5.32h1.182
+                    C16.502,6.408,13.591,3.497,10,3.497z M10,0.542c-5.224,0-9.458,4.234-9.458,9.458c0,5.224,4.234,9.458,9.458,9.458
+                    c5.224,0,9.458-4.234,9.458-9.458C19.458,4.776,15.224,0.542,10,0.542z M15.32,16.335v0.167h-0.212
+                    c-1.407,1.107-3.179,1.773-5.108,1.773c-1.93,0-3.701-0.666-5.108-1.773H4.68v-0.167C2.874,14.816,1.724,12.543,1.724,10
+                    c0-4.571,3.706-8.276,8.276-8.276c4.57,0,8.275,3.706,8.275,8.276C18.275,12.543,17.126,14.816,15.32,16.335z"></path>
+                </svg>
+            </div>
+            <h5>WearHacks Experience</h5>
+            <div class="smallsep"></div>
+            <p>We follow-up with the teams and help &amp; promote the best projects. We organize demos, talks, etc.
+            </p>
+            </div>
+             <div class="columns large-3 medium-6 small-12">
+          <div class="uniqueIcon" style="background-image:url(images/world.png);">
+
+                  <svg id="svg-icon-3" class="svg-icon"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"> <path id="network-2-icon" style="stroke-width:6px" d="M256,50.001c-113.821,0-206,92.318-206,205.998c0,113.826,92.323,206,206,206
+c113.586,0,206-92.078,206-206C462,142.601,370.104,50.001,256,50.001z M409.81,193.429c-17.053-9.6-35.168-17.088-54.026-22.322
+c-1.792-16.412-17.176-30.104-34.978-29.969c-9.372-17.285-20.886-33.518-34.414-48.357
+C342.584,103.157,388.808,141.79,409.81,193.429z M323.562,312.081c-1.243,0.059-2.466,0.195-3.671,0.391
+c-28.455-46.627-73.183-84.703-128.135-104.004c-0.149-1.184-0.359-2.346-0.641-3.479c32.859-16.092,68.577-23.648,104.381-22.742
+c5.035,10.078,15.354,17.771,27.493,19.25c0.032,0.004,0.062,0.006,0.099,0.01C332.278,237.116,332.701,275.321,323.562,312.081z
+M255.071,90.013c18.525,16.59,34.292,36.193,46.529,58.033c-4.255,3.629-7.328,8.498-8.657,14.166
+c-40.535-0.494-78.879,8.678-113.042,25.84c-14.032-10.545-34.171-6.945-43.672,7.969c-12.47-1.301-23.571-1.574-34.611-1.193
+C125.843,133.669,185.329,90.396,255.071,90.013z M95.054,215.187c11.949-0.803,23.767-0.723,36.647,0.498
+c0.142,1.266,0.364,2.508,0.658,3.721c-15.625,13.139-29.708,28.141-42.123,45.453C89.353,248.032,90.976,231.345,95.054,215.187z
+M94.642,295.126c12.857-22.27,29.419-42.139,48.831-58.775c13.986,10.623,34.376,7.201,43.938-8.084
+c47.847,17.492,88.139,50.783,114.558,93.52c-12.647,12.801-12.493,32.973,0.307,44.49c-11.479,20.781-26.144,39.562-43.333,55.686
+C179.499,423.31,112.469,369.036,94.642,295.126z M290.188,418.474c12.035-13.824,22.377-28.787,30.918-44.635
+c1.729,0.064,2.967,0.014,4.453-0.141c2.964,9.633,5.293,19.545,6.951,29.676C319.34,410.218,305.138,415.351,290.188,418.474z
+M350.885,392.253c-1.782-9.1-4.083-18.055-6.868-26.838c14.8-13.389,14.197-36.262-1.187-47.588
+c9.592-38.268,10.078-80.031-0.041-120.291c3.065-1.832,5.729-4.203,7.838-7.014c24.647,6.924,47.591,17.947,68.056,32.281
+C431.788,287.499,405.701,354.028,350.885,392.253z"></path> </svg>
+
+          </div>
+            <h5>International Presence</h5>
+            <div class="smallsep"></div>
+            <p>
+               We are already organizing events in Canada, Europe and the US.
+            </p></div>
+       </div>
+          <!-- Swiper -->
+
+
+    </div>
+    <br/>
+    <div class="columns small-12 ">
+        <div class="swiper-container-images">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+                <div class="swiper-slide">Slide 7</div>
+                <div class="swiper-slide">Slide 8</div>
+                <div class="swiper-slide">Slide 9</div>
+                <div class="swiper-slide">Slide 10</div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <br/>
+    <div class="columns small-12 ">
+        <div id="map" style="height:400px;"></div>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCo2CgBucjUSXSld3KMWIAVynCtp36acFs&signed_in=false&callback=initMap"></script>
+    </div>
+</section>
+
+{% endblock %}

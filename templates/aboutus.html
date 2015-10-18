@@ -1,0 +1,38 @@
+
+{% extends "_base.html" %}
+{% block title %} About Us {% endblock %}
+{% load staticfiles%}
+{% block content %}
+<section id="body">
+
+        <div class="columns small-12 top-header" style="background-image: url(/static/images/team.jpg);" alt="">
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; </span> {{ title }}</h2></div>
+        </div>
+
+     <div class="row ">
+          <div class="small-4 columns">
+            <img class="image-block" src="{% static 'images/slidekids.jpg'%}" alt="">
+        </div>
+        <div class="small-8  columns paragraph">
+            <h2 class="sub-header2">Our mission</h2>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="columns small-12">
+            <h2 class="sub-header2"><i class="fa fa-chevron-right"></i>The team</h2>
+            {% for member in team_members %}
+                {{ member.name }} | {{ member.position }}
+                <p>{{ member.blurb }}</p>
+            <a href="{{   member.github }}">Github</a>
+                <a href="{{   member.linkedin }}">LinkedIn</a>
+                <br/>
+                <br/>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

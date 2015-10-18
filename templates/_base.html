@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WearHacks |  {% block title %}  {% endblock %}</title>
+
+    {% include 'stylesheets.html' %}
+    {% include 'javascripts.html' %}
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      {% block script_section %}
+      {% endblock %}
+  </head>
+
+  <body>
+    {% include 'navbar.html' %}
+
+      {% block content %}
+
+      {% endblock %}
+
+    {% block scripts %}{% endblock %}
+    <section id="footer">
+  <div class="row">
+  <div class="small-12 columns no-padding">
+
+    <footer class="footer-basic-centered">
+
+       <div class="large-6 columns "><ul class="inline-list">
+        <li><p class="footer-company-name">Wearhacks &copy; 2015</p></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Blog</a></li>
+         <li><a href="#">IOT Research & Innovation</a></li>
+         <li><a href="#">Ambassador Program</a></li>
+        <li><a href="#">Partnership</a></li>
+
+        <li><a href="#">About Us</a></li>
+        </ul></div>
+    <div class="large-3 columns"><h5 class="header-footer">Connect with us</h5>
+      <ul class="inline-list social">
+            <li><a href=""><i class="fi-social-facebook"></i></a></li>
+            <li><a href=""><i class="fi-social-pinterest"></i></a></li>
+            <li><a href=""><i class="fi-social-youtube"></i></a></li>
+            <li><a href=""><i class="fi-social-twitter"></i></a></li>
+          </ul>
+    </div>
+    <div class="large-3 columns "><h5 class="header-footer">Sign up for updates</h5>
+      <form class="footer-signup">
+        <div class="row collapse">
+        <div class="small-10 columns">
+          <input type="email" placeholder="tony.stark@wearhacks.com">
+        </div>
+        <div class="small-2 columns">
+          <a href="#" class="button postfix"><i class="fa fa-caret-right"></i></a>
+        </div>
+      </div>
+      </form></div>
+
+      </div>
+
+    </footer>
+
+  </div>
+</section>
+  </body>
+</html>

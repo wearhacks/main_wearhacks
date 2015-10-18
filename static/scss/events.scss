@@ -1,0 +1,62 @@
+.swiper-container-images {
+      width: 100%;
+      height: 200px;
+      margin: 20px auto;
+  }
+
+  .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background-color: #284871;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+  }
+.svg-icon {
+      width: 50%;
+
+  path,polygon, rect {
+    stroke: $wolf-blue;
+    stroke-width: 0.3;
+  }
+
+}
+#svg-icon-3,#svg-icon-4 {
+  path {
+    fill: rgba(30, 105, 156, 0);
+      stroke: #1e699c;
+    stroke-width: 13px;
+  }
+
+}
+h6.maindesc {
+  font-size: 18px;
+    line-height: 1.5;
+    color: rgba(0,0,0,.8);
+    letter-spacing: .01rem;
+    font-weight: 400;
+    font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+}
+#unique-section{
+  margin-top:40px;
+  .columns {
+    text-align:center;
+    p {
+      font-size:13px;
+      font-family: Raleway;
+    }
+  }
+}
+h2.wearhacks-header {
+  font-family: Raleway;
+}
