@@ -1,6 +1,6 @@
 .swiper-container-images {
       width: 100%;
-      height: 200px;
+      height: 300px;
       margin: 20px auto;
   }
 
@@ -59,4 +59,57 @@ h6.maindesc {
 }
 h2.wearhacks-header {
   font-family: Raleway;
+}
+
+.event-photo {
+    width: 100%;
+    height: 200px;
+    margin-bottom:10px;
+    background-size: cover;
+    display: inline-block;
+    background-position-y: 30%;
+    a.website {
+        position: absolute;
+    bottom: 0;
+    right: 26px;
+    color: white;
+    font-weight: bold;
+    
+   font-variant: small-caps;
+    font-family: Raleway;
+    background: white;
+    color: #333;
+    padding: 10px 20px;
+    }
+}
+
+.event-desc {
+display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+    margin-left: 17px;
+    padding: 10px 20px;
+    /* min-width: 377px; */
+    background: #333;
+    width: 95%;
+    max-width: 375px;
+  h4 {
+    color:white;
+    font-variant: small-caps;
+    margin-bottom:0;
+    font-family:Raleway;
+  }
+  h5 {
+    font-weight: bold;
+    color:white;
+    margin-top:0;
+    font-family: sans-serif;
+    
+  }
+  p {
+   color:white;
+   font-family:Raleway;
+   font-variant: small-caps;
+   margin-bottom: 0;
+  }
 }

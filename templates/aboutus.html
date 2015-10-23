@@ -1,8 +1,14 @@
 
 {% extends "_base.html" %}
 {% block title %} About Us {% endblock %}
+
 {% load staticfiles%}
+{% block script_section %}
+    <script src="{% static 'javascript/aboutus.js' %}"></script>
+
+{% endblock %}
 {% block content %}
+
 <section id="body">
 
         <div class="columns small-12 top-header" style="background-image: url(/static/images/team.jpg);" alt="">
@@ -10,29 +16,62 @@
         </div>
 
      <div class="row ">
-          <div class="small-4 columns">
-            <img class="image-block" src="{% static 'images/slidekids.jpg'%}" alt="">
+          <div class="small-12 medium-6 large-4 columns">
+                  <!-- Swiper -->
+                    <div id="swiper-3d">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_1.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_2.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_3.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide4.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_kid.jpg' %})"></div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
         </div>
-        <div class="small-8  columns paragraph">
+        <div class="small-12 medium-6 large-8  columns paragraph">
             <h2 class="sub-header2">Our mission</h2>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </div>
 
     </div>
-    <br>
-    <div class="row">
-        <div class="columns small-12">
-            <h2 class="sub-header2"><i class="fa fa-chevron-right"></i>The team</h2>
+
+     <div class="small-brk"></div>
+    <div class="row ">
+            <div class="team-header small-12 columns">
+                <h2 class="sub-header2" style="margin-bottom:20px">The team</h2>
+
+                <div class="columns large-8">
+                    <h4>We are a group engineers, designers, and tinkerers that all share the same vision of improving hardware education.</h4>
+                </div>
+                <div class="columns large-4"><h6>We share the vision of empowering anyone with the will to learn hardware hacking with the tools and mentorship. We want to make hardware education as accessible as learning programming.</h6></div>
+            </div>
+            <div class="columns large-12">
             {% for member in team_members %}
-                {{ member.name }} | {{ member.position }}
-                <p>{{ member.blurb }}</p>
-            <a href="{{   member.github }}">Github</a>
-                <a href="{{   member.linkedin }}">LinkedIn</a>
-                <br/>
-                <br/>
+                <div class="large-4 columns no-padding">
+              <div class="profile">
+                <div class="profile-image" style="background-image:url('/media/{{member.photo }}')">
+
+                    <p class="blurb">{{ member.blurb }}</p>
+
+                </div>
+                <p class="name"><span>{{ member.name }}</span> | {{ member.position }}</p>
+
+                <ul class="inline-list social" style="display: inline-block;">
+                 {% if  member.facebook %}<li><a href="{{   member.facebook }}"><i class="fa fa-facebook-official"></i></a></li> {% endif %}
+                 {% if  member.linkedin %}<li><a href="{{   member.linkedin }}"><i class="fa fa-linkedin-square"></i></a></li>{% endif %}
+                 {% if  member.email %}<li><a href="{{   member.email }}"><i class="fa fa-envelope"></i></a></li>{% endif %}
+                 {% if  member.twitter %}<li><a href="{{   member.twitter }}"><i class="fa fa-twitter-square"></i></a></li>{% endif %}
+                 {% if  member.github %}<li><a href="{{   member.github }}"><i class="fa fa-github-square"></i></a></li>{% endif %}
+
+                </ul>
+              </div>
+                </div>
             {% endfor %}
-        </div>
+            </div>
     </div>
+    <div class="small-brk"></div>
 </section>
 
 {% endblock %}

@@ -16,6 +16,9 @@
   </head>
 
   <body>
+    <p id="back-top">
+        <a href="#top"><i class="fa-caret-up fa"></i></a>
+    </p>
     {% include 'navbar.html' %}
 
       {% block content %}
@@ -48,14 +51,15 @@
             <li><a href=""><i class="fi-social-twitter"></i></a></li>
           </ul>
     </div>
+
     <div class="large-3 columns "><h5 class="header-footer">Sign up for updates</h5>
-      <form class="footer-signup">
+      <form class="footer-signup" action="/api/signup" method="post">
         <div class="row collapse">
         <div class="small-10 columns">
-          <input type="email" placeholder="tony.stark@wearhacks.com">
+          <input name="email" type="email" placeholder="tony.stark@wearhacks.com">
         </div>
         <div class="small-2 columns">
-          <a href="#" class="button postfix"><i class="fa fa-caret-right"></i></a>
+          <input class="button postfix" type="submit"><i class="fa fa-caret-right"></i></input>
         </div>
       </div>
       </form></div>

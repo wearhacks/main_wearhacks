@@ -16,6 +16,7 @@
     "foundation": "~5.5.3",
     "swiper": "~3.1.7",
     "vivus": "~0.2.3",
-    "photoswipe": "~4.1.0"
+    "photoswipe": "~4.1.0",
+    "scrollReveal.js": "~2.3.2"
   }
 }

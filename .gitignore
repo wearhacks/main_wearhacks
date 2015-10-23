@@ -10,9 +10,9 @@ dist/
 # Migrations
 */migrations*
 migrate.sh
-
+media_root/
 static/CACHE/
-
+static/media/
 .idea/
 
 *.sqlite3

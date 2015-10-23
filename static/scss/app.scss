@@ -91,7 +91,7 @@ $include-html-global-classes: $include-html-classes;
 // $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
-
+$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // We use these to define default font weights
 // $font-weight-normal: normal;
 // $font-weight-bold: bold;
@@ -123,6 +123,7 @@ $include-html-global-classes: $include-html-classes;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
+$primary-color: #1e699c;
 
 // We use these to control various global styles
 // $body-bg: $white;
@@ -130,7 +131,7 @@ $include-html-global-classes: $include-html-classes;
 // $body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
-
+$body-font-family: $font-family-serif;
 // We use this to control font-smoothing
 // $font-smoothing: antialiased;
 
@@ -219,7 +220,7 @@ $include-html-global-classes: $include-html-classes;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
 // $header-text-rendering: optimizeLegibility;
-
+$header-font-family: $body-font-family;
 // We use these to control header font sizes
 // $h1-font-size: rem-calc(44);
 // $h2-font-size: rem-calc(37);
@@ -1599,30 +1600,22 @@ $wolf-blue: #1e699c;
     src: local("../fonts/freight.otf");
 }
 h2.sub-header {
-    font-family: raleway;
-    /* font-style: italic; */
+    font-family: Raleway;
     font-weight: bold;
     margin-top: 24px;
-        position: absolute;
+    position: absolute;
     bottom: 0;
-    /* border-bottom: 1px solid #CCC; */
     color: white;
   span {
-    font-size:14px;
+    font-size:0.5em;
     a {color: white; font-weight:bold; &:hover {color:$wolf-blue}}
   }
 }
 h2.sub-header2 {
   font-family: Raleway;
     font-weight: bold;
-    font-size: 30px;
-    /* text-transform: uppercase; */
     font-variant: small-caps;
-    i {
-    font-size: 12px;
-      margin-right: 10px;
-      line-height: 12px;
-  }
+  
 }
 .paragraph {
     font-family: Georgia,Cambria,"Times New Roman",Times,serif;;
@@ -1659,16 +1652,152 @@ h2.sub-header2 {
     margin-left: 7px;
 }
 .small-brk {
-  height:2px;
-  width:20px;
+    height: 3px;
+    width: 155px;
+    margin: 50px auto;
+    background-color: #4d4d4d;
+    border-radius: 20px;
 }
 .pull-bottom {
   position: absolute;
   bottom:0
 }
 .top-header {
-  height: 300px;background-position: 50% 50%;position:relative; background-repeat: no-repeat;background-size: cover;box-shadow: inset 2px 500px 0px rgba(7, 102, 169, 0.62);    margin-bottom: 75px;
+  height: 25em;background-position: 50% 50%;position:relative; background-repeat: no-repeat;background-size: cover;box-shadow: inset 2px 500px 0px rgba(7, 102, 169, 0.62);    margin-bottom: 75px;
+}
+#swiper-3d  {
+    width: 80%;
+    height: 200px;
+    margin-bottom: 34px;
+    margin-left: auto;
+    margin-right: auto;
 
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+  }
+  .swiper-pagination {
+    bottom: -39px !important;
+    left: 0;
+    width: 100%;
+  }
+}
+.profile {
+width: 80%;
+
+    padding: 0px 0px;
+    margin: auto;
+    min-height: 332px;
+  p.name {
+ font-family: Raleway;
+    bottom: 20px;
+    color: #333;
+    font-size: 0.9em;
+    margin-top: 10px;
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: 10px;
+    margin-bottom:20px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+
+  .inline-list {
+    li {
+      padding-left:0;
+      margin-left:10px;
+    }
+    margin:auto;
+    i {
+
+    font-size: 22px;
+    color: #565656;
+      &:hover {
+        color:$wolf-blue;
+      }
+    }
+  }
+
+}
+
+.profile-image {
+    height: 207px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position:relative;
+      box-shadow:inset 0px -231px 0px rgba(12, 121, 173, 0.48);
+   .blurb {
+     opacity: 0;
+     transition: opacity 0.4s;
+     background: rgb(255,255,255);
+
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    border: 1px solid rgba(204, 204, 204, 0.51);
+    border-top: 0;
+      font-size:12px;
+   }
+    &:hover .blurb {
+     background: rgb(255,255,255);
+      opacity: 1;
+      transition: opacity 1s;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    border: 1px solid rgba(204, 204, 204, 0.51);
+    border-top: 0;
+      font-size:12px;
+   }
+}
+.team-header {
+  margin-bottom:50px;
+  margin-top:20px;
+  h3 {
+    font-size:1.5em;
+    margin-top:10px;
+  }
+  h5 {
+    font-weight: 100;
+    line-height: 27px;
+    font-size: 16px;
+    text-align: justify;
+  }
+}
+
+#back-top {
+  position: fixed;
+  bottom: 0.5em;
+  right: 0.5em;
+  z-index: 100;
+}
+
+#back-top a {
+    display: block;
+    text-align: center;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+    /* height: 32px; */
+    background: rgba(210, 210, 210, 0.39);
+    z-index: 20; 
+    padding: 0em 0.5em;
+    font-size: 1.6em;
+    border-radius: 3px;
+    color: rgba(51, 51, 51, 0.64);
+    line-height: 36px;
+}
+#back-top a:hover {
+  color: #000;
+}
+
+
+#back-top a:hover span {
+  background-color: #777;
 }
 @import 'events.scss';
 

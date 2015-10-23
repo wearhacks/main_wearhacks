@@ -22,6 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'b-k)45!)kts5ey=$m@tpndr!!1haf(gal4mgv+kk%xe9#ew-gj'
 MAPS_API_KEY = 'AIzaSyCo2CgBucjUSXSld3KMWIAVynCtp36acFs'
+MAILCHIMP_API_KEY = '49c3747e396d2af60dc7b177548ee142-us8'
+MAILCHIMP_LIST_ID = 'fb6da89e2b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -107,6 +109,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 COMPRESS_ROOT = 'static/'
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
