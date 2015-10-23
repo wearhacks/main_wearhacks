@@ -1,0 +1,14 @@
+Django==1.8.5
+django-appconf==1.0.1
+django-compressor==1.5
+django-geoposition==0.2.2
+django-grappelli==2.7.1
+django-libsass==0.4
+django-pipeline==1.5.4
+docopt==0.4.0
+futures==3.0.3
+libsass==0.8.3
+mailchimp==2.0.9
+Pillow==3.0.0
+requests==2.8.1
+six==1.10.0
