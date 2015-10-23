@@ -1,8 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
+import os
 
+def get_image_path(instance, filename):
+    return os.path.join('', str(instance.id), filename)
 
+def get_event_img_path(instance,filename):
+    return os.path.join('events', str(instance.id), filename)
 
 class Event(models.Model):
     """(Place description)"""
@@ -20,6 +25,7 @@ class Event(models.Model):
     end_date = models.DateTimeField(blank=True)
     address = models.CharField(max_length = 100)
     city = models.CharField(max_length= 50)
+    photo = models.ImageField(upload_to = get_event_img_path, blank = True, null = True)
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
@@ -27,18 +33,21 @@ class Event(models.Model):
 
 class Projects(models.Model):
     """(Place description)"""
-    submitted_by = models.ForeignKey (User)
+    submitted_event = models.ForeignKey (Event)
     project_name = models.CharField(max_length = 50)
 
 class TeamMember(models.Model):
+
     name = models.CharField(max_length = 50)
     position = models.CharField(max_length = 50)
     blurb = models.CharField(max_length = 150)
     email = models.EmailField(verbose_name='email')
+    photo = models.ImageField(upload_to = get_image_path, blank = True, null = True)
     github = models.URLField(max_length=100, blank=True)
     linkedin = models.URLField(max_length=100, blank=True)
     facebook = models.URLField(max_length=100, blank=True)
     twitter = models.URLField(max_length=100, blank=True)
+
     def __unicode__(self):
         return u"%s" % self.name
     class Meta:

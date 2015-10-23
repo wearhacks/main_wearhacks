@@ -1,0 +1,47 @@
+{% extends "_base.html" %}
+{% block title %} {{title}} {% endblock %}
+
+{% load staticfiles%}
+{% block script_section %}
+
+{% endblock %}
+{% block content %}
+
+<section id="body">
+
+    <div class="columns small-12 top-header" style="background-image: url({% static 'images/stage.jpg' %}); background-position-y: 70%" alt="">
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home &gt; </a></span> {{ title }}</h2></div>
+    </div>
+    <div class="row">
+      <h1 style="text-align:center">Bring Wearhacks To Your City</h1>
+      
+    </div>
+    <div class="small-brk"></div>
+    <div class="row">
+      <h2 class="sub-header2" style="margin-bottom:20px">The Program</h2>
+      <div class="columns large-4">
+        <img src="{% static 'images/france.jpg' %}" alt="">
+      </div>
+      <div class="columns large-8">
+        <h4>
+          The WearHacks Leadership program offers our Ambassadors a chance to test their talents. 
+
+        </h4>
+        <h5>
+          By building skills in <b>leadership</b>, <b>networking</b> and <b>event management</b>- Ambassadors complete our program feeling like experts in hacking hackathons! 
+        </h5>
+      </div>
+
+    </div>
+    <div class="small-brk"></div>
+    <div class="row">
+      <div class="columns large-10 large-offset-1">
+        <h4 >
+          The WearHacks City Ambassador is a volunteer position to be the leader of a WearHacks event. You will take charge of a core team of three to four people, and direct them into creating the best WearHacks event to date.
+          <br/>
+          You learn new skills including team leadership, networking, and fundraising. We love to see you succeed, and we love it even more when we can help you achieve it.
+        </h4>
+      </div>
+    </div>
+</section>
+{% endblock%}
