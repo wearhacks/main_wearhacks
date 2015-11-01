@@ -1,25 +1,23 @@
 var initializeSwiper = function() {
 
-  var mySwiper = new Swiper('.swiper-container', {
-    // Optional parameters
-    direction: 'horizontal',
-    loop: true,
-
-    // If we need pagination
-    pagination: '.swiper-pagination',
-
-    // Navigation arrows
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
-    onSlideChangeStart: function(swiper) {
-      swiper.slides.each(function(slide,i){
+  var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        //autoplay: 5000,
+        autoplayDisableOnInteraction: false,
+         onSlideChangeStart: function(swiper) {
+          swiper.slides.each(function(slide,i){
           $(slide).hide();
 
-      });
-      $(swiper.slides[swiper.activeIndex])
-      .find('.content').toggle(0).fadeIn(1500);
-    },
-  });
+          });
+          $(swiper.slides[swiper.activeIndex])
+          .find('.content').toggle(0).fadeIn(1500);
+        }
+    });
 };
 
 var initBackToTop = function() {
@@ -48,6 +46,5 @@ var initBackToTop = function() {
 }
 $(document).ready(function() {
 
-  initializeSwiper();
   initBackToTop();
 });

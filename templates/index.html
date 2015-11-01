@@ -4,6 +4,7 @@
 {% load staticfiles%}
 {% block title %} Home {% endblock %}
 {% block content %}
+
 <section id="body">
 
  <div class="row">
@@ -13,50 +14,40 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide" style="background:url('{% static 'images/slidekids.jpg'%}');width: 1000px;background-size: cover;background-position: 50% 50%;">
-                <h3 style="
-    font-family: freight;
-    font-weight: 100;
-    font-size: 1.8em;
-    /* font-weight: bold; */
-    font-style: italic;
-    /* border-left: 2px solid #333; */
-    padding-left: 7px;
-    margin-top: 10px;
-    text-align: center;
-    color: #313131;
-    /* text-transform: uppercase; */
-    background-color: rgba(0, 0, 0, 0.60);
-    color: white;
-    text-align: center;
-    width: 100%;
-    text-transform: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 140px 81px;
-">Wearhacks is a set of initiatives to create the learning platform where the next <b>Elon Musk</b> will come out of.</h3>
+            <div class="swiper-slide" style="background:url('{% static 'images/slidekids2.jpg'%}');box-shadow: rgba(9, 50, 68, 0.690196) 0px 900px 0px inset;background-size: cover;background-position: 50% 50%;">
+              <div class="content text-center">
+                <h3 style="color: white;">WEARHACKS is a set of <b>initiatives</b> to create the learning platform where the next <b>Elon Musk</b> will come from.</h3>
+      <a href="/aboutus/" >Learn More <i class="fa fa-chevron-right"></i></a>
+      </div>
             </div>
-            <div class="swiper-slide"style="background:url('{% static  'images/slide2.jpg'%}');">
-                <div class="content" style="top:30vh; color:white;">
-                    <h1>Hackathons</h1>
-                    <h4>We empower creative thinkers by providing mentorship and innovation through hackathons</h4>
-                    <a href="" class="href">Learn More <i class="fa fa-chevron-right"></i></a>
+            <div class="swiper-slide"style="background-image:url('{% static  'images/bannerhackathon.jpg'%}'); background-size:cover; box-shadow: inset 0px 400px 0px rgba(0,0,0,0.7)">
+                <div class="content text-left" style="top:30vh; color:white; ">
+                    <img src="{% static 'images/logo-white.png' %}" class="columns large-4" style="display:inline-block;margin-top:-30px" alt="">
+                    <div class="columns large-8">
+                      <h1>WEARHACKS Hackathons</h1>
+                    <p style="font-size: 1.3rem;">We empower creative thinkers by providing mentorship and innovation through hackathons</p>
+                    <a href="/events/" class="href">Learn More <i class="fa fa-chevron-right"></i></a>
+                    </div>
+                    
                 </div>
 
             </div>
 
-            <div class="swiper-slide" style="background:url('{% static 'images/slide5.jpg'%}');  background-size: 100%;">
+            <div class="swiper-slide" style="background:url('{% static 'images/ambassadors.jpg'%}');  background-size: 100%;
+    
+    background-size: cover;
+    box-shadow: inset 0px 900px 0px rgba(14, 14, 14, 0.8);
+    background-position-y: 54%;">
               <div class="content" style="top: 30vh; text-align: center; width: 100%; color: white; display: block;">
               <h1>Wearhacks Amabassador Program</h1>
-<h3 style="color:white;background-color: rgba(0, 0, 0, 0.3);padding: 20px;/* text-shadow: 1px 1px 0px #131313; */font-size: 20px;">"It is a challenging but extremely rewarding experience, and I got the opportunity to connect with many amazing people in the tech community!" <small style="
+<h3 style="color:white;padding: 20px;/* text-shadow: 1px 1px 0px #131313; */font-size: 20px;">"It is a challenging but extremely rewarding experience, and I got the opportunity to connect with many amazing people in the tech community!" <br/> <small style="
     color: white;
-">-Jenny Yu (WH Vancouver Ambassador)</small></h3>
-              <a href="#">Meet Our Ambassadors <i class="fa fa-chevron-right"></i></a>
+">-Jenny Yu, WH Vancouver Ambassador</small></h3>
+              <a href="/ambassador/">Meet Our Ambassadors <i class="fa fa-chevron-right"></i></a>
+               <a href="/ambassador/">Learn More <i class="fa fa-chevron-right"></i></a>
               </div>
             </div>
 
-            <div class="swiper-slide" style="background:url('{% static 'images/slide4.jpg'%}')"></div>
-            <div class="swiper-slide" style="background:url('{% static 'images/slide5.jpg'%}'); background-size: 100%"></div>
 
         </div>
         <!-- If we need pagination -->
@@ -75,59 +66,54 @@
 
         </div>
   <div class="row">
-  <div class="small-12 columns no-padding">
-    <div class="large-7 columns no-padding mid-content">
+  <div class="small-12 columns no-padding" style="margin-top: 0.7em">
+    <div class="large-7 columns no-padding mid-content" style="height: 24.5em;">
 
-      <div class="blog-section" style="background-image:url('{% static 'images/softlayer.jpg'%}')">
-
-
-
+      <div class="blog-section" style="background-image:url('{{ blog_image }}')">
+        <a href="{{blog_link }}"><h5>{{blog_title}}</h5></a>
       </div>
        <div class="content-blog" >
-
-          <h5>Sed varius sapien at quam semper bibendum.</h5>
-          <p> Donec congue justo ut odio fringilla, at laoreet nulla pulvinar. Pellentesque viverra posuere magna, sagittis varius risus. Quisque consequat tempor mollis. Mauris eleifend, ligula ac ullamcorper hendrerit, arcu metus suscipit purus, sit amet congue risus magna sit amet dui. <a href="">Read More<i class="fa fa-angle-double-right"></i></a></p>
+           {{blog_excerpt | safe}} 
+           <a href="{{blog_link }} ">Read More <i class="fa fa-angle-double-right"></i></a>
 
 
         </div>
     </div>
-    <div class="large-5 columns no-padding">
+    <div class="large-5 columns no-padding" style="padding-left: 0.7em;">
+
       <div class="sub-content small-12 columns">
+      
       <div class="content-img" style="background-image:url('{% static 'images/innovation.jpg'%}')">
-        <a href="/consulting">
+       
 
         </a>
       </div>
-      <div class="description">
-        <h4>This is the centre of innovation.</h4>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.  </p>
-      </div>
+    
+      <a href="/events" class="description">
+        <h6>Events</h6>
+        <p>We bring together students, mentors and tinkerers and provide them the tools to build cool things.</p>
+      </a>
     </div>
     <div class="sub-content small-12 columns">
 
       <div class="content-img" style="background-image:url('{% static 'images/team.jpg'%}')">
-        <a href="/aboutus">
-
-        </a>
+ 
       </div>
-      <div class="description">
-        <h4>About Us</h4>
-        <p>We are creative thinkers, engineers, and tinkerers who all share the vision of innovating education.  </p>
-      </div>
+      <a href="/aboutus" class="description">
+        <h6>About Us</h6>
+        <p>A group engineers, designers, and tinkerers that share the vision of improving hardware education.</p>
+      </a>
 
     </div>
       <div class="sub-content small-12 columns">
 
       <div class="content-img" style="background-image:url('{% static 'images/projects.jpg'%}')">
-        <a href="/projects">
-
-        </a>
-
+   
       </div>
-            <div class="description">
-        <h4>Wearhacks Lab</h4>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.  </p>
-      </div>
+      <a class="description">
+        <h6>Projects</h6>
+        <p>Wearhackers' projects do not end at hackathons, they are a stepping stone to something greater.</p>
+      </a>
     </div>
     <div class="sub-content small-12 columns top-margin">
       <div class="content-img" style="background-image:url('{% static 'images/partnership.jpg'%}')">
@@ -137,10 +123,10 @@
         </div>
         </a>
       </div>
-      <div class="description">
-        <h4>Partnerships</h4>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.  </p>
-      </div>
+      <a class="description">
+        <h6>Partnerships</h6>
+        <p>Help us create the next generations of innovators. We cannot do it alone.</p>
+      </a>
     </div>
 
     </div>

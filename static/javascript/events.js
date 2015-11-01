@@ -10,12 +10,3 @@ var initializeSwiper = function() {
     });
 };
 
-$(document).ready(function() {
-
-  initializeSwiper();
-   window.sr= new scrollReveal({
-          reset: true,
-          mobile: true
-        });
-
-});
