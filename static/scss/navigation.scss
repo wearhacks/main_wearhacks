@@ -43,16 +43,15 @@ a:hover {
     margin-left: 10px;
   }
 }
-div#navigation-drop {
+#navigation-drop {
     position: absolute;
     right: 0;
     min-width: 240px;
-    background:white;
-    box-shadow: rgba(204, 204, 204, 0.18824) -4px 3px 0px;
+    background: #333;
     margin-right: 6px;
     margin-top: 9px;
-    border: 1px solid #EEE;
-    z-index:4;
+    z-index: 4;
+    margin-top: 52px;
 }
 ul.inline-list.social {
     padding: 0;
@@ -71,24 +70,25 @@ ul.inline-list.social {
 
 .side-nav.secondary {
     display: block;
-    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     list-style-position: outside;
     list-style-type: none;
     margin-bottom: 0;
-    margin-top:2px;
+    font-family: sans-serif;
+    margin-left:10px;
 
-      margin-left:10px;
-      margin-right:20px;
-    padding-top: 0.5rem;
-    background-color: rgb(255, 255, 255);
     z-index: 2;
     li {
+      margin-bottom:0;
       text-transform: uppercase;
       a {
-        color: #333;
-        border-bottom: 1px solid #CCC;
+          color: #B9B9B9;
+          border-bottom: 1px solid rgba(204, 204, 204, 0.09);
+          border-left: 2px solid #333;
+          padding: 10px 15px;
         &:hover {
-          background: none;
+          color: #FFFFFF;
+          border-left: 2px solid #565656;
+          background:#222;
         }
       }
        p {
@@ -153,6 +153,7 @@ ul.inline-list.social {
 
 
 .footer-basic-centered {
+
   box-sizing: border-box;
   width: 100%;
   font: normal 18px sans-serif;
@@ -171,17 +172,14 @@ ul.inline-list.social {
   }
   a {
     color: #555;
-    font-family:Raleway;
-    font-size:12px;
+    font-size:0.7em;
   }
   a:hover {
     color:#1e699c;
   }
   h5 {
-      font-size: 12px;
+      font-size: 0.7em;
     text-transform: uppercase;
-    font-weight: bold;
-    font-family: Raleway;
   }
   input {
     border-color:#CCC;
@@ -201,7 +199,11 @@ ul.inline-list.social {
       background-color:#008CBA;
     }
   }
+  ul.inline-lift {
+
+  }
   ul.inline-list.social {
+    margin-left:0;
     padding: 0;
     padding-top:2px;
     li:first-child {
