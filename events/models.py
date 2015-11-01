@@ -22,7 +22,7 @@ class Event(models.Model):
     event_name = models.CharField(max_length = 50)
     short_name = models.CharField(max_length = 50)
     start_date = models.DateTimeField(blank=True)
-    end_date = models.DateTimeField(blank=True)
+    end_date = models.DateTimeField(blank=True, )
     address = models.CharField(max_length = 100)
     city = models.CharField(max_length= 50)
     photo = models.ImageField(upload_to = get_event_img_path, blank = True, null = True)
@@ -57,3 +57,27 @@ class TeamMember(models.Model):
         return u"%s" % self.name
     class Meta:
         verbose_name_plural = "Team Members"
+
+class Partner(models.Model):
+    PARTNERTYPES = (
+        (0, 'Global Partners'),
+        (1, 'Hardware Partners'),
+        (2, 'Media Partners'),
+        (3, 'Membership'),
+    )
+    name = models.CharField(max_length = 50)
+    partner_type = models.CharField(max_length=1, choices=PARTNERTYPES)
+    photo = models.ImageField(upload_to = get_event_img_path, blank = True, null = True)
+    link = models.URLField(max_length=100, blank=True)
+
+    def __unicode__(self):
+        return u"%s" % self.name
+
+class Content(models.Model):
+    name = models.CharField(max_length = 50)
+    page_name = models.CharField(max_length = 50)
+    sub_name = models.CharField(max_length = 50, blank=True)
+    content = models.CharField(max_length = 8000)
+
+    def __unicode__(self):
+        return u"%s" % self.content

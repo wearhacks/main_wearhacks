@@ -1,0 +1,66 @@
+
+{% extends "_base.html" %}
+{% block title %} {{ title }} {% endblock %}
+
+{% load staticfiles%}
+{% block script_section %}
+    <script src="{% static 'javascript/aboutus.js' %}"></script>
+
+{% endblock %}
+{% block content %}
+
+<section id="body">
+
+        <div class="columns small-12 top-header" style="background-image: url(/static/images/team.jpg);" alt="">
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; </span> {{ title }}</h2></div>
+        </div>
+
+     <div class="row ">
+          <div class="small-12 medium-6 large-4 columns">
+                  <!-- Swiper -->
+                    <div id="swiper-3d">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_1.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_2.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_3.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide4.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_kid.jpg' %})"></div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+        </div>
+        <div class="small-12 medium-6 large-8  columns paragraph">
+            <h2 class="sub-header2">Our mission</h2>
+
+
+
+
+            <p>WearHacks is working towards building the World's Largest Hardware Lab, where the boundaries of imagination are explored in an intimate atmosphere, through collaboration instead of competition.</p>
+            <p>Our fundamental goal is to bridge the knowledge gap that exists in the IoT industry amongst technology enthusiasts from all backgrounds through hackathons.</p>
+            <p>We strive to make hardware education <b>accessible</b>, <b>approachable</b>, and <b>affordable</b>.</p>
+
+        </div>
+
+    </div>
+
+     <div class="small-brk"></div>
+    <div class="row ">
+            <div class="team-header small-12 columns">
+                <h2 class="sub-header2" style="margin-bottom:20px">The team</h2>
+
+                <div class="columns large-8">
+                    <h4>We are a group engineers, designers, and tinkerers that all share the same vision of improving hardware education.</h4>
+                </div>
+                <div class="columns large-4"><p>We share the vision of empowering anyone with the will to learn hardware hacking with the tools and mentorship. We want to make hardware education as accessible as learning programming.</p></div>
+            </div>
+            <div class="columns large-12">
+            {% for member in team_members %}
+
+            {% endfor %}
+            </div>
+    </div>
+    <div class="small-brk"></div>
+</section>
+
+{% endblock %}

@@ -8,6 +8,7 @@ urlpatterns = [
      url(r'^$', 'events.views.home', name='home'),
      url(r'^aboutus/', 'events.views.about_us', name='aboutus'),
      url(r'^events/', 'events.views.events', name='events'),
+     url(r'^partnerships/', 'events.views.partnerships', name='partnerships'),
      url(r'^ambassador/', 'events.views.ambassador', name='ambassador'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS

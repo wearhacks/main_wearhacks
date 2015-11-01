@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.forms.models import model_to_dict
-from models import TeamMember,Event
+from models import TeamMember,Event,Partner
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
 import datetime
@@ -16,7 +16,7 @@ def current_datetime(request):
 def home(request):
     posts = json.loads(urlopen('http://wearhacks.nadimislam.com/?json=1').read())["posts"]
     content = {
-        'blog_title' : posts[0]["title"], 
+        'blog_title' : posts[0]["title"],
         'blog_excerpt' : posts[0]["excerpt"],
         'blog_link' : posts[0]["url"],
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"]
@@ -31,6 +31,8 @@ def events(request):
     return render(request, 'events.html',{'title':"Events",'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date')})
 def ambassador(request):
     return render(request, 'ambassador.html',{'title':"Ambassador Program"})
+def partnerships(request):
+    return render(request, 'partnerships.html',{'title':"Partnerships",'team_members':Partner.objects.all()})
 
 
 @csrf_exempt
@@ -46,7 +48,7 @@ def mailchimp_signup(request):
         return JsonResponse({"status":"error","message":'An error occurred: %s - %s' % (e.__class__, e)}, status=400)
   else:
     return JsonResponse({"status":"error", "message":"There is no email"}, status = 400)
-    
+
 def get_sticky_post(request):
     url = urlopen('http://wearhacks.nadimislam.com/?json=1').read()
     print url
