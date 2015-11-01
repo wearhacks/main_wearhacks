@@ -8,16 +8,78 @@
 {% block content %}
 
 <section id="body">
-
-    <div class="columns small-12 top-header" style="background-image: url({% static 'images/stage.jpg' %}); background-position-y: 70%" alt="">
+    
+    <div class="columns small-12 top-header" style="background-image: url({% static 'images/innovation.jpg' %});background-position-y: 33%;" alt="">
             <div class="row"><h2 class="sub-header"><span><a href="/">Home &gt; </a></span> {{ title }}</h2></div>
     </div>
-    <div class="row">
-      <h1 style="text-align:center">Bring Wearhacks To Your City</h1>
-      
+
+      <div class="row">
+        
+        <div class="large-10 large-offset-1 medium-12 columns">
+           
+          <h3 class="text-center" style="font-family:Raleway">Bring Wearhacks To Your City 
+            <i class="fa fa-map-marker" style="color: #0C4770;margin-left: 10px;"></i></h3>
+         <div class="small-brk"></div>
+          <h5>
+            The WearHacks Leadership program offers our Ambassadors a chance to test their talents. 
+          
+          By building skills in <b>leadership</b>, <b>networking</b> and <b>event management</b>- Ambassadors complete our program feeling like experts in hacking hackathons! 
+        </h5>
+        </div>
+      </div>
+
+    <div class="clearfix" style="background:whitesmoke;">
+      <div class="columns large-8 large-offset-2 no-padding">
+        <div class="swiper-container">
+                <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide" style="background:url('{% static 'images/stage.jpg'%}');background-size: cover;background-position: 50% 50%;box-shadow: inset 0px 900px 0px rgba(14, 14, 14, 0.5);">
+                <div class="content">
+                <h3 style="color:white">
+                  The leadership program lets you immerse yourself in the tech industry and connect with leading innovators.
+                </h3>
+                </div>
+            </div>
+
+
+            <div class="swiper-slide" style="background:url('{% static 'images/france.jpg'%}');  background-size: 100%;
+    
+    background-size: cover;
+    box-shadow: inset 0px 900px 0px rgba(14, 14, 14, 0.8);
+    background-position-y: 54%;">
+              <div class="content" style="top: 30vh; text-align: center; width: 100%; color: white; display: block;">
+
+<h3 style="color:white;">"It is a challenging but extremely rewarding experience, and I got the opportunity to connect with many amazing people in the tech community!" <br/> <small style="
+    color: white;
+">-Jenny Yu, WH Vancouver Ambassador</small></h3>
+              </div>
+            </div>
+            <div class="swiper-slide" style="background:url('{% static 'images/ambassadors.jpg'%}');  background-size: 100%;
+    
+        background-size: cover;
+        box-shadow: inset 0px 900px 0px rgba(14, 14, 14, 0.8);
+        background-position-y: 54%;">
+                  <div class="content" style="top: 30vh; text-align: center; width: 100%; color: white; display: block;">
+
+    <h2  style="color:white;padding: 20px;/* text-shadow: 1px 1px 0px #131313; */">"It is a challenging but extremely rewarding experience, and I got the opportunity to connect with many amazing people in the tech community!" <br/> <small style="
+        color: white;
+    ">-Jenny Yu, WH Vancouver Ambassador</small></h2>
+                  </div>
+                </div>
+
+        </div>
+      </div>
+              <!-- If we need pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div>
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
     </div>
-    <div class="small-brk"></div>
-    <div class="row">
+
+ <!--   <div class="row">
       <h2 class="sub-header2" style="margin-bottom:20px">The Program</h2>
       <div class="columns large-4">
         <img src="{% static 'images/france.jpg' %}" alt="">
@@ -31,16 +93,36 @@
           By building skills in <b>leadership</b>, <b>networking</b> and <b>event management</b>- Ambassadors complete our program feeling like experts in hacking hackathons! 
         </h5>
       </div>
-
+</div>-->
     </div>
     <div class="small-brk"></div>
     <div class="row">
+      <div class="amb-icons columns large-10 large-offset-1">
+        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/handshake5.svg'%}" alt=""> <h6>Leadership</h6></div>
+        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/marketing-buzz.svg'%}" alt=""><h6>Networking</h6></div>
+        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/listing6.svg'%}" alt=""><h6>Event Management</h6 ></div>
+      </div>
+    </div>
+    <div class="row">
       <div class="columns large-10 large-offset-1">
-        <h4 >
+        <h5>
+          <br>
           The WearHacks City Ambassador is a volunteer position to be the leader of a WearHacks event. You will take charge of a core team of three to four people, and direct them into creating the best WearHacks event to date.
-          <br/>
+          </h5>
+          <h5>
           You learn new skills including team leadership, networking, and fundraising. We love to see you succeed, and we love it even more when we can help you achieve it.
-        </h4>
+        </h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns large-10 large-offset-1 text-center">
+
+    <hr/>
+        <h3 data-sr="enter bottom over 1s and move 65px">
+          Convinced? Join us and become the next Wearhacks ambassador!
+        </h3>
+
+        <a class="button button-large" data-sr="enter bottom over 1s and move 65px" href="ambassador.wearhacks.com">Start Now</a>
       </div>
     </div>
 </section>

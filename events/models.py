@@ -29,13 +29,18 @@ class Event(models.Model):
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
+    def __unicode__(self):
+        return u"%s" % self.short_name
 
-
-class Projects(models.Model):
+class Project(models.Model):
     """(Place description)"""
     submitted_event = models.ForeignKey (Event)
     project_name = models.CharField(max_length = 50)
+    short_description = models.CharField(max_length = 150)
+    blog_post = models.URLField(max_length=100, blank=True)
 
+    def __unicode__(self):
+        return u"%s from %s " % (self.project_name, self.submitted_event.short_name)
 class TeamMember(models.Model):
 
     name = models.CharField(max_length = 50)

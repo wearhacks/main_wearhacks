@@ -12,6 +12,8 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/signup', 'events.views.mailchimp_signup')
+    #apis
+    url(r'^api/signup', 'events.views.mailchimp_signup'),
+    url(r'^api/posts', 'events.views.get_sticky_post')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
