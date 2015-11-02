@@ -1611,19 +1611,17 @@ $wolf-blue: #1e699c;
 }
 
 h2.sub-header {
-    font-family: Raleway;
     font-weight: bold;
     margin-top: 24px;
     position: absolute;
     bottom: 0;
     color: white;
-  span {
-    font-size:0.5em;
-    a {color: white; font-weight:bold; &:hover {color:$wolf-blue}}
-  }
+    span {
+      font-size:0.5em;
+      a {color: white; font-weight:bold; &:hover {color:$wolf-blue}}
+    }
 }
 h2.sub-header2 {
-  font-family: Raleway;
     font-weight: bold;
     font-variant: small-caps;
   
@@ -1636,24 +1634,7 @@ h2.sub-header2 {
 .row {
   max-width: 72.5rem;
 }
-.map-tag-content p {
-    /* margin-bottom: 0; */
-    color: #847F7F;
-    /* border-left: 23px solid #00B5FF; */
-    padding-left: 2px;
-    margin-bottom: 2px;
-    font-size: 14px;
-    margin-left: 7px;
-}
-.map-tag-content p {
-    /* margin-bottom: 0; */
-    color: #847F7F;
-    /* border-left: 23px solid #00B5FF; */
-    padding-left: 2px;
-    margin-bottom: 2px;
-    font-size: 14px;
-    margin-left: 7px;
-}
+
 .small-brk {
     height: 3px;
     width: 155px;
@@ -1686,44 +1667,40 @@ h2.sub-header2 {
   }
 }
 .profile {
-width: 80%;
-
+    width: 80%;
     padding: 0px 0px;
     margin: auto;
     min-height: 332px;
-  p.name {
- font-family: Raleway;
-    bottom: 20px;
-    color: #333;
-    font-size: 0.9em;
-    margin-top: 10px;
-    border-bottom: 1px solid #e7e7e7;
-    padding-bottom: 10px;
-    margin-bottom:20px;
+    p.name {
+      font-family: Raleway;
+      bottom: 20px;
+      color: #333;
+      font-size: 0.9em;
+      margin-top: 10px;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 10px;
+      margin-bottom:20px;
 
-    span {
-      font-weight: bold;
+      span {
+        font-weight: bold;
+      }
     }
-  }
+    .inline-list {
+      li {
+        padding-left:0;
+        margin-left:10px;
+      }
+      margin:auto;
+      i {
 
-
-  .inline-list {
-    li {
-      padding-left:0;
-      margin-left:10px;
-    }
-    margin:auto;
-    i {
-
-    font-size: 22px;
-    color: #565656;
-      &:hover {
-        color:$wolf-blue;
+      font-size: 22px;
+      color: #565656;
+        &:hover {
+          color:$wolf-blue;
+        }
       }
     }
   }
-
-}
 
 .profile-image {
     height: 207px;
@@ -1785,7 +1762,6 @@ width: 80%;
     -webkit-transition: 1s;
     -moz-transition: 1s;
     transition: 1s;
-    /* height: 32px; */
     background: rgba(210, 210, 210, 0.39);
     z-index: 20; 
     padding: 0em 0.5em;
