@@ -16,3 +16,5 @@ static/media/
 .idea/
 
 *.sqlite3
+#Settings
+main_wearhacks/settings.py
