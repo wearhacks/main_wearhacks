@@ -17,4 +17,4 @@ static/media/
 
 *.sqlite3
 #Settings
-main_wearhacks/settings.py
+main_wearhacks/settings/private.py
