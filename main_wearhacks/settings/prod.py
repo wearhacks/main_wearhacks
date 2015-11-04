@@ -23,7 +23,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = 'https://mainwearhacks.s3.amazonaws.com/'
+STATIC_URL = 'mainwearhacks.s3.amazonaws.com/'
 
 STATICFILES_DIRS = (
     os.path.join(SITE_ROOT, 'static'),
@@ -35,8 +35,6 @@ COMPRESS_ENABLED = True
 
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
 
-AWS_S3_SECURE_URLS = False
-AWS_QUERYSTRING_AUTH = False
 
 COMPRESS_ROOT = os.path.join(SITE_ROOT, 'static')
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static/javascript')
