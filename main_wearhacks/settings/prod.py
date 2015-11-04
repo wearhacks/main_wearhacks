@@ -23,7 +23,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = 'http://mainwearhacks.s3.amazonaws.com/'
+STATIC_URL = 'https://mainwearhacks.s3.amazonaws.com/'
 
 STATICFILES_DIRS = (
     os.path.join(SITE_ROOT, 'static'),
