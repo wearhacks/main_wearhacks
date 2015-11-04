@@ -1588,15 +1588,15 @@ $black: #000;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #DDD!important;  
+   color: #DDD!important;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #DDD!important; 
+   color: #DDD!important;
 }
 
-:-ms-input-placeholder {  
-   color: #DDD !important;  
+:-ms-input-placeholder {
+   color: #DDD !important;
 }
 
 @import "../bower_components/foundation/scss/foundation";
@@ -1626,7 +1626,7 @@ h2.sub-header2 {
   font-family: Raleway;
     font-weight: bold;
     font-variant: small-caps;
-  
+
 }
 
 
@@ -1787,7 +1787,7 @@ width: 80%;
     transition: 1s;
     /* height: 32px; */
     background: rgba(210, 210, 210, 0.39);
-    z-index: 20; 
+    z-index: 20;
     padding: 0em 0.5em;
     font-size: 1.6em;
     border-radius: 3px;
@@ -1808,6 +1808,7 @@ width: 80%;
 
 @import 'events.scss';
 @import 'ambassador.scss';
+@import 'partners.scss';
 
 @media #{$small-up} { }
 @media #{$small-only} { }
@@ -1815,11 +1816,11 @@ width: 80%;
 @media #{$medium-up} { }
 @media #{$medium-only} { }
 
-@media #{$large-up} { 
+@media #{$large-up} {
   .bump-xl {
     margin-top:80px;
   }
-  
+
 }
 @media #{$large-only} { }
 

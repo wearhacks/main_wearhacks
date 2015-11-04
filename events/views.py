@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.forms.models import model_to_dict
-from models import TeamMember,Event,Partner
+from models import TeamMember,Event,Partner,Content
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
 import datetime
@@ -8,6 +8,8 @@ import mailchimp
 import json
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
+import itertools as iTool
+
 def current_datetime(request):
     now = datetime.datetime.now()
     html = "<html><body>It is now %s.</body></html>" % now
@@ -31,8 +33,14 @@ def events(request):
     return render(request, 'events.html',{'title':"Events",'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date')})
 def ambassador(request):
     return render(request, 'ambassador.html',{'title':"Ambassador Program"})
+
 def partnerships(request):
-    return render(request, 'partnerships.html',{'title':"Partnerships",'team_members':Partner.objects.all()})
+
+    return render(request, 'partnerships.html',
+        {'title':"Partnerships",
+         'partners':sorted(Partner.objects.all().iterator(), key=(lambda x: x.partner_type)),
+         'content':Content.objects.all().filter(page_name = 'partner')
+        })
 
 
 @csrf_exempt

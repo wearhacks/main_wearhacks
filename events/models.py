@@ -60,10 +60,10 @@ class TeamMember(models.Model):
 
 class Partner(models.Model):
     PARTNERTYPES = (
-        (0, 'Global Partners'),
-        (1, 'Hardware Partners'),
-        (2, 'Media Partners'),
-        (3, 'Membership'),
+        ('0', 'Global Partners'),
+        ('1', 'Hardware Partners'),
+        ('2', 'Media Partners'),
+        ('3', 'Membership'),
     )
     name = models.CharField(max_length = 50)
     partner_type = models.CharField(max_length=1, choices=PARTNERTYPES)
@@ -77,6 +77,8 @@ class Content(models.Model):
     name = models.CharField(max_length = 50)
     page_name = models.CharField(max_length = 50)
     sub_name = models.CharField(max_length = 50, blank=True)
+
+    title = models.CharField(max_length = 100, blank=True)
     content = models.CharField(max_length = 8000)
 
     def __unicode__(self):
