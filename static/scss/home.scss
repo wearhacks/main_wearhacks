@@ -88,15 +88,15 @@ $wolf-blue: #1e699c;
       height:5.65em;
 
     margin-bottom: 0.7em;
-      a.description {
+      .description {
         display:inline-block;    width: 60%;vertical-align: top;
 
       }
-      a.description:hover h4 {
+      a:hover .description h4 {
         color:$wolf-blue;
         transition:color 0.2s ease-in;
       }
-      a.description:hover p {
+      a:hover .description p {
         color:#555;
         transition:color 0.2s ease-in;
       }
