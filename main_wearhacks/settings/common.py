@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'compressor'
 )
 
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -115,14 +116,23 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(DJANGO_ROOT,'static')
 MEDIA_URL  = '/media/'
 MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
+
+
+# django-compressor
+
+COMPRESS_ENABLED = True
 COMPRESS_ROOT = 'static/'
+COMPRESS_URL = STATIC_URL
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
+     ('text/x-scss', 'main_wearhacks.compressor_filters.PatchedSCSSCompiler'),
+)
+COMPRESS_CSS_FILTERS = (
+     'main_wearhacks.compressor_filters.CustomCssAbsoluteFilter',
 )
 
-
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
+    'pipeline.finders.FileSystemFinder',
+    'pipeline.finders.AppDirectoriesFinder',
+    'pipeline.finders.CachedFileFinder',
+    'pipeline.finders.PipelineFinder'
 )
