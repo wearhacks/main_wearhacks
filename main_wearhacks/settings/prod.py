@@ -31,15 +31,13 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 
 COMPRESS_URL = STATIC_URL 
-#Put private variables here (or env)
-
 
 MEDIA_URL  = STATIC_URL + '/media/'
 MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
 
 
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'main_wearhacks.s3utils.MediaRootS3BotoStorage'
 
 COMPRESS_ROOT = os.path.join(SITE_ROOT, 'static')
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
