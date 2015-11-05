@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
 import os
-from pdb import set_trace as bp
+import re
 
 def get_upload_path(instance, filename):
     folder = type(instance).__name__.lower()
