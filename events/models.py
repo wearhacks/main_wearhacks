@@ -58,6 +58,7 @@ class TeamMember(models.Model):
     facebook = models.URLField(max_length=100, blank=True)
     twitter = models.URLField(max_length=100, blank=True)
     order = models.DecimalField(max_digits=100, decimal_places=0, default=0)
+
     def __unicode__(self):
         return u"%s" % self.name
     class Meta:
