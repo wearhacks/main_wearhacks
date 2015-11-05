@@ -12,23 +12,30 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
-DEBUG= os.environ.get('DEBUG', True)
+DEBUG = os.environ.get('DEBUG', True)
 TEMPLATE_DEBUG = DEBUG
 
-
-SECRET_KEY = os.environ.get('SECRET_KEY', 'supersecret')
+#Override these using ENV Vars
+SECRET_KEY = os.environ.get('SECRET_KEY', 'supersecret') 
 MAPS_API_KEY = os.environ.get('MAPS_API_KEY', '')
 MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY', '')
 MAILCHIMP_LIST_ID = os.environ.get('MAILCHIMP_LIST_ID', '')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
-
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = 'https://mainwearhacks.s3.amazonaws.com/'
 AWS_QUERYSTRING_AUTH = False
-COMPRESS_URL = STATIC_URL
+
+#Static root: The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = 'staticfiles'
+#Static url: URL to use when referring to static files located in STATIC_ROOT.
+STATIC_URL = 'https://{0}.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+
+COMPRESS_URL = STATIC_URL 
 #Put private variables here (or env)
+
+
+MEDIA_URL  = STATIC_URL + '/media/'
+MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
 
 
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
