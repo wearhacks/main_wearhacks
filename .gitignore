@@ -8,7 +8,6 @@ static/bower_components/
 dist/
 
 # Migrations
-*/migrations*
 migrate.sh
 media_root/
 static/CACHE/
