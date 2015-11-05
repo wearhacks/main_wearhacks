@@ -58,7 +58,8 @@
             {% for member in team_members %}
                 <div class="large-3 medium-4 small-12 columns no-padding">
               <div class="profile">
-                <div class="profile-image" style="background-image:url('/media/{{member.photo }}')">
+                <div class="profile-image" 
+                style="background-image:url('{{member.photo.url}}')">
 
                     <p class="blurb">{{ member.blurb }}</p>
 
