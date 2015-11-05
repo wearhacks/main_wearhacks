@@ -3,11 +3,9 @@ from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
 import os
 
-def get_image_path(instance, filename):
-    return os.path.join('', str(instance.id), filename)
-
-def get_event_img_path(instance,filename):
-    return os.path.join('events', str(instance.id), filename)
+def get_upload_path(instance, filename):
+    folder = type(instance).__name__.lower()
+    return os.path.join(folder, str(instance.id) + os.path.splitext(filename)[1])
 
 class Event(models.Model):
     """(Place description)"""
@@ -25,7 +23,7 @@ class Event(models.Model):
     end_date = models.DateTimeField(blank=True)
     address = models.CharField(max_length = 100)
     city = models.CharField(max_length= 50)
-    photo = models.ImageField(upload_to = get_event_img_path, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True)
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
@@ -47,12 +45,12 @@ class TeamMember(models.Model):
     position = models.CharField(max_length = 50)
     blurb = models.CharField(max_length = 150)
     email = models.EmailField(verbose_name='email')
-    photo = models.ImageField(upload_to = get_image_path, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True)
     github = models.URLField(max_length=100, blank=True)
     linkedin = models.URLField(max_length=100, blank=True)
     facebook = models.URLField(max_length=100, blank=True)
     twitter = models.URLField(max_length=100, blank=True)
-
+    order = models.DecimalField(max_digits=100, decimal_places=0, default=0)
     def __unicode__(self):
         return u"%s" % self.name
     class Meta:

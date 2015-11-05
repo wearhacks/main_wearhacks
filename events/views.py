@@ -26,7 +26,7 @@ def home(request):
     return render(request, 'index.html',content)
 
 def about_us(request):
-    return render(request, 'aboutus.html',{'title':"About Us",'team_members':TeamMember.objects.all()})
+    return render(request, 'aboutus.html',{'title':"About Us",'team_members':TeamMember.objects.all().order_by('order')})
 def events(request):
     return render(request, 'events.html',{'title':"Events",'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date')})
 def ambassador(request):
