@@ -19,7 +19,7 @@
                     date:"{{ event.date }}",
                     address:"{{ event.address }}",
                     city:"{{ event.city }}",
-                    url:"{{ event.url }}"
+                    url:"{{ event.link }}"
                 },
         {% endfor %}
         ];
@@ -444,7 +444,7 @@ C431.788,287.499,405.701,354.028,350.885,392.253z"></path> </svg>
                  <p>Venue: {{ event.address }}</p>
                 
             </div>
-             {% if event.url %} <a class="website" href="{{ event.url }}" >View website <i class="fa fa-external-link-square"></i></a>
+             {% if event.link %} <a class="website" href="{{ event.link }}" >View website <i class="fa fa-external-link-square"></i></a>
                  {% else %}  <a class="website" style="cursor:auto" >Website coming soon <i class="fa fa-exclamation-circle"></i></a>
                  {% endif %}
             </div>
