@@ -25,11 +25,12 @@ def deep_update(from_dict, to_dict):
 
 # this should be one of prod or dev. Default to dev for safety.
 env = os.environ.get('APP_ENV', 'dev')
+penv = os.environ.get('PRIVATE_APP_ENV', 'private')
 
 # try to load user specific settings
 uid = pwd.getpwuid(os.getuid())[0]
 
-modules = ('common', env)
+modules = ('common', env, penv)
 current = __name__
 for module_name in modules:
     try:

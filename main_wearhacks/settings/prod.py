@@ -32,7 +32,7 @@ COMPRESS_URL = STATIC_URL
 
 
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
-
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 COMPRESS_ROOT = os.path.join(SITE_ROOT, 'static')
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
