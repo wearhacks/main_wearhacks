@@ -119,8 +119,6 @@ MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
 
 
 # django-compressor
-
-COMPRESS_ENABLED = True
 COMPRESS_ROOT = 'static/'
 COMPRESS_URL = STATIC_URL
 COMPRESS_PRECOMPILERS = (
@@ -134,5 +132,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
+    'pipeline.finders.FileSystemFinder'
 )
+
 

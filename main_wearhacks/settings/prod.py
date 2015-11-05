@@ -1,4 +1,4 @@
-DEBUG = TEMPLATE_DEBUG = False  # production
+
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 import os
@@ -13,6 +13,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 DEBUG= os.environ.get('DEBUG', True)
+TEMPLATE_DEBUG = DEBUG
+
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'supersecret')
 MAPS_API_KEY = os.environ.get('MAPS_API_KEY', '')
@@ -23,23 +25,19 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = 'mainwearhacks.s3.amazonaws.com/'
-
-STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'static'),
-)
+STATIC_URL = 'https://mainwearhacks.s3.amazonaws.com/'
+AWS_QUERYSTRING_AUTH = False
 COMPRESS_URL = STATIC_URL
 #Put private variables here (or env)
-COMPRESS_ENABLED = True
 
 
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
 
 
 COMPRESS_ROOT = os.path.join(SITE_ROOT, 'static')
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static/javascript')
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 COMPRESS_OUTPUT_DIR = 'compressed'
 STATICFILES_STORAGE = COMPRESS_STORAGE
-
+COMPRESS_OFFLINE = True
 COMPRESS_URL = STATIC_URL
 COMPRESS_ENABLED = True
