@@ -28,7 +28,7 @@ AWS_QUERYSTRING_AUTH = False
 #Static root: The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = 'staticfiles'
 #Static url: URL to use when referring to static files located in STATIC_ROOT.
-STATIC_URL = 'https://{0}.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 
 COMPRESS_URL = STATIC_URL 
 #Put private variables here (or env)
