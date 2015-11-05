@@ -26,7 +26,6 @@
 
 
 function initMap() {
-  var myLatLng = {lat: -25.363, lng: 131.044};
   var customMapType = new google.maps.StyledMapType([
     {
         "featureType": "all",
@@ -302,11 +301,7 @@ function initMap() {
 
   });
 
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
+
 
 
 
@@ -323,8 +318,6 @@ function initMap() {
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
-      console.log(event.position);
-      console.log(map);
         var marker = new google.maps.Marker({
             position: event.position,
             map: map,
@@ -333,11 +326,9 @@ function initMap() {
         marker.addListener('click', function () {
             infowindow.open(map, marker);
         });
-      console.log(marker);
     };
   markers.forEach(function(event) {
       addMarker(event,map);
-      console.log(event);
   });
   map.mapTypes.set(customMapTypeId, customMapType);
   map.setMapTypeId(customMapTypeId);
