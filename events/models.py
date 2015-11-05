@@ -2,10 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
 import os
+from pdb import set_trace as bp
 
 def get_upload_path(instance, filename):
     folder = type(instance).__name__.lower()
-    return os.path.join(folder, str(instance.id) + os.path.splitext(filename)[1])
+    new_filename = re.sub('[^a-zA-Z0-9]', '', instance.name) + os.path.splitext(filename)[1]
+    return os.path.join(folder, new_filename)
+
+def get_upload_path_event(instance, filename):
+    folder = type(instance).__name__.lower()
+    new_filename = re.sub('[^a-zA-Z0-9]', '', instance.event_name) + os.path.splitext(filename)[1]
+    return os.path.join(folder, new_filename)
 
 class Event(models.Model):
     """(Place description)"""
@@ -23,7 +30,7 @@ class Event(models.Model):
     end_date = models.DateTimeField(blank=True)
     address = models.CharField(max_length = 100)
     city = models.CharField(max_length= 50)
-    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path_event, blank = True, null = True)
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
