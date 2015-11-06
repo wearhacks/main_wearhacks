@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.forms.models import model_to_dict
+from django.core.mail import send_mail
 from models import TeamMember,Event,Partner,Content
+from forms import PartnerForm
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
 import datetime
@@ -35,13 +37,25 @@ def ambassador(request):
     return render(request, 'ambassador.html',{'title':"Ambassador Program"})
 
 def partnerships(request):
+    if request.method == 'POST':
+        form = PartnerForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['organization_name'] + ' wants to be our partner!'
+            message = form.cleaned_data['message']
+            email = form.cleaned_data['email']
 
+            recipients = ['goldenratioesp@gmail.com']
+
+            send_mail(subject, message, email, recipients)
+            return JsonResponse({"status":"success", "message":"Welcome aboard!"}, status=200)
+
+    form = PartnerForm()
     return render(request, 'partnerships.html',
         {'title':"Partnerships",
          'partners':sorted(Partner.objects.all().iterator(), key=(lambda x: x.partner_type)),
-         'content':Content.objects.all().filter(page_name = 'partner')
+         'content':Content.objects.all().filter(page_name = 'partner'),
+         'form': form
         })
-
 
 @csrf_exempt
 def mailchimp_signup(request):

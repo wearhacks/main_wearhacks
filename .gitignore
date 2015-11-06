@@ -13,6 +13,9 @@ migrate.sh
 media_root/
 static/CACHE/
 static/media/
+static/admin/
+static/grappelli/
+static/geoposition/
 .idea/
 
 *.sqlite3

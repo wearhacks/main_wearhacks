@@ -7,6 +7,7 @@
 {% endblock %}
 {% block script_section %}
     <script src="{% static 'javascript/aboutus.js' %}"></script>
+    <script src="{% static 'javascript/partner.js' %}"></script>
 
 {% endblock %}
 {% block content %}
@@ -39,7 +40,7 @@
 
     </div>
 
-     <div class="small-brk"></div>
+    <div class="small-brk"></div>
     <div class="row ">
         <div class="team-header small-12 columns">
             <h2 class="sub-header2" style="margin-bottom:20px">Partners</h2>
@@ -50,6 +51,27 @@
                 <img class="partner-image" src="/media/{{ partner.photo }}">
             </a>
         {% endfor %}
+        </div>
+
+        <div class="columns large-12 text-center" style="text-align:center;margin-top:30px;" >
+            <div style="border-color:gray;border-style:dashed;display:inline-block;padding:8% 5% 5% 5%;">
+                <div>
+                    and now paste
+                    <h3 class="sub-header2">Your Logo Here</h3>
+                    <a id="partnerForm-btn" class="parner-reveal button">Become our Partner</a>
+                </div>
+                <div id="partner-form" style="display:none;">
+                    What to team-up<br>and change the the fate of hardwear with us?
+                    <h3 class="sub-header2">Email Us</h3>
+                    <form action="/partnerships/" method="post">
+                        {% csrf_token %}
+                        <div  class="text-left">
+                            {{ form }}
+                        </div>
+                        <input type="submit" class="button" value="Submit" />
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="small-brk"></div>
