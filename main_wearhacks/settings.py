@@ -127,3 +127,8 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+
+# MailGun
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+MAILGUN_ACCESS_KEY = 'key-3bfa6e60ac0865854ccb3194f5070c94'
+MAILGUN_SERVER_NAME = 'sandbox8726a6f6b88446f7bdeb16c94b615a9f.mailgun.org'

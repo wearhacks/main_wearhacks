@@ -35,7 +35,7 @@
         </div>
         <div class="small-12 medium-6 large-8  columns paragraph">
             <h2 class="sub-header2">{{ content.title }}</h2>
-            {{ content.text }}
+            {{ content.content }}
         </div>
 
     </div>
@@ -46,10 +46,17 @@
             <h2 class="sub-header2" style="margin-bottom:20px">Partners</h2>
         </div>
         <div class="columns large-12 text-center">
-        {% for partner in partners %}
-            <a href="{{ partner.link }}" target="_blank">
-                <img class="partner-image" src="/media/{{ partner.photo }}">
-            </a>
+        {% for type, group in partners.items %}
+            <div class="partner-type-label info-color">
+                {{ group.0.type }}
+            </div>
+            <br><br>
+            {% for partner in group %}
+                <a href="{{ partner.link }}" target="_blank">
+                    <img class="partner-image" src="/media/{{ partner.photo }}">
+                </a>
+            {% endfor %}
+            <br><br>
         {% endfor %}
         </div>
 
@@ -63,14 +70,15 @@
                 <div id="partner-form" style="display:none;">
                     What to team-up<br>and change the the fate of hardwear with us?
                     <h3 class="sub-header2">Email Us</h3>
-                    <form action="/partnerships/" method="post">
+                    <form id="partnershipForm" action="/partnerships/" method="post">
                         {% csrf_token %}
                         <div  class="text-left">
                             {{ form }}
                         </div>
-                        <input type="submit" class="button" value="Submit" />
+                        <input id="partnerForm-submit-btn" type="submit" class="button" value="Submit" />
                     </form>
                 </div>
+                <div id="form-response"></div>
             </div>
         </div>
     </div>

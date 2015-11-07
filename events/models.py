@@ -65,13 +65,18 @@ class Partner(models.Model):
         ('2', 'Media Partners'),
         ('3', 'Membership'),
     )
+    def displayedType(self):
+        return self.PARTNERTYPES[int(self.partner_type)][1]
+
     name = models.CharField(max_length = 50)
     partner_type = models.CharField(max_length=1, choices=PARTNERTYPES)
     photo = models.ImageField(upload_to = get_event_img_path, blank = True, null = True)
     link = models.URLField(max_length=100, blank=True)
+    type = displayedType
 
     def __unicode__(self):
         return u"%s" % self.name
+
 
 class Content(models.Model):
     name = models.CharField(max_length = 50)

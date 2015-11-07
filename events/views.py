@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.forms.models import model_to_dict
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from models import TeamMember,Event,Partner,Content
 from forms import PartnerForm
 from django.http import HttpResponse,JsonResponse
@@ -44,16 +44,23 @@ def partnerships(request):
             message = form.cleaned_data['message']
             email = form.cleaned_data['email']
 
-            recipients = ['goldenratioesp@gmail.com']
+            recipients = ['YOUR EMAIL']
 
-            send_mail(subject, message, email, recipients)
-            return JsonResponse({"status":"success", "message":"Welcome aboard!"}, status=200)
+            EmailMessage(subject, message, email, recipients).send()
+            return JsonResponse({"status":"success", "message":"Welcome aboard!<br>:)"}, status=200)
+        else:
+            return JsonResponse({"status":"failure", "message":"Please make sure that you entered a valid email."}, status=400)
 
     form = PartnerForm()
+    contentText = Content.objects.all().filter(page_name = 'partnerships', name = 'lorem')
+    if len(contentText) > 0:
+        contentText = contentText[0]
+    partners = iTool.groupby(Partner.objects.all(), lambda x: int(x.partner_type)) # int() will order the type correctly
+
     return render(request, 'partnerships.html',
         {'title':"Partnerships",
-         'partners':sorted(Partner.objects.all().iterator(), key=(lambda x: x.partner_type)),
-         'content':Content.objects.all().filter(page_name = 'partner'),
+         'partners':{k: list(v) for k, v in partners},
+         'content':contentText,
          'form': form
         })
 

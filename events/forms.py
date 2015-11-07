@@ -1,6 +1,6 @@
 from django import forms
 
 class PartnerForm(forms.Form):
-    organization_name = forms.CharField(max_length=100, required=True)
-    email = forms.EmailField(required=True)
-    message = forms.CharField(widget=forms.Textarea, required=True)
+    organization_name = forms.CharField(widget=forms.TextInput(attrs={'required':True}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'required':True}))
+    message = forms.CharField(widget=forms.Textarea(attrs={'required':True}))
