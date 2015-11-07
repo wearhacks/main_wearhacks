@@ -79,12 +79,14 @@ class Partner(models.Model):
 
 
 class Content(models.Model):
-    name = models.CharField(max_length = 50)
-    page_name = models.CharField(max_length = 50)
-    sub_name = models.CharField(max_length = 50, blank=True)
+    name = models.CharField(max_length = 50) # name indentifier for queries
+    sub_name = models.CharField(max_length = 50, blank=True) # same as above, but unique
+    # e.g. if we have a group of texts with the same properties, this can be useful
 
-    title = models.CharField(max_length = 100, blank=True)
-    content = models.CharField(max_length = 8000)
+    page_name = models.CharField(max_length = 50) # name of the template (use this in the views)
+
+    title = models.CharField(max_length = 100, blank=True) # displayed title in the template
+    content = models.CharField(max_length = 8000) # displayed content in the template
 
     def __unicode__(self):
         return u"%s" % self.content
