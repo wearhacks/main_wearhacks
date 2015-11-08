@@ -38,7 +38,8 @@ MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
 
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
 DEFAULT_FILE_STORAGE = 'main_wearhacks.s3utils.MediaRootS3BotoStorage'
-
+STATICFILES_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+AWS_PRELOAD_METADATA = True
 COMPRESS_ROOT = os.path.join(SITE_ROOT, 'static')
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 COMPRESS_OUTPUT_DIR = 'compressed'
