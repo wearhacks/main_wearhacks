@@ -20,8 +20,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'supersecret')
 MAPS_API_KEY = os.environ.get('MAPS_API_KEY', '')
 MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY', '')
 MAILCHIMP_LIST_ID = os.environ.get('MAILCHIMP_LIST_ID', '')
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
+AWS_ACCESS_KEY_ID = 'AKIAIGTXMADRKISCNV2Q'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 AWS_QUERYSTRING_AUTH = False
 
@@ -38,7 +38,8 @@ MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
 
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
 DEFAULT_FILE_STORAGE = 'main_wearhacks.s3utils.MediaRootS3BotoStorage'
-
+STATICFILES_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+AWS_PRELOAD_METADATA = True
 COMPRESS_ROOT = os.path.join(SITE_ROOT, 'static')
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 COMPRESS_OUTPUT_DIR = 'compressed'
