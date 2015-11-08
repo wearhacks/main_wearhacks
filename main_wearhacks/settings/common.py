@@ -35,7 +35,11 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
+    'constance',
+
     'grappelli',
+    'constance.backends.database',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +49,8 @@ INSTALLED_APPS = (
     'pipeline',
     'events',
     'geoposition',
-    'compressor'
+    'compressor',
+
 )
 
 
@@ -74,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.request',
+
             ],
         },
     },
@@ -126,6 +132,7 @@ COMPRESS_PRECOMPILERS = (
 )
 COMPRESS_CSS_FILTERS = (
      'main_wearhacks.compressor_filters.CustomCssAbsoluteFilter',
+     'compressor.filters.cssmin.CSSMinFilter'
 )
 
 STATICFILES_FINDERS = (
@@ -135,4 +142,27 @@ STATICFILES_FINDERS = (
     'pipeline.finders.FileSystemFinder'
 )
 
-
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_CONFIG = {
+    'ABOUT_MISSION_STATEMENT': ('''
+            <p>WearHacks is working towards building the World's Largest Hardware Lab, where the boundaries
+             of imagination are explored in an intimate atmosphere, through collaboration instead of competition.</p>
+            <p>Our fundamental goal is to bridge the knowledge gap that exists in the IoT industry amongst technology
+             enthusiasts from all backgrounds through hackathons.</p>
+            <p>We strive to make hardware education <b>accessible</b>, <b>approachable</b>,
+             and <b>affordable</b>.</p>''',''),
+    'ABOUT_TEAM_DESC_LEFT': ("We are a group of engineers, designers, and tinkerers that \
+            all share the same vision of improving hardware education.",''),
+    'ABOUT_TEAM_DESC_RIGHT': ("We share the vision of empowering anyone with the will to learn \
+            hardware hacking with the tools and mentorship.",''),
+    'EVENTS_HACKATHON_DESC': ("<p>WearHacks Hackathons bring together developers, designers,\
+            project managers, students, and engineers with an entrepreneurial and creative\
+            mind.</p><p> For an intensive 48 hours, they will learn new tools, meet industry experts,\
+            collaborate with other talented students and young professionals and build new\
+            wearable and connected technology.</p>",''),
+    'A_SOCIAL_FACEBOOK': ("www.google.com",''),
+    'A_SOCIAL_YOUTUBE': ("www.google.com",''),
+    'A_SOCIAL_LINKEDIN': ("www.google.com",''),
+    'A_SOCIAL_TWITTER': ("www.google.com",''),
+    'A_BLOG_LINK':("http://blog.wearhacks.com",'')
+}

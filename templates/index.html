@@ -67,7 +67,7 @@
         </div>
   <div class="row">
   <div class="small-12 columns no-padding" style="margin-top: 0.7em">
-    <div class="large-7 columns no-padding mid-content" style="height: 24.5em;">
+    <div id="left-content" class="large-7 columns no-padding">
 
       <div class="blog-section" style="background-image:url('{{ blog_image }}')">
         <a href="{{blog_link }}"><h5>{{blog_title}}</h5></a>
@@ -79,54 +79,64 @@
 
         </div>
     </div>
-    <div class="large-5 columns no-padding" style="padding-left: 0.7em;">
+    <div id="right-content" class="large-5 columns no-padding" style="padding-left: 0.7em;">
 
       <div class="sub-content small-12 columns">
       
-        <a class="category" href="/events">
-          <div class="content-img" style="background-image:url('{% static 'images/innovation.jpg'%}')">
-          
-          </div>
         
-          <div class="description">
-            <h6>Events</h6>
+          <div class="small-12 medium-4 columns no-padding">
+            <a href="/events">
+             <div class="content-img" style="background-image:url('{% static 'images/innovation.jpg'%}')">
+          
+              </div>
+            </a>
+          </div>    
+        
+          <div class="description small-12 medium-8 columns">
+            <h6><a href="/events">Events</a></h6>
             <p>We bring together students, mentors and tinkerers and provide them the tools to build cool things.</p>
           </div>
-        </a>
     </div>
     <div class="sub-content small-12 columns">
-      <a href="/aboutus">
-      <div class="content-img" style="background-image:url('{% static 'images/team.jpg'%}')">
+      
+      <div class="small-12 medium-4 columns no-padding">
+         <a href="/aboutus"><div class="content-img" style="background-image:url('{% static 'images/team.jpg'%}')">
  
-      </div>
-      <div class="description">
-        <h6>About Us</h6>
+          </div></a>
+      </div>    
+      <div class="description small-12 medium-8 columns">
+        <h6><a href="/aboutus">About Us</a></h6>
         <p>A group engineers, designers, and tinkerers that share the vision of improving hardware education.</p>
       </div>
-      </a>
 
     </div>
       <div class="sub-content small-12 columns">
-      <a href="#">
-        <div class="content-img" style="background-image:url('{% static 'images/projects.jpg'%}')">
      
-        </div>
-        <div class="description">
-          <h6>Projects</h6>
+        <div class="small-12 medium-4 columns no-padding">
+           <a href="#">
+           <div class="content-img" style="background-image:url('{% static 'images/projects.jpg'%}')">
+     
+            </div>
+            </a>
+        </div>    
+        <div class="description small-12 medium-8 columns">
+         <h6> <a href="#">Projects</a></h6>
           <p>Wearhackers' projects do not end at hackathons, they are a stepping stone to something greater.</p>
+          
         </div>
-      </a>
+      
     </div>
     <div class="sub-content small-12 columns top-margin">
-      <a href="/partnership">
-      <div class="content-img" style="background-image:url('{% static 'images/partnership.jpg'%}')">
+     
+      <div class="small-12 medium-4 columns no-padding">
+         <a href="/partnership"><div class="content-img" style="background-image:url('{% static 'images/partnership.jpg'%}')">
        
-      </div>
-      <div class="description">
-        <h6>Partnerships</h6>
+          </div></a>
+      </div>    
+      <div class="description small-12 medium-8 columns">
+        <h6> <a href="/partnership">Partnerships</a></h6>
         <p>Help us create the next generations of innovators. We cannot do it alone.</p>
       </div>
-      </a>
     </div>
 
     </div>
@@ -154,13 +164,5 @@
 
 </div>
 
-</section>
-<section id="footer">
-  <div class="row">
-  <div class="small-12 columns no-padding">
-
-
-
-  </div>
 </section>
 {% endblock %}

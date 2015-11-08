@@ -4,7 +4,7 @@
 <html>
   <head>
     <title>WearHacks |  {% block title %}  {% endblock %}</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include 'stylesheets.html' %}
     {% include 'javascripts.html' %}
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
@@ -27,50 +27,58 @@
       {% endblock %}
 
     {% block scripts %}{% endblock %}
-    <section id="footer">
+
+
+<section id="footer">
   <div class="row">
-  <div class="small-12 columns no-padding">
-
-    <footer class="footer-basic-centered">
-
-       <div class="large-6 columns "><ul class="inline-list">
-        <li><p class="footer-company-name">Wearhacks &copy; 2015</p></li>
+    
+      <div class="small-12 medium-5 columns ">
+        <p class="copy">Wearhacks &copy; 2015</p>
+        <ul class="nav">
         <li><a href="#">Home</a></li>
-        <li><a href="#">Events</a></li>
-        <li><a href="#">Blog</a></li>
-         <li><a href="#">IOT Research & Innovation</a></li>
-         <li><a href="#">Ambassador Program</a></li>
-        <li><a href="#">Partnership</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="{{config.A_BLOG_LINK}}">Blog</a></li>
+         <li><a href="/ambassador">Ambassador Program</a></li>
+        <li><a href="/partnerships">Partnership</a></li>
 
-        <li><a href="#">About Us</a></li>
-        </ul></div>
-    <div class="large-3 columns"><h5 class="header-footer">Connect with us</h5>
+        <li><a href="/aboutus">About Us</a></li>
+        </ul>
+      </div>
+    <div class="medium-3 columns"><h6 class="header-footer">Connect with us</h6>
       <ul class="inline-list social">
-            <li><a href=""><i class="fi-social-facebook"></i></a></li>
-            <li><a href=""><i class="fi-social-linkedin"></i></a></li>
-            <li><a href=""><i class="fi-social-youtube"></i></a></li>
-            <li><a href=""><i class="fi-social-twitter"></i></a></li>
+            <li><a href="{{config.A_SOCIAL_FACEBOOK}}"><i class="fi-social-facebook"></i></a></li>
+            <li><a href="{{config.A_SOCIAL_LINKEDIN}}"><i class="fi-social-linkedin"></i></a></li>
+            <li><a href="{{config.A_SOCIAL_YOUTUBE}}"><i class="fi-social-youtube"></i></a></li>
+            <li><a href="{{config.A_SOCIAL_TWITTER}}"><i class="fi-social-twitter"></i></a></li>
+            <li class="email"><p> Get in touch:  <i><a href="mailto:info@wearhacks.com">info@wearhacks.com</a></i></p> </li>
           </ul>
     </div>
 
-    <div id="signup-field" class="large-3 columns "><h5>Sign up for updates</h5>
+    <div id="signup-field" class="medium-4 columns ">
+      
       <form id="footer-signup" action="/api/signup" method="post">
-        <div class="row collapse">
-        <div class="small-10 columns">
-          <input name="email" type="email" placeholder="tony.stark@wearhacks.com" required>
+       
+        <div class="small-10 columns medium-12 no-padding">
+          <h6 class="header-footer">Sign up for updates</h6>
+          <div class="row collapse" style="margin-top:1.2em">
+              <div class="small-10 columns">
+                <input name="email" type="email" placeholder="tony.stark@wearhacks.com" required>
+              </div>
+              <div class="small-2 columns">
+                <a href="#" class="button postfix" onclick="$('#footer-signup').find(':submit').click(); return false;"><i class="fa fa-caret-right"></i></a>
+                <input style="display:none" type="submit" value=""> </input>
+              </div>
+
+          </div>
         </div>
-        <div class="small-2 columns">
-          <input class="button postfix" type="submit" value="▶"> <i class="fa fa-caret-right"></i></input>
-        </div>
-      </div>
-      </form></div>
-
-      </div>
-
-    </footer>
-
+      </form>
+    </div>
+    <div class="small-12 columns"></div>
   </div>
+
 </section>
+
+
 <div id="signup-confirmation" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <h2 id="modalTitle">Awesome. I have it.</h2>
   <p class="lead">Your couch.  It is mine.</p>

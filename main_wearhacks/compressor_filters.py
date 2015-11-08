@@ -5,6 +5,9 @@ from django_libsass import SassCompiler
 
 # based on: http://stackoverflow.com/a/17033883/145349
 class CustomCssAbsoluteFilter(CssAbsoluteFilter):
+    def __init__(self, *args, **kwargs):
+        super(CustomCssAbsoluteFilter, self).__init__(*args, **kwargs)
+
 
     def find(self, basename):
         if basename and staticfiles.finders:
