@@ -20,8 +20,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'supersecret')
 MAPS_API_KEY = os.environ.get('MAPS_API_KEY', '')
 MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY', '')
 MAILCHIMP_LIST_ID = os.environ.get('MAILCHIMP_LIST_ID', '')
-AWS_ACCESS_KEY_ID = 'AKIAIGTXMADRKISCNV2Q'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 AWS_QUERYSTRING_AUTH = False
 
