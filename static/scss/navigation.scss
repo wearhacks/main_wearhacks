@@ -42,31 +42,34 @@ body {
     font-family: Raleway;
     text-transform: uppercase;
     font-size: 1.4em;
-    font-weight: 600;
     margin-right: 5px;
     padding: 5px;
     margin-bottom:0px;
-    font-weight:bolder;
+    font-weight:600;
+    color:#333;
+    float:left;
     margin-left:0.5em;
      @media #{$medium-up} {
       margin-left:0em;
      }
+     a {
+      color: #333;
 
-    &:hover {
-      color:#1e699c;
-    }
+      &:hover {
+        color:#1e699c;
+         transition: color 0.2s;
+      }
+      transition: color 0.2s;
+     }
   }
-  span.tagline {
-    color: #404040;
-    font-weight: 400;
-    padding-bottom: 0px;
-    padding-left: 10px;
-    font-size: 0.6em;
-    text-transform: uppercase;
-    text-decoration: blink;
-    border-left: 1px solid #EFEFEF;
-    margin-left: 10px;
-  }
+  p.tagline {
+    float: left;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    line-height: 3em;
+    font-variant: small-caps;
+    font-family: Raleway;
+  } 
 }
 #navigation-drop {
     position: absolute;
@@ -305,9 +308,10 @@ ul.inline-list.social {
 #footer {
   background: #333;
   p.copy {
-        text-align:right;
-        color:#CCC;
-        margin-top:1em;
+    text-align: left;
+    color: #CCC;
+    margin-top: 1em;
+    margin-left: 1em;
   }
   input {
       background: #464545;
@@ -321,14 +325,14 @@ ul.inline-list.social {
      }
   }
   .button {
-    background-color: #1D1D1D;
-    border: 1px solid rgb(70, 68, 68);
-    border-left: 0;
-    border-radius: 0px 4px 5px 0px;
-    font-size: 1.6em;
-    height: 1.6em;
+      background-color: #1D1D1D;
+    /* border: 1px solid #464444; */
+    /* border-left: 0; */
+    /* border-radius: 0px 4px 5px 0px; */
+    font-size: 1.8em;
+    line-height: 42px;
     color: #636363;
-
+    height: 42px;
     @media(min-width: $break-small) {
       transition: color 0.3s, background 0.3s;
       &:hover {
@@ -343,14 +347,16 @@ ul.inline-list.social {
     background: none;
     >.row {
 
-        border-top: 1px solid #CCC;
+        border-top: 1px solid #EEE;
     }
       p.copy {
-                text-align: left;
-        color: #333;
+        text-align: right;
+        color: #BBB;
         margin: 0;
         margin-top: 1em;
         margin-bottom: 0.5em;
+        font-size: 0.8em;
+        margin-right:1em;
       }
 
   }
@@ -368,7 +374,6 @@ ul.inline-list.social {
 
      }
   @media(min-width: $break-small) {
-    margin-top:0;
     li{
 
       margin-top:0;
@@ -396,8 +401,11 @@ ul.inline-list.social {
   border-bottom:1px solid #3E3D3D;
   @media(min-width: $break-small) {
     color: #333;
-    margin-top:20px;
-    border-bottom:0;
+    margin-top: 20px;
+    border-bottom: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8em;
   }
 }
 #footer .social {
