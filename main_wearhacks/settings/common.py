@@ -120,9 +120,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(DJANGO_ROOT,'static')
+#Static root: The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = os.path.join(SITE_ROOT,'staticfiles')
 MEDIA_URL  = '/media/'
-MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'media_root')
 
 
 # django-compressor

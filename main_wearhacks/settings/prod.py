@@ -24,13 +24,12 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 AWS_QUERYSTRING_AUTH = False
+AWS_PRELOAD_METADATA = True
 
-#Static root: The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = 'staticfiles'
 #Static url: URL to use when referring to static files located in STATIC_ROOT.
 STATIC_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 
-COMPRESS_URL = STATIC_URL 
+COMPRESS_URL = STATIC_URL
 
 MEDIA_URL  = STATIC_URL + '/media/'
 MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
@@ -38,12 +37,20 @@ MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
 
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
 DEFAULT_FILE_STORAGE = 'main_wearhacks.s3utils.MediaRootS3BotoStorage'
-STATICFILES_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+STATICFILES_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
 AWS_PRELOAD_METADATA = True
+
+#Static root: The absolute path to the directory where collectstatic will collect compress files for deployment.
 COMPRESS_ROOT = os.path.join(SITE_ROOT, 'static')
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
+
+#Static root: The absolute path to the directory where collectstatic will collect static files for deployment.
+#STATIC_ROOT = os.path.join(SITE_ROOT, 'staticfiles')
+STATIC_ROOT = 'staticfiles'
 COMPRESS_OUTPUT_DIR = 'compressed'
 STATICFILES_STORAGE = COMPRESS_STORAGE
 COMPRESS_OFFLINE = True
 COMPRESS_URL = STATIC_URL
 COMPRESS_ENABLED = True
+STATICFILES_DIRS = (
+  os.path.join(SITE_ROOT, 'static'),
+)
