@@ -1,4 +1,4 @@
-from .common import SITE_NAME, DJANGO_ROOT
+from .common import SITE_NAME, DJANGO_ROOT, SITE_ROOT
 import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -29,5 +29,9 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 AWS_QUERYSTRING_AUTH = False
 #COMPRESS_ENABLED = True
-#Static root: The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = 'staticfiles'
+
+
+COLLECTFAST_ENABLED = False
+STATICFILES_DIRS = (
+  os.path.join(SITE_ROOT, 'static'),
+  )
