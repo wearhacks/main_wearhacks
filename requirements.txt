@@ -21,7 +21,7 @@ futures==3.0.3
 gunicorn==19.3.0
 libsass==0.8.3
 mailchimp==2.0.9
-mailgun==0.7.1
+mailgun==0.8.0
 Markdown==2.6.4
 markup==0.2
 pathtools==0.1.2
