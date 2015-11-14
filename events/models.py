@@ -2,12 +2,22 @@ from django.db import models
 from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
 import os
+import re
 
-def get_image_path(instance, filename):
-    return os.path.join('', str(instance.id), filename)
+def get_upload_path(instance, filename):
+    folder = type(instance).__name__.lower()
+    new_filename = re.sub('[^a-zA-Z0-9]', '', instance.name) + os.path.splitext(filename)[1]
+    return os.path.join(folder, new_filename)
 
-def get_event_img_path(instance,filename):
-    return os.path.join('events', str(instance.id), filename)
+def get_upload_path_event(instance, filename):
+    folder = type(instance).__name__.lower()
+    new_filename = re.sub('[^a-zA-Z0-9]', '', instance.event_name) + os.path.splitext(filename)[1]
+    return os.path.join(folder, new_filename)
+
+def get_upload_path_partner(instance, filename):
+    folder = type(instance).__name__.lower()
+    new_filename = re.sub('[^a-zA-Z0-9]', '', instance.name) + os.path.splitext(filename)[1]
+    return os.path.join(folder, new_filename)
 
 class Event(models.Model):
     """(Place description)"""
@@ -25,7 +35,7 @@ class Event(models.Model):
     end_date = models.DateTimeField(blank=True, )
     address = models.CharField(max_length = 100)
     city = models.CharField(max_length= 50)
-    photo = models.ImageField(upload_to = get_event_img_path, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path_event, blank = True, null = True)
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
@@ -47,11 +57,12 @@ class TeamMember(models.Model):
     position = models.CharField(max_length = 50)
     blurb = models.CharField(max_length = 150)
     email = models.EmailField(verbose_name='email')
-    photo = models.ImageField(upload_to = get_image_path, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True)
     github = models.URLField(max_length=100, blank=True)
     linkedin = models.URLField(max_length=100, blank=True)
     facebook = models.URLField(max_length=100, blank=True)
     twitter = models.URLField(max_length=100, blank=True)
+    order = models.DecimalField(max_digits=100, decimal_places=0, default=0)
 
     def __unicode__(self):
         return u"%s" % self.name
@@ -70,23 +81,12 @@ class Partner(models.Model):
 
     name = models.CharField(max_length = 50)
     partner_type = models.CharField(max_length=1, choices=PARTNERTYPES)
-    photo = models.ImageField(upload_to = get_event_img_path, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True)
     link = models.URLField(max_length=100, blank=True)
+    short_description = models.CharField(max_length = 150)
     type = displayedType
 
     def __unicode__(self):
         return u"%s" % self.name
 
 
-class Content(models.Model):
-    name = models.CharField(max_length = 50) # name indentifier for queries
-    sub_name = models.CharField(max_length = 50, blank=True) # same as above, but unique
-    # e.g. if we have a group of texts with the same properties, this can be useful
-
-    page_name = models.CharField(max_length = 50) # name of the template (use this in the views)
-
-    title = models.CharField(max_length = 100, blank=True) # displayed title in the template
-    content = models.CharField(max_length = 8000) # displayed content in the template
-
-    def __unicode__(self):
-        return u"%s" % self.content

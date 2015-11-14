@@ -1,26 +1,11 @@
 $(document).ready(function() {
 
-$('#toggle-navigation').on("click",function(){
-  var $nav = $('.navbar-nav.navbar-right');
-  if($(this).hasClass('hide-nav'))
-  {
-    $(this).removeClass('hide-nav');
-    $nav.animate({"margin-right": "0px"});
-    $(this).find('.fa').rotate(0);
-    $(this).find('span').animate({'width':'0px','opacity':'0'});
-  }
-  else
-  {
-    $(this).addClass('hide-nav');
-    $nav.animate({"margin-right": "-600px"});
-    $(this).find('.fa').rotate(180);
-    $(this).find('span').animate({'width':'60px','opacity':'1'});
-  }
-});
+
 
 $("#signup").on("click",function(){
   $(this).closest('form').submit();
 });
+
 $( "#footer-signup" ).submit(function( event ) {
  
   // Stop form from submitting normally
@@ -64,7 +49,8 @@ jQuery.fn.rotate = function(degrees) {
 };
 
 $(function() {
-  $(".right-off-canvas-toggle, .exit-off-canvas").click(function() {
+  $(".right-off-canvas-toggle, .exit-off-canvas").click(function(e) {
+    e.preventDefault(); 
     $(".top-bar").toggleClass("top-bar-close");
     $(".middle-bar").toggleClass("middle-bar-close");
     $(".bottom-bar").toggleClass("bottom-bar-close");

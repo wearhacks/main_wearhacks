@@ -3,12 +3,11 @@
 }
 
 .partner-type-label {
-	color: white;
-	display: inline-block;
-	margin: 20px 0;
-	padding: 2px 50px;
-	font-size: 12px;
-	background-color:$info-color;
+    margin: 20px 0;
+    padding: 2px 50px;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .failure{
@@ -17,4 +16,56 @@
 
 .success{
 	color:$success-color;
+}
+.contact-button {
+      border: 2px solid #333;
+    background: #333;
+    /* font-weight: bold; */
+    color: white;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    margin-top: 17px;
+    display: inline-block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#modal-partner-form {
+  h3 {
+    font-weight:bold;
+    margin-top:20px;
+    margin-bottom:15px; 
+  }
+  h5 {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 0.7em;
+  }
+  h5 a {
+    color: #333;
+    font-weight: bold;
+    /* font-style: italic; */
+    border-bottom: 2px solid #333;
+    text-transform: uppercase;
+    transition: color 0.2s, border-color 0.2s;
+    &:hover {
+      color:$wolf-blue;
+      border-color:$wolf-blue;
+      transition: color 0.2s, border-color 0.2s;
+    }
+  }
+  label {
+    color: #7D7D7D;
+    cursor: initial;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 0;
+    /* text-transform: uppercase; */
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-weight: bold; */
+    font-size: 13px;
+  }
+
 }
