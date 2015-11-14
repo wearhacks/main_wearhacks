@@ -8,7 +8,6 @@ static/bower_components/
 dist/
 
 # Migrations
-*/migrations*
 migrate.sh
 media_root/
 static/CACHE/
@@ -19,3 +18,5 @@ static/geoposition/
 .idea/
 
 *.sqlite3
+#Settings
+main_wearhacks/settings/private.py

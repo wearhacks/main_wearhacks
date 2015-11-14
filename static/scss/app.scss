@@ -108,13 +108,13 @@ $font-family-sans-serif: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 // $iron        : #CCCCCC;
 // $base        : #AAAAAA;
 // $aluminum    : #999999;
-// $jumbo       : #888888;
+ $jumbo       : #888888;
 // $monsoon     : #777777;
 // $steel       : #666666;
-// $charcoal    : #555555;
+ $charcoal    : #555555;
 // $tuatara     : #444444;
 // $oil         : #333333;
-// $jet         : #222222;
+ $jet         : #222222;
 // $black       : #000000;
 
 // We use these as default colors throughout
@@ -125,16 +125,19 @@ $font-family-sans-serif: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 $primary-color: #1e699c;
-
+$wolf-blue: #1e699c;
 // We use these to control various global styles
 // $body-bg: $white;
-// $body-font-color: $jet;
+$body-font-color: $jet;
 // $body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
-$body-font-family: "PT Serif", Georgia, serif;;
+//$body-font-family: "PT Serif", Georgia, serif;
+
+$body-font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+
 // We use this to control font-smoothing
-// $font-smoothing: antialiased;
+ $font-smoothing: antialiased;
 
 // We use these to control text direction settings
 // $text-direction: ltr;
@@ -154,18 +157,18 @@ $body-font-family: "PT Serif", Georgia, serif;;
 // d. Media Query Ranges
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $small-breakpoint:  em-calc(640);
-// $medium-breakpoint: em-calc(1024);
+ $small-breakpoint:  em-calc(640);
+ $medium-breakpoint: em-calc(1024);
 // $large-breakpoint:  em-calc(1440);
 // $xlarge-breakpoint: em-calc(1920);
 
 // $small-range:   (0, $small-breakpoint);
-// $medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
+$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
 // $large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint);
 // $xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint);
 // $xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999));
 
-// $screen: "only screen";
+$screen: "only screen";
 
 // $landscape: "#{$screen} and (orientation: landscape)";
 // $portrait: "#{$screen} and (orientation: portrait)";
@@ -173,7 +176,7 @@ $body-font-family: "PT Serif", Georgia, serif;;
 // $small-up: $screen;
 // $small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})";
 
-// $medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})";
+$medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})";
 // $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})";
 
 // $large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})";
@@ -221,7 +224,7 @@ $body-font-family: "PT Serif", Georgia, serif;;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
 // $header-text-rendering: optimizeLegibility;
-$header-font-family:"Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+$header-font-family:"Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 // We use these to control header font sizes
 // $h1-font-size: rem-calc(44);
 // $h2-font-size: rem-calc(37);
@@ -451,7 +454,7 @@ $header-font-family:"Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif
 // $button-margin-bottom: rem-calc(20);
 
 // We use these to control button text styles.
-// $button-font-family: $body-font-family;
+$button-font-family: $header-font-family;
 // $button-font-color: $white;
 // $button-font-color-alt: $oil;
 // $button-font-tny: rem-calc(11);
@@ -462,13 +465,13 @@ $header-font-family:"Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif
 // $button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: -20%;
+ $button-function-factor: -20%;
 
 // We use these to control button border styles.
 // $button-border-width: 0;
 // $button-border-style: solid;
-// $button-bg-color: $primary-color;
-// $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
+ $button-bg-color: #333;
+ $button-bg-hover: scale-color($wolf-blue, $lightness: $button-function-factor);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
 // $secondary-button-border-color: $secondary-button-bg-hover;
@@ -1492,7 +1495,6 @@ $black: #000;
 //
 // A mixin to help make Foundation's grid-column mixin easier
 // to use when specifying multiple media quries/screen sizes
-
 @mixin grid-columns(
   // Mobile First Media Queries
   $small-up-screens: false,
@@ -1604,28 +1606,27 @@ $black: #000;
 $gray : #515151;
 $metro-blue: #00B4FF;
 $qwhite: #EEE;
-$wolf-blue: #1e699c;
 
+$sub-p: #928F8F;
 .columns.no-padding {
   padding:0;
 }
 
 h2.sub-header {
-    font-family: Raleway;
     font-weight: bold;
     margin-top: 24px;
     position: absolute;
     bottom: 0;
     color: white;
-  span {
-    font-size:0.5em;
-    a {color: white; font-weight:bold; &:hover {color:$wolf-blue}}
-  }
+    span {
+      font-size:0.5em;
+      a {color: white; font-weight:bold; &:hover {color:$wolf-blue}}
+    }
 }
 h2.sub-header2 {
-  font-family: Raleway;
+
     font-weight: bold;
-    font-variant: small-caps;
+    text-transform: capitalize;
 
 }
 
@@ -1636,24 +1637,7 @@ h2.sub-header2 {
 .row {
   max-width: 72.5rem;
 }
-.map-tag-content p {
-    /* margin-bottom: 0; */
-    color: #847F7F;
-    /* border-left: 23px solid #00B5FF; */
-    padding-left: 2px;
-    margin-bottom: 2px;
-    font-size: 14px;
-    margin-left: 7px;
-}
-.map-tag-content p {
-    /* margin-bottom: 0; */
-    color: #847F7F;
-    /* border-left: 23px solid #00B5FF; */
-    padding-left: 2px;
-    margin-bottom: 2px;
-    font-size: 14px;
-    margin-left: 7px;
-}
+
 .small-brk {
     height: 3px;
     width: 155px;
@@ -1669,8 +1653,8 @@ h2.sub-header2 {
   height: 25em;background-position: 50% 50%;position:relative; background-repeat: no-repeat;background-size: cover;box-shadow: inset 2px 500px 0px rgba(7, 102, 169, 0.62);    margin-bottom: 75px;
 }
 #swiper-3d  {
-    width: 80%;
-    height: 200px;
+    width: 100%;
+    height: 15em;
     margin-bottom: 34px;
     margin-left: auto;
     margin-right: auto;
@@ -1686,48 +1670,45 @@ h2.sub-header2 {
   }
 }
 .profile {
-width: 80%;
-
+    width: 90%;
     padding: 0px 0px;
     margin: auto;
     min-height: 332px;
-  p.name {
- font-family: Raleway;
-    bottom: 20px;
-    color: #333;
-    font-size: 0.9em;
-    margin-top: 10px;
-    border-bottom: 1px solid #e7e7e7;
-    padding-bottom: 10px;
-    margin-bottom:20px;
+    p.name {
+      bottom: 20px;
+      color: #333;
+      font-size: 0.8em;
+      margin-top: 10px;
+      border-bottom: 1px solid #e7e7e7;
+      margin-bottom:0px;
 
-    span {
-      font-weight: bold;
+        padding-left:5px;
+
+      span {
+        font-weight: bold;
+      }
     }
-  }
+    .inline-list {
+      li {
+        padding-left:0;
+        margin-left:5px;
+      }
+      margin:auto;
+      i {
 
-
-  .inline-list {
-    li {
-      padding-left:0;
-      margin-left:10px;
-    }
-    margin:auto;
-    i {
-
-    font-size: 22px;
-    color: #565656;
-      &:hover {
-        color:$wolf-blue;
+      font-size: 1em;
+      color: #565656;
+        &:hover {
+          color:$wolf-blue;
+        }
       }
     }
   }
 
-}
-
 .profile-image {
     height: 207px;
     background-size: cover;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
     position:relative;
       box-shadow:inset 0px -231px 0px rgba(12, 121, 173, 0.48);
@@ -1785,7 +1766,7 @@ width: 80%;
     -webkit-transition: 1s;
     -moz-transition: 1s;
     transition: 1s;
-    /* height: 32px; */
+
     background: rgba(210, 210, 210, 0.39);
     z-index: 20;
     padding: 0em 0.5em;
@@ -1805,11 +1786,27 @@ width: 80%;
 .icon-library {
     width: 1.0625em;
 }
+h6.call-action {
+    font-weight: bold;
+    /* font-family: sans-serif; */
+    text-transform: uppercase;
+    font-size: small;
 
+    a {
+      border-bottom: 1px solid;
+
+      transition:color 0.2s ease-in;
+    }
+    a:hover {
+      color:#18547d;
+      transition:color 0.2s ease-in;
+    }
+}
 @import 'events.scss';
 @import 'ambassador.scss';
 @import 'partners.scss';
-
+@import 'home.scss';
+@import 'navigation.scss';
 @media #{$small-up} { }
 @media #{$small-only} { }
 

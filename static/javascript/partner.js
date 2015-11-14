@@ -1,8 +1,6 @@
 $(document).ready(function(){
 	$('#partnerForm-btn').click(function(){
-		$(this).parent().slideUp('fast',function(){
-			$('#partner-form').slideDown('fast');
-		});
+		$('#modal-partner-form').foundation('reveal', 'open');
 	});
 
 	$('#partnershipForm').submit(function(e) {
@@ -10,14 +8,13 @@ $(document).ready(function(){
 		$('#form-response').removeClass('failure');
 		$('#form-response').removeClass('success');
 		$('#partnerForm-submit-btn').attr("disabled", true);
-	    $.ajax({
+	  $.ajax({
 			type: 'POST',
 			url: '/partnerships/',
 			data: $('#partnershipForm').serialize(),
 			success: function(data){
 					console.log(data);
 					$('#partner-form').slideUp();
-					$('#form-response').html(data.message);
 					$('#form-response').addClass('success');
 					$('#form-response').slideDown();
 				},

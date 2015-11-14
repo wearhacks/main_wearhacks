@@ -6,6 +6,7 @@
 
 {% endblock %}
 {% block content %}
+<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()</script>
 
 <section id="body">
     
@@ -17,18 +18,19 @@
         
         <div class="large-10 large-offset-1 medium-12 columns">
            
-          <h3 class="text-center" style="font-family:Raleway">Bring Wearhacks To Your City 
-            <i class="fa fa-map-marker" style="color: #0C4770;margin-left: 10px;"></i></h3>
+          <h2 class="sub-header2 text-center">Bring Wearhacks To Your City  
+            <i class="fa fa-map-marker" style="color: #0C4770;margin-left: 10px;"></i></h2>
          <div class="small-brk"></div>
-          <h5>
+          <p class="text-center">
             The WearHacks Leadership program offers our Ambassadors a chance to test their talents. 
-          
+          </p>
+          <p class="text-center">
           By building skills in <b>leadership</b>, <b>networking</b> and <b>event management</b>- Ambassadors complete our program feeling like experts in hacking hackathons! 
-        </h5>
+        </p>
         </div>
       </div>
 
-    <div class="clearfix" style="background:whitesmoke;">
+    <div class="clearfix" style="background:whitesmoke; margin-top:2em">
       <div class="columns large-8 large-offset-2 no-padding">
         <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -37,6 +39,7 @@
                 <div class="content">
                 <h3 style="color:white">
                   The leadership program lets you immerse yourself in the tech industry and connect with leading innovators.
+
                 </h3>
                 </div>
             </div>
@@ -61,9 +64,9 @@
         background-position-y: 54%;">
                   <div class="content" style="top: 30vh; text-align: center; width: 100%; color: white; display: block;">
 
-    <h2  style="color:white;padding: 20px;/* text-shadow: 1px 1px 0px #131313; */">"It is a challenging but extremely rewarding experience, and I got the opportunity to connect with many amazing people in the tech community!" <br/> <small style="
+    <h3  style="color:white;padding: 20px;/* text-shadow: 1px 1px 0px #131313; */">"It is a challenging but extremely rewarding experience, and I got the opportunity to connect with many amazing people in the tech community!" <br/> <small style="
         color: white;
-    ">-Jenny Yu, WH Vancouver Ambassador</small></h2>
+    ">-Jenny Yu, WH Vancouver Ambassador</small></h3>
                   </div>
                 </div>
 
@@ -98,31 +101,34 @@
     <div class="small-brk"></div>
     <div class="row">
       <div class="amb-icons columns large-10 large-offset-1">
-        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/handshake5.svg'%}" alt=""> <h6>Leadership</h6></div>
-        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/marketing-buzz.svg'%}" alt=""><h6>Networking</h6></div>
-        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/listing6.svg'%}" alt=""><h6>Event Management</h6 ></div>
+        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/handshake5.svg'%}" alt=""> <h5 >Leadership</h5></div>
+        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/marketing-buzz.svg'%}" alt=""><h5>Networking</h5></div>
+        <div class="columns large-4" data-sr="enter top over 1s and move 65px"><img src="{% static 'svg/listing6.svg'%}" alt=""><h5>Event Management</h5 ></div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="margin-top:2em">
       <div class="columns large-10 large-offset-1">
-        <h5>
+        <p class="text-center">
           <br>
           The WearHacks City Ambassador is a volunteer position to be the leader of a WearHacks event. You will take charge of a core team of three to four people, and direct them into creating the best WearHacks event to date.
-          </h5>
-          <h5>
+          </p>
+          <p class="text-center">
           You learn new skills including team leadership, networking, and fundraising. We love to see you succeed, and we love it even more when we can help you achieve it.
-        </h5>
+        </p>
       </div>
     </div>
     <div class="row">
       <div class="columns large-10 large-offset-1 text-center">
 
     <hr/>
-        <h3 data-sr="enter bottom over 1s and move 65px">
+        <h6 class="call-action" data-sr="enter bottom over 1s and move 65px">
           Convinced? Join us and become the next Wearhacks ambassador!
-        </h3>
 
-        <a class="button button-large" data-sr="enter bottom over 1s and move 65px" href="ambassador.wearhacks.com">Start Now</a>
+        </h6>
+        <div data-sr="enter bottom over 1s and move 65px"  >
+           <a  class="typeform-share button button-large" href="https://wearhacks.typeform.com/to/JatTbd" data-mode="1" target="_blank">Start Now <i class="fa fa-angle-double-right"></i></a>
+        </div>
+       
       </div>
     </div>
 </section>

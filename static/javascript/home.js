@@ -1,5 +1,5 @@
 var initializeSwiper = function() {
-
+  var lastindex = -1;
   var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
@@ -9,15 +9,29 @@ var initializeSwiper = function() {
         centeredSlides: true,
         //autoplay: 5000,
         autoplayDisableOnInteraction: false,
-         onSlideChangeStart: function(swiper) {
-          swiper.slides.each(function(slide,i){
-          $(slide).hide();
+        onSlideChangeStart: function(swiper) {
+          lastindex = swiper.activeIndex;
+          $(swiper.slides[swiper.activeIndex])
+          .find('.content').fadeIn(1500);
+          console.log("toggle in "+ swiper.activeIndex);
+        },
+        onSlideChangeEnd: function(swiper) {
+          swiper.slides.each(function(i,slide){
+            if(i !== swiper.activeIndex) {
+              $(slide).find('.content').fadeOut(0);
+              console.log("toggle out " + i);
+            }
 
           });
-          $(swiper.slides[swiper.activeIndex])
-          .find('.content').toggle(0).fadeIn(1500);
-        }
+        },
     });
+    if(swiper.slides) {
+      swiper.slides.each(function(i,slide){
+              if(i !== 0)
+                $(slide).find('.content').fadeOut(0);
+      });
+    }
+      
 };
 
 var initBackToTop = function() {

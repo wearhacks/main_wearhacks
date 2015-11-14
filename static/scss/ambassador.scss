@@ -14,12 +14,13 @@
 @media #{$xxlarge-only} { }
 
 .amb-icons img {
-    width: 80%;
+    width: 70%;
     max-width: 151px;
     margin: auto;
-    display: block;
+    display: block; 
+    margin-bottom:10px;
 
 }
-.amb-icons h6 {
+.amb-icons h5 {
     text-align:center;
     }

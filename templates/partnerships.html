@@ -14,75 +14,63 @@
 
 <section id="body">
 
-        <div class="columns small-12 top-header" style="background-image: url(/static/images/team.jpg);" alt="">
-            <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; </span> {{ title }}</h2></div>
-        </div>
-
-     <div class="row ">
-          <div class="small-12 medium-6 large-4 columns">
-                  <!-- Swiper -->
-                    <div id="swiper-3d">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_1.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_2.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_3.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide4.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_kid.jpg' %})"></div>
-                        </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                    </div>
-        </div>
-        <div class="small-12 medium-6 large-8  columns paragraph">
-            <h2 class="sub-header2">{{ content.title }}</h2>
-            {{ content.content }}
-        </div>
-
+    <div class="columns small-12 top-header" style="background-image: url(/static/images/partnerships.jpg);" alt="">
+        <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; </span> {{ title }}</h2></div>
     </div>
 
-    <div class="small-brk"></div>
+
     <div class="row ">
         <div class="team-header small-12 columns">
-            <h2 class="sub-header2" style="margin-bottom:20px">Partners</h2>
+            <h2 class="sub-header2" style="margin-bottom:20px">Our proud partners</h2>
+            <p>Wearhacks education initiatives and its hackathons aim to give people a space to learn and innovate . Our partners share this vision and allow us to continue <a href="/aboutus">our mission</a> whether it be by their expertise in IOT, providing cutting-edge hardware or simply the funds required to create education hubs. 
+            </p>
         </div>
         <div class="columns large-12 text-center">
         {% for type, group in partners.items %}
-            <div class="partner-type-label info-color">
-                {{ group.0.type }}
-            </div>
-            <br><br>
+                <h5 class="partner-type-label">{{ group.0.type }}</h5>  
             {% for partner in group %}
                 <a href="{{ partner.link }}" target="_blank">
-                    <img class="partner-image" src="/media/{{ partner.photo }}">
+                    <img class="partner-image" src="{{ partner.photo.url }}">
                 </a>
             {% endfor %}
             <br><br>
         {% endfor %}
         </div>
-
+        
+   
         <div class="columns large-12 text-center" style="text-align:center;margin-top:30px;" >
-            <div style="border-color:gray;border-style:dashed;display:inline-block;padding:8% 5% 5% 5%;">
+             <div class="small-brk"></div>
                 <div>
-                    and now paste
-                    <h3 class="sub-header2">Your Logo Here</h3>
-                    <a id="partnerForm-btn" class="parner-reveal button">Become our Partner</a>
+                <h6 class="call-action">Whether you'd like to help us achieve our mission, or simply learn more, <a id="partnerForm-btn" class="parner-reveal">get in touch</a>!</h3></h5>
                 </div>
-                <div id="partner-form" style="display:none;">
-                    What to team-up<br>and change the the fate of hardwear with us?
-                    <h3 class="sub-header2">Email Us</h3>
+
+             
+
+             <div class="small-brk"></div>
+        </div>
+    </div>
+</section>
+                
+
+
+
+<div id="modal-partner-form" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+                <div id="partner-form">
+                    <h3 class="sub-header2">Get in touch, we'd love to hear from you!</h3>
                     <form id="partnershipForm" action="/partnerships/" method="post">
                         {% csrf_token %}
                         <div  class="text-left">
                             {{ form }}
                         </div>
-                        <input id="partnerForm-submit-btn" type="submit" class="button" value="Submit" />
+                        <input id="partnerForm-submit-btn" type="submit" class="button small" value="Submit" />
+                        <h5><a href="mailto:info@wearhacks.com">Or email us directly</a></h5>
                     </form>
                 </div>
-                <div id="form-response"></div>
-            </div>
-        </div>
-    </div>
-    <div class="small-brk"></div>
-</section>
-
+                <div id="form-response" style="display:none"> 
+                    <h4 style="
+    margin: 64px 14px;
+">Thank you for reaching out! We'll get back to you as soon as possible!</h4>
+                </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
 {% endblock %}
