@@ -54,9 +54,6 @@ def partnerships(request):
             return JsonResponse({"status":"failure", "message":"Please make sure that you entered a valid email."}, status=400)
     else :
         form = PartnerForm()
-        contentText = []#Content.objects.all().filter(page_name = 'partnerships', name = 'lorem')
-        if len(contentText) > 0:
-            contentText = contentText[0]
         partners = iTool.groupby(Partner.objects.all(), lambda x: int(x.partner_type)) # int() will order the type correctly
 
         return render(request, 'partnerships.html',

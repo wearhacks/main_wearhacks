@@ -40,7 +40,9 @@
   }
 }
 
-
+.columns+.columns:last-child {
+    float: left; 
+}
 .event-photo {
     width: 100%;
     height: 200px;
