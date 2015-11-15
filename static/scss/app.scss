@@ -1650,7 +1650,9 @@ h2.sub-header2 {
   bottom:0
 }
 .top-header {
-  height: 25em;background-position: 50% 50%;position:relative; background-repeat: no-repeat;background-size: cover;box-shadow: inset 2px 500px 0px rgba(7, 102, 169, 0.62);    margin-bottom: 75px;
+  height: 25em;background-position: 50% 50%;position:relative; background-repeat: no-repeat;background-size: cover;box-shadow: inset 2px 500px 0 rgba(7, 102, 169, 0.4);
+  margin-bottom: 75px;
+
 }
 #swiper-3d  {
     width: 100%;
