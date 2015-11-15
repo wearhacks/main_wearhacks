@@ -59,7 +59,6 @@ def partnerships(request):
         return render(request, 'partnerships.html',
             {'title':"Partnerships",
              'partners':{k: list(v) for k, v in partners},
-             'content':contentText,
              'form': form
             })
 
