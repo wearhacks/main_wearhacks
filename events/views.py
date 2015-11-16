@@ -31,7 +31,7 @@ def home(request):
 def about_us(request):
     return render(request, 'aboutus.html',
         {'title':"About Us",
-         'team_members':TeamMember.objects.all().order_by('order'),
+         'team_members':TeamMember.objects.all().order_by('name'),
          'config':config})
 def events(request):
     return render(request, 'events.html',{'config':config, 'title':"Events",'events':Event.objects.all().order_by('start_date'),'config':config})
