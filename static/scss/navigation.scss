@@ -84,10 +84,7 @@ float: left;
     margin-top: 52px;
         box-shadow: rgba(23, 22, 21, 0.498039) 1px 3px 0px;
 }
-ul.inline-list.social {
-    padding: 0;
 
-}
 .right-off-canvas-toggle {
   .menu {
     margin-top: 1.6rem;
@@ -182,105 +179,13 @@ ul.inline-list.social {
   transition: transform 0.5s;
 }
 
-
-.footer-basic-centered {
-
-  box-sizing: border-box;
-  width: 100%;
-  font: normal 18px sans-serif;
-  border-top:1px solid #CCC;
-  height:110px;
-
-  padding: 45px;
-  padding-top:25px;
-  padding-left:10px;
-  margin-top: 40px;
-    ul li
-  {
-      list-style-type: none;
-      display: inline-block;
-
-  }
-  a {
-    color: #555;
-    font-size:0.7em;
-  }
-  a:hover {
-    color:#1e699c;
-  }
-  h5 {
-      font-size: 0.7em;
-    text-transform: uppercase;
-  }
-  input {
-    border-color:#CCC;
-    box-shadow:none;
-  }
-  form .button {
-      color: white;
-
-    line-height: 36px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 3px;
-    font-size: 16px;
-    background-color: #1e699c;
-    &:hover {
-      color:white;
-      background-color:#008CBA;
-    }
-  }
-  ul.inline-lift {
-
-  }
-  ul.inline-list.social {
-    margin-left:0;
-    padding: 0;
-    padding-top:2px;
-    li:first-child {
-      margin-left:2px;
-    }
-    li {
-          margin-left: 1.2rem;
-    }
-    a {
-      font-size: 23px;
-      color: #333;
-      &:hover {
-        color:  #1e699c;
-      }
-    }
-
-  }
-  background: white;
-
+ul.inline-list.social>li {
+  margin-left: 0.55rem;
 }
 
-.footer-basic-centered .footer-company-motto{
-  color:  #8d9093;
-  font-size: 24px;
-  margin: 0;
+ul.inline-list.social {
+  margin-left: -0.55rem;
 }
-
-.footer-basic-centered .footer-company-name{
-  color:  #8f9296;
-  font-size: 14px;
-  margin: 0;
-}
-
-.footer-basic-centered .footer-links{
-  list-style: none;
-  font-weight: bold;
-  color:  #ffffff;
-  padding: 35px 0 23px;
-  margin: 0;
-}
-
-.footer-basic-centered .footer-links a{
-  display:inline-block;
-  text-decoration: none;
-  color: inherit;
-}
-
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 600px) {
