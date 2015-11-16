@@ -1804,6 +1804,9 @@ h6.call-action {
       transition:color 0.2s ease-in;
     }
 }
+.columns+.columns:last-child {
+    float: left;
+}
 @import 'events.scss';
 @import 'ambassador.scss';
 @import 'partners.scss';
