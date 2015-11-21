@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
-import flickr_api
+from django.template.defaultfilters import slugify
 from django.core.cache import cache
+import flickr_api
 import os
 import re
 
@@ -41,8 +42,14 @@ class Event(models.Model):
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
+    slug = models.SlugField(blank=True)
     def __unicode__(self):
         return u"%s" % self.short_name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify('%s %d' % (self.city, self.start_date.year))
+        super(Event, self).save(*args, **kwargs)
 
 class Project(models.Model):
     """(Place description)"""

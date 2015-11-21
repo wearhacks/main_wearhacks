@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.forms.models import model_to_dict
 from django.core.mail import EmailMessage
+from django.core.exceptions import ObjectDoesNotExist
 from models import TeamMember,Event,Partner
 from forms import PartnerForm
 from django.http import HttpResponse,JsonResponse
@@ -14,12 +15,14 @@ from django.utils import timezone
 from constance import config
 import itertools as iTool
 
+import sys
+
 def home(request):
     posts = json.loads(urlopen(config.A_BLOG_LINK + '/?json=1').read())["posts"]
     content = {
         'title' : "Home",
         'config':config,
-        'blog_title' : posts[0]["title"], 
+        'blog_title' : posts[0]["title"],
         'blog_excerpt' : posts[0]["excerpt"],
         'blog_link' : posts[0]["url"],
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"]
@@ -33,8 +36,25 @@ def about_us(request):
         {'title':"About Us",
          'team_members':TeamMember.objects.all().order_by('name'),
          'config':config})
-def events(request):
-    return render(request, 'events.html',{'config':config, 'title':"Events",'events':Event.objects.all().order_by('start_date'),'config':config})
+
+def events(request, event_slug=None):
+    if (event_slug):
+        try:
+            event = Event.objects.get(slug = event_slug)
+            return render(request, 'event_pictures.html',
+                {'config':config,
+                 'title':event.event_name,
+                 'config':config,
+                 'event':event})
+        except ObjectDoesNotExist:
+            return redirect('events')
+
+    return render(request, 'events.html',
+        {'config':config,
+         'title':"Events",
+         'events':Event.objects.all().order_by('start_date'),
+         'config':config})
+
 def ambassador(request):
     return render(request, 'ambassador.html',{'config':config, 'title':"Ambassador Program"})
 

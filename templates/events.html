@@ -342,7 +342,7 @@ function initMap() {
 <section id="body">
 
     <div class="columns small-12 top-header" style="background-image: url({% static 'images/event.jpg' %}); background-position-y: 70%" alt="">
-            <div class="row"><h2 class="sub-header"><span><a href="/">Home &gt; </a></span> {{ title }}</h2></div>
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home &gt; </a></span> {{ title }} {{ name }}</h2></div>
     </div>
     <div class="row text-center">
 
@@ -350,9 +350,9 @@ function initMap() {
         <img width="200px" src="{% static 'images/wolf_large.png' %}" alt="">
         <h2 style="display:inline-block; margin:0px 20px;"><b>WearHacks</b> Hackathons</h2>
      </div>
-     
+
     </div>
-    
+
 
      <div id="event-mid-section" class="large-12-columns">
     <div class="row">
@@ -361,7 +361,7 @@ function initMap() {
         <div class="youtube-placeholder" style="background-image:url('{% static 'images/youtube.jpg'%}')">
             <i class="fa fa-play"></i>
         </div>
-         
+
        </div>
         <div class="small-12 medium-6 columns">
             <p class="maindesc col-sm-12"> {{config.EVENTS_HACKATHON_DESC | safe}}
@@ -409,7 +409,7 @@ function initMap() {
        </div>
     </div>
           <!-- Swiper -->
-        
+
 
 <div class="row">
     <div class="large-12  columns">
@@ -428,13 +428,13 @@ function initMap() {
                 <h4>{{ event.event_name }}</h4>
                  <h5>{{ event.date }}</h5>
                  <p>Venue: {{ event.address }}</p>
-                
+
             </div>
              {% if event.link %} <a class="website" target="_blank" href="{{ event.link }}" >View Website <i class="fa fa-external-link-square"></i></a>
                  {% else %}  <a class="website" style="cursor:auto" >Website Coming Soon <i class="fa fa-exclamation-circle"></i></a>
                  {% endif %}
             </div>
-            
+
         </div>
         {% endfor %}
     </div>
