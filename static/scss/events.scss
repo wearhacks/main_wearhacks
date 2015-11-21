@@ -49,17 +49,14 @@
     display: inline-block;
     background-position-y: 30%;
     a.website {
-        position: absolute;
-    bottom: 0;
-    right: 26px;
-    color: white;
-    font-weight: bold;
-    
-   font-variant: small-caps;
-    font-family: Raleway;
-    background: white;
-    color: #333;
-    padding: 10px 20px;
+            position: absolute;
+        bottom: 0;
+        right: 26px;
+        color: white;
+        background: white;
+        color: #333;
+        padding: 10px 20px;
+        text-transform: capitalize;
     }
 }
 #event-mid-section {
@@ -97,27 +94,21 @@
     margin-top: 20px;
     margin-left: 17px;
     padding: 10px 20px;
-    /* min-width: 377px; */
     background: #333;
     width: 95%;
     max-width: 375px;
   h4 {
     color:white;
-    font-variant: small-caps;
     margin-bottom:0;
-    font-family:Raleway;
   }
   h5 {
     font-weight: bold;
     color:white;
     margin-top:0;
-    font-family: sans-serif;
     
   }
   p {
    color:white;
-   font-family:Raleway;
-   font-variant: small-caps;
    margin-bottom: 0;
   }
 }

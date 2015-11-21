@@ -471,7 +471,7 @@ $button-font-family: $header-font-family;
 // $button-border-width: 0;
 // $button-border-style: solid;
  $button-bg-color: #333;
- $button-bg-hover: scale-color($wolf-blue, $lightness: $button-function-factor);
+ $button-bg-hover: scale-color(#999, $lightness: $button-function-factor);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
 // $secondary-button-border-color: $secondary-button-bg-hover;
@@ -1713,7 +1713,7 @@ h2.sub-header2 {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     position:relative;
-      box-shadow:inset 0px -231px 0px rgba(12, 121, 173, 0.48);
+      box-shadow:inset 0px -231px 0px rgba(12, 121, 173, 0.35);
    .blurb {
      opacity: 0;
      transition: opacity 0.4s;
@@ -1787,6 +1787,11 @@ h2.sub-header2 {
 }
 .icon-library {
     width: 1.0625em;
+}
+h6 {
+    font-size: small;
+    font-weight: bold;
+    text-transform: uppercase;  
 }
 h6.call-action {
     font-weight: bold;
