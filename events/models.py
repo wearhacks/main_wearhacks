@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
+import flickr_api
+from django.core.cache import cache
 import os
 import re
 
@@ -90,3 +92,28 @@ class Partner(models.Model):
         return u"%s" % self.name
 
 
+class EventPicture(models.Model):
+    SOURCETYPES = (
+        ('0', 'Other'), # later we can add more sources
+        ('1', 'flickr')
+    )
+
+    source_username = models.CharField(max_length = 50)
+    source_albumname = models.CharField(max_length = 50)
+    source_type = models.CharField(max_length=1, choices=SOURCETYPES)
+    event = models.ForeignKey(Event)
+
+    def __unicode__(self):
+        return u"%s : %s" % (self.source_albumname, self.event)
+
+    def fetchPictures(self):
+        if self.source_type == '1': # if from flickr
+            flickr_api.set_keys(# keys
+                api_key = 'e889aef0eee347e6be9e6aa30da11cd5',
+                api_secret = '633a019eba067bba')
+            flickr_api.enable_cache(cache)
+            user = flickr_api.Person.findByUserName(self.source_username)
+            photosets = user.getPhotosets()
+            return photoset.getPhotos()
+
+        return None
