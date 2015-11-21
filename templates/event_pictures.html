@@ -14,9 +14,14 @@
 
 <section id="body">
 
-    <div class="columns small-12 top-header" style="background-image: url({% static 'images/partnerships.jpg' %});" alt="">
+    <div class="columns small-12 top-header" style="background-image: url({{ pictures.0 }});" alt="">
         <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
     </div>
+    {% for picture in pictures %}
+
+        {{ picture }}<br>
+
+    {% endfor %}
 
 </section>
 

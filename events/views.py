@@ -14,8 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 from constance import config
 import itertools as iTool
-
-import sys
+import random
 
 def home(request):
     posts = json.loads(urlopen(config.A_BLOG_LINK + '/?json=1').read())["posts"]
@@ -41,11 +40,16 @@ def events(request, event_slug=None):
     if (event_slug):
         try:
             event = Event.objects.get(slug = event_slug)
+            eventPicture = event.eventpicture_set.first()
+            randomPictures = [x.getPhotoFile('Medium')
+                    if i>0 else x.getPhotoFile('Medium 640')
+                for i,x in enumerate(random.sample(eventPicture.fetchPhotoset(), 4))]
             return render(request, 'event_pictures.html',
                 {'config':config,
                  'title':event.event_name,
-                 'config':config,
-                 'event':event})
+                 'event':event,
+                 'pictures':randomPictures
+                 })
         except ObjectDoesNotExist:
             return redirect('events')
 

@@ -113,7 +113,7 @@ class EventPicture(models.Model):
     def __unicode__(self):
         return u"%s : %s" % (self.source_albumname, self.event)
 
-    def fetchPictures(self):
+    def fetchPhotoset(self):
         if self.source_type == '1': # if from flickr
             flickr_api.set_keys(# keys
                 api_key = 'e889aef0eee347e6be9e6aa30da11cd5',
@@ -121,6 +121,8 @@ class EventPicture(models.Model):
             flickr_api.enable_cache(cache)
             user = flickr_api.Person.findByUserName(self.source_username)
             photosets = user.getPhotosets()
-            return photoset.getPhotos()
+            for photoset in photosets:
+                if photoset.title == self.source_albumname:
+                    return photoset.getPhotos()
 
         return None
