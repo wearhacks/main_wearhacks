@@ -348,7 +348,7 @@ function initMap() {
 
      <div >
         <img width="200px" src="{% static 'images/wolf_large.png' %}" alt="">
-        <h2 style="display:inline-block; margin:0px 20px;"><b>WEARHACKS</b> Hackathons</h2>
+        <h2 style="display:inline-block; margin:0px 20px;"><b>WearHacks</b> Hackathons</h2>
      </div>
      
     </div>
@@ -375,7 +375,7 @@ function initMap() {
                     <div class="uniqueIcon" data-sr=' ease-in-out 100px'>
                         <img src="{% static 'svg/iot.svg'%}" alt="">
                     </div>
-                    <h5>Wearables &amp; IoT</h5>
+                    <h6>Wearables &amp; IoT</h6>
                     <p>We bring you the latest wearables and IOT so you can focus on your creativity. </p>
                 </div>
                  <div class="columns large-3 medium-6 small-12">
@@ -383,7 +383,7 @@ function initMap() {
                         <img src="{% static 'svg/darthvader.svg'%}" alt=""/>
 
                 </div>
-                <h5>All backgrounds</h5>
+                <h6>All backgrounds</h6>
                 <div class="smallsep"></div>
                 <p>We gather all kind of innovators and industry experts. Everyone from tinkerers to engineers are welcome to our events. </p>
               </div>
@@ -391,7 +391,7 @@ function initMap() {
                 <div class="uniqueIcon"  data-sr='ease-in-out 100px'>
                      <img src="{% static 'svg/ref.svg'%}" alt=""/>
                 </div>
-                <h5>WearHacks Experience</h5>
+                <h6>WearHacks Experience</h6>
                 <div class="smallsep"></div>
                 <p>We follow-up with the teams and help &amp; promote the best projects. We organize demos, talks, etc.
                 </p>
@@ -400,7 +400,7 @@ function initMap() {
               <div class="uniqueIcon" data-sr='ease-in-out 100px'>
                       <img src="{% static 'svg/world.svg'%}" alt=""/>
               </div>
-                <h5>International Presence</h5>
+                <h6>International Presence</h6>
                 <div class="smallsep"></div>
                 <p>
                    We are already organizing events in Canada, Europe and the US.
@@ -414,7 +414,7 @@ function initMap() {
 <div class="row">
     <div class="large-12  columns">
         <br/>
-        <div class="small-12"><h2 class="sub-header2" style="text-align:center">Upcoming Events </h2></div>
+        <div class="small-12"><h2 class="sub-header2" style="text-align:center">Past and Upcoming Events </h2></div>
         <div class="small-brk"></div>
     </div>
     </div>
@@ -430,8 +430,8 @@ function initMap() {
                  <p>Venue: {{ event.address }}</p>
                 
             </div>
-             {% if event.link %} <a class="website" href="{{ event.link }}" >View website <i class="fa fa-external-link-square"></i></a>
-                 {% else %}  <a class="website" style="cursor:auto" >Website coming soon <i class="fa fa-exclamation-circle"></i></a>
+             {% if event.link %} <a class="website" target="_blank" href="{{ event.link }}" >View Website <i class="fa fa-external-link-square"></i></a>
+                 {% else %}  <a class="website" style="cursor:auto" >Website Coming Soon <i class="fa fa-exclamation-circle"></i></a>
                  {% endif %}
             </div>
             
