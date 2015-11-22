@@ -44,15 +44,20 @@ def events(request, event_slug=None):
             randomPictures = [x.getPhotoFile('Medium')
                     if i>0 else x.getPhotoFile('Medium 640')
                 for i,x in enumerate(random.sample(eventPicture.fetchPhotoset(), 4))]
-            projects = {k: list(v) for k, v in
-                iTool.groupby(event.project_set.all(), lambda x: x.project_type)}
+            projects = event.project_set.all()
+            groupedProjects = {k: list(v) for k, v in
+                iTool.groupby(projects, lambda x: x.project_type)}
+            stats = {
+                'projects':len(projects)
+            }
             return render(request, 'event_pictures.html',
                 {'config':config,
                  'title':event.event_name,
                  'event':event,
                  'pictures':randomPictures,
-                 'winners':projects['2'],
-                 'projects':projects['1']
+                 'winners':groupedProjects['2'],
+                 'projects':groupedProjects['1'],
+                 'stats':stats
                  })
         except ObjectDoesNotExist:
             return redirect('events')

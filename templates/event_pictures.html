@@ -17,9 +17,22 @@
         <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
     </div>
 
+     <div id="statistics" class="row text-center">
+        <div class="small-4 columns">
+            <span>X</span>participants
+        </div>
+        <div class="small-4 columns">
+            <span>{{ stats.projects }}</span>submitted projects
+        </div>
+        <div class="small-4 columns">
+            <span>{{ winners | length }}</span>winning projects
+        </div>
+    </div>
+
      <div id="projects" class="row">
         <div class="small-12 columns">
-            <h2 class="sub-header2" style="margin-bottom:20px">Notable Projects</h2>
+            <div class="small-brk"></div>
+            <h2 class="sub-header2" style="margin-bottom:20px">Projects</h2>
         </div>
         <div class="columns large-12 margin-bottom">
         {% for winner in winners %}
@@ -35,7 +48,7 @@
 
         <div class="columns large-12 text-center">
             <div data-sr="enter bottom over 1s and move 65px">
-               <button id="viewAllProjectBtn" class="button button-large">View all Projects</button>
+               <button id="viewAllProjectBtn" class="button button-large">View all {{ stats.projects }} Projects</button>
             </div>
         </div>
 
