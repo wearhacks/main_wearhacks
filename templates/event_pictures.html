@@ -15,93 +15,108 @@
 
 <section id="body">
 
-    <ul id="projectHeader" data-orbit>
-        {% for picture in bannerPictures %}
-        <li data-orbit-slide="headline-{{ forloop.counter }}">
-            <div class="columns small-12 top-header" alt=""  style="background-image: url('http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg');">
-                <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
+    {% if bannerPictures|length > 0%}
+        <ul id="projectHeader" data-orbit>
+            {% for picture in bannerPictures %}
+            <li data-orbit-slide="headline-{{ forloop.counter }}">
+                <div class="columns small-12 top-header" alt=""  style="background-image: url('http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg');">
+                    <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="columns small-12 top-header" style="background-image: url({% static 'images/event.jpg' %}); background-position-y: 70%" alt="">
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
+        </div>
+    {% endif %}
+
+    {% if stats.projects %}
+        <div class="statistics row text-center">
+            <div class="small-4 columns">
+                <span>X</span>participants
             </div>
-        </li>
-        {% endfor %}
-    </ul>
-
-    <div class="statistics row text-center">
-        <div class="small-4 columns">
-            <span>X</span>participants
-        </div>
-        <div class="small-4 columns">
-            <span>{{ stats.projects }}</span>submitted projects
-        </div>
-        <div class="small-4 columns">
-            <span>{{ winners | length }}</span>winning projects
-        </div>
-    </div>
-
-     <div id="projects" class="row">
-        <div class="small-12 columns">
-            <div class="small-brk"></div>
-            <h2 class="sub-header2" style="margin-bottom:20px">Projects</h2>
-        </div>
-        <div class="columns large-12 margin-bottom">
-        {% for winner in winners %}
-            <div class="large-4 medium-6 small-12 columns">
-                <a href="{{winner.url}}" target="_blank">
-                    <div class="winner-image lazy" data-original="{% if winner.image %}{{winner.image}}{% endif %}">
-                    </div>
-                </a>
-                <div class="project-description"><strong>{{ winner.project_name }}</strong> | {{ winner.short_description }}</div>
+            <div class="small-4 columns">
+                <span>{{ stats.projects }}</span>submitted projects
             </div>
-        {% endfor %}
-        </div>
-
-        <div class="columns large-12 text-center">
-            <div data-sr="enter bottom over 1s and move 65px">
-               <button id="viewAllProjectBtn" class="button button-large">View all Projects</button>
+            <div class="small-4 columns">
+                <span>{{ winners|length }}</span>winning projects
             </div>
         </div>
 
-        <div id="allProjectsDisplay" class="columns large-12">
-        {% for project in projects %}
-            <div class="large-3 medium-4 small-6 columns">
-                <a href="{{project.url}}" target="_blank">
-                    <div class="project-image lazy" data-original="{% if project.image %}{{project.image}}{% endif %}">
-                    </div>
-                </a>
-                <div class="project-description"><strong>{{ project.project_name }}</strong> | {{ project.short_description }}</div>
+         <div id="projects" class="row">
+            <div class="small-12 columns">
+                <div class="small-brk"></div>
+                <h2 class="sub-header2" style="margin-bottom:20px">Projects</h2>
             </div>
-        {% endfor %}
-        </div>
-    </div>
+            <div class="columns large-12 margin-bottom">
+            {% for winner in winners %}
+                <div class="large-4 medium-6 small-12 columns">
+                    <a href="{{winner.url}}" target="_blank">
+                        <div class="winner-image lazy" data-original="{% if winner.image %}{{winner.image}}{% endif %}">
+                        </div>
+                    </a>
+                    <div class="project-description"><strong>{{ winner.project_name }}</strong> | {{ winner.short_description }}</div>
+                </div>
+            {% endfor %}
+            </div>
 
-
-    <div id="pictures" class="row">
-        <div class="small-12 columns">
-            <div class="small-brk"></div>
-            <h2 class="sub-header2" style="margin-bottom:20px">Pictures</h2>
-        </div>
-
-        <div class="columns small-12 picture-banner">
-            <div class="top-header" style="background-image:url('http://farm{{allPictures.0.farm}}.staticflickr.com/{{allPictures.0.server}}/{{allPictures.0.id}}_{{allPictures.0.secret}}_z.jpg');">
-                <div class="bannerContent">
-                    <div class="statistics left text-center">
-                        <span>{{ photoStat.total }}</span>photos
-                    </div>
-                    <span class="right">
-                        <button id="viewAllPicturesBtn" class="button button-large" target="_blank">View all Pictures</button>
-                        <a id="downloadAllPicturesBtn" class="button button-large" href="https://www.flickr.com/photos/{{photoStat.userId}}/sets/{{photoStat.albumId}}/" target="_blank">Download from Flickr <i class="fa fa-cloud-download"></i></a>
-                    </span>
+            <div class="columns large-12 text-center">
+                <div data-sr="enter bottom over 1s and move 65px">
+                   <button id="viewAllProjectBtn" class="button button-large">View all Projects</button>
                 </div>
             </div>
-        </div>
 
-        {% for picture in allPictures %}
-         <div class="portpholio large-3 medium-4 small-6 columns">
-            <div class="portpholio-image lazy" data-original="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_m.jpg"
-            data-image="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg"
-            data-url="https://www.flickr.com/photos/{{photoStat.userId}}/{{picture.id}}/in/album-{{photoStat.albumId}}"></div>
+            <div id="allProjectsDisplay" class="columns large-12">
+            {% for project in projects %}
+                <div class="large-3 medium-4 small-6 columns">
+                    <a href="{{project.url}}" target="_blank">
+                        <div class="project-image lazy" data-original="{% if project.image %}{{project.image}}{% endif %}">
+                        </div>
+                    </a>
+                    <div class="project-description"><strong>{{ project.project_name }}</strong> | {{ project.short_description }}</div>
+                </div>
+            {% endfor %}
+            </div>
         </div>
-        {% endfor %}
-    </div>
+    {% elif allPictures|length = 0%}
+        <center>
+            <h1>Oups!</h1>
+            <span>Nothing to display.</span>
+            <h4>Click <a href='../'>here</a> to go back.</h4>
+        </center>
+    {% endif %}
+
+    {% if allPictures|length > 0%}
+        <div id="pictures" class="row">
+            <div class="small-12 columns">
+                <div class="small-brk"></div>
+                <h2 class="sub-header2" style="margin-bottom:20px">Pictures</h2>
+            </div>
+
+            <div class="columns small-12 picture-banner">
+                <div class="top-header" style="background-image:url('http://farm{{allPictures.0.farm}}.staticflickr.com/{{allPictures.0.server}}/{{allPictures.0.id}}_{{allPictures.0.secret}}_z.jpg');">
+                    <div class="bannerContent">
+                        <div class="statistics left text-center">
+                            <span>{{ stats.total }}</span>photos
+                        </div>
+                        <span class="right">
+                            <button id="viewAllPicturesBtn" class="button button-large" target="_blank">View all Pictures</button>
+                            <a id="downloadAllPicturesBtn" class="button button-large" href="https://www.flickr.com/photos/{{stats.userId}}/sets/{{stats.albumId}}/" target="_blank">Download from Flickr <i class="fa fa-cloud-download"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            {% for picture in allPictures %}
+             <div class="portpholio large-3 medium-4 small-6 columns">
+                <div class="portpholio-image lazy" data-original="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_m.jpg"
+                data-image="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg"
+                data-url="https://www.flickr.com/photos/{{stats.userId}}/{{picture.id}}/in/album-{{stats.albumId}}"></div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 </section>
 
 <div id="popupPortpholio">
@@ -110,7 +125,7 @@
     </div>
     <div class="footer">
         <div class="small-6 columns text-left">
-            <span class="hide-for-small-only">{{ title }} - <span class="photo-counter" data-total="{{photoStat.total}}"></span>/{{photoStat.total}}</span>&nbsp;
+            <span class="hide-for-small-only">{{ title }} - <span class="photo-counter" data-total="{{stats.total}}"></span>/{{stats.total}}</span>&nbsp;
         </div>
         <div class="small-6 columns text-right">
             <a class="btns flickr-url" target="_blank"><i class="fa fa-flickr"></i></a>

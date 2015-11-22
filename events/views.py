@@ -40,27 +40,29 @@ def events(request, event_slug=None):
     if (event_slug):
         try:
             event = Event.objects.get(slug = event_slug)
+            response =  {
+                'config':config,
+                'title':event.event_name,
+                'event':event,
+                'stats':{}}
+
             eventPhotos = event.eventpicture_set.first()
-            photoStat = eventPhotos.getAlbumStats()
-            randomPictures = random.sample(eventPhotos.fetchPhotos(), 3)
-            allPictures = eventPhotos.fetchPhotos()
+            if eventPhotos:
+                response['stats'] = eventPhotos.getAlbumStats()
+                response['bannerPictures'] = random.sample(eventPhotos.fetchPhotos(), 3)
+                response['allPictures'] = eventPhotos.fetchPhotos()
+
             projects = event.project_set.all()
-            groupedProjects = {k: list(v) for k, v in
-                iTool.groupby(projects, lambda x: x.project_type)}
-            stats = {
-                'projects':len(projects)
-            }
-            return render(request, 'event_pictures.html',
-                {'config':config,
-                 'title':event.event_name,
-                 'event':event,
-                 'bannerPictures':randomPictures,
-                 'winners':groupedProjects['2'],
-                 'projects':groupedProjects['1'],
-                 'stats':stats,
-                 'photoStat':photoStat,
-                 'allPictures':allPictures
-                 })
+            if projects:
+                groupedProjects = {k: list(v) for k, v in
+                    iTool.groupby(projects, lambda x: x.project_type)}
+                response['stats']['projects'] = len(projects)
+                response['winners']=groupedProjects['2']
+                response['projects']=groupedProjects['1']
+            else:
+                response['stats']['projects'] = 0
+
+            return render(request, 'event_pictures.html', response)
         except ObjectDoesNotExist:
             return redirect('events')
 
