@@ -41,7 +41,7 @@ def events(request, event_slug=None):
         try:
             event = Event.objects.get(slug = event_slug)
             eventPhotos = event.eventpicture_set.first()
-            totalPictures = eventPhotos.fetchAlbum()['photoset']['total']
+            photoStat = eventPhotos.getAlbumStats()
             randomPictures = random.sample(eventPhotos.fetchPhotos(), 3)
             allPictures = eventPhotos.fetchPhotos()
             projects = event.project_set.all()
@@ -58,7 +58,7 @@ def events(request, event_slug=None):
                  'winners':groupedProjects['2'],
                  'projects':groupedProjects['1'],
                  'stats':stats,
-                 'totalPictures':totalPictures,
+                 'photoStat':photoStat,
                  'allPictures':allPictures
                  })
         except ObjectDoesNotExist:

@@ -82,19 +82,43 @@
 
         <div class="columns small-12 picture-banner">
             <div class="top-header" style="background-image:url('http://farm{{allPictures.0.farm}}.staticflickr.com/{{allPictures.0.server}}/{{allPictures.0.id}}_{{allPictures.0.secret}}_z.jpg');">
-                <div class="statistics white text-center">
-                    <span>{{ totalPictures }}</span>photos
+                <div class="bannerContent">
+                    <div class="statistics left text-center">
+                        <span>{{ photoStat.total }}</span>photos
+                    </div>
+                    <span class="right">
+                        <button id="viewAllPicturesBtn" class="button button-large" target="_blank">View all Pictures</button>
+                        <a id="downloadAllPicturesBtn" class="button button-large" href="https://www.flickr.com/photos/{{photoStat.userId}}/sets/{{photoStat.albumId}}/" target="_blank">Download from Flickr <i class="fa fa-cloud-download"></i></a>
+                    </span>
                 </div>
-                <button id="downloadAllPicturesBtn" class="button button-large">Download Pictures on Flickr <i class="fa fa-cloud-download"></i></button>
             </div>
         </div>
 
         {% for picture in allPictures %}
          <div class="portpholio large-3 medium-4 small-6 columns">
-            <div class="lazy" data-original="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_m.jpg"></div>
+            <div class="portpholio-image lazy" data-original="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_m.jpg"
+            data-image="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg"
+            data-url="https://www.flickr.com/photos/{{photoStat.userId}}/{{picture.id}}/in/album-{{photoStat.albumId}}"></div>
         </div>
         {% endfor %}
     </div>
 </section>
+
+<div id="popupPortpholio">
+    <div class="centered">
+        <img>
+    </div>
+    <div class="footer">
+        <div class="small-6 columns text-left">
+            <span class="hide-for-small-only">{{ title }} - <span class="photo-counter" data-total="{{photoStat.total}}"></span>/{{photoStat.total}}</span>&nbsp;
+        </div>
+        <div class="small-6 columns text-right">
+            <a class="btns flickr-url" target="_blank"><i class="fa fa-flickr"></i></a>
+            <a role="botton" class="photoleft btns"><i class="fa fa-caret-left"></i></a>
+            <a role="botton" class="photoright btns"><i class="fa fa-caret-right"></i></a>
+            <a role="botton" class="photoclose btns"><i class="fa fa-times"></i></a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

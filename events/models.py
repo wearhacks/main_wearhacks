@@ -117,7 +117,6 @@ class EventPicture(models.Model):
     event = models.ForeignKey(Event)
     album = None
     photos = None
-    user = None
 
     def __unicode__(self):
         return u"%s : %s" % (self.source_albumname, self.event)
@@ -143,5 +142,16 @@ class EventPicture(models.Model):
                 self.photos = self.album['photoset']['photo']
             # handle other cases
         return self.photos
+
+    def getAlbumStats(self):
+        if not self.album:
+            self.fetchAlbum()
+        if self.source_type == '1':
+            return {
+               'total': self.album['photoset']['total'],
+               'userId': self.source_username,
+               'albumId': self.source_albumname
+            }
+        return None
 
 
