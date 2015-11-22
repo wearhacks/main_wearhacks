@@ -11,6 +11,7 @@ class Command(BaseCommand):
 
     eventObject = None
     eventName = None
+    devPostDefaultImage = u'thumbnail-placeholder'
 
     def add_arguments(self, parser):
         parser.add_argument('event', type=str)
@@ -26,8 +27,8 @@ class Command(BaseCommand):
             url = "%s?page=%d" % (options['url'],page)
             soup = BS(urllib2.urlopen(url).read(), 'html.parser')
 
-            newProjects = self.scrapeIt(soup)
-            if not newProjects:
+            newProjects, scrapped = self.scrapeIt(soup)
+            if not scrapped:
                 self.stdout.write('Added %d new projects.' % counter)
                 self.stdout.write('WAHHOOO DONE!')
                 sys.exit()
@@ -42,26 +43,29 @@ class Command(BaseCommand):
     def scrapeIt(self, soup):
         entries = soup.find_all('div', {'class':'gallery-item'})
         if len(entries) == 0:
-            return False
+            return (0,False)
 
         counter = 0
         for entry in entries:
             name = self.stripText(entry.h5.string)
+
             args = {
                 'name':name,
                 'desc':self.stripText(entry.p.string),
                 'url':entry.a['href'],
                 'image':entry.img['src'],
                 'type':'2' if entry.aside else '1' # 2 = winner
-
             }
+            if self.devPostDefaultImage in args['image']:
+                args['image'] = ''
+                # maybe we can have a placeholder too
             if self.saveProject(args):
                 self.stdout.write('Created new project %s.' % name)
                 counter += 1
             else:
                 self.stdout.write('Project %s already exists in DB.' % name)
 
-        return counter
+        return (counter, True)
 
     def saveProject(self, args):
         obj, created = self.eventObject.project_set.get_or_create(

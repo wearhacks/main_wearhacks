@@ -57,7 +57,7 @@ class Project(models.Model):
         ('1','participant'),
         ('2','winner')
     )
-    """(Place description)"""
+
     submitted_event = models.ForeignKey(Event, blank=True)
     project_name = models.CharField(max_length = 50)
     short_description = models.CharField(max_length = 150)

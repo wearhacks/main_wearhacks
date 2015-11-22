@@ -1791,7 +1791,7 @@ h2.sub-header2 {
 h6 {
     font-size: small;
     font-weight: bold;
-    text-transform: uppercase;  
+    text-transform: uppercase;
 }
 h6.call-action {
     font-weight: bold;
@@ -1817,6 +1817,7 @@ h6.call-action {
 @import 'partners.scss';
 @import 'home.scss';
 @import 'navigation.scss';
+@import 'individualevent.scss';
 @media #{$small-up} { }
 @media #{$small-only} { }
 

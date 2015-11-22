@@ -423,13 +423,14 @@ function initMap() {
 
          {% for event in events %}
         <div class="event large-6 columns">
-            <div class="event-photo" style="background-image:url('{{ event.photo.url }}')">
+            <a href="./{{ event.slug }}"><div class="event-photo" style="background-image:url('{{ event.photo.url }}')">
                 <div class="event-desc">
                 <h4>{{ event.event_name }}</h4>
                  <h5>{{ event.date }}</h5>
                  <p>Venue: {{ event.address }}</p>
 
-            </div>
+                </div>
+            </a>
              {% if event.link %} <a class="website" target="_blank" href="{{ event.link }}" >View Website <i class="fa fa-external-link-square"></i></a>
                  {% else %}  <a class="website" style="cursor:auto" >Website Coming Soon <i class="fa fa-exclamation-circle"></i></a>
                  {% endif %}

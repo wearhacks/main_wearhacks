@@ -3,11 +3,10 @@
 {% load staticfiles %}
 {% block title %} {{ title }} {% endblock %}
 {% block stylesheets %}
-    <link href="{% static 'scss/partners.scss' %}" media="screen, projection" rel="stylesheet" type="text/x-scss" />
+    <link href="{% static 'scss/individualevent.scss' %}" media="screen, projection" rel="stylesheet" type="text/x-scss" />
 {% endblock %}
 {% block script_section %}
-    <script src="{% static 'javascript/aboutus.js' %}"></script>
-    <script src="{% static 'javascript/partner.js' %}"></script>
+    <script src="{% static 'javascript/projects.js' %}"></script>
 
 {% endblock %}
 {% block content %}
@@ -17,12 +16,55 @@
     <div class="columns small-12 top-header" style="background-image: url({{ pictures.0 }});" alt="">
         <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
     </div>
-    {% for picture in pictures %}
 
-        {{ picture }}<br>
+     <div id="projects" class="row">
+        <div class="small-12 columns">
+            <h2 class="sub-header2" style="margin-bottom:20px">Notable Projects</h2>
+        </div>
+        <div class="columns large-12 margin-bottom">
+        {% for winner in winners %}
+            <div class="large-4 medium-6 small-12 columns">
+                <a href="{{winner.url}}" target="_blank">
+                    <div class="winner-image" style="background-image:url('{% if winner.image %}{{winner.image}}{% endif %}')">
+                    </div>
+                </a>
+                <div class="project-description"><strong>{{ winner.project_name }}</strong> | {{ winner.short_description }}</div>
+            </div>
+        {% endfor %}
+        </div>
 
-    {% endfor %}
+        <div class="columns large-12 text-center">
+            <div data-sr="enter bottom over 1s and move 65px">
+               <button id="viewAllProjectBtn" class="button button-large">View all Projects</button>
+            </div>
+        </div>
 
+        <div id="allProjectsDisplay" class="columns large-12">
+        {% for project in projects %}
+            <div class="large-3 medium-4 small-6 columns">
+                <a href="{{project.url}}" target="_blank">
+                    <div class="project-image" style="background-image:url('{% if project.image %}{{project.image}}{% endif %}')">
+                    </div>
+                </a>
+                <div class="project-description"><strong>{{ project.project_name }}</strong> | {{ project.short_description }}</div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+    <div id="pictures" class="row">
+        <div class="small-12 columns">
+            <div class="small-brk"></div>
+            <h2 class="sub-header2" style="margin-bottom:20px">Pictures</h2>
+        </div>
+
+        {% for picture in pictures %}
+
+            {{ picture }}<br>
+
+        {% endfor %}
+    </div>
 </section>
 
 {% endblock %}
