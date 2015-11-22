@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from geoposition.fields import GeopositionField
 from django.template.defaultfilters import slugify
-from django.core.cache import cache
-import flickr_api
+import flickrapi
 import os
 import re
 
@@ -116,20 +115,33 @@ class EventPicture(models.Model):
     source_albumname = models.CharField(max_length = 50)
     source_type = models.CharField(max_length=1, choices=SOURCETYPES)
     event = models.ForeignKey(Event)
+    album = None
+    photos = None
+    user = None
 
     def __unicode__(self):
         return u"%s : %s" % (self.source_albumname, self.event)
 
-    def fetchPhotoset(self):
-        if self.source_type == '1': # if from flickr
-            flickr_api.set_keys(# keys
-                api_key = 'e889aef0eee347e6be9e6aa30da11cd5',
-                api_secret = '633a019eba067bba')
-            flickr_api.enable_cache(cache)
-            user = flickr_api.Person.findByUserName(self.source_username)
-            photosets = user.getPhotosets()
-            for photoset in photosets:
-                if photoset.title == self.source_albumname:
-                    return photoset.getPhotos()
+    def fetchAlbum(self):
+        if not self.album:
+            if self.source_type == '1': # if from flickr
+                api_key = 'e889aef0eee347e6be9e6aa30da11cd5'
+                api_secret = '633a019eba067bba'
+                flickr = flickrapi.FlickrAPI(api_key, api_secret, format='parsed-json')
+                sets = flickr.photosets.getPhotos(
+                            user_id=self.source_username,
+                            photoset_id=self.source_albumname)
+                self.album = sets
+            # handle other cases
+        return self.album
 
-        return None
+    def fetchPhotos(self):
+        if not self.photos:
+            if not self.album:
+                self.fetchAlbum()
+            if self.source_type == '1': # if from flickr
+                self.photos = self.album['photoset']['photo']
+            # handle other cases
+        return self.photos
+
+

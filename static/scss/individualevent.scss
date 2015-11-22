@@ -62,7 +62,7 @@ a:hover{
 	display:none;
 }
 
-#statistics{
+.statistics{
 	span{
 		display: block;
 	    font-size: 100px;
@@ -72,6 +72,48 @@ a:hover{
 	}
 }
 
+.statistics.white{
+	color:white;
+	position:absolute;
+	left:10px;
+	bottom:10px;
+	span{
+		color:white;
+	}
+}
+
 #projectHeader{
 	margin:0;
+}
+
+#downloadAllPicturesBtn{
+	position:absolute;
+	right:0;
+	bottom:0;
+}
+
+#pictures{
+	.picture-banner{
+		padding:10px;
+	}
+
+	.top-header{
+		margin-bottom:0;
+		padding:0px;
+	}
+}
+
+.portpholio{
+	padding:0;
+	overflow:hidden;
+	max-height:500px;
+	height:200px;
+	padding:10px;
+
+	div.lazy{
+		min-width:100%;
+		min-height:100%;
+		background-size:cover;
+		background-position: 50% 15%;
+	}
 }

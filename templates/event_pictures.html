@@ -6,35 +6,34 @@
     <link href="{% static 'scss/individualevent.scss' %}" media="screen, projection" rel="stylesheet" type="text/x-scss" />
 {% endblock %}
 {% block script_section %}
+    <script src="{% static 'bower_components/jquery.lazyload/jquery.lazyload.js' %}"></script>
     <script src="{% static 'javascript/projects.js' %}"></script>
-
+    <script>
+    </script>
 {% endblock %}
 {% block content %}
 
 <section id="body">
 
     <ul id="projectHeader" data-orbit>
-        {% for picture in pictures %}
+        {% for picture in bannerPictures %}
         <li data-orbit-slide="headline-{{ forloop.counter }}">
-            <div class="columns small-12 top-header" style="background-image: url({{ picture }});" alt="">
+            <div class="columns small-12 top-header" alt=""  style="background-image: url('http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg');">
                 <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
             </div>
         </li>
         {% endfor %}
     </ul>
 
-     <div id="statistics" class="row text-center">
+    <div class="statistics row text-center">
         <div class="small-4 columns">
-            <span>
-                X</span>participants
+            <span>X</span>participants
         </div>
         <div class="small-4 columns">
-            <span>
-                {{ stats.projects }}</span>submitted projects
+            <span>{{ stats.projects }}</span>submitted projects
         </div>
         <div class="small-4 columns">
-            <span>
-                {{ winners | length }}</span>winning projects
+            <span>{{ winners | length }}</span>winning projects
         </div>
     </div>
 
@@ -47,7 +46,7 @@
         {% for winner in winners %}
             <div class="large-4 medium-6 small-12 columns">
                 <a href="{{winner.url}}" target="_blank">
-                    <div class="winner-image" style="background-image:url('{% if winner.image %}{{winner.image}}{% endif %}')">
+                    <div class="winner-image lazy" data-original="{% if winner.image %}{{winner.image}}{% endif %}">
                     </div>
                 </a>
                 <div class="project-description"><strong>{{ winner.project_name }}</strong> | {{ winner.short_description }}</div>
@@ -65,7 +64,7 @@
         {% for project in projects %}
             <div class="large-3 medium-4 small-6 columns">
                 <a href="{{project.url}}" target="_blank">
-                    <div class="project-image" style="background-image:url('{% if project.image %}{{project.image}}{% endif %}')">
+                    <div class="project-image lazy" data-original="{% if project.image %}{{project.image}}{% endif %}">
                     </div>
                 </a>
                 <div class="project-description"><strong>{{ project.project_name }}</strong> | {{ project.short_description }}</div>
@@ -81,17 +80,20 @@
             <h2 class="sub-header2" style="margin-bottom:20px">Pictures</h2>
         </div>
 
-        <div class="columns medium-6 small-12 text-center">
-            <div data-sr="enter bottom over 1s and move 65px">
-               <button id="viewAllPicturesBtn" class="button button-large">View all Pictures</button>
+        <div class="columns small-12 picture-banner">
+            <div class="top-header" style="background-image:url('http://farm{{allPictures.0.farm}}.staticflickr.com/{{allPictures.0.server}}/{{allPictures.0.id}}_{{allPictures.0.secret}}_z.jpg');">
+                <div class="statistics white text-center">
+                    <span>{{ totalPictures }}</span>photos
+                </div>
+                <button id="downloadAllPicturesBtn" class="button button-large">Download Pictures on Flickr <i class="fa fa-cloud-download"></i></button>
             </div>
         </div>
 
-        <div class="columns medium-6 small-12 text-center">
-            <div data-sr="enter bottom over 1s and move 65px">
-               <button id="downloadAllPicturesBtn" class="button button-large">Download all Pictures <i class="fa fa-cloud-download"></i></button>
-            </div>
+        {% for picture in allPictures %}
+         <div class="portpholio large-3 medium-4 small-6 columns">
+            <div class="lazy" data-original="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_m.jpg"></div>
         </div>
+        {% endfor %}
     </div>
 </section>
 

@@ -40,9 +40,10 @@ def events(request, event_slug=None):
     if (event_slug):
         try:
             event = Event.objects.get(slug = event_slug)
-            eventPicture = event.eventpicture_set.first()
-            randomPictures = [x.getPhotoFile('Medium 640')
-                for i,x in enumerate(random.sample(eventPicture.fetchPhotoset(), 3))]
+            eventPhotos = event.eventpicture_set.first()
+            totalPictures = eventPhotos.fetchAlbum()['photoset']['total']
+            randomPictures = random.sample(eventPhotos.fetchPhotos(), 3)
+            allPictures = eventPhotos.fetchPhotos()
             projects = event.project_set.all()
             groupedProjects = {k: list(v) for k, v in
                 iTool.groupby(projects, lambda x: x.project_type)}
@@ -53,10 +54,12 @@ def events(request, event_slug=None):
                 {'config':config,
                  'title':event.event_name,
                  'event':event,
-                 'pictures':randomPictures,
+                 'bannerPictures':randomPictures,
                  'winners':groupedProjects['2'],
                  'projects':groupedProjects['1'],
-                 'stats':stats
+                 'stats':stats,
+                 'totalPictures':totalPictures,
+                 'allPictures':allPictures
                  })
         except ObjectDoesNotExist:
             return redirect('events')

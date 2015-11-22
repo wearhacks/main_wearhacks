@@ -18,4 +18,7 @@ $(document).ready(function(){
             bullets: false
         }
     });
+    $("div.lazy").lazyload({
+    	 effect : "fadeIn"
+   	});
 });
