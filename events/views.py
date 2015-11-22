@@ -41,9 +41,8 @@ def events(request, event_slug=None):
         try:
             event = Event.objects.get(slug = event_slug)
             eventPicture = event.eventpicture_set.first()
-            randomPictures = [x.getPhotoFile('Medium')
-                    if i>0 else x.getPhotoFile('Medium 640')
-                for i,x in enumerate(random.sample(eventPicture.fetchPhotoset(), 4))]
+            randomPictures = [x.getPhotoFile('Medium 640')
+                for i,x in enumerate(random.sample(eventPicture.fetchPhotoset(), 3))]
             projects = event.project_set.all()
             groupedProjects = {k: list(v) for k, v in
                 iTool.groupby(projects, lambda x: x.project_type)}

@@ -13,19 +13,28 @@
 
 <section id="body">
 
-    <div class="columns small-12 top-header" style="background-image: url({{ pictures.0 }});" alt="">
-        <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
-    </div>
+    <ul id="projectHeader" data-orbit>
+        {% for picture in pictures %}
+        <li data-orbit-slide="headline-{{ forloop.counter }}">
+            <div class="columns small-12 top-header" style="background-image: url({{ picture }});" alt="">
+                <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 
      <div id="statistics" class="row text-center">
         <div class="small-4 columns">
-            <span>X</span>participants
+            <span>
+                X</span>participants
         </div>
         <div class="small-4 columns">
-            <span>{{ stats.projects }}</span>submitted projects
+            <span>
+                {{ stats.projects }}</span>submitted projects
         </div>
         <div class="small-4 columns">
-            <span>{{ winners | length }}</span>winning projects
+            <span>
+                {{ winners | length }}</span>winning projects
         </div>
     </div>
 
@@ -48,7 +57,7 @@
 
         <div class="columns large-12 text-center">
             <div data-sr="enter bottom over 1s and move 65px">
-               <button id="viewAllProjectBtn" class="button button-large">View all {{ stats.projects }} Projects</button>
+               <button id="viewAllProjectBtn" class="button button-large">View all Projects</button>
             </div>
         </div>
 
@@ -72,11 +81,17 @@
             <h2 class="sub-header2" style="margin-bottom:20px">Pictures</h2>
         </div>
 
-        {% for picture in pictures %}
+        <div class="columns medium-6 small-12 text-center">
+            <div data-sr="enter bottom over 1s and move 65px">
+               <button id="viewAllPicturesBtn" class="button button-large">View all Pictures</button>
+            </div>
+        </div>
 
-            {{ picture }}<br>
-
-        {% endfor %}
+        <div class="columns medium-6 small-12 text-center">
+            <div data-sr="enter bottom over 1s and move 65px">
+               <button id="downloadAllPicturesBtn" class="button button-large">Download all Pictures <i class="fa fa-cloud-download"></i></button>
+            </div>
+        </div>
     </div>
 </section>
 
