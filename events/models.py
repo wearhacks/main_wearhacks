@@ -52,11 +52,18 @@ class Event(models.Model):
         super(Event, self).save(*args, **kwargs)
 
 class Project(models.Model):
+    PROJECTTYPE = (
+        ('0','staff'),
+        ('1','participant'),
+        ('2','winner')
+    )
     """(Place description)"""
-    submitted_event = models.ForeignKey (Event)
+    submitted_event = models.ForeignKey(Event, blank=True)
     project_name = models.CharField(max_length = 50)
     short_description = models.CharField(max_length = 150)
-    blog_post = models.URLField(max_length=100, blank=True)
+    url = models.URLField(max_length=100, blank=True)
+    image = models.URLField(max_length=100, blank=True)
+    project_type = models.CharField(max_length=1, choices=PROJECTTYPE)
 
     def __unicode__(self):
         return u"%s from %s " % (self.project_name, self.submitted_event.short_name)
