@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/wearhacks/main_wearhacks.png?label=ready&title=Ready)](https://waffle.io/wearhacks/main_wearhacks)
 # Wearhacks HQ Website
 # Installation
 
