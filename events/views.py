@@ -45,12 +45,11 @@ def events(request, event_slug=None):
                 'title':event.event_name,
                 'event':event,
                 'stats':{}}
-
-            eventPhotos = event.eventpicture_set.first()
-            if eventPhotos:
-                response['stats'] = eventPhotos.getAlbumStats()
-                response['bannerPictures'] = random.sample(eventPhotos.fetchPhotos(), 3)
-                response['allPictures'] = eventPhotos.fetchPhotos()
+            past_event = event.pastevent
+            if past_event:
+                response['stats'] = past_event.get_stats()
+                response['bannerPictures'] = random.sample(past_event.fetch_photos(), 3)
+                response['allPictures'] = past_event.fetch_photos()
 
             projects = event.project_set.all()
             if projects:

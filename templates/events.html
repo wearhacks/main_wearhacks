@@ -423,7 +423,7 @@ function initMap() {
 
          {% for event in events %}
         <div class="event large-6 columns">
-            <a href="./{{ event.slug }}"><div class="event-photo" style="background-image:url('{{ event.photo.url }}')">
+            <a href="./{{ event.slug }}"><div class="event-photo" style="{% if event.photo %}background-image:url('{{ event.photo.url }}') {% endif %}">
                 <div class="event-desc">
                 <h4>{{ event.event_name }}</h4>
                  <h5>{{ event.date }}</h5>

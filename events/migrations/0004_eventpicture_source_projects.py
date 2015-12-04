@@ -7,14 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0002_remove_event_slug'),
+        ('events', '0003_auto_20151129_2306'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='event',
-            name='slug',
-            field=models.SlugField(default='---'),
-            preserve_default=False,
+            model_name='eventpicture',
+            name='source_projects',
+            field=models.URLField(max_length=100, blank=True),
         ),
     ]

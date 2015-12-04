@@ -19,9 +19,9 @@ function popupPortpholio(i, callback){
 
 
 $(document).ready(function(){
-	$('#viewAllProjectBtn').click(function(){
-		$(this).slideUp('fast');
-		$('#allProjectsDisplay').slideDown('fast');
+	$('#view-all-projects-btn').click(function(){
+		$('#all-projects-display').slideToggle('fast');
+    $(this).find('i').toggle();
 	});
 
 	$(document).foundation({
@@ -39,7 +39,8 @@ $(document).ready(function(){
         }
     });
     $("div.lazy").lazyload({
-    	 effect : "fadeIn"
+       effect : "fadeIn",
+       threshold : 200
    	});
 
    	totalPictures = parseInt($('#popupPortpholio .photo-counter').data('total'));
@@ -79,8 +80,8 @@ $(document).ready(function(){
 		$('#popupPortpholio').finish().fadeOut('fast');
 	});
 
-	$('#viewAllPicturesBtn').click(function(){
-		$('.portpholio').slideDown();
-		$(this).fadeOut();
+	$('#view-all-pictures-btn').click(function(){
+		$('#images-container').slideToggle();
+    $(this).find('i').toggle();
 	});
 });

@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('photo', models.ImageField(null=True, upload_to=events.models.get_upload_path_event, blank=True)),
                 ('location', geoposition.fields.GeopositionField(max_length=42)),
                 ('link', models.URLField(max_length=100, blank=True)),
-                ('slug', models.SlugField()),
+                ('slug', models.SlugField(blank=True)),
             ],
         ),
         migrations.CreateModel(
@@ -55,8 +55,10 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('project_name', models.CharField(max_length=50)),
                 ('short_description', models.CharField(max_length=150)),
-                ('blog_post', models.URLField(max_length=100, blank=True)),
-                ('submitted_event', models.ForeignKey(to='events.Event')),
+                ('url', models.URLField(max_length=100, blank=True)),
+                ('image', models.URLField(max_length=100, blank=True)),
+                ('project_type', models.CharField(max_length=1, choices=[(b'0', b'staff'), (b'1', b'participant'), (b'2', b'winner')])),
+                ('submitted_event', models.ForeignKey(to='events.Event', blank=True)),
             ],
         ),
         migrations.CreateModel(

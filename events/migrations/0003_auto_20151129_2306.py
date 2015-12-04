@@ -7,12 +7,12 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0001_initial'),
+        ('events', '0002_eventpicture2'),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='event',
-            name='slug',
+        migrations.AlterModelOptions(
+            name='teammember',
+            options={},
         ),
     ]
