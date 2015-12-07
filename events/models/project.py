@@ -12,7 +12,7 @@ class Project(models.Model):
     project_name = models.CharField(max_length = 50)
     short_description = models.CharField(max_length = 300)
     url = models.URLField(max_length=500, blank=True)
-    image = models.URLField(max_length=200, blank=True)
+    image = models.URLField(max_length=500, blank=True)
     project_type = models.CharField(max_length=1, choices=PROJECTTYPE)
 
     def __unicode__(self):
