@@ -27,10 +27,8 @@ def deep_update(from_dict, to_dict):
 env = os.environ.get('APP_ENV', 'dev')
 penv = os.environ.get('PRIVATE_APP_ENV', 'private')
 
-if env == 'dev':
-    modules = ('common', env, penv)
-else:
-    modules = ('common', env)
+modules = ('common', env, penv)
+
 
 current = __name__
 for module_name in modules:
