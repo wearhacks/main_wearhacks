@@ -22,9 +22,5 @@ class Migration(migrations.Migration):
                 ('project_type', models.CharField(max_length=1, choices=[(b'0', b'staff'), (b'1', b'participant'), (b'2', b'winner')])),
                 ('submitted_event', models.ForeignKey(to='events.Event', blank=True)),
             ],
-        ),
-        migrations.DeleteModel(
-            name='Project2'
         )
-
     ]
