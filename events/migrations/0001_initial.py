@@ -29,16 +29,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='EventPicture',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('source_username', models.CharField(max_length=50)),
-                ('source_albumname', models.CharField(max_length=50)),
-                ('source_type', models.CharField(max_length=1, choices=[(b'0', b'Other'), (b'1', b'flickr')])),
-                ('event', models.ForeignKey(to='events.Event')),
-            ],
-        ),
-        migrations.CreateModel(
             name='Partner',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),

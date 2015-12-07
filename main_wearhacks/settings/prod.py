@@ -16,10 +16,11 @@ DEBUG = os.environ.get('DEBUG', False)
 TEMPLATE_DEBUG = DEBUG
 
 #Override these using ENV Vars
-
+FLICKR_API_KEY = os.environ.get('FLICKR_API_KEY', '')
+FLICKR_API_SECRET = os.environ.get('FLICKR_API_SECRET', '')
 MAILGUN_ACCESS_KEY = os.environ.get('MAILGUN_ACCESS_KEY', '')
 MAILGUN_SERVER_NAME = os.environ.get('MAILGUN_SERVER_NAME', '')
-SECRET_KEY = os.environ.get('SECRET_KEY', 'supersecret') 
+SECRET_KEY = os.environ.get('SECRET_KEY', 'supersecret')
 MAPS_API_KEY = os.environ.get('MAPS_API_KEY', '')
 MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY', '')
 MAILCHIMP_LIST_ID = os.environ.get('MAILCHIMP_LIST_ID', '')

@@ -2,7 +2,7 @@ from django.db import models
 from event import Event
 from bs4 import BeautifulSoup as BS
 import urllib2
-
+from django.conf import settings
 import flickrapi
 import re
 
@@ -35,9 +35,7 @@ class PastEvent(models.Model):
     def fetch_album(self, username, album):
         if not self.album:
             if self.source_type == '1': # if from flickr
-                api_key = 'e889aef0eee347e6be9e6aa30da11cd5'
-                api_secret = '633a019eba067bba'
-                flickr = flickrapi.FlickrAPI(api_key, api_secret, format='parsed-json')
+                flickr = flickrapi.FlickrAPI(settings.FLICKR_API_KEY, settings.FLICKR_API_SECRET, format='parsed-json')
                 
                 sets = flickr.photosets.getPhotos(
                         user_id=username,
