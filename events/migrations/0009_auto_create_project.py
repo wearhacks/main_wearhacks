@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Project2',
+            name='Project',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('project_name', models.CharField(max_length=50)),
@@ -23,11 +23,8 @@ class Migration(migrations.Migration):
                 ('submitted_event', models.ForeignKey(to='events.Event', blank=True)),
             ],
         ),
-        migrations.RemoveField(
-            model_name='project',
-            name='submitted_event',
-        ),
         migrations.DeleteModel(
-            name='Project',
-        ),
+            name='Project2'
+        )
+
     ]
