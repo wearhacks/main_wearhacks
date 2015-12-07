@@ -1,0 +1,148 @@
+
+{% extends "_base.html" %}
+{% load staticfiles %}
+{% block title %} {{ title }} {% endblock %}
+{% block stylesheets %}
+    <link href="{% static 'scss/individualevent.scss' %}" media="screen, projection" rel="stylesheet" type="text/x-scss" />
+{% endblock %}
+{% block script_section %}
+    <script src="{% static 'bower_components/jquery.lazyload/jquery.lazyload.js' %}"></script>
+    <script src="{% static 'javascript/projects.js' %}"></script>
+    <script>
+    </script>
+{% endblock %}
+{% block content %}
+
+<section id="body">
+
+    {% if bannerPictures|length > 0%}
+        <ul id="projectHeader" data-orbit>
+            {% for picture in bannerPictures %}
+            <li data-orbit-slide="headline-{{ forloop.counter }}">
+                <div class="columns small-12 top-header" alt=""  style="background-image: url('http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg');">
+                    <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="columns small-12 top-header" style="background-image: url({% static 'images/event.jpg' %}); background-position-y: 70%" alt="">
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
+        </div>
+    {% endif %}
+
+    {% if stats.projects %}
+        <div class="statistics row text-center">
+            <div class="small-4 columns">
+                <span>{{stats.participants}}</span>Participants
+            </div>
+            <div class="small-4 columns">
+                <span>{{ stats.projects }}</span>Submitted Projects
+            </div>
+            <div class="small-4 columns">
+                <span>{{ winners|length }}</span>Winning Projects
+            </div>
+        </div>
+
+         <div id="projects" class="row">
+            <div class="small-12 columns">
+                <div class="small-brk"></div>
+                <h2 class="sub-header2" style="margin-bottom:20px">Projects</h2>
+            </div>
+            <div class="columns large-12 margin-bottom">
+            {% for winner in winners %}
+                <div class="large-4 medium-6 small-12 columns">
+                    <div class="project">
+                        <a href="{{winner.url}}" target="_blank">
+                            <div class="winner-image lazy" data-original="{% if winner.image %}{{winner.image}}{% endif %}">
+                            </div>
+                        </a>
+                        <div class="project-description"><h6><span class=" secondary label">Winner</span> <br/>{{ winner.project_name }} </h6>
+                        <p>{{ winner.short_description }}</p></div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
+            <div class="columns large-12 text-center">
+                <div data-sr="enter bottom over 1s and move 65px">
+                   <button id="view-all-projects-btn" class="button small">View all Projects 
+                    <i class="fa fa-caret-down" style="display:none"></i><i class="fa fa-caret-left"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="all-projects-display" class="columns large-12">
+        {% for project in projects %}
+            <div class="large-3 medium-4 small-6 columns">
+                <div class="project">
+                    <a href="{{project.url}}" target="_blank">
+                        <div class="project-image lazy" data-original="{% if project.image %}{{project.image}}{% endif %}">
+                           <span> {% if not project.image %}{{ project.project_name }}{% endif %}</span>
+                        </div>
+                    </a>
+                    <div class="project-description"><h6>{{ project.project_name }}</h6> <p>{{ project.short_description }}</p></div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% elif allPictures|length = 0%}
+        <center>
+            <h1>Oups!</h1>
+            <span>Nothing to display.</span>
+            <h4>Click <a href='../'>here</a> to go back.</h4>
+        </center>
+    {% endif %}
+
+    {% if allPictures|length > 0%}
+        <div id="pictures" class="row">
+            <div class="small-12 columns">
+                <div class="small-brk"></div>
+                <h2 class="sub-header2" style="margin-bottom:20px">Pictures</h2>
+            </div>
+        
+
+            <div class="columns small-12 picture-banner">
+                <div class="top-header" style="background-image:url('http://farm{{allPictures.0.farm}}.staticflickr.com/{{allPictures.0.server}}/{{allPictures.0.id}}_{{allPictures.0.secret}}_z.jpg');">
+                    <div class="bannerContent">
+                        <div class="statistics left text-center">
+                            <span>{{ stats.total }}</span>photos
+                        </div>
+                        <span class="right">
+                            <button id="view-all-pictures-btn" class="button button-large" target="_blank">View all Pictures <i class="fa fa-caret-down" style="display:none"></i><i class="fa fa-caret-left"></i></button>
+                            <a id="downloadAllPicturesBtn" class="button button-large" href="https://www.flickr.com/photos/{{stats.userId}}/sets/{{stats.albumId}}/" target="_blank">Download from Flickr <i class="fa fa-cloud-download"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="images-container" class="columns large-12">
+            {% for picture in allPictures %}
+             <div class="portpholio large-3 medium-4 small-6 columns">
+                <div class="portpholio-image lazy" data-original="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_m.jpg"
+                data-image="http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg"
+                data-url="https://www.flickr.com/photos/{{stats.userId}}/{{picture.id}}/in/album-{{stats.albumId}}"></div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>
+
+<div id="popupPortpholio">
+    <div class="centered">
+        <img>
+    </div>
+    <div class="footer">
+        <div class="small-5 columns text-left hide-for-small-only">
+            {{ title }} - <span class="photo-counter" data-total="{{stats.total}}"></span>/{{stats.total}}
+        </div>
+        <div class="medium-7 small-12 columns text-right">
+            <a class="btns flickr-url" target="_blank"><i class="fa fa-flickr"></i></a>
+            <a role="botton" class="photoleft btns"><i class="fa fa-caret-left"></i></a>
+            <a role="botton" class="photoright btns"><i class="fa fa-caret-right"></i></a>
+            <a role="botton" class="photoclose btns"><i class="fa fa-times"></i></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
