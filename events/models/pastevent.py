@@ -67,10 +67,13 @@ class PastEvent(models.Model):
             return {
                'total': self.album['photoset']['total'],
                'userId': source_username,
-               'albumId': source_albumname,
-               'participants': self.participants
+               'albumId': source_albumname,             
             }
-        return None
+        else : 
+            return {
+                'total': '0',
+                'participants': self.participants
+            }
 
 
     def add_arguments(self, parser):
