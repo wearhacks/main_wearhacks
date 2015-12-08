@@ -54,7 +54,7 @@
                 <div class="large-4 medium-6 small-12 columns">
                     <div class="project">
                         <a href="{{winner.url}}" target="_blank">
-                            <div class="winner-image lazy" data-original="{% if winner.image %}{{winner.image}}{% endif %}">
+                            <div class="winner-image lazy" data-original="{% if winner.image %}{{winner.image.url}}{% endif %}">
                             </div>
                         </a>
                         <div class="project-description"><h6><span class=" secondary label">Winner</span> <br/>{{ winner.project_name }} </h6>
