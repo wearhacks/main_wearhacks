@@ -26,8 +26,10 @@ def deep_update(from_dict, to_dict):
 # this should be one of prod or dev. Default to dev for safety.
 env = os.environ.get('APP_ENV', 'dev')
 penv = os.environ.get('PRIVATE_APP_ENV', 'private')
-
-modules = ('common', env, penv)
+if env == 'dev':
+    modules = ('common', env, penv)
+else:
+    modules = ('common', env)
 
 
 current = __name__
