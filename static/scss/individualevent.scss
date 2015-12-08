@@ -75,6 +75,9 @@ a:hover{
 	    font-weight: 400;
 	    line-height: 80px;
 	    color:#1e699c;
+	     @media #{$medium-up} {
+			    font-size:50px;
+			 }
 	}
 }
 
