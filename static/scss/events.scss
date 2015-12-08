@@ -157,5 +157,8 @@ ul.past-event {
   li {
           margin: 0px 15px;
           margin-bottom:10px;
+          -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
