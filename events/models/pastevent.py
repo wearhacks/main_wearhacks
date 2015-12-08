@@ -142,7 +142,6 @@ class PastEvent(models.Model):
             img_temp = NamedTemporaryFile(delete=True)
 
             if args['image']:
-                import pdb; pdb.set_trace()
                 img_temp.write(urllib2.urlopen(args['image']).read())
                 img_temp.flush()
                 img_filepath = os.path.join('projects', urlparse(args['image']).path.split('/')[-1])

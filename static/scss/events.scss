@@ -131,3 +131,31 @@
     font-size: 14px;
     margin-left: 7px;
 }
+a.past-event-link {
+    background: #333;
+    
+    padding: 7px 15px;
+    display:block;
+    h6 {
+    color: white;
+    }
+    &:hover {
+      background: #222;
+      color: white;
+    }
+}
+
+ul.past-event {
+  columns: 1;
+  -webkit-columns: 1;
+  -moz-columns: 1;
+  @media #{$medium-up} {
+    columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 1;
+  }
+  li {
+          margin: 0px 15px;
+          margin-bottom:10px;
+  }
+}
