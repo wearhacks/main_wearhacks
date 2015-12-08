@@ -123,7 +123,7 @@ class PastEvent(models.Model):
         return (counter, True)
 
     def saveProject(self, args):
-        print '%s' % args
+        print u'%s' % args
         obj, created = self.event.project_set.get_or_create(
             project_name = args['name'],
             short_description = args['desc'],
