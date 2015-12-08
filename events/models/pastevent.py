@@ -144,6 +144,7 @@ class PastEvent(models.Model):
             if args['image']:
                 img_temp.write(urllib2.urlopen(args['image']).read())
                 img_temp.flush()
+                img_temp.seek(0)
                 img_filepath = os.path.join('projects', urlparse(args['image']).path.split('/')[-1])
                 obj.image.save(img_filepath, File(img_temp))
                 obj.save()
