@@ -1,11 +1,15 @@
 from django.db import models
 from event import Event
+from project import Project
 from bs4 import BeautifulSoup as BS
 import urllib2
 from django.conf import settings
 import flickrapi
+import os
 import re
-
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
+from urlparse import urlparse
 
 class PastEvent(models.Model):
     SOURCETYPES = (
@@ -124,14 +128,29 @@ class PastEvent(models.Model):
 
     def saveProject(self, args):
         print u'%s' % args
-        obj, created = self.event.project_set.get_or_create(
-            project_name = args['name'],
-            short_description = args['desc'],
-            url = args['url'],
-            image = args['image'],
-            project_type = args['type']
-        )
-        return created
+        try:
+            obj = Project.objects.get(project_name = args['name'],url = args['url'])
+            return None
+        except Project.DoesNotExist:
+            obj = Project(
+                submitted_event = self.event,
+                project_name = args['name'],
+                short_description = args['desc'],
+                url = args['url'],
+                project_type = args['type']
+            )
+            img_temp = NamedTemporaryFile(delete=True)
+
+            if args['image']:
+                import pdb; pdb.set_trace()
+                img_temp.write(urllib2.urlopen(args['image']).read())
+                img_temp.flush()
+                img_filepath = os.path.join('projects', urlparse(args['image']).path.split('/')[-1])
+                obj.image.save(img_filepath, File(img_temp))
+                obj.save()
+            else :
+                obj.save()
+            return obj
 
 
 
