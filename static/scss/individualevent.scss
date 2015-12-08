@@ -71,12 +71,12 @@ a:hover{
 .statistics{
 	span{
 		display: block;
-	    font-size: 100px;
+	    font-size: 50px;
 	    font-weight: 400;
 	    line-height: 80px;
 	    color:#1e699c;
 	     @media #{$medium-up} {
-			    font-size:50px;
+			    font-size:100px;
 			 }
 	}
 }
