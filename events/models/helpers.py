@@ -19,5 +19,5 @@ def get_upload_path_partner(instance, filename):
 def get_upload_path_project(instance, filename):
     folder = 'projects'
     new_filename = re.sub('[^a-zA-Z0-9]', '', instance.project_name) + '_' + filename
-    return os.path.join(folder, filename)
+    return os.path.join(folder, new_filename)
 

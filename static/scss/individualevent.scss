@@ -44,12 +44,17 @@ a:hover{
 
 .project-description{
 	height:5em;
-	overflow:hidden;
 	margin-bottom: 20px;
 	line-height: 1.6;
 	padding: 0px 10px;
 	font-size:0.9em;
 	        color: #928F8F;
+	p {
+		font-size: 0.9em;
+	}
+	.label.secondary {
+		margin-bottom: 4px;
+	}
 }
 
 .margin-bottom{
