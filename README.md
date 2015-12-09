@@ -38,7 +38,7 @@ Now, open <http://127.0.0.1:8000/>.
 In order to deploy on heroku, make sure all the environment variables are set properly. Before pushing to heroku, do the following commands to upload all the dependencies to amazon aws. Make sure to have your aws settings on private.py
   ```bash
 
-  APP_ENV='prod' python manage.py compress
-  APP_ENV='prod' python manage.py collectstatic
+  APP_ENV='deploy' python manage.py compress
+  APP_ENV='deploy' python manage.py collectstatic
   git push heroku master
   ```

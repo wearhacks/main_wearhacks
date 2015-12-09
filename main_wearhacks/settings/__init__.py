@@ -28,6 +28,8 @@ env = os.environ.get('APP_ENV', 'dev')
 penv = os.environ.get('PRIVATE_APP_ENV', 'private')
 if env == 'dev':
     modules = ('common', env, penv)
+elif env == 'deploy':
+    modules = ('common', 'prod', penv)
 else:
     modules = ('common', env)
 

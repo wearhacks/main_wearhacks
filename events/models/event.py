@@ -22,7 +22,8 @@ class Event(models.Model):
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(blank=False,
+         help_text="Required field for event page: http://wearhacks.com/events/<slug>")
     def __unicode__(self):
         return u"%s" % self.short_name
 

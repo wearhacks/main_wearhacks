@@ -342,7 +342,7 @@ ul.inline-list.social {
 }
 #footer .social a {
     color: white;
-    /* width: 20px; */
+    margin-right:6px;
     height: 2em;
     font-size: 2em;
       @media(min-width: $break-small) {
@@ -357,4 +357,15 @@ ul.inline-list.social {
           transition: color 0.3s, background 0.3s;
         }
       }
+}
+.logo-top {
+width: 38px;
+    height: 1.9em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-right: 9px;
+    vertical-align: top;
+    margin-top: -8px;
+    opacity: 0.4;
 }

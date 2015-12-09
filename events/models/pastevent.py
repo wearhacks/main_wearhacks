@@ -67,7 +67,8 @@ class PastEvent(models.Model):
             return {
                'total': self.album['photoset']['total'],
                'userId': source_username,
-               'albumId': source_albumname,             
+               'albumId': source_albumname,
+               'participants': self.participants
             }
         else : 
             return {

@@ -7,7 +7,7 @@ var initializeSwiper = function() {
         paginationClickable: true,
         spaceBetween: 30,
         centeredSlides: true,
-        //autoplay: 5000,
+        autoplay: 3000,
         autoplayDisableOnInteraction: false,
         onSlideChangeStart: function(swiper) {
           lastindex = swiper.activeIndex;
