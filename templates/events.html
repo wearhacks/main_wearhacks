@@ -423,7 +423,7 @@ function initMap() {
     <div class="large-12 columns">
 
          {% for event in events %}
-        <div class="event large-6 columns">
+        <div class="event {% if events.length > 1 %}large-6 {% endif %} columns">
            <div class="event-photo" style="{% if event.photo %}background-image:url('{{ event.photo.url }}') {% endif %}">
                 <div class="event-desc">
                 <h4>{{ event.event_name }}</h4>
@@ -449,19 +449,19 @@ function initMap() {
     </div>
     </div>
 <div class="row">
-    <div class="large-12 columns">
-<ul class="past-event" >
+    <div class="large-12 columns" style="position:relative">
+
          {% for event in past_events %}
-         <li>
+         <div class="past-event large-6 columns small-12" >
             <a class="past-event-link" href="/events/{{ event.slug }}"  data-sr="enter bottom over 1s and move 100px">
                 <h6>
-               {{ event.slug }} /{{ event.event_name }} / {{ event.date }} / Venue: {{ event.address }}
+                {{ event.event_name }} <span> {{ event.date }}</span>
                 </h6>
             </a>
-            </li>
+          </div>
 
         {% endfor %}
-        </ul>
+        
     </div>
 </div>
     <div class="small-brk"></div>
