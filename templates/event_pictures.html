@@ -15,18 +15,7 @@
 
 <section id="body">
 
-    {% if bannerPictures|length > 0%}
-        <ul id="projectHeader" data-orbit>
-            {% for picture in bannerPictures %}
-            <li data-orbit-slide="headline-{{ forloop.counter }}">
-                <div class="columns small-12 top-header" alt=""  style="background-image: url('http://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_c.jpg');">
-                    <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <div class="columns small-12 top-header" style="background-image: url({% static 'images/event.jpg' %}); background-position-y: 70%" alt="">
+    <div class="columns small-12 top-header" style="background-image: url('{{ event.photo.url }}'); background-position-y: 70%" alt="">
             <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/events">Event</a> &gt; </span> {{ title }}</h2></div>
         </div>
     {% endif %}

@@ -48,7 +48,6 @@ def events(request, event_slug=None):
             past_event = event.pastevent
             if past_event:
                 response['stats'] = past_event.get_stats()
-                response['bannerPictures'] = random.sample(past_event.fetch_photos(), 3)
                 response['allPictures'] = past_event.fetch_photos()
 
             projects = event.project_set.all()
