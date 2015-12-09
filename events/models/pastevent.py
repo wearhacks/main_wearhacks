@@ -58,19 +58,18 @@ class PastEvent(models.Model):
         return self.photos
 
     def get_stats(self):
-        source_username = re.search('(?<=photos/)([^/]*)', self.source_albumlink).group(0)
-        source_albumname = re.search('(?<=sets/)([^/]*)', self.source_albumlink).group(0)
-
-        if not self.album:
+        if self.source_albumlink and self.source_type == '1':
             self.fetch_album(source_username,source_albumname)
-        if self.source_type == '1':
+            source_username = re.search('(?<=photos/)([^/]*)', self.source_albumlink).group(0)
+            source_albumname = re.search('(?<=sets/)([^/]*)', self.source_albumlink).group(0)
+
             return {
                'total': self.album['photoset']['total'],
                'userId': source_username,
                'albumId': source_albumname,
                'participants': self.participants
             }
-        else : 
+        else :
             return {
                 'total': '0',
                 'participants': self.participants
