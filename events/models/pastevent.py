@@ -50,9 +50,12 @@ class PastEvent(models.Model):
 
     def fetch_photos(self):
         if not self.photos:
-            if not self.album:
-                self.fetch_album()
-            if self.source_type == '1': # if from flickr
+            if self.source_albumlink and self.source_type == '1':
+                source_username = re.search('(?<=photos/)([^/]*)', self.source_albumlink).group(0)
+                source_albumname = re.search('(?<=sets/)([^/]*)', self.source_albumlink).group(0)
+
+                self.fetch_album(source_username,source_albumname)
+                #self.fetch_album()
                 self.photos = self.album['photoset']['photo']
             # handle other cases
         return self.photos

@@ -453,9 +453,9 @@ function initMap() {
 <ul class="past-event" >
          {% for event in past_events %}
          <li>
-            <a class="past-event-link" href="./{{ event.slug }}"  data-sr="enter bottom over 1s and move 100px">
+            <a class="past-event-link" href="/events/{{ event.slug }}"  data-sr="enter bottom over 1s and move 100px">
                 <h6>
-                {{ event.event_name }} / {{ event.date }} / Venue: {{ event.address }}
+               {{ event.slug }} /{{ event.event_name }} / {{ event.date }} / Venue: {{ event.address }}
                 </h6>
             </a>
             </li>
