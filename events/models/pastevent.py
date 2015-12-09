@@ -125,10 +125,10 @@ class PastEvent(models.Model):
                 args['image'] = ''
                 # maybe we can have a placeholder too
             if self.saveProject(args):
-                print('Created new project %s.' % name)
+                print(u'Created new project %s.' % name)
                 counter += 1
             else:
-                print('Project %s already exists in DB.' % name)
+                print(u'Project %s already exists in DB.' % name)
 
 
         return (counter, True)
