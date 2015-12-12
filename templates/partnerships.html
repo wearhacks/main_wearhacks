@@ -21,10 +21,51 @@
 
     <div class="row ">
         <div class="team-header small-12 columns">
-            <h2 class="sub-header2" style="margin-bottom:20px">Our proud partners</h2>
-            <p>Wearhacks education initiatives and its hackathons aim to give people a space to learn and innovate . Our partners share this vision and allow us to continue <a href="/aboutus">our mission</a> whether it be by their expertise in IOT, providing cutting-edge hardware or simply the funds required to create education hubs. 
+         <blockquote>
+                “Be the change you wish to see in the world.” 
+                <span>- Gandhi.  Value mutually shared amongst our partners and our community. </span> 
+            </blockquote>
+        <h2 class="subheader2"> Our partners</h2>
+
+            <p>Our partners gain value from our ecosystem in the form of recruitment, brand exposure, increasing engagement with the API/Developer community,  and  extensive product feedback.  
             </p>
+             <h4  style="margin-bottom:20px">2015 Achievements</h4>
+           
+            <p>A year of collaboration, continuous support and  the creation of a truly disruptive community, enabling thought leadership in emerging tech.</p>     
+
+
+                
+            <h4>What our previous partners have to say </h4>
+
+            <div class="stats">
+         
+              <ul>
+              <li data-sr=' enter bottom' class="data-circle" data-dimension="180" data-text="90%" data-info="Learning Experience" data-width="4" data-fontsize="35" data-percent="90" data-fgcolor="#45fdaf" data-bgcolor="#eee"></li>
+              <li data-sr=' enter bottom' class="data-circle" data-dimension="180" data-text="95%" data-info="Device Experience" data-width="8" data-fontsize="35" data-percent="95" data-fgcolor="#32c3e0" data-bgcolor="#eee"></li>
+              <li data-sr=' enter bottom' class="data-circle" data-dimension="180" data-text="53%" data-info="Women In Tech" data-width="8" data-fontsize="35" data-percent="53" data-fgcolor="#ff7f0e" data-bgcolor="#eee"></li>
+               
+               <li data-sr=' enter bottom' class="data-circle" data-dimension="180" data-text="85%" data-info="Would Recommend" data-width="8" data-fontsize="35" data-percent="85" data-fgcolor="#17becf" data-bgcolor="#eee"></li>
+               <li data-sr=' enter bottom' class="data-circle" data-dimension="180" data-text="95%" data-info="Technology       Enablement" data-width="8" data-fontsize="35" data-percent="95" data-fgcolor="#1f77b4" data-bgcolor="#eee"></li>
+               <li data-sr=' enter bottom' class="data-circle" data-dimension="180" data-text="98" data-info="Academic  Institutions" data-width="8" data-fontsize="35" data-percent="100" data-fgcolor="#d62728" data-bgcolor="#eee"></li>
+              </ul>
+              
+            </div>
+            <br>
+            <img width="150px" src="{% static 'images/sponsors/nuance.png' %}" alt="">
+            <blockquote>
+                “ We came away from WearHacks with stronger ties to the developer community and valuable feedback for our mission of bringing powerful speech experiences to wearables. WearHacks brought valuable exposure to the Nuance developers program and gave us a chance to engage directly with the developers that we want to empower.” <span>-Nuance Telecom, 2015.  </span>
+
+            </blockquote>
+            <br>
+            <img width="100px" src="{% static 'images/sponsors/gore.png' %}" alt="">
+            <blockquote>
+                Gore is exploring what innovation will look like in a world increasingly driven by "the internet of things". Our goal with WearHacks is to both learn about existing capabilities and concepts, as well as provide an opportunity for the next generation of engineers, hackers, and innovators to hone their skills.  <span>-W.L GORE Associates, 2015.  </span>
+            </blockquote>
         </div>
+    </div> 
+
+    <div class="small-brk"></div>
+    <div class="row">
         <div class="columns large-12 text-center">
         {% for type, group in partners.items %}
                 <h5 class="partner-type-label">{{ group.0.type }}</h5>  

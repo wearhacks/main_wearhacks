@@ -106,12 +106,12 @@ body {
     z-index: 2;
     li {
       margin-bottom:0;
-      text-transform: uppercase;
+      text-transform: capitalize;
       a {
           color: #B9B9B9;
           border-bottom: 1px solid rgba(204, 204, 204, 0.09);
           border-left: 2px solid #333;
-          padding: 10px 15px;
+          padding: 5px 15px;
         &:hover {
           color: #FFFFFF;
           border-left: 2px solid #565656;
@@ -368,4 +368,10 @@ width: 38px;
     vertical-align: top;
     margin-top: -8px;
     opacity: 0.4;
+}
+.side-nav li a.sub {
+    padding: 8px 14px;
+    text-transform: initial;
+    font-size: 0.9em;
+    margin-left: 14px;
 }

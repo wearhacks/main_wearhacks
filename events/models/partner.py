@@ -6,7 +6,9 @@ class Partner(models.Model):
         ('0', 'Global Partners'),
         ('1', 'Hardware Partners'),
         ('2', 'Media Partners'),
-        ('3', 'Membership'),
+        ('3', 'Ecosystem Partners'),
+        ('4', 'Legal Partners'),
+        ('5', 'Previous City Partners'),
     )
     def displayedType(self):
         return self.PARTNERTYPES[int(self.partner_type)][1]

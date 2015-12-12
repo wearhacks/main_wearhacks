@@ -36,9 +36,9 @@ def home(request):
 
     return render(request, 'index.html',content)
 
-def about_us(request):
-    return render(request, 'aboutus.html',
-        {'title':"About Us",
+def team(request):
+    return render(request, 'ourteam.html',
+        {'title':"Our Team",
          'team_members':TeamMember.objects.all().order_by('name'),
          'config':config})
 
@@ -79,6 +79,9 @@ def events(request, event_slug=None):
 
 def ambassador(request):
     return render(request, 'ambassador.html',{'config':config, 'title':"Ambassador Program"})
+def mission(request):
+    return render(request, 'mission.html',{'config':config, 'title':"Our Mission"})
+
 
 def partnerships(request):
     if request.method == 'POST':

@@ -1,0 +1,58 @@
+
+{% extends "_base.html" %}
+{% block title %} Our Mission {% endblock %}
+
+{% load staticfiles%}
+{% block content %}
+<style>
+#team-members .columns+.columns:last-child {
+    float: left;
+}
+</style>
+<section id="body">
+
+        <div class="columns small-12 top-header" style="background-image: url({% static 'images/our_mission.jpg' %});" alt="">
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; </span> {{ title }}</h2></div>
+        </div>
+
+     <div class="row ">
+          
+        <div class="small-12 medium-6 large-8  columns">
+            <h2 class="sub-header2">Our mission</h2>
+
+            {{config.ABOUT_MISSION_STATEMENT | safe}}
+        </div>
+        <div class="small-12 large-4 columns">
+                <h2 class="sub-header2">What We Do</h2>
+
+                    <p>We engage in a broad range of activities aimed at fulfilling our mission.</p>
+                    <ul>
+                    <li><h6>Hackathons</h6></li>
+                    <li><h6>Conferences</h6></li>
+                    <li><h6>Classes</h6></li>
+                    <li><h6>Workshops</h6></li>
+                    <li><h6>Technology Evangelism</h6></li>
+                </ul>
+            </div>
+
+    </div>
+
+     <div class="small-brk"></div>
+    <div id="team-members" class="row ">
+            <div class="small-12 columns">
+                  <!-- Swiper -->
+                    <div class="swiper-container swiper-container-horizontal">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_1.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_2.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_3.jpg' %})"></div>
+                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_kid.jpg' %})"></div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

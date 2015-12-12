@@ -100,25 +100,13 @@
         </div>
     </div>
     <div id="right-content" class="large-5 columns no-padding" style="padding-left: 0.7em;">
-      <div class="sub-content small-12 columns">
       
-      <div class="small-12 medium-4 columns no-padding">
-         <a href="/aboutus"><div class="content-img" style="background-image:url('{% static 'images/team.jpg'%}')">
- 
-          </div></a>
-      </div>    
-      <div class="description small-12 medium-8 columns">
-        <h6><a href="/aboutus">About Us</a></h6>
-        <p>We’re an eclectic bunch that shares the vision of improving hardware education.</p>
-      </div>
-
-    </div>
       <div class="sub-content small-12 columns">
       
         
           <div class="small-12 medium-4 columns no-padding">
             <a href="/events">
-             <div class="content-img" style="background-image:url('{% static 'images/innovation.jpg'%}')">
+             <div class="content-img" style="background-image:url('{% static 'images/cta_events.jpg'%}')">
           
               </div>
             </a>
@@ -126,22 +114,36 @@
         
           <div class="description small-12 medium-8 columns">
             <h6><a href="/events">Events</a></h6>
-            <p>A one of a kind experience. Our events bring together students, mentors and tinkerers in a warm, energetic and collaborative environment.</p>
+            <p>{{config.CTA_EVENTS}}</p>
           </div>
+    </div>
+    <div class="sub-content small-12 columns">
+      
+      <div class="small-12 medium-4 columns no-padding">
+         <a href="/ambassador"><div class="content-img" style="background-image:url('{% static 'images/stage.jpg'%}')">
+ 
+          </div></a>
+      </div>    
+      <div class="description small-12 medium-8 columns">
+        <h6><a href="/ambassador">Ambassador Program</a></h6>
+        <p>{{config.CTA_AMBASSADOR_PROGRAM}}</p>
+      </div>
+
     </div>
   
       <div class="sub-content small-12 columns">
      
         <div class="small-12 medium-4 columns no-padding">
            <a href="#">
-           <div class="content-img" style="background-image:url('{% static 'images/projects.jpg'%}')">
+           <div class="content-img" style="background-image:url('{% static 'images/cta_projects.jpg'%}')">
      
             </div>
             </a>
         </div>    
         <div class="description small-12 medium-8 columns">
          <h6> <a href="{{config.A_BLOG_LINK}}/category/projects/">Projects</a></h6>
-          <p>WearHackers' projects don’t end at hackathons, they are a stepping stone to something greater.</p>
+          <p>{{config.CTA_PROJECTS}}
+</p>
           
         </div>
       
@@ -149,13 +151,13 @@
     <div class="sub-content small-12 columns top-margin">
      
       <div class="small-12 medium-4 columns no-padding">
-         <a href="/partnerships"><div class="content-img" style="background-image:url('{% static 'images/partnership.jpg'%}')">
+         <a href="/partnerships"><div class="content-img" style="background-image:url('{% static 'images/cta_partnerships.jpg'%}')">
        
           </div></a>
       </div>    
       <div class="description small-12 medium-8 columns">
         <h6> <a href="/partnerships">Partnerships</a></h6>
-        <p>Help us create the next generations of innovators. We can’t do it alone!</p>
+        <p>{{config.CTA_PARTNERSHIPS}}</p>
       </div>
     </div>
 

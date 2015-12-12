@@ -70,3 +70,57 @@
   }
 
 }
+
+blockquote span {
+    font-weight: bold;
+    display: inline-block;
+    color: #4C4C4C;
+}
+
+
+
+
+/*** CIRCLE ***/
+
+.wrapper {
+  margin: 50px auto;
+  overflow: hidden;
+  padding: 20px;
+  width: 55%;
+}
+.data-circle {
+  
+  display: inline;
+  }
+.circliful {
+  position: relative;
+      display: inline-block;
+}
+.circle-text {
+  font-weight:bold;
+}
+.circle-info-half {
+  font-size:0.7em;
+ 
+}
+.circle-text,
+.circle-info,
+.circle-text-half,
+.circle-info-half {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  display: inline-block;
+
+}
+
+.circle-info {
+  color: #999;
+}
+
+.circliful .fa {
+  margin: -10px 3px 0 3px;
+  position: relative;
+  bottom: 4px;
+}
+/***circle **/
