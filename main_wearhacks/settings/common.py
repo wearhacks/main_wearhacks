@@ -166,7 +166,13 @@ CONSTANCE_CONFIG = {
     'A_SOCIAL_YOUTUBE': ("www.google.com",''),
     'A_SOCIAL_LINKEDIN': ("www.google.com",''),
     'A_SOCIAL_TWITTER': ("www.google.com",''),
-    'A_BLOG_LINK':("http://blog.wearhacks.com",'')
+    'A_BLOG_LINK':("http://blog.wearhacks.com",''),
+    'CTA_EVENTS' : ('Our events provide them with unprecedented access to \
+            hardware and allow their imaginations to run wild in a warm, energetic environment.',''),
+    'CTA_PROJECTS' : ('Each WearHacks project is a testimony to the well of talent,\
+            creativity, innovative and entrepreneurial spirit that inhabits our community.',''),
+    'CTA_AMBASSADOR_PROGRAM' : ('Join our ambassador program to start the WearHacks community in your city. Apply here!', ''),
+    'CTA_PARTNERSHIPS' : ('Help us create the future for the next generations of innovators.', '')
 }
 
 CACHES = {
