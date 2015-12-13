@@ -32,43 +32,7 @@
 
       <div class="row">
         <div class="swiper-container swiper-container-horizontal">
-          <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide" style="background:url('{% static 'images/ambassador/slide1.jpg'%}');
-            box-shadow: inset 0px 900px 0px rgba(14, 14, 14, 0.5);">
-                <div class="content">
-                <h3 style="color:white">
-                  Play a vital role in building the WearHacks Experience and create impact in your community.
-
-                </h3>
-                </div>
-            </div>
-
-
-            <div class="swiper-slide" style="background:url('{% static 'images/france.jpg'%}');  background-size: 100%;
-    
-    background-size: cover;
-    box-shadow: inset 0px 900px 0px rgba(0, 0, 0, 0.5);
-    background-position-y: 50%;">
-              <div class="content">
-
-<h3>Be the leader of the hardware education mission in your city, connect with us to start your journey.
-</h3>
-              </div>
-            </div>
-            <div class="swiper-slide" style="background:url('{% static 'images/ambassador/slide3.jpg'%}');  background-size: 100%;
-    
-        background-size: cover;
-        box-shadow: inset 0px 900px 0px rgba(14, 14, 14, 0.8);
-        background-position-y: 54%;">
-                  <div class="content" style="top: 30vh; text-align: center; width: 100%; color: white; display: block;">
-
-    <blockquote style="font-size: 26px;
-    color: white;">
-      “ – because in the real world that’s what makes for the winning products, the best experiences, and the legendary teams.”<span style="color:#AAA">–Abhi Ashutosh: WearHacks NYC Ambassador Leader</span> 
-    </blockquote>
-                  </div>
-                </div>
+      
                          {% for slide in slides %}
           <div class="swiper-slide" style="background-image:url('{{slide.photo.url}}');
      box-shadow: inset 0px 400px 0px rgba(0, 0, 0, {{slide.overlay_percentage}}); ">

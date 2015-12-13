@@ -43,10 +43,6 @@
                   <!-- Swiper -->
                     <div class="swiper-container swiper-container-horizontal">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_1.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_2.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_3.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_kid.jpg' %})"></div>
                     {% for slide in slides %}
                       <div class="swiper-slide" style="background-image:url('{{slide.photo.url}}');
                  box-shadow: inset 0px 400px 0px rgba(0, 0, 0, {{slide.overlay_percentage}}); ">

@@ -14,7 +14,7 @@ class Slider(models.Model):
 
     photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True, validators=[validate_large_image])
     
-    main_text = models.TextField()
+    main_text = models.TextField(blank=True)
     first_link_text = models.CharField(max_length = 50, blank=True)
     first_link = models.CharField(max_length=100, blank=True)
     second_link_text = models.CharField(max_length = 50,  blank=True)

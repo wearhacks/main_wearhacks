@@ -29,7 +29,7 @@ def validate_large_image(fieldfile_obj):
     if filesize > megabyte_limit*1024*1024:
       raise ValidationError("Max file size is %sMB" % str(megabyte_limit))
     w, h = get_image_dimensions(fieldfile_obj.file)
-    if w > 2000 or h > 2000:
+    if w > 2100 or h > 2100:
       raise ValidationError("The image is %i pixel wide. Max 2000px * 2000px " % w)
 
 def validate_small_image(fieldfile_obj):
