@@ -156,17 +156,29 @@ CONSTANCE_CONFIG = {
              and <b>affordable</b>.</p>''',''),
     'ABOUT_TEAM_DESC_LEFT': ("We are a group of engineers, designers, and tinkerers that \
             all share the same vision of improving hardware education.",''),
-    'ABOUT_TEAM_DESC_RIGHT': ("We share the vision of empowering anyone with the will to learn \
-            hardware hacking with the tools and mentorship.",''),
+    'AMBASSADOR_TOP_COPY': ('''<p>The WearHacks Ambassador Program offers future leaders,\
+            who are truly passionate about making a change in their city, a chance to bring \
+            connected technology and hardware education to their community.</p><p>\
+            By building skills in <b>leadership</b>, <b>networking</b>, and <b>community\
+            building</b>, WearHacks Ambassadors complete our program as experts in hacking\
+            hackathons, and developing a close WearHacks community in their city.</p>'''
+    ,''),
+    'AMBASSADOR_BOTTOM_COPY': ('''<p class="text-center">The Ambassador Program is a volunteer \
+            position, and starts 4 months before a hackathon.</p><p class="text-center">\
+            A strong  successful ambassador team  comes together and begins planning their hackathon 4\
+            months before the event, by taking initiatives and being self-motivated to bring the ultimate \
+            WearHacks experience, and enhancing hardware education in their city's growing tech community. \
+            </p>'''
+    ,''),
     'EVENTS_HACKATHON_DESC': ("<p>WearHacks Hackathons bring together developers, designers,\
             project managers, students, and engineers with an entrepreneurial and creative\
             mind.</p><p> For an intensive 48 hours, they will learn new tools, meet industry experts,\
             collaborate with other talented students and young professionals and build new\
             wearable and connected technology.</p>",''),
-    'A_SOCIAL_FACEBOOK': ("www.google.com",''),
-    'A_SOCIAL_YOUTUBE': ("www.google.com",''),
-    'A_SOCIAL_LINKEDIN': ("www.google.com",''),
-    'A_SOCIAL_TWITTER': ("www.google.com",''),
+    'A_SOCIAL_FACEBOOK_LINK': ("http://facebook.com/wearhacks",''),
+    'A_SOCIAL_YOUTUBE_LINK': ("www.google.com",''),
+    'A_SOCIAL_LINKEDIN_LINK': ("https://www.youtube.com/channel/UC2ptEc6sOrLmmivfPjWoIyA",''),
+    'A_SOCIAL_TWITTER_LINK': ("http://twitter.com/wearhacks",''),
     'A_BLOG_LINK':("http://blog.wearhacks.com",''),
     'CTA_EVENTS' : ('Our events provide them with unprecedented access to \
             hardware and allow their imaginations to run wild in a warm, energetic environment.',''),

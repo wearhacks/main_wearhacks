@@ -12,11 +12,9 @@
 <!-- JAVASCRIPTS -->
 {% block javascripts %}
     <script type="text/javascript" src="{% static 'bower_components/tinymce/tinymce.js' %}"></script>
-   <script>tinyMCE.init({
-    mode: "textareas",
-    theme: "modern",
-    plugins: "spellchecker,directionality,paste,searchreplace"
-});</script>
+
+
+
     {{ block.super }}
     {{ media.js }}
     {% url 'admin:jsi18n' as jsi18nurl %}
@@ -62,6 +60,23 @@
 {% endblock %}
 
 {% block content %}
+
+   <script>
+   var list_id = ""
+ {% for item in config_values %}
+    {% if not "LINK" in item.name %}
+    list_id+="id_{{item.name}}";
+    list_id+=","
+   {%endif%}
+   {%endfor%}
+       tinyMCE.init({
+        mode: "exact",
+        elements: list_id, 
+        theme: "modern",
+        plugins: "spellchecker,directionality,paste,searchreplace"
+    });
+
+   </script>
     <form id="grp-changelist-form" action="" method="post">{% csrf_token %}
         <section id="grp-changelist" class="grp-editable">
             {% for field in form.hidden_fields %}
@@ -105,13 +120,14 @@
                     {% for item in config_values %}
                         <tr class="grp-row {% cycle 'grp-row-even' 'grp-row-odd' %}">
                             <td>
+
                                 <div class="grp-text"><strong>{{ item.name }}</strong></div>
                                 <p class="grp-help">{{ item.help_text }}</p>
                             </td>
                             <td style="width:200px">
                                 <div class="grp-text"><span>{{ item.default }}</span></div>
                             </td>
-                            <td style="width:50%">
+                            <td  style="width:50%">
                                 {{ item.form_field }}
                                 {% if item.form_field.errors %}
                                     <ul class="errorlist">
