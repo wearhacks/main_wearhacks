@@ -1,7 +1,7 @@
 from django.contrib import admin
 from events.models import Event,Project,TeamMember,Partner,PastEvent,Slider
 from django.contrib import messages
-admin.site.register(Event)
+
 admin.site.register(Project)
 admin.site.register(TeamMember)
 admin.site.register(Partner)
@@ -11,7 +11,8 @@ def retrieveProjects(modeladmin, request, queryset):
   for obj in queryset:
     obj.retrieveProjects()
 
-
+class EventAdmin(admin.ModelAdmin): 
+  list_display = ('event_name', 'start_date', 'end_date')
 class PastEventAdmin(admin.ModelAdmin):
     actions = [retrieveProjects]
     def save_model(self, request, obj, form, change):
@@ -39,3 +40,4 @@ class SliderAdmin(admin.ModelAdmin):
 
 admin.site.register(PastEvent, PastEventAdmin)
 admin.site.register(Slider, SliderAdmin)
+admin.site.register(Event, EventAdmin)

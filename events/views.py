@@ -30,7 +30,7 @@ def home(request):
         'blog_link' : posts[0]["url"],
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"],
         'event' : event,
-        'slides' : Slider.objects.all().order_by('order')
+        'slides' : Slider.objects.filter(slider_location = 0).order_by('order')
     }
 
 
@@ -82,9 +82,14 @@ def events(request, event_slug=None):
          'config':config})
 
 def ambassador(request):
-    return render(request, 'ambassador.html',{'config':config, 'title':"Ambassador Program"})
+    return render(request, 'ambassador.html',{
+      'slides' : Slider.objects.filter(slider_location = 2).order_by('order'),
+      'config':config,
+      'title':"Ambassador Program"})
 def mission(request):
-    return render(request, 'mission.html',{'config':config, 'title':"Our Mission"})
+    return render(request, 'mission.html',{
+        'slides' : Slider.objects.filter(slider_location = 1).order_by('order'),
+        'config':config, 'title':"Our Mission"})
 
 
 def partnerships(request):

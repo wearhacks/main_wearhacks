@@ -1,6 +1,7 @@
 from django.db import models
 from events.models.helpers import *
 
+
 class Slider(models.Model):
     SLIDERTYPES = (
         ('0', 'MAIN PAGE'),
@@ -11,7 +12,7 @@ class Slider(models.Model):
     name = models.CharField(max_length = 150)
     order = models.IntegerField(default=0)
 
-    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True, validators=[validate_large_image])
     
     main_text = models.TextField()
     first_link_text = models.CharField(max_length = 50, blank=True)
