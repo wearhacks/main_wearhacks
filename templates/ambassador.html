@@ -22,7 +22,7 @@
           <div class="small-brk"></div>
           
 
-          {{config.AMBASSADOR_TOP_COPY}}  
+          {{config.AMBASSADOR_TOP_COPY | safe}}  
         </div>
       </div>
 
@@ -77,7 +77,7 @@
     </div>
     <div class="row" style="margin-top:2em">
       <div class="columns large-10 large-offset-1">
-{{config.AMBASSADOR_BOTTOM_COPY}}      
+{{config.AMBASSADOR_BOTTOM_COPY | safe}}      
 </div>
     </div>
     <div class="row">
