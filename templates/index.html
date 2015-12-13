@@ -39,10 +39,8 @@
         
             
          {% for slide in slides %}
-          <div class="swiper-slide" style="background:url('{{slide.photo.url}}');  background-size: 100%;
-     box-shadow: inset 0px 400px 0px rgba(0, 0, 0, {{slide.overlay_percentage}}); 
-
-    background-position-y: 54%;">
+          <div class="swiper-slide" style="background:url('{{slide.photo.url}}');
+     box-shadow: inset 0px 400px 0px rgba(0, 0, 0, {{slide.overlay_percentage}}); ">
               <div class="content" style=" {%if slide.align_left%}text-align:left; {%endif%}">
               {{slide.main_text | safe}}
 
