@@ -53,8 +53,6 @@ INSTALLED_APPS = (
     'pipeline',
     'geoposition',
     'compressor',
-    'colorful',
-    'tinymce',
 )
 
 

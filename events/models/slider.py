@@ -1,7 +1,5 @@
 from django.db import models
 from events.models.helpers import *
-from colorful.fields import RGBColorField
-from tinymce.models import HTMLField
 
 class Slider(models.Model):
     SLIDERTYPES = (
