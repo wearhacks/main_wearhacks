@@ -2,9 +2,6 @@
 {% load compress %}
 {% compress css %}
 <link href="{% static 'scss/app.scss' %}" media="screen, projection" rel="stylesheet" type="text/x-scss" />
-
-
-
-<link href="{% static 'bower_components/swiper/dist/css/swiper.min.css' %}" media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="{% static 'bower_components/swiper/dist/css/swiper.css' %}" media="screen, projection" rel="stylesheet" type="text/css" />
 {% block stylesheets %} {% endblock %}
 {% endcompress %}
