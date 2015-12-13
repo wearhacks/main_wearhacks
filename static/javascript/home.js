@@ -7,7 +7,7 @@ var initializeSwiper = function() {
         paginationClickable: true,
         spaceBetween: 30,
         centeredSlides: true,
-        autoplay: 4000,
+        //autoplay: 4000,
         autoplayDisableOnInteraction: false,
         onSlideChangeStart: function(swiper) {
           lastindex = swiper.activeIndex;
@@ -61,4 +61,9 @@ var initBackToTop = function() {
 $(document).ready(function() {
 
   initBackToTop();
+  $('#signup-newsletter').on('click',  function() {
+     console.log('hel');
+     $('#signup-modal').foundation('reveal', 'open');
+});
+
 });

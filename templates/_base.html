@@ -71,7 +71,7 @@
 
     <div id="signup-field" class="medium-4 columns ">
 
-      <form id="footer-signup" action="/api/signup" method="post">
+      <form class="footer-signup" action="/api/signup" method="post">
 
         <div class="small-10 columns medium-12 no-padding">
           <h6 class="header-footer">Sign up for updates</h6>
@@ -94,7 +94,21 @@
     <p class="copy">WearHacks &copy; 2015</p>
   </div>
 </section>
+<div id="signup-modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 
+      <form class="footer-signup"   action="/api/signup" method="post">
+
+        <div class="small-10 columns medium-12 no-padding">
+          <h6>Sign up for updates</h6>
+                <input name="email" type="email" placeholder="tony@wearhacks.com" required>
+            
+                <a href="#" class="button postfix" onclick="$('#signup-modal').find(':submit').click(); return false;">Subscribe</a>
+                <input style="display:none" type="submit" value=""> </input>
+              </div>
+
+      </form>
+      <a class="close-reveal-modal" aria-label="Close">×</a>
+</div>
 <div id="success-modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
   <h1 class="text-center"><i class="fa fa-check-circle-o" style="font-size: 2em;color: #6AD47E;"></i></h1>
     <h2 id="title" class="text-center">

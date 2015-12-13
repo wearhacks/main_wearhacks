@@ -27,7 +27,7 @@
                 <span>{{ stats.projects }}</span>Submitted Projects
             </div>
             <div class="small-4 columns">
-                <span>{{ winners|length }}</span>Winning Projects
+                <span>{{ stats.winning}}</span>Winning Projects
             </div>
         </div>
 
@@ -37,30 +37,31 @@
                 <h2 class="sub-header2" style="margin-bottom:20px">Projects</h2>
             </div>
             <div class="columns large-12 margin-bottom">
-            {% for winner in winners %}
+            {% for winner in top_projects %}
                 <div class="large-4 medium-6 small-12 columns">
                     <div class="project">
                         <a href="{{winner.url}}" target="_blank">
                             <div class="winner-image lazy" data-original="{% if winner.image %}{{winner.image.url}}{% endif %}">
                             </div>
                         </a>
-                        <div class="project-description"><h6><span class=" secondary label">Winner</span> <br/>{{ winner.project_name }} </h6>
+                        <div class="project-description"><h6>{% if winner.project_type == '2' %}<span class=" secondary label">Winner</span>{%endif%} <br/>{{ winner.project_name }} </h6>
                         <p>{{ winner.short_description }}</p></div>
                     </div>
                 </div>
             {% endfor %}
             </div>
-
+            {% if bottom_projects %}
             <div class="columns large-12 text-center">
                 <div data-sr="enter bottom over 1s and move 65px">
                    <button id="view-all-projects-btn" class="button small">View all Projects 
                     <i class="fa fa-caret-down" style="display:none"></i><i class="fa fa-caret-left"></i></button>
                 </div>
             </div>
+            {% endif %}
         </div>
-
+        
         <div id="all-projects-display" class="columns large-12">
-        {% for project in projects %}
+        {% for project in bottom_projects %}
             <div class="large-3 medium-4 small-6 columns">
                 <div class="project">
                     <a href="{{project.url}}" target="_blank">

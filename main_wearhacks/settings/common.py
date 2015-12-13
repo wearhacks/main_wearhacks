@@ -35,9 +35,12 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
-    'constance',
+
+    'events',
 
     'grappelli',
+    'constance',
+
     'constance.backends.database',
 
     'django.contrib.admin',
@@ -48,10 +51,10 @@ INSTALLED_APPS = (
     'collectfast',
     'django.contrib.staticfiles',
     'pipeline',
-    'events',
     'geoposition',
     'compressor',
-
+    'colorful',
+    'tinymce',
 )
 
 
@@ -71,7 +74,7 @@ ROOT_URLCONF = 'main_wearhacks.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/'],
+        'DIRS': [os.path.join(SITE_ROOT, 'templates'), os.path.join(SITE_ROOT, 'templates', 'constance')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.forms.models import model_to_dict
 from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
-from models import TeamMember,Event,Partner
+from models import TeamMember, Event, Partner, Slider
 from forms import PartnerForm
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
@@ -11,7 +11,6 @@ import mailchimp
 import json
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
-from django.utils import timezone
 from constance import config
 import itertools as iTool
 import random
@@ -30,7 +29,8 @@ def home(request):
         'blog_excerpt' : posts[0]["excerpt"],
         'blog_link' : posts[0]["url"],
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"],
-        'event' : event
+        'event' : event,
+        'slides' : Slider.objects.all()
     }
 
 
@@ -56,15 +56,18 @@ def events(request, event_slug=None):
                 response['stats'] = past_event.get_stats()
                 response['allPictures'] = past_event.fetch_photos()
 
-            projects = event.project_set.all()
-            if projects:
-                groupedProjects = {k: list(v) for k, v in
-                    iTool.groupby(projects, lambda x: x.project_type)}
-                response['stats']['projects'] = len(projects)
-                response['winners']=groupedProjects['2']
-                response['projects']=groupedProjects['1']
+            winning_projects = event.project_set.filter(project_type=2)
+            projects = event.project_set.filter(project_type=1)
+            all_proj = len(projects)+ len(winning_projects)
+            if (winning_projects == 0 or all_proj <= 10) :
+                response['top_projects'] = event.project_set.all()
+                response['bottom_projects'] = []
             else:
-                response['stats']['projects'] = 0
+                response['top_projects'] = winning_projects
+                response['bottom_projects'] = projects
+
+            response['stats']['projects'] = all_proj
+            response['stats']['winning'] = len(winning_projects)
 
             return render(request, 'event_pictures.html', response)
         except ObjectDoesNotExist:

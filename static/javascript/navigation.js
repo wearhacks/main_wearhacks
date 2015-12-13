@@ -6,8 +6,8 @@ $("#signup").on("click",function(){
   $(this).closest('form').submit();
 });
 
-$( "#footer-signup" ).submit(function( event ) {
- 
+$( ".footer-signup" ).submit(function( event ) {
+  console.log("hello")
   // Stop form from submitting normally
   event.preventDefault();
  
@@ -22,7 +22,7 @@ $( "#footer-signup" ).submit(function( event ) {
   // Put the results in a div
   posting.done(function( data ) {
     console.log(data);
-    $( "#success-message" ).empty().append( data.message );
+    $("#success-message" ).empty().append( data.message );
     $('#success-modal').foundation('reveal', 'open');
   });
   posting.fail(function(data) {
