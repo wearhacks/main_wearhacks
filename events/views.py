@@ -31,7 +31,7 @@ def home(request):
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"],
         'event' : event,
         'slides' : Slider.objects.filter(slider_location = 0).order_by('order'),
-        'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('start_date')[:5],
+        'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('-start_date')[:3],
     }
 
 
