@@ -56,8 +56,8 @@ def events(request, event_slug=None):
                 response['stats'] = past_event.get_stats()
                 response['allPictures'] = past_event.fetch_photos()
 
-            winning_projects = event.project_set.filter(project_type=2)
-            projects = event.project_set.filter(project_type=1)
+            winning_projects = event.project_set.filter(project_type='2')
+            projects = event.project_set.filter(project_type='1')
             all_proj = len(projects)+ len(winning_projects)
             if (len(winning_projects) or all_proj <= 10) :
                 response['top_projects'] = event.project_set.all()
