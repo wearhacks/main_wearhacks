@@ -22,6 +22,16 @@
                     url:"{{ event.link }}"
                 },
         {% endfor %}
+             {% for event in past_events %}
+                {
+                    name:"{{ event.event_name }}",
+                    position: {lat:{{ event.location.latitude}},lng:{{ event.location.longitude}} } ,
+                    date:"{{ event.date }}",
+                    address:"{{ event.address }}",
+                    city:"{{ event.city }}",
+                    url:"{{ event.link }}"
+                },
+        {% endfor %}
         ];
 
 
@@ -311,8 +321,6 @@ function initMap() {
                 '<h4 id="firstHeading" class="firstHeading">'+event.name+'</h4>' +
                 '<div id="bodyContent">' +
                 '<p>'+event.date+'</p><p>'+event.address+'</p><p>'+event.city+'</p>' +
-                '<a href="'+event.url+'">' +
-                'Sign up' +'</a>' +
                 '</div>';
 
         var infowindow = new google.maps.InfoWindow({

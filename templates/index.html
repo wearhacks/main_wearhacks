@@ -122,7 +122,7 @@
       <div class="sub-content small-12 columns">
      
         <div class="small-12 medium-4 columns no-padding">
-           <a href="#">
+           <a href="{{config.A_BLOG_LINK}}/category/projects/">
            <div class="content-img" style="background-image:url('{% static 'images/cta_projects.jpg'%}')">
      
             </div>
@@ -153,8 +153,28 @@
   </div>
   </div>
   <div class="row">
+    <hr>
+    
+    <div class="large-12 columns" style="position:relative">
+          <h6>Recent Events</h6>
+         {% for event in past_events %}
+         <div class="recent-event large-6 columns small-12">
+            <a class="recent-event-link invert" href="/events/{{ event.slug }}">
+                <h6>
+                {{ event.event_name }} <span> {{ event.date }}</span>
+                </h6>
+            </a>
+          </div>
 
-        </div>
+        {% endfor %}
+        <div class="recent-event large-6 columns small-12" >
+            <a class="recent-event-link invert" href="/events/">
+               <h6>View more events <span><i class="fa fa-angle-right"></i></span></h6> 
+            </a>
+          </div>
+        
+    </div>
+</div>
 </div>
 
 </section>
