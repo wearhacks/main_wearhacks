@@ -58,8 +58,9 @@ def events(request, event_slug=None):
 
             winning_projects = event.project_set.filter(project_type='2')
             projects = event.project_set.filter(project_type='1')
+            
             all_proj = len(projects)+ len(winning_projects)
-            if (len(winning_projects) or all_proj <= 10) :
+            if (len(winning_projects) <=3 or all_proj <= 10) :
                 response['top_projects'] = event.project_set.all()
                 response['bottom_projects'] = []
             else:
@@ -93,8 +94,7 @@ def partnerships(request):
             subject = form.cleaned_data['organization_name'] + ' wants to be our partner!'
             message = form.cleaned_data['message']
             email = form.cleaned_data['email']
-
-            recipients = ['i.nadim@gmail.com']
+            recipients = ['info@wearhacks.com']
 
             EmailMessage(subject, message, email, recipients).send()
             return JsonResponse({"status":"success", "message":"Welcome aboard!<br>:)"}, status=200)
