@@ -30,7 +30,7 @@ def home(request):
         'blog_link' : posts[0]["url"],
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"],
         'event' : event,
-        'slides' : Slider.objects.all()
+        'slides' : Slider.objects.all().order_by('order')
     }
 
 
@@ -59,7 +59,7 @@ def events(request, event_slug=None):
             winning_projects = event.project_set.filter(project_type=2)
             projects = event.project_set.filter(project_type=1)
             all_proj = len(projects)+ len(winning_projects)
-            if (winning_projects == 0 or all_proj <= 10) :
+            if (len(winning_projects) or all_proj <= 10) :
                 response['top_projects'] = event.project_set.all()
                 response['bottom_projects'] = []
             else:

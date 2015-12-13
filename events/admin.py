@@ -32,8 +32,8 @@ class SliderAdmin(admin.ModelAdmin):
     
     fieldsets = [
         ('Required',               {'fields': ['name', 'photo', 'main_text','order', 'slider_location']}),
-        ('Link 1 (Optional)',               {'fields': ['first_link', 'first_link_text']}),
-        ('Link 2 (Optional)', {'fields': ['second_link', 'second_link_text']}),
+        ('Link 1 (Optional)',               {'fields': ['first_link_text', 'first_link']}),
+        ('Link 2 (Optional)', {'fields': ['second_link_text', 'second_link']}),
         ('Variation', {'fields': ['overlay_percentage', 'add_call_to_action','align_left']}),
     ]
 
