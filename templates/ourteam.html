@@ -21,11 +21,8 @@
                 <h2 class="sub-header2" style="margin-bottom:20px">The team</h2>
 
                 <div class="columns large-8">
-                    <p>{{config.ABOUT_TEAM_DESC_LEFT}}</p>
+                    <p>{{config.ABOUT_TEAM_DESC_LEFT | safe}}</p>
                 </div>
-                <div class="columns large-4"><p>
-                    {{config.ABOUT_TEAM_DESC_RIGHT}}
-                </p></div>
             </div>
             <div class="columns large-12">
             {% for member in team_members %}
