@@ -69,6 +69,25 @@
     </blockquote>
                   </div>
                 </div>
+                         {% for slide in slides %}
+          <div class="swiper-slide" style="background-image:url('{{slide.photo.url}}');
+     box-shadow: inset 0px 400px 0px rgba(0, 0, 0, {{slide.overlay_percentage}}); ">
+              <div class="content" style=" {%if slide.align_left%}text-align:left; {%endif%}">
+              {{slide.main_text | safe}}
+
+                {% if slide.first_link %}
+               <a href="{{slide.first_link}}">{{slide.first_link_text}} {{slide.background_color}} <i class="fa fa-chevron-right"></i></a>
+                {% endif %}
+                {% if slide.second_link %}
+               <a href="{{slide.second_link}}">{{slide.second_link_text}} <i class="fa fa-chevron-right"></i></a>
+               {% endif %}
+               {% if slide.add_call_to_action %}
+               <a id="signup-newsletter">Signup Now <i class="fa fa-chevron-right"></i></a>
+               {% endif %}
+              </div>
+            </div>
+
+        {% endfor %}
 
         </div>
               <!-- If we need pagination -->
