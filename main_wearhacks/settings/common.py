@@ -170,6 +170,8 @@ CONSTANCE_CONFIG = {
             WearHacks experience, and enhancing hardware education in their city's growing tech community. \
             </p>'''
     ,''),
+    'PROJECTS_PAGE_TOP': ('''Each WearHacks event, with its array of projects, is a testimony to the well of talent, creativity,\
+     innovative and entrepreneurial spirit that inhabits our community. Here are just a few of the submitted projects.''',''),
     'EVENTS_HACKATHON_DESC': ("<p>WearHacks Hackathons bring together developers, designers,\
             project managers, students, and engineers with an entrepreneurial and creative\
             mind.</p><p> For an intensive 48 hours, they will learn new tools, meet industry experts,\

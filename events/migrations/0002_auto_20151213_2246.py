@@ -42,11 +42,6 @@ class Migration(migrations.Migration):
             field=models.ImageField(null=True, upload_to=events.models.helpers.get_upload_path_project, blank=True),
         ),
         migrations.AlterField(
-            model_name='slider',
-            name='photo',
-            field=models.ImageField(blank=True, null=True, upload_to=events.models.helpers.get_upload_path, validators=[events.models.helpers.validate_large_image]),
-        ),
-        migrations.AlterField(
             model_name='teammember',
             name='photo',
             field=models.ImageField(blank=True, null=True, upload_to=events.models.helpers.get_upload_path, validators=[events.models.helpers.validate_small_image]),

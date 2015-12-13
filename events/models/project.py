@@ -17,7 +17,7 @@ class Project(models.Model):
     project_type = models.CharField(max_length=1, choices=PROJECTTYPE)
 
     def __unicode__(self):
-        return u"%s from %s " % (self.project_name, self.submitted_event.short_name)
+        return u"%s from %s " % (self.project_name, self.submitted_event.event_name)
 
     class Meta:
         app_label = 'events'

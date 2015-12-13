@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^partnerships/', 'events.views.partnerships', name='partnerships'),
     url(r'^ambassador/', 'events.views.ambassador', name='ambassador'),
     url(r'^mission/', 'events.views.mission', name='mission'),
+    url(r'^projects/', 'events.views.projects', name='projects'),
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include('smuggler.urls')),
     url(r'^admin/', include(admin.site.urls)),

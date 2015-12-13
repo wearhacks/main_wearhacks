@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.forms.models import model_to_dict
 from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
-from models import TeamMember, Event, Partner, Slider
+from models import TeamMember, Event, Partner, Slider, Project
 from forms import PartnerForm
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
@@ -80,6 +80,13 @@ def events(request, event_slug=None):
          'title':"Events",
          'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
          'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('start_date'),
+         'config':config})
+def projects(request) :
+    return render(request, 'projects.html',
+        {'config':config,
+         'title':"Projects",
+         'top_projects':Project.objects.filter(project_type='2'),
+         'bottom_projects': Project.objects.filter(project_type='1'),
          'config':config})
 
 def ambassador(request):
