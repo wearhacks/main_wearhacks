@@ -82,33 +82,21 @@ $break-large: 1200px;
     padding-right: 15px;
     border-radius: 1px;
     font-family: sans-serif;
-    .fa {
-      transition: width 0.2s;
-      width:0px;
-      overflow: hidden;
-      vertical-align: middle;
+    transition:background 0.2s; 
+    i.fa {
+      display: none;
     }
-    transition: padding 0.2s;
   }
   a:hover {
     background: white;
     color:#333;
-    text-decoration: none;
-    transition: background 0.8s;
-    padding-left:9px;
-    padding-right:10px;
-    transition: padding 0.2s;
-    .fa {
-      transition: width 0.2s;
-      top: 10px;
-      width: 11px;
-      line-height: 19px;
-    vertical-align: middle;
-    }
+    padding-left: 15px;
+    transition:background 0.2s;
+
   }
   @media #{$medium-up} { 
-        margin-left: 70px;
-    margin-right: 70px;
+      margin-left: 70px;
+      margin-right: 70px;
   }
 }
 

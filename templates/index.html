@@ -14,7 +14,8 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             {% if event %}
-            <div class="swiper-slide" style="{% if event.photo %}background-image:url('{{ event.photo.url }}'); {% endif %} box-shadow: rgba(0, 0, 0, 0.30) 0px 900px 0px inset;">
+            <div class="swiper-slide" style="{% if event.photo %}background-image:url('{{ event.photo.url }}'); {% endif %} 
+            box-shadow: rgba(0, 0, 0, 0.30) 0px 400px 0px inset;">
               
                   <div class="content">
                   
@@ -25,12 +26,10 @@
 
                       </div>
                        {% if event.link %} 
-                       <a href="{{ event.link }}" class="href">Sign Up <i class="fa fa-chevron-right"></i></a>
-                           {% else %}  
-                           <a href="/events/" class="href">View More <i class="fa fa-chevron-right">
-                             
-                           </i></a>
-                           {% endif %}
+                       <a href="{{ event.link }}">Sign Up</a>
+                           {% endif %}  
+                      <a href="/events/">View More</a>
+                          
                   
                   </div>
             </div>
@@ -45,13 +44,13 @@
               {{slide.main_text | safe}}
 
                 {% if slide.first_link %}
-               <a href="{{slide.first_link}}">{{slide.first_link_text}} {{slide.background_color}} <i class="fa fa-chevron-right"></i></a>
+               <a href="{{slide.first_link}}">{{slide.first_link_text}}</a>
                 {% endif %}
                 {% if slide.second_link %}
-               <a href="{{slide.second_link}}">{{slide.second_link_text}} <i class="fa fa-chevron-right"></i></a>
+               <a href="{{slide.second_link}}">{{slide.second_link_text}}</a>
                {% endif %}
                {% if slide.add_call_to_action %}
-               <a id="signup-newsletter">Signup Now <i class="fa fa-chevron-right"></i></a>
+               <a id="signup-newsletter">Sign Up Now</a>
                {% endif %}
               </div>
             </div>
