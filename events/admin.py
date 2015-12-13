@@ -29,7 +29,7 @@ class SliderAdmin(admin.ModelAdmin):
           'javascript/tinymceinit.js'  # app static folder
       )
 
-    list_display = ('name','slider_location', 'order', 'main_text')
+    list_display = ('slider_location', 'name', 'order', 'main_text')
     
     fieldsets = [
         ('Required',               {'fields': ['name', 'photo', 'main_text','order', 'slider_location']}),
