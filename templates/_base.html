@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -72,7 +71,7 @@
 
     <div id="signup-field" class="medium-4 columns ">
 
-      <form class="footer-signup" action="/api/signup" method="post">
+      <form id="footer-signup" class="footer-signup" action="/api/signup" method="post">
 
         <div class="small-10 columns medium-12 no-padding">
           <h6 class="header-footer">Sign up for updates</h6>
@@ -81,7 +80,8 @@
                 <input name="email" type="email" placeholder="tony@wearhacks.com" required>
               </div>
               <div class="small-2 columns">
-                <a href="#" class="button postfix" onclick="$('#footer-signup').find(':submit').click(); return false;"><i class="fa fa-caret-right"></i></a>
+                <a href="#" class="button postfix" onclick="$('#footer-signup').find(':submit').click(); return false;">
+                  <i class="fa fa-caret-right"></i><i class="spinner fa fa-spinner fa-spin" style="display:none"></i></a>
                 <input style="display:none" type="submit" value=""> </input>
               </div>
 
@@ -103,7 +103,7 @@
           <h6>Sign up for updates</h6>
                 <input name="email" type="email" placeholder="tony@wearhacks.com" required>
             
-                <a href="#" class="button postfix" onclick="$('#signup-modal').find(':submit').click(); return false;">Subscribe</a>
+                <a href="#" class="button postfix" onclick="$('#signup-modal').find(':submit').click(); return false;">Subscribe <i class="spinner fa fa-spinner fa-spin" style="display:none"></i></a>
                 <input style="display:none" type="submit" value=""> </input>
               </div>
 

@@ -7,7 +7,7 @@ $("#signup").on("click",function(){
 });
 
 $( ".footer-signup" ).submit(function( event ) {
-  console.log("hello")
+
   // Stop form from submitting normally
   event.preventDefault();
  
@@ -15,20 +15,23 @@ $( ".footer-signup" ).submit(function( event ) {
   var $form = $( this ),
     email = $form.find( "input[name='email']" ).val(),
     url = $form.attr( "action" );
- 
+    console.log('hello');
+  $form.find( "i" ).toggle();
   // Send the data using post
   var posting = $.post( url, { email: email } );
  
   // Put the results in a div
   posting.done(function( data ) {
-    console.log(data);
     $("#success-message" ).empty().append( data.message );
     $('#success-modal').foundation('reveal', 'open');
+    $form.find( "input[name='email']" ).prop('enabled', true);
+     $form.find( "i" ).toggle();
   });
   posting.fail(function(data) {
 
     $( "#error-message" ).empty().append( data.responseJSON.message );
     $('#error-modal').foundation('reveal', 'open');
+     $form.find( "i" ).toggle();
   });
 });
   initializeSwiper();
