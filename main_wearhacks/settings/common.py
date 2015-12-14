@@ -187,7 +187,8 @@ CONSTANCE_CONFIG = {
     'CTA_PROJECTS' : ('Each WearHacks project is a testimony to the well of talent,\
             creativity, innovative and entrepreneurial spirit that inhabits our community.',''),
     'CTA_AMBASSADOR_PROGRAM' : ('Join our ambassador program to start the WearHacks community in your city. Apply here!', ''),
-    'CTA_PARTNERSHIPS' : ('Help us create the future for the next generations of innovators.', '')
+    'CTA_PARTNERSHIPS' : ('Help us create the future for the next generations of innovators.', ''),
+    'LOGO_TAGLINE_SAFE' : ('Imagine Enchantment.', ''),
 }
 
 CACHES = {

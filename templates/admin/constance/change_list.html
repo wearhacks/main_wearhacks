@@ -64,7 +64,7 @@
    <script>
    var list_id = ""
  {% for item in config_values %}
-    {% if not "LINK" in item.name %}
+    {% if not "LINK" in item.name and not "SAFE" in item.name%}
     list_id+="id_{{item.name}}";
     list_id+=","
    {%endif%}
