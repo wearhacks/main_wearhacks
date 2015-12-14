@@ -18,11 +18,8 @@
 
     <div id="team-members" class="row ">
             <div class="team-header small-12 columns">
-                <h2 class="sub-header2" style="margin-bottom:20px">The team</h2>
-
-                <div class="columns large-8">
-                    <p>{{config.ABOUT_TEAM_DESC_LEFT | safe}}</p>
-                </div>
+                
+                    {{config.ABOUT_TEAM_DESC_LEFT | safe}}
             </div>
             <div class="columns large-12">
             {% for member in team_members %}
