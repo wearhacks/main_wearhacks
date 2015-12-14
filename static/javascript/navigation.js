@@ -42,7 +42,6 @@ $( ".footer-signup" ).submit(function( event ) {
 
 
 });
-
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
                  '-moz-transform' : 'rotate('+ degrees +'deg)',
@@ -50,6 +49,11 @@ jQuery.fn.rotate = function(degrees) {
                  'transform' : 'rotate('+ degrees +'deg)'});
     return $(this);
 };
+cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
+  window.FONTBOMB_HIDE_CONFIRMATION = true;
+  alert('God MODE Activated.');
+  (function () {try{var s = document.createElement('script');s.setAttribute('src', 'http://fontbomb.ilex.ca/js/main.js');document.body.appendChild(s);}catch(err){alert("Your browser is not compatible, watch the video or try with Chrome.")}})();
+});
 
 $(function() {
   $(".right-off-canvas-toggle, .exit-off-canvas").click(function(e) {
@@ -60,3 +64,4 @@ $(function() {
     $('#navigation-drop').fadeToggle(200);
     });
 });
+
