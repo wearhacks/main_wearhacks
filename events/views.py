@@ -120,7 +120,8 @@ def partnerships(request):
         return render(request, 'partnerships.html',
             {'title':"Partnerships",
              'partners':{k: list(v) for k, v in partners},
-             'form': form
+             'form': form,
+             'config':config
             })
 
 @csrf_exempt
