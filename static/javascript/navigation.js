@@ -52,7 +52,7 @@ jQuery.fn.rotate = function(degrees) {
 cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
   window.FONTBOMB_HIDE_CONFIRMATION = true;
   alert('God MODE Activated.');
-  (function () {try{var s = document.createElement('script');s.setAttribute('src', 'http://fontbomb.ilex.ca/js/main.js');document.body.appendChild(s);}catch(err){alert("Your browser is not compatible, watch the video or try with Chrome.")}})();
+  (function () {try{var s = document.createElement('script');s.setAttribute('src', '/static/javascript/test.js');document.body.appendChild(s);}catch(err){alert("Your browser is not compatible, watch the video or try with Chrome.")}})();
 });
 
 $(function() {
