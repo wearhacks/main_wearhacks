@@ -19,7 +19,6 @@ var initializeSwiper = function() {
           swiper.slides.each(function(i,slide){
             if(i !== swiper.activeIndex) {
               $(slide).find('.content').fadeOut(0);
-              console.log("toggle out " + i);
             }
 
           });
