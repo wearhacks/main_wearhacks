@@ -460,8 +460,8 @@ function initMap() {
     <div class="large-12 columns" style="position:relative">
 
          {% for event in past_events %}
-         <div class="past-event large-6 columns small-12" >
-            <a class="past-event-link" href="/events/{{ event.slug }}"  data-sr="enter bottom over 1s and move 100px">
+           <div class="recent-event large-6 columns small-12">
+            <a class="recent-event-link invert" href="/events/{{ event.slug }}  data-sr="enter bottom"">
                 <h6>
                 {{ event.event_name }} <span> {{ event.date }}</span>
                 </h6>
