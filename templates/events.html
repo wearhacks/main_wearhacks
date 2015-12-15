@@ -344,17 +344,34 @@ function initMap() {
     <div class="columns small-12 top-header" style="background-image: url({% static 'images/event.jpg' %}); background-position-y: 70%" alt="">
             <div class="row"><h2 class="sub-header"><span><a href="/">Home &gt; </a></span> {{ title }} {{ name }}</h2></div>
     </div>
+
+    <a name="workshops">
     <div class="row text-center">
-
-     <div >
+     <div>
         <img width="200px" src="{% static 'images/wolf_large.png' %}" alt="">
-        <h2 style="display:inline-block; margin:0px 20px;"><b>WearHacks</b> Hackathons</h2>
+        <br>
+        <h2 style="display:inline-block; margin:0px 20px;"><b>WearHacks</b> Workshops</h2>
      </div>
+    </div>
 
+    <div id="event-mid-section" class="large-12-columns">
+    <div class="row">
+        {{config.EVENTS_WORKSHOP_DESC | safe}}
+    </div>
     </div>
 
 
-     <div id="event-mid-section" class="large-12-columns">
+    <a name="hackathons">
+    <div class="row text-center">
+     <div>
+        <img width="200px" src="{% static 'images/wolf_large.png' %}" alt="">
+        <br>
+        <h2 style="display:inline-block; margin:0px 20px;"><b>WearHacks</b> Hackathons</h2>
+     </div>
+    </div>
+
+
+    <div id="event-mid-section" class="large-12-columns">
     <div class="row">
 
        <div class="small-12 medium-6 columns" style="text-align: center">
@@ -414,8 +431,8 @@ function initMap() {
 <div class="row">
     <div class="large-12  columns">
         <br/>
-        <div class="small-12"><h3 style="text-align:center">Upcoming Events </h3></div>
-        
+        <div class="small-12"><h3 style="text-align:center">Upcoming Hackathons</h3></div>
+
         <br/>
     </div>
     </div>
@@ -443,7 +460,7 @@ function initMap() {
 <div class="small-brk"></div>
 <div class="row">
     <div class="large-12  columns">
-        <div class="small-12"><h3 style="text-align:center">Past Events</h3></div>
+        <div class="small-12"><h3 style="text-align:center">Past Hackathons</h3></div>
 
         <br/>
     </div>

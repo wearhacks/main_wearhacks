@@ -68,8 +68,9 @@ def events(request, event_slug=None):
     return render(request, 'events.html',
         {'config':config,
          'title':"Events",
-         'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
-         'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('start_date'),
+         'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now(),type='hackathon').order_by('start_date'),
+         'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now(),type='hackathon').order_by('start_date'),
+         'workshop': Event.objects.all().filter(type='workshop').order_by('start_date'),
          'config':config})
 
 def ambassador(request):

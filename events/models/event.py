@@ -3,6 +3,12 @@ from events.models.helpers import *
 from geoposition.fields import GeopositionField
 
 class Event(models.Model):
+    EVENTTYPES = (
+        ('workshop', 'Workshop'),
+        ('alpha_hack', 'Alpha Hack'),
+        ('hackathon', 'Hackathon')
+    )
+
     """(Place description)"""
     def date_to_string(self):
         if self.start_date.year != self.end_date.year:
@@ -24,6 +30,8 @@ class Event(models.Model):
     date = date_to_string
     slug = models.SlugField(blank=False,
          help_text="Required field for event page: http://wearhacks.com/events/<slug>")
+    type = models.CharField(max_length=10, choices=EVENTTYPES, default='hackathon')
+
     def __unicode__(self):
         return u"%s" % self.short_name
 

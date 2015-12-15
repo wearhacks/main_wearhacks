@@ -157,6 +157,7 @@ CONSTANCE_CONFIG = {
             all share the same vision of improving hardware education.",''),
     'ABOUT_TEAM_DESC_RIGHT': ("We share the vision of empowering anyone with the will to learn \
             hardware hacking with the tools and mentorship.",''),
+    'EVENTS_WORKSHOP_DESC': ("<p>WearHacks Workshops bring together future developers, designers, blabla.</p>", ''),
     'EVENTS_HACKATHON_DESC': ("<p>WearHacks Hackathons bring together developers, designers,\
             project managers, students, and engineers with an entrepreneurial and creative\
             mind.</p><p> For an intensive 48 hours, they will learn new tools, meet industry experts,\

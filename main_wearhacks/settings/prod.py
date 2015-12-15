@@ -31,6 +31,11 @@ AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 AWS_QUERYSTRING_AUTH = False
 AWS_PRELOAD_METADATA = True
 
+STRIPE_SECRET_KEY = os.environ.get('LIVE_STRIPE_SECRET_KEY',
+    '')
+STRIPE_PUBLIC_KEY = os.environ.get('LIVE_STRIPE_PUBLIC_KEY',
+    '')
+
 #Static url: URL to use when referring to static files located in STATIC_ROOT.
 STATIC_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 
