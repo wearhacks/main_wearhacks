@@ -15,11 +15,7 @@
   "dependencies": {
     "foundation": "~5.5.3",
     "swiper": "~3.1.7",
-<<<<<<< HEAD
     "scrollReveal.js": "~2.3.2",
     "jquery.lazyload": "~1.9.7"
-=======
-    "scrollReveal.js": "~2.3.2"
->>>>>>> master
   }
 }
