@@ -131,3 +131,22 @@
     font-size: 14px;
     margin-left: 7px;
 }
+a.past-event-link {
+    background: #333;
+    position: relative;
+    display:block;
+    h6 {
+      color: white;
+      padding:10px 15px;
+    }
+    span {
+        float: right;
+    border-left: 1px solid white;
+    padding-left: 20px;
+    }
+    &:hover {
+      background: #222;
+      color: white;
+    }
+}
+

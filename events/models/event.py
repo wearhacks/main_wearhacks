@@ -2,6 +2,8 @@ from django.db import models
 from events.models.helpers import *
 from geoposition.fields import GeopositionField
 
+
+
 class Event(models.Model):
     EVENTTYPES = (
         ('workshop', 'Workshop'),
@@ -19,21 +21,20 @@ class Event(models.Model):
             return self.start_date.strftime('%d') + '-' + self.end_date.strftime('%d %b %Y')
 
     event_name = models.CharField(max_length = 50)
-    short_name = models.CharField(max_length = 50)
+    slug = models.SlugField(blank=False,
+         help_text="ie: Short name, required field for event page: http://wearhacks.com/events/<slug>")
     start_date = models.DateTimeField(blank=True)
     end_date = models.DateTimeField(blank=True, )
     address = models.CharField(max_length = 100)
     city = models.CharField(max_length= 50)
-    photo = models.ImageField(upload_to = get_upload_path_event, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path_event, blank = True, null = True, validators=[validate_large_image])
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
-    slug = models.SlugField(blank=False,
-         help_text="Required field for event page: http://wearhacks.com/events/<slug>")
     type = models.CharField(max_length=10, choices=EVENTTYPES, default='hackathon')
 
     def __unicode__(self):
-        return u"%s" % self.short_name
+        return u"%s" % self.event_name
 
     def save(self, *args, **kwargs):
         if not self.slug:

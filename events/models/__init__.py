@@ -2,9 +2,10 @@ from event import Event
 from pastevent import PastEvent
 from project import Project
 from teammember import TeamMember
-from partner import Partner
 from registration import Registration
 from chargeattempt import ChargeAttempt
 from ticket import Ticket
-from helpers import *
 from eventextend import *
+from partner import Partner
+from slider import Slider
+from helpers import *

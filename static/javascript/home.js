@@ -7,7 +7,7 @@ var initializeSwiper = function() {
         paginationClickable: true,
         spaceBetween: 30,
         centeredSlides: true,
-        autoplay: 3000,
+        autoplay: 5000,
         autoplayDisableOnInteraction: false,
         onSlideChangeStart: function(swiper) {
           lastindex = swiper.activeIndex;
@@ -19,7 +19,6 @@ var initializeSwiper = function() {
           swiper.slides.each(function(i,slide){
             if(i !== swiper.activeIndex) {
               $(slide).find('.content').fadeOut(0);
-              console.log("toggle out " + i);
             }
 
           });
@@ -61,4 +60,9 @@ var initBackToTop = function() {
 $(document).ready(function() {
 
   initBackToTop();
+  $('#signup-newsletter').on('click',  function() {
+     console.log('hel');
+     $('#signup-modal').foundation('reveal', 'open');
+});
+
 });

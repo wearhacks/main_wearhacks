@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.forms.models import model_to_dict
 from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
-from models import TeamMember,Event,Partner
+from models import TeamMember, Event, Partner, Slider, Project
 from forms import PartnerForm
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
@@ -11,27 +11,34 @@ import mailchimp
 import json
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
-from django.utils import timezone
 from constance import config
 import itertools as iTool
 
 def home(request):
     posts = json.loads(urlopen(config.A_BLOG_LINK + '/?json=1').read())["posts"]
+    events = Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date')
+    if len(events) > 0:
+        event = events[0]
+    else:
+        event = None
     content = {
         'title' : "Home",
         'config':config,
         'blog_title' : posts[0]["title"],
         'blog_excerpt' : posts[0]["excerpt"],
         'blog_link' : posts[0]["url"],
-        'blog_image' : posts[0]["thumbnail_images"]["full"]["url"]
+        'blog_image' : posts[0]["thumbnail_images"]["full"]["url"],
+        'event' : event,
+        'slides' : Slider.objects.filter(slider_location = 0).order_by('order'),
+        'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('-start_date')[:3],
     }
 
 
     return render(request, 'index.html',content)
 
-def about_us(request):
-    return render(request, 'aboutus.html',
-        {'title':"About Us",
+def team(request):
+    return render(request, 'ourteam.html',
+        {'title':"Our Team",
          'team_members':TeamMember.objects.all().order_by('name'),
          'config':config})
 
@@ -73,9 +80,24 @@ def events(request, event_slug=None):
          'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
          'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('start_date'),
          'config':config})
+def projects(request) :
+    return render(request, 'projects.html',
+        {'config':config,
+         'title':"Projects",
+         'top_projects':Project.objects.filter(project_type='2'),
+         'bottom_projects': Project.objects.filter(project_type='1'),
+         'config':config})
 
 def ambassador(request):
-    return render(request, 'ambassador.html',{'config':config, 'title':"Ambassador Program"})
+    return render(request, 'ambassador.html',{
+      'slides' : Slider.objects.filter(slider_location = 2).order_by('order'),
+      'config':config,
+      'title':"Ambassador Program"})
+def mission(request):
+    return render(request, 'mission.html',{
+        'slides' : Slider.objects.filter(slider_location = 1).order_by('order'),
+        'config':config, 'title':"Our Mission"})
+
 
 def partnerships(request):
     if request.method == 'POST':
@@ -84,8 +106,7 @@ def partnerships(request):
             subject = form.cleaned_data['organization_name'] + ' wants to be our partner!'
             message = form.cleaned_data['message']
             email = form.cleaned_data['email']
-
-            recipients = ['i.nadim@gmail.com']
+            recipients = ['info@wearhacks.com']
 
             EmailMessage(subject, message, email, recipients).send()
             return JsonResponse({"status":"success", "message":"Welcome aboard!<br>:)"}, status=200)
@@ -98,7 +119,8 @@ def partnerships(request):
         return render(request, 'partnerships.html',
             {'title':"Partnerships",
              'partners':{k: list(v) for k, v in partners},
-             'form': form
+             'form': form,
+             'config':config
             })
 
 @csrf_exempt

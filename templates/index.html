@@ -1,4 +1,3 @@
-
 {% extends "_base.html" %}
 
 {% load staticfiles%}
@@ -13,44 +12,49 @@
     <div class="swiper-container">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide" style="background-image:url('{% static 'images/school.jpg'%}');box-shadow: rgba(22, 75, 99, 0.45098) 0px 900px 0px inset; ">
-              <div class="content text-center">
-                <h3 style="color: white;">
-                  WearHacks is the <b>learning platform</b> for the next generation of <br/><b>technology pioneers</b></h3>
-      <a href="/aboutus/" >Learn More <i class="fa fa-chevron-right"></i></a>
-      </div>
-            </div>
-            <div class="swiper-slide"style="background-image:url('{% static  'images/bannerhackathon.jpg'%}'); box-shadow: inset 0px 400px 0px rgba(0,0,0,0.7)">
-                <div class="content text-center" style="top:30vh; color:white;">
-                
-                    <div class="columns small-12">
-                      <div class="logo" style="background-image: url('{% static 'images/logo-white.png' %}')"></div>
-                      <h2 style="color:white">WearHacks Hackathons</h2>
-                    <h5 style="color:white;">We empower creative thinkers by providing mentorship and innovation through hackathons</h5>
-                    <a href="/events/" class="href">Learn More <i class="fa fa-chevron-right"></i></a>
-                    </div>
-                    
-                </div>
+            {% if event %}
+            <div class="swiper-slide" style="{% if event.photo %}background-image:url('{{ event.photo.url }}'); {% endif %}
+            box-shadow: rgba(0, 0, 0, 0.30) 0px 400px 0px inset;">
 
+                  <div class="content">
+
+                      <div style="padding: 20px 40px;">
+                          <h6 style="color:white">Join our next event</h6>
+                          <h2 style="color:white">{{ event.event_name }}</h2>
+                           <h4>{{ event.date }}</h4>
+
+                      </div>
+                       {% if event.link %}
+                       <a href="{{ event.link }}">Sign Up</a>
+                           {% endif %}
+                      <a href="/events/">View More</a>
+
+
+                  </div>
             </div>
 
-            <div class="swiper-slide" style="background:url('{% static 'images/ambassadors.jpg'%}');  background-size: 100%;
-    box-shadow: inset 0px 900px 0px rgba(14, 14, 14, 0.8);
-    background-position-y: 54%;">
-              <div class="content" style="top: 30vh; text-align: center; width: 100%; color: white; display: block;">
-<<<<<<< HEAD
-              <h2 style="color:white">WearHacks Ambassadors</h2>
-=======
-              <h2 style="color:white">WearHacks Amabassadors</h2>
->>>>>>> master
-<h5 style="color:white;">"It is a challenging but extremely rewarding experience, and I got the opportunity to connect with many amazing people in the tech community!" <br/> <small style="
-    color: white;
-">-Jenny Yu, WH Vancouver Ambassador</small></h5>
-               <a href="/ambassador/">Learn More <i class="fa fa-chevron-right"></i></a>
+                {% endif %}
+
+
+         {% for slide in slides %}
+          <div class="swiper-slide" style="background-image:url('{{slide.photo.url}}');
+     box-shadow: inset 0px 400px 0px rgba(0, 0, 0, {{slide.overlay_percentage}}); ">
+              <div class="content" style=" {%if slide.align_left%}text-align:left; {%endif%}">
+              {{slide.main_text | safe}}
+
+                {% if slide.first_link %}
+               <a href="{{slide.first_link}}">{{slide.first_link_text}}</a>
+                {% endif %}
+                {% if slide.second_link %}
+               <a href="{{slide.second_link}}">{{slide.second_link_text}}</a>
+               {% endif %}
+               {% if slide.add_call_to_action %}
+               <a id="signup-newsletter">Sign Up Now</a>
+               {% endif %}
               </div>
             </div>
 
+        {% endfor %}
 
         </div>
         <!-- If we need pagination -->
@@ -76,76 +80,99 @@
         <a href="{{blog_link }}"><h5>{{blog_title}}</h5></a>
       </div>
        <div class="content-blog" >
-           {{blog_excerpt | safe}} 
+           {{blog_excerpt | safe}}
            <a href="{{blog_link }} ">Read More <i class="fa fa-angle-double-right"></i></a>
 
 
         </div>
     </div>
-    <div id="right-content" class="large-5 columns no-padding" style="padding-left: 0.7em;">
-      <div class="sub-content small-12 columns">
-      
-      <div class="small-12 medium-4 columns no-padding">
-         <a href="/aboutus"><div class="content-img" style="background-image:url('{% static 'images/team.jpg'%}')">
- 
-          </div></a>
-      </div>    
-      <div class="description small-12 medium-8 columns">
-        <h6><a href="/aboutus">About Us</a></h6>
-        <p>We’re an eclectic bunch that shares the vision of improving hardware education.</p>
-      </div>
+    <div id="right-content" class="large-5 columns no-padding" >
 
-    </div>
       <div class="sub-content small-12 columns">
-      
-        
+
+
           <div class="small-12 medium-4 columns no-padding">
             <a href="/events">
-             <div class="content-img" style="background-image:url('{% static 'images/innovation.jpg'%}')">
-          
+             <div class="content-img" style="background-image:url('{% static 'images/cta_events.jpg'%}')">
+
               </div>
             </a>
-          </div>    
-        
+          </div>
+
           <div class="description small-12 medium-8 columns">
             <h6><a href="/events">Events</a></h6>
-            <p>A one of a kind experience. Our events bring together students, mentors and tinkerers in a warm, energetic and collaborative environment.</p>
+            {{config.CTA_EVENTS | safe}}
           </div>
     </div>
-  
+    <div class="sub-content small-12 columns">
+
+      <div class="small-12 medium-4 columns no-padding">
+         <a href="/ambassador"><div class="content-img" style="background-image:url('{% static 'images/stage.jpg'%}')">
+
+          </div></a>
+      </div>
+      <div class="description small-12 medium-8 columns">
+        <h6><a href="/ambassador">Ambassador Program</a></h6>
+        {{config.CTA_AMBASSADOR_PROGRAM | safe}}
+      </div>
+
+    </div>
+
       <div class="sub-content small-12 columns">
-     
+
         <div class="small-12 medium-4 columns no-padding">
-           <a href="#">
-           <div class="content-img" style="background-image:url('{% static 'images/projects.jpg'%}')">
-     
+           <a href="/projects/">
+           <div class="content-img" style="background-image:url('{% static 'images/cta_projects.jpg'%}')">
+
             </div>
             </a>
-        </div>    
-        <div class="description small-12 medium-8 columns">
-         <h6> <a href="{{config.A_BLOG_LINK}}/category/projects/">Projects</a></h6>
-          <p>WearHackers' projects don’t end at hackathons, they are a stepping stone to something greater.</p>
-          
         </div>
-      
+        <div class="description small-12 medium-8 columns">
+         <h6> <a href="/projects/">Projects</a></h6>
+          {{config.CTA_PROJECTS | safe}}
+
+        </div>
+
     </div>
     <div class="sub-content small-12 columns top-margin">
-     
+
       <div class="small-12 medium-4 columns no-padding">
-         <a href="/partnerships"><div class="content-img" style="background-image:url('{% static 'images/partnership.jpg'%}')">
-       
+         <a href="/partnerships"><div class="content-img" style="background-image:url('{% static 'images/cta_partnerships.jpg'%}')">
+
           </div></a>
-      </div>    
+      </div>
       <div class="description small-12 medium-8 columns">
         <h6> <a href="/partnerships">Partnerships</a></h6>
-        <p>Help us create the next generations of innovators. We can’t do it alone!</p>
+        {{config.CTA_PARTNERSHIPS | safe}}
       </div>
     </div>
 
     </div>
   </div>
   </div>
+  <div class="row">
+    <hr style="opacity:0.4">
 
+    <div class="large-12 columns" style="position:relative">
+          <h6>Recent Events</h6>
+         {% for event in past_events %}
+         <div class="recent-event large-6 columns small-12">
+            <a class="recent-event-link invert" href="/events/{{ event.slug }}">
+                <h6>
+                {{ event.event_name }} <span> {{ event.date }}</span>
+                </h6>
+            </a>
+          </div>
+
+        {% endfor %}
+        <div class="recent-event large-6 columns small-12" >
+            <a class="recent-event-link invert" href="/events/">
+               <h6>View more events <span><i class="fa fa-angle-right"></i></span></h6>
+            </a>
+          </div>
+
+    </div>
+</div>
 </div>
 
 </section>

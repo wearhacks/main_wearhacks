@@ -50,19 +50,23 @@ class PastEvent(models.Model):
 
     def fetch_photos(self):
         if not self.photos:
-            if not self.album:
-                self.fetch_album()
-            if self.source_type == '1': # if from flickr
+            if self.source_albumlink and self.source_type == '1':
+                source_username = re.search('(?<=photos/)([^/]*)', self.source_albumlink).group(0)
+                source_albumname = re.search('(?<=sets/)([^/]*)', self.source_albumlink).group(0)
+
+                self.fetch_album(source_username,source_albumname)
+                #self.fetch_album()
                 self.photos = self.album['photoset']['photo']
             # handle other cases
         return self.photos
 
     def get_stats(self):
         if self.source_albumlink and self.source_type == '1':
-            self.fetch_album(source_username,source_albumname)
             source_username = re.search('(?<=photos/)([^/]*)', self.source_albumlink).group(0)
             source_albumname = re.search('(?<=sets/)([^/]*)', self.source_albumlink).group(0)
 
+            self.fetch_album(source_username,source_albumname)
+            
             return {
                'total': self.album['photoset']['total'],
                'userId': source_username,
@@ -121,10 +125,7 @@ class PastEvent(models.Model):
                 args['image'] = ''
                 # maybe we can have a placeholder too
             if self.saveProject(args):
-                print('Created new project %s.' % name)
                 counter += 1
-            else:
-                print('Project %s already exists in DB.' % name)
 
 
         return (counter, True)

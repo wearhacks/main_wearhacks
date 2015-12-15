@@ -40,7 +40,6 @@ COMPRESS_URL = STATIC_URL
 MEDIA_URL  = STATIC_URL + '/media/'
 MEDIA_ROOT = os.path.join(DJANGO_ROOT, 'media_root')
 
-
 COMPRESS_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'
 DEFAULT_FILE_STORAGE = 'main_wearhacks.s3utils.MediaRootS3BotoStorage'
 STATICFILES_STORAGE = 'main_wearhacks.s3utils.CachedS3BotoStorage'

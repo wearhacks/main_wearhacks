@@ -1,6 +1,6 @@
 
 {% extends "_base.html" %}
-{% block title %} About Us {% endblock %}
+{% block title %} {{title}} {% endblock %}
 
 {% load staticfiles%}
 {% block content %}
@@ -12,43 +12,14 @@
 <section id="body">
 
         <div class="columns small-12 top-header" style="background-image: url({% static 'images/team.jpg' %});" alt="">
-            <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; </span> {{ title }}</h2></div>
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> <i class="fa fa-angle-right"></i> </span> {{ title }}</h2></div>
         </div>
 
-     <div class="row ">
-          <div class="small-12 medium-6 large-4 columns">
-                  <!-- Swiper -->
-                    <div id="swiper-3d">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_1.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_2.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_3.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide4.jpg' %})"></div>
-                            <div class="swiper-slide" style="background-image:url({% static 'images/album/slide_kid.jpg' %})"></div>
-                        </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                    </div>
-        </div>
-        <div class="small-12 medium-6 large-8  columns paragraph">
-            <h2 class="sub-header2">Our mission</h2>
 
-            {{config.ABOUT_MISSION_STATEMENT | safe}}
-        </div>
-
-    </div>
-
-     <div class="small-brk"></div>
     <div id="team-members" class="row ">
             <div class="team-header small-12 columns">
-                <h2 class="sub-header2" style="margin-bottom:20px">The team</h2>
-
-                <div class="columns large-8">
-                    <p>{{config.ABOUT_TEAM_DESC_LEFT}}</p>
-                </div>
-                <div class="columns large-4"><p>
-                    {{config.ABOUT_TEAM_DESC_RIGHT}}
-                </p></div>
+                
+                    {{config.ABOUT_TEAM_DESC_LEFT | safe}}
             </div>
             <div class="columns large-12">
             {% for member in team_members %}
@@ -76,7 +47,6 @@
             {% endfor %}
             </div>
     </div>
-    <div class="small-brk"></div>
 </section>
 
 {% endblock %}

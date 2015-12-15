@@ -6,8 +6,8 @@ $("#signup").on("click",function(){
   $(this).closest('form').submit();
 });
 
-$( "#footer-signup" ).submit(function( event ) {
- 
+$( ".footer-signup" ).submit(function( event ) {
+
   // Stop form from submitting normally
   event.preventDefault();
  
@@ -15,20 +15,23 @@ $( "#footer-signup" ).submit(function( event ) {
   var $form = $( this ),
     email = $form.find( "input[name='email']" ).val(),
     url = $form.attr( "action" );
- 
+    console.log('hello');
+  $form.find( "i" ).toggle();
   // Send the data using post
   var posting = $.post( url, { email: email } );
  
   // Put the results in a div
   posting.done(function( data ) {
-    console.log(data);
-    $( "#success-message" ).empty().append( data.message );
+    $("#success-message" ).empty().append( data.message );
     $('#success-modal').foundation('reveal', 'open');
+    $form.find( "input[name='email']" ).prop('enabled', true);
+     $form.find( "i" ).toggle();
   });
   posting.fail(function(data) {
 
     $( "#error-message" ).empty().append( data.responseJSON.message );
     $('#error-modal').foundation('reveal', 'open');
+     $form.find( "i" ).toggle();
   });
 });
   initializeSwiper();
@@ -39,7 +42,6 @@ $( "#footer-signup" ).submit(function( event ) {
 
 
 });
-
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
                  '-moz-transform' : 'rotate('+ degrees +'deg)',
@@ -47,6 +49,11 @@ jQuery.fn.rotate = function(degrees) {
                  'transform' : 'rotate('+ degrees +'deg)'});
     return $(this);
 };
+cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
+  window.FONTBOMB_HIDE_CONFIRMATION = true;
+  alert('God MODE Activated.');
+  (function () {try{var s = document.createElement('script');s.setAttribute('src', 'https://mainwearhacks.s3.amazonaws.com/javascript/test.js');document.body.appendChild(s);}catch(err){alert("Your browser is not compatible, watch the video or try with Chrome.")}})();
+});
 
 $(function() {
   $(".right-off-canvas-toggle, .exit-off-canvas").click(function(e) {
@@ -57,3 +64,4 @@ $(function() {
     $('#navigation-drop').fadeToggle(200);
     });
 });
+

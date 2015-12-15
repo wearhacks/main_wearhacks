@@ -10,7 +10,7 @@ class TeamMember(models.Model):
     position = models.CharField(max_length = 50)
     blurb = models.CharField(max_length = 150)
     email = models.EmailField(verbose_name='email')
-    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True)
+    photo = models.ImageField(upload_to = get_upload_path, blank = True, null = True,validators=[validate_small_image])
     github = models.URLField(max_length=100, blank=True)
     linkedin = models.URLField(max_length=100, blank=True)
     facebook = models.URLField(max_length=100, blank=True)

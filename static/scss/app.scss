@@ -1713,7 +1713,7 @@ h2.sub-header2 {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     position:relative;
-      box-shadow:inset 0px -231px 0px rgba(12, 121, 173, 0.35);
+    box-shadow: 1px 1px 1px #CCC;
    .blurb {
      opacity: 0;
      transition: opacity 0.4s;
@@ -1837,3 +1837,27 @@ h6.call-action {
 @media #{$xxlarge-up} { }
 @media #{$xxlarge-only} { }
 
+.fa-spin-custom, .glyphicon-spin {
+  -webkit-animation: spin 1000ms infinite linear;
+  animation: spin 1000ms infinite linear;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
