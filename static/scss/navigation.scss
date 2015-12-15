@@ -17,7 +17,7 @@ a:hover {
     background: white;
     text-align: center;
 
-    @media #{$medium-up} { 
+    @media #{$medium-up} {
       border-bottom: 1px solid whitesmoke;
       position: relative;
       background:none;
@@ -29,7 +29,7 @@ a:hover {
 }
 body {
   margin-top: 57px;
-  @media #{$medium-up} { 
+  @media #{$medium-up} {
     margin-top:0;
   }
 }
@@ -70,7 +70,7 @@ body {
     vertical-align: bottom;
         font-size: small;
     color: #928F8F;
-  } 
+  }
 }
 #navigation-drop {
     position: absolute;
@@ -287,14 +287,14 @@ ul.inline-list.social {
       a {
         font-size:0.8em;
         color:#333;
-        
+
           transition: color 0.2s ;
         &:hover {
           color:$wolf-blue;
           transition: color 0.2s ;
         }
       }
-     
+
       border-top:0;
           padding: 0px 5px;
     }
@@ -368,4 +368,10 @@ width: 38px;
     vertical-align: top;
     margin-top: -8px;
     opacity: 0.4;
+}
+.side-nav li a.sub {
+    padding: 8px 14px;
+    text-transform: initial;
+    font-size: 0.9em;
+    margin-left: 14px;
 }

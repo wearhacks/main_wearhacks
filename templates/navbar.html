@@ -2,9 +2,9 @@
 <div id="navigation" class="row">
   <div class="columns small-12 no-padding" style="position:relative">
     <div id="wearhacks-logo" class="clearfix">
-     <h4 class="brand"><a href="/"><div class="logo-top" 
+     <h4 class="brand"><a href="/"><div class="logo-top"
       style="background-image:url('{% static 'images/wolf_thicker_lines.png'%}')"></div>WearHacks</a></h4>
-     <p class="tagline hide-for-small-only">Imagine Enchantment.</p>
+     <p class="tagline hide-for-small-only">{{config.LOGO_TAGLINE_SAFE}}</p>
     </div>
     <div id="mainmenu">
     <a class="right-off-canvas-toggle" href="">
@@ -18,7 +18,9 @@
         <div class="hover-menu" style="z-index:4">
         <div id="navigation-drop" style="display: none;">
           <ul class="side-nav text-left secondary">
-            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/mission">About Us</a></li>
+            <li><a class="sub" href="/mission">Our Mission</a></li>
+            <li><a class="sub" href="/team">Our Team</a></li>
             <li><a href="/events">Events</a></li>
             <li><a href="/ambassador">Ambassador Program</a></li>
             <li><a href="/partnerships">Partnerships</a></li>

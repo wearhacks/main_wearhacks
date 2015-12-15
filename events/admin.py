@@ -2,7 +2,6 @@ from django.contrib import admin
 from django import forms
 from events.models import Event,Project,TeamMember,Partner,PastEvent,\
     Ticket,Registration,ChargeAttempt,EventPicture,EventContent
-from django.contrib import messages
 admin.site.register(Project)
 admin.site.register(TeamMember)
 admin.site.register(Partner)
@@ -11,6 +10,7 @@ admin.site.register(Ticket)
 admin.site.register(ChargeAttempt)
 admin.site.register(EventPicture)
 admin.site.register(EventContent)
+
 # Register your models here.
 
 def retrieveProjects(modeladmin, request, queryset):

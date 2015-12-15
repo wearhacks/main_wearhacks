@@ -16,8 +16,6 @@ DEBUG = os.environ.get('DEBUG', False)
 TEMPLATE_DEBUG = DEBUG
 
 #Override these using ENV Vars
-FLICKR_API_KEY = os.environ.get('FLICKR_API_KEY', '')
-FLICKR_API_SECRET = os.environ.get('FLICKR_API_SECRET', '')
 MAILGUN_ACCESS_KEY = os.environ.get('MAILGUN_ACCESS_KEY', '')
 MAILGUN_SERVER_NAME = os.environ.get('MAILGUN_SERVER_NAME', '')
 SECRET_KEY = os.environ.get('SECRET_KEY', 'supersecret')
@@ -31,10 +29,8 @@ AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 AWS_QUERYSTRING_AUTH = False
 AWS_PRELOAD_METADATA = True
 
-STRIPE_SECRET_KEY = os.environ.get('LIVE_STRIPE_SECRET_KEY',
-    '')
-STRIPE_PUBLIC_KEY = os.environ.get('LIVE_STRIPE_PUBLIC_KEY',
-    '')
+STRIPE_SECRET_KEY = os.environ.get('LIVE_STRIPE_SECRET_KEY','')
+STRIPE_PUBLIC_KEY = os.environ.get('LIVE_STRIPE_PUBLIC_KEY','')
 
 #Static url: URL to use when referring to static files located in STATIC_ROOT.
 STATIC_URL = 'https://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME

@@ -14,7 +14,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 from constance import config
 import itertools as iTool
-import random
 
 def home(request):
     posts = json.loads(urlopen(config.A_BLOG_LINK + '/?json=1').read())["posts"]
@@ -48,18 +47,21 @@ def events(request, event_slug=None):
             past_event = event.pastevent
             if past_event:
                 response['stats'] = past_event.get_stats()
-                response['bannerPictures'] = random.sample(past_event.fetch_photos(), 3)
                 response['allPictures'] = past_event.fetch_photos()
 
-            projects = event.project_set.all()
-            if projects:
-                groupedProjects = {k: list(v) for k, v in
-                    iTool.groupby(projects, lambda x: x.project_type)}
-                response['stats']['projects'] = len(projects)
-                response['winners']=groupedProjects['2']
-                response['projects']=groupedProjects['1']
+            winning_projects = event.project_set.filter(project_type='2')
+            projects = event.project_set.filter(project_type='1')
+
+            all_proj = len(projects)+ len(winning_projects)
+            if (len(winning_projects) <=3 or all_proj <= 10) :
+                response['top_projects'] = event.project_set.all()
+                response['bottom_projects'] = []
             else:
-                response['stats']['projects'] = 0
+                response['top_projects'] = winning_projects
+                response['bottom_projects'] = projects
+
+            response['stats']['projects'] = all_proj
+            response['stats']['winning'] = len(winning_projects)
 
             return render(request, 'event_pictures.html', response)
         except ObjectDoesNotExist:
@@ -68,9 +70,8 @@ def events(request, event_slug=None):
     return render(request, 'events.html',
         {'config':config,
          'title':"Events",
-         'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now(),type='hackathon').order_by('start_date'),
-         'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now(),type='hackathon').order_by('start_date'),
-         'workshop': Event.objects.all().filter(type='workshop').order_by('start_date'),
+         'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
+         'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('start_date'),
          'config':config})
 
 def ambassador(request):
