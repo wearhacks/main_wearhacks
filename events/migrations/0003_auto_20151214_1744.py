@@ -11,7 +11,7 @@ import django.core.validators
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0002_auto_20151208_0224'),
+        ('events', '0002_auto_20151213_2246'),
     ]
 
     operations = [
