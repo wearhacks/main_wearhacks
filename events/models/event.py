@@ -32,6 +32,7 @@ class Event(models.Model):
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
     event_type = models.CharField(max_length=10, choices=EVENTTYPES, default='hackathon')
+    registration_closed = models.BooleanField(default=False)
 
     def __unicode__(self):
         return u"%s" % self.event_name

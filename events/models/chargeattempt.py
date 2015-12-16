@@ -43,26 +43,25 @@ class ChargeAttempt(models.Model):
         help_text='Message detailing internal server errors for debugging purposes', blank=True)
 
 
-    def saveServerMessage(self, messages, exception=None):
-        try:
-            if self.server_message:
-                messages = [self.server_message] + list(messages)
-            else:
-                messages[0] = '> ' + messages[0] # preprend '>' for consistency
-            if exception:
-                server_message = '%s (%s)' % ('\n> '.join(messages), str(exception)[:100])
-            else:
-                server_message = '\n> '.join(messages)
-            n = ChargeAttempt.SERVER_MESSAGE_MAX_LENGTH
-            if len(server_message) > n:
-                self.server_message = "...%s" % (server_message[-(n-3):])
-            else:
-                self.server_message = server_message
-            print self.server_message
-            self.save()
-        except Exception, e:
-            print 'ERROR: Could not save server message %s to charge attempt %s (%s)' % (
-                    self.server_message, self, str(e))
+    def appendSaveServerMessage(self, message, exception=None):
+        if self.server_message:
+            message = self.server_message + '; ' + message
+        if len(server_message) > ChargeAttempt.SERVER_MESSAGE_MAX_LENGTH:
+            self.server_message = "...%s" % (server_message[-(n-3):])
+        else:
+            self.server_message = server_message
+
+        if exception and hasattr(exception, 'json_body') and 'error' in exception.json_body:
+            err = exception.json_body['error']
+            err_fields = ('type', 'code', 'param', 'message')
+            for f in err_fields:
+                if f in err:
+                    self.fields['error_' + f] = err[f]
+
+            if hasattr(exception, 'http_status'):
+                self.error_http_status = exception.http_status
+
+        self.save()
 
     @property
     def registration(self):

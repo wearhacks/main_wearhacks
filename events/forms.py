@@ -12,7 +12,8 @@ class RegisterForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required':True}))
 
     def setTickets(self,ticketSet):
-        self.fields['tickets'] = forms.ModelChoiceField(queryset=ticketSet, empty_label=None)
+        self.fields['tickets'] = forms.ModelChoiceField(queryset=ticketSet,
+            empty_label='-- select --', required=True)
         self.fields['has_read_conditions'] = forms.BooleanField(required=True,
             label = mark_safe('I have read and I agree with \
                 the <a class="terms" href="#"> Terms and Conditions</a> and the \

@@ -38,8 +38,15 @@ class Registration(models.Model):
 
     # Ticket Info
     ticket = models.ForeignKey('Ticket')
-    charge = models.ForeignKey('ChargeAttempt', blank=True, null=True)
+    charge_attempt = models.ForeignKey('ChargeAttempt', blank=True, null=True)
+    # Add event? it's reachable from ticket, but if we allow many-to-one
+    # relationship between ticket and event, then it's better to have event fk here
 
+    # Logistics
+    ORDER_ID_MAX_LENGTH = 6
+    order_id = models.CharField(default='xxx', max_length=ORDER_ID_MAX_LENGTH)
+
+    has_attended = models.BooleanField(default=False)
     staff_comments = models.TextField(max_length=100, default="No comments",
         help_text='Log anything to do with this registration here.',
         blank=True)
@@ -96,7 +103,7 @@ class Registration(models.Model):
 
     def __unicode__(self):
         if self.pk:
-            return '{0}'.format(self.pk) # '{0} (#{1})'.format(self.full_name(), self.pk)
+            return '{0} (#{1})'.format(self.full_name(), self.pk) #'{0}'.format(self.pk)
         else:
             return '{0} (Not saved)'.format(self.full_name())
 
