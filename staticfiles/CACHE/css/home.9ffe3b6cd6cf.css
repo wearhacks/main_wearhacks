@@ -1,0 +1,225 @@
+/* line 7, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.swiper-container {
+  width: 100%;
+  height: 400px; }
+
+/* line 13, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.swiper-button-prev.swiper-button-white, .swiper-button-next.swiper-button-white {
+  opacity: 0.5; }
+  /* line 16, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .swiper-button-prev.swiper-button-white:hover, .swiper-button-next.swiper-button-white:hover {
+    opacity: 1.0;
+    transition: opacity 0.5s; }
+
+/* line 22, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.swiper-slide {
+  background-size: contain;
+  display: flex;
+  align-items: center; }
+
+/* line 27, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.swiper-slide h4 {
+  color: white;
+  font-size: 1.2em; }
+
+/* line 31, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.swiper-slide h1 {
+  font-size: 2em;
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.31); }
+
+/* line 38, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.swiper-slide .content {
+  color: white;
+  margin-left: 70px;
+  margin-right: 70px;
+  font-weight: 100; }
+  /* line 43, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .swiper-slide .content h1, .swiper-slide .content p {
+    display: block; }
+  /* line 47, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .swiper-slide .content a {
+    color: rgba(255, 255, 255, 0.73);
+    background-color: rgba(107, 106, 106, 0.15);
+    padding: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.77);
+    font-weight: 200;
+    margin-top: 20px;
+    display: inline-block;
+    padding-left: 13px;
+    padding-right: 13px;
+    border-radius: 1px;
+    font-family: sans-serif; }
+    /* line 59, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+    .swiper-slide .content a .fa {
+      transition: width 0.2s;
+      width: 0px;
+      overflow: hidden;
+      vertical-align: middle; }
+  /* line 66, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .swiper-slide .content a:hover {
+    background: white;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.8s; }
+    /* line 71, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+    .swiper-slide .content a:hover .fa {
+      transition: width 0.2s;
+      top: 10px;
+      width: 11px;
+      line-height: 19px;
+      vertical-align: middle; }
+
+/* line 83, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.mid-content {
+  margin-top: 1px; }
+
+/* line 87, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.sub-content {
+  height: 5.65em;
+  margin-bottom: 0.7em;
+  padding-left: 0px;
+  padding-right: 0px; }
+  /* line 91, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .sub-content a.description {
+    display: inline-block;
+    width: 60%;
+    vertical-align: top; }
+  /* line 95, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .sub-content a.description:hover h4 {
+    color: #1e699c;
+    transition: color 0.2s ease-in; }
+  /* line 99, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .sub-content a.description:hover p {
+    color: #555;
+    transition: color 0.2s ease-in; }
+  /* line 103, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .sub-content p {
+    color: #928F8F;
+    font-weight: normal;
+    font-size: 0.8em;
+    line-height: 1.6em;
+    font-style: italic; }
+  /* line 110, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .sub-content .content-img {
+    display: inline-block;
+    background-size: 110%;
+    height: 5.65em;
+    background-position-y: 50%;
+    background-position-x: 50%;
+    transition: background-position 0.5s, background-size 0.5s, background-color 0.5s;
+    width: 30%;
+    padding: 10px;
+    box-shadow: -1px 0px 1px #CCC;
+    margin-right: 6px; }
+  @media (min-width: 768px) {
+    /* line 87, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+    .sub-content {
+      padding-left: 1px; } }
+
+/* line 134, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.blog-section {
+  background-position: 50% 50%;
+  background-size: 100%;
+  height: 18.2em;
+  position: relative; }
+  /* line 139, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .blog-section h5 {
+    position: absolute;
+    bottom: 0;
+    /* right: 0; */
+    background: #333;
+    color: white;
+    padding: 8px 33px;
+    text-transform: uppercase;
+    font-weight: bold; }
+
+/* line 151, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.desc-text {
+  font-size: 12px;
+  padding-left: 15px;
+  background-color: #e8e8e8;
+  border: 1px solid rgba(167, 166, 166, 0.31);
+  padding: 10px 5px;
+  color: #3E3C3C;
+  height: 55px;
+  padding-left: 12px;
+  padding-top: 5px;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5); }
+
+/* line 163, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+body {
+  -webkit-font-smoothing: antialiased; }
+
+/* line 167, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+#footer {
+  color: white; }
+
+/* line 171, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.content-blog p {
+  color: #928F8F;
+  font-weight: normal;
+  font-size: 0.8em;
+  margin-bottom: 0px;
+  line-height: 1.6em;
+  font-style: italic;
+  margin-top: 0.7em; }
+
+/* line 181, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+.content-blog a {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 0.7em;
+  float: right;
+  transition: opacity 0.2s ease-in;
+  background: #333;
+  color: white;
+  padding: 6px 10px 6px 10px;
+  text-transform: uppercase;
+  position: absolute;
+  right: 0;
+  bottom: 0; }
+  /* line 195, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  .content-blog a:hover {
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in;
+    color: white; }
+
+/* line 203, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+#company-desc {
+  background-color: #333;
+  margin-top: 2px; }
+  /* line 206, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  #company-desc .logo {
+    height: 150px;
+    /* background-color: rgba(0, 0, 0, 0.82); */
+    /* padding: 10px 10px; */
+    /* display: inline-block; */
+    filter: drop-sh;
+    /* display: inline-block; */
+    float: left;
+    margin-right: 10px;
+    margin-top: 25px;
+    color: white; }
+  /* line 218, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  #company-desc h4 {
+    margin-top: 25px;
+    color: #BFBFBF; }
+  /* line 222, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  #company-desc .button.small {
+    padding: 10px 15px;
+    margin-left: 20px; }
+  /* line 226, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  #company-desc p {
+    /* display: inline-block; */
+    margin-top: 42px;
+    color: #BFBFBF; }
+  /* line 233, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+  #company-desc ul li a {
+    font-weight: bold;
+    color: white; }
+    /* line 236, /home/ytixu/gitHTML/main_wearhacks/static/scss/home.scss */
+    #company-desc ul li a:hover {
+      text-decoration: underline; }

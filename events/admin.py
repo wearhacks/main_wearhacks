@@ -3,6 +3,9 @@ from django import forms
 from events.models import Event,Project,TeamMember,Partner,PastEvent,\
     Ticket,Registration,ChargeAttempt,EventPicture,EventContent,Slider
 from django.contrib import messages
+# from django.utils.safestring import mark_safe
+# from tinymce.widgets import TinyMCE
+
 
 admin.site.register(Project)
 admin.site.register(TeamMember)
@@ -19,6 +22,9 @@ def retrieveProjects(modeladmin, request, queryset):
   for obj in queryset:
     obj.retrieveProjects()
 
+# class EventContentInLineForm(forms.BaseInlineFormSet):
+#     content = forms.CharField(widget=TinyMCE(attrs={'cols': 200, 'rows': 30}))
+
 class TicketsInLine(admin.TabularInline):
     model = Ticket
     extra = 0
@@ -27,10 +33,16 @@ class EventContentsInLine(admin.TabularInline):
     model = EventContent
     extra = 0
     ordering = ("priority",)
+    # formset = EventContentInLineForm
 
 class EventPicturesInLine(admin.TabularInline):
     model = EventPicture
     extra = 0
+    fields = ('photo','render_image')
+    readonly_fields = ('render_image',)
+
+    def render_image(self, obj):
+        return '%s' % obj.photo.url
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('event_name', 'start_date', 'end_date')
@@ -67,3 +79,4 @@ class SliderAdmin(admin.ModelAdmin):
 admin.site.register(PastEvent, PastEventAdmin)
 admin.site.register(Slider, SliderAdmin)
 admin.site.register(Event, EventAdmin)
+

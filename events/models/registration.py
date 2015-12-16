@@ -37,6 +37,7 @@ class Registration(models.Model):
     )
 
     # Ticket Info
+    ticket = models.ForeignKey('Ticket')
     charge = models.ForeignKey('ChargeAttempt', blank=True, null=True)
 
     staff_comments = models.TextField(max_length=100, default="No comments",

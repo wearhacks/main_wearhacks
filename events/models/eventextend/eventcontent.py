@@ -1,10 +1,11 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MinValueValidator
+from tinymce import models as tinymce_models
 
 class EventContent(models.Model):
-	html = models.TextField(max_length = 500)
 	event = models.ForeignKey('Event', on_delete=models.CASCADE)
-	priority = models.IntegerField(validators=[MinValueValidator(0)])
+	priority = models.IntegerField(validators=[MinValueValidator(0)],
+		help_text="The order for the content to appear on the page.")
 
 	# small, medium, large column for foundation grid format
 	SIZETYPES = (
@@ -14,8 +15,11 @@ class EventContent(models.Model):
         ('large-4 medium-6 small-12', 'Third Width'),
         ('large-3 medium-4 small-6', 'Forth Width'),
     )
-	size = models.CharField(max_length='50', default='large-12', choices=SIZETYPES)
+	size = models.CharField(max_length='50', default='large-12', choices=SIZETYPES,
+		help_text="Fondation column class for responsiveness.")
 
+	html = tinymce_models.HTMLField()
+	draft = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return u"%s" % self.html

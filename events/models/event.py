@@ -31,7 +31,7 @@ class Event(models.Model):
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
-    type = models.CharField(max_length=10, choices=EVENTTYPES, default='hackathon')
+    event_type = models.CharField(max_length=10, choices=EVENTTYPES, default='hackathon')
 
     def __unicode__(self):
         return u"%s" % self.event_name

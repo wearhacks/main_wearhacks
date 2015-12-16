@@ -1,0 +1,377 @@
+a:hover {
+  color:#1e699c;
+}
+  ul
+  {
+      list-style-type: none;
+  }
+#navigation {
+
+    box-shadow: 0px 3px 0px rgba(123, 123, 123, 0.22);
+    position: relative;
+    height: 57px;
+    padding-top: -2px;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    background: white;
+    text-align: center;
+
+    @media #{$medium-up} {
+      border-bottom: 1px solid whitesmoke;
+      position: relative;
+      background:none;
+      box-shadow: none;
+      height: 74px;
+      padding-top: 6px;
+      padding-left: 7px;
+    }
+}
+body {
+  margin-top: 57px;
+  @media #{$medium-up} {
+    margin-top:0;
+  }
+}
+
+#wearhacks-logo{
+  float:left;
+  margin-top:0.5rem;
+  h4.brand {
+    padding-top: 8px;
+    font-size: 1.4em;
+    margin-right: 5px;
+    padding: 5px;
+    margin-bottom:0px;
+    text-transform:uppercase;
+    font-weight:100;
+
+    color:#333;
+    float:left;
+    margin-left:0.5em;
+     @media #{$medium-up} {
+      margin-left:0em;
+     }
+     a {
+      color: #333;
+
+      &:hover {
+        color:#1e699c;
+         transition: color 0.2s;
+      }
+      transition: color 0.2s;
+     }
+  }
+  p.tagline {
+    float: left;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    line-height: 4em;
+    vertical-align: bottom;
+        font-size: small;
+    color: #928F8F;
+  }
+}
+#navigation-drop {
+    position: absolute;
+    right: 0;
+    min-width: 240px;
+    background: #333;
+    margin-right: 6px;
+    margin-top: 9px;
+    z-index: 4;
+    margin-top: 52px;
+        box-shadow: rgba(23, 22, 21, 0.498039) 1px 3px 0px;
+}
+
+.right-off-canvas-toggle {
+  .menu {
+    margin-top: 1.6rem;
+    margin-bottom: 0.5rem;
+    margin-right: 1rem;
+    position: absolute;
+    right: 0;
+    z-index: 5;
+  }
+}
+
+.side-nav.secondary {
+    display: block;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 0;
+    font-family: sans-serif;
+    margin-left:10px;
+
+    z-index: 2;
+    li {
+      margin-bottom:0;
+      text-transform: capitalize;
+      a {
+          color: #B9B9B9;
+          border-bottom: 1px solid rgba(204, 204, 204, 0.09);
+          border-left: 2px solid #333;
+          padding: 5px 15px;
+        &:hover {
+          color: #FFFFFF;
+          border-left: 2px solid #565656;
+          background:#222;
+        }
+      }
+       p {
+        margin-bottom: 0;
+        color: #333;
+        font-size:12px;
+        border-bottom: 3px solid #333;
+        width:90%;
+        font-weight: 400;
+        border-bottom: px solid #FDFAFA;
+      }
+
+    }
+    li:last-child {
+      a {
+      border-bottom: 0;
+      }
+    }
+}
+
+
+.top-bar,
+.middle-bar,
+.bottom-bar {
+  display: block;
+  width: 23px;
+  height: 2px;
+  background-color: #333;
+  margin-bottom: 4px;
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1) 0, background-color 0.6s ease 0;
+}
+
+.top-bar, .bottom-bar {
+  transform-origin: 100% 50%;
+  transition: transform 0.5s,  margin 0.5s;
+}
+
+.middle-bar {
+  transition-property: opacity;
+  transition-duration: 0.6s;
+}
+
+.top-bar-close {
+  transform: rotate(-45deg);
+  background-color: #333;
+  transition: transform 0.5s, margin 0.5s;
+
+  margin-bottom: 8px;
+}
+
+.middle-bar-close {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+
+.bottom-bar-close {
+  transform: rotate(45deg);
+  background-color: #333;
+  transition: transform 0.5s;
+}
+
+ul.inline-list.social>li {
+  margin-left: 0.55rem;
+}
+
+ul.inline-list.social {
+  margin-left: -0.55rem;
+}
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+  .footer-basic-centered{
+    padding: 35px;
+  }
+
+  .footer-basic-centered .footer-company-motto{
+    font-size: 18px;
+  }
+
+  .footer-basic-centered .footer-company-name{
+    font-size: 12px;
+  }
+
+  .footer-basic-centered .footer-links{
+    font-size: 14px;
+    padding: 25px 0 20px;
+  }
+
+  .footer-basic-centered .footer-links a{
+    line-height: 1.8;
+  }
+}
+
+#footer {
+  background: #333;
+  p.copy {
+    text-align: left;
+    color: #CCC;
+    margin-top: 1em;
+    margin-left: 1em;
+  }
+  input {
+      background: #464545;
+    border: 0;
+    height: 3em;
+    /* font-size: 1.1em; */
+    padding-left: 1em;
+     @media(min-width: $break-small) {
+      background: white;
+      border:1px solid #DDD;
+     }
+  }
+  .button {
+      background-color: #1D1D1D;
+    /* border: 1px solid #464444; */
+    /* border-left: 0; */
+    /* border-radius: 0px 4px 5px 0px; */
+    font-size: 1.8em;
+    line-height: 42px;
+    color: #636363;
+    height: 42px;
+    @media(min-width: $break-small) {
+      transition: color 0.3s, background 0.3s;
+      &:hover {
+        background-color: $wolf-blue;
+        color:white;
+        border-color:$wolf-blue;
+        transition: color 0.3s, background 0.3s;
+      }
+    }
+  }
+  @media(min-width: $break-small) {
+    background: none;
+    >.row {
+
+        border-top: 1px solid #EEE;
+    }
+      p.copy {
+        text-align: right;
+        color: #BBB;
+        margin: 0;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        font-size: 0.8em;
+        margin-right:1em;
+      }
+
+  }
+}
+#footer .nav {
+  margin: 20px 0px;
+
+    li {
+      a {color: whitesmoke;}
+      padding: 8px 16px;
+      border-top: 1px solid rgb(60, 60, 60);;
+      &:first-child {
+        border-top:none;
+      }
+
+     }
+  @media(min-width: $break-small) {
+    li{
+
+      margin-top:0;
+      display: inline-block;
+      a {
+        font-size:0.8em;
+        color:#333;
+
+          transition: color 0.2s ;
+        &:hover {
+          color:$wolf-blue;
+          transition: color 0.2s ;
+        }
+      }
+
+      border-top:0;
+          padding: 0px 5px;
+    }
+  }
+}
+
+#footer .header-footer {
+  color:whitesmoke;
+  margin-top:1em;
+  border-bottom:1px solid #3E3D3D;
+  @media(min-width: $break-small) {
+    color: #333;
+    margin-top: 20px;
+    border-bottom: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8em;
+  }
+}
+#footer .social {
+   li.email {
+    display:block;
+    a {
+          font-size: 1.1em;
+    border-bottom: 1px solid;
+    line-height: 3em;
+    }
+    @media(min-width: $break-small){
+      color: #333;
+      height: inherit;
+      font-size: 1.6em;
+      transition: color 0.3s, background 0.3s;
+      line-height: 1em;
+
+      p {
+            font-size: 0.5em;
+        color: #333;
+        /* line-height: 0.5em; */
+        /* height: 11px; */
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+#footer .social a {
+    color: white;
+    margin-right:6px;
+    height: 2em;
+    font-size: 2em;
+      @media(min-width: $break-small) {
+        color: #333;
+        height:inherit;
+        font-size: 1.5em;
+        line-height:1.2em;
+        transition: color 0.3s, background 0.3s;
+        &:hover {
+          color: $wolf-blue;
+          border-color:$wolf-blue;
+          transition: color 0.3s, background 0.3s;
+        }
+      }
+}
+.logo-top {
+width: 38px;
+    height: 1.9em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-right: 9px;
+    vertical-align: top;
+    margin-top: -8px;
+    opacity: 0.4;
+}
+.side-nav li a.sub {
+    padding: 8px 14px;
+    text-transform: initial;
+    font-size: 0.9em;
+    margin-left: 14px;
+}

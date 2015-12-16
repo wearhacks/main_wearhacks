@@ -3,7 +3,7 @@ from django.forms.models import model_to_dict
 from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
 from models import TeamMember, Event, Partner, Slider, Project
-from forms import PartnerForm
+from forms import PartnerForm, RegisterForm
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
 import datetime
@@ -51,6 +51,13 @@ def events(request, event_slug=None):
                 'title':event.event_name,
                 'event':event,
                 'stats':{}}
+            if event.event_type == 'workshop':
+                response['contents'] = event.eventcontent_set.all().order_by('priority')
+                response['tickets'] = event.ticket_set.all().order_by('priority')
+                response['form'] = RegisterForm()
+                response['form'].setTickets(response['tickets'])
+                return render(request, 'workshop.html', response)
+
             past_event = event.pastevent
             if past_event:
                 response['stats'] = past_event.get_stats()
@@ -74,12 +81,16 @@ def events(request, event_slug=None):
         except ObjectDoesNotExist:
             return redirect('events')
 
+    allEvents = Event.objects.all()
     return render(request, 'events.html',
         {'config':config,
          'title':"Events",
-         'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
-         'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('start_date'),
+         'events':allEvents,
+         'workshops':allEvents.filter(start_date__gt=datetime.datetime.now()).filter(event_type='workshop').order_by('start_date'),
+         'hackathons':allEvents.filter(start_date__gt=datetime.datetime.now()).filter(event_type='hackathon').order_by('start_date'),
+         'past_events': allEvents.filter(start_date__lt=datetime.datetime.now()).order_by('start_date'),
          'config':config})
+
 def projects(request) :
     return render(request, 'projects.html',
         {'config':config,
