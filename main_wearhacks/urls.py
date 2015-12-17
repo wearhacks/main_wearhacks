@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^tinymce/', include('tinymce.urls')),
     #apis
     url(r'^api/signup', 'events.views.mailchimp_signup'),
-    url(r'^api/posts', 'events.views.get_sticky_post')
+    url(r'^api/posts', 'events.views.get_sticky_post'),
+    url(r'^register/(?:(?P<event_slug>[\w-]+)/)?$', 'events.views.register', name='register'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#

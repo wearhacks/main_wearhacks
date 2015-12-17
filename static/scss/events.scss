@@ -105,7 +105,7 @@
     font-weight: bold;
     color:white;
     margin-top:0;
-    
+
   }
   p {
    color:white;
@@ -150,3 +150,26 @@ a.past-event-link {
     }
 }
 
+.event-type-btn{
+  padding:15px;
+
+  div{
+    box-shadow: inset 2px 500px 0 whitesmoke;
+    padding:10px 0;
+    cursor:pointer;
+    &:hover{
+      box-shadow: inset 2px 500px 0 rgba(7,102,169,0.2);
+    }
+  }
+}
+
+.event-type-title{
+  margin-top:-20px;
+  b{
+    font-size:40px;
+    color:rgba(7,102,169,0.4);
+  }
+  span{
+    font-size:50px;
+  }
+}

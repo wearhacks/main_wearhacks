@@ -5,6 +5,12 @@ from geoposition.fields import GeopositionField
 
 
 class Event(models.Model):
+    EVENTTYPES = (
+        ('workshop', 'Workshop'),
+        ('alpha_hack', 'Alpha Hack'),
+        ('hackathon', 'Hackathon')
+    )
+
     """(Place description)"""
     def date_to_string(self):
         if self.start_date.year != self.end_date.year:
@@ -25,7 +31,9 @@ class Event(models.Model):
     location = GeopositionField()
     link = models.URLField(max_length=100, blank=True)
     date = date_to_string
-  
+    event_type = models.CharField(max_length=10, choices=EVENTTYPES, default='hackathon')
+    registration_closed = models.BooleanField(default=False)
+
     def __unicode__(self):
         return u"%s" % self.event_name
 

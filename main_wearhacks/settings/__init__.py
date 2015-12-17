@@ -33,7 +33,6 @@ elif env == 'deploy':
 else:
     modules = ('common', env)
 
-
 current = __name__
 for module_name in modules:
     try:
