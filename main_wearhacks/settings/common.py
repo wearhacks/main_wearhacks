@@ -207,3 +207,11 @@ CONSTANCE_CONFIG = {
     'CTA_PARTNERSHIPS' : ('Help us create the future for the next generations of innovators.', ''),
     'LOGO_TAGLINE_SAFE' : ('Imagine Enchantment.', ''),
 }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
