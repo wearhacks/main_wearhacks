@@ -3,7 +3,8 @@ from django.forms.models import model_to_dict
 from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
 from ..models import TeamMember, Event, Partner, Slider, Project
-from ..forms import PartnerForm, RegisterForm
+from ..forms import PartnerForm
+from registration.forms import WorkshopRegistrationForm
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
 import datetime
@@ -52,7 +53,7 @@ def events(request, event_slug=None):
             if event.event_type == 'workshop':
                 response['contents'] = event.eventcontent_set.all().order_by('priority')
                 response['tickets'] = event.ticket_set.all().order_by('priority')
-                response['form'] = RegisterForm()
+                response['form'] = WorkshopRegistrationForm()
                 response['form'].setTickets(response['tickets'])
                 return render(request, 'workshop.html', response)
 

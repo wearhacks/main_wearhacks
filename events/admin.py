@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django import forms
 from events.models import Event,Project,TeamMember,Partner,PastEvent,\
-    Ticket,Registration,ChargeAttempt,EventPicture,EventContent,Slider
+    Ticket,EventPicture,EventContent,Slider
+# from registration.models import Registration,ChargeAttempt
 from django.contrib import messages
 # from django.utils.safestring import mark_safe
 # from tinymce.widgets import TinyMCE
@@ -10,9 +11,9 @@ from django.contrib import messages
 admin.site.register(Project)
 admin.site.register(TeamMember)
 admin.site.register(Partner)
-admin.site.register(Registration)
+# admin.site.register(Registration)
 admin.site.register(Ticket)
-admin.site.register(ChargeAttempt)
+# admin.site.register(ChargeAttempt)
 admin.site.register(EventPicture)
 admin.site.register(EventContent)
 

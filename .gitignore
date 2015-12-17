@@ -20,3 +20,5 @@ static/geoposition/
 *.sqlite3
 #Settings
 main_wearhacks/settings/private.py
+
+static-back/

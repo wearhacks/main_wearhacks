@@ -2,8 +2,6 @@ from event import Event
 from pastevent import PastEvent
 from project import Project
 from teammember import TeamMember
-from registration import Registration
-from chargeattempt import ChargeAttempt
 from ticket import Ticket
 from eventextend import *
 from partner import Partner

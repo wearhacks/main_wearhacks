@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = (
 
     'events',
+    'registration',
 
     'grappelli',
     'constance',

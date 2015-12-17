@@ -106,10 +106,9 @@
 </section>
 
 <div id="register-modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-      <form class="footer-signup" action="/register/{{ event.slug }}" method="post">
+      <form class="footer-signup" action="/register/{{ event.slug }}/" method="post">
         <div class="small-10 columns medium-12 no-padding">
           <h6>Register for {{ title }}</h6>
-            {% csrf_token %}
             {{ form }}<br>
             <input class="button" type="submit" value="Submit" />
         </div>

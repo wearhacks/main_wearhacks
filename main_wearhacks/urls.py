@@ -20,7 +20,9 @@ urlpatterns = [
     #apis
     url(r'^api/signup', 'events.views.mailchimp_signup'),
     url(r'^api/posts', 'events.views.get_sticky_post'),
-    url(r'^register/(?:(?P<event_slug>[\w-]+)/)?$', 'events.views.register', name='register'),
+    # Registration
+    # url(r'^register/', include('registration.urls'))
+    url(r'^register/(?:(?P<event_slug>[\w-]+)/)?$', 'registration.views.register', name='register')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #
