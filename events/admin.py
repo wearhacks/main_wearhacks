@@ -14,8 +14,8 @@ admin.site.register(Partner)
 # admin.site.register(Registration)
 admin.site.register(Ticket)
 # admin.site.register(ChargeAttempt)
-admin.site.register(EventPicture)
-admin.site.register(EventContent)
+#admin.site.register(EventPicture)
+#admin.site.register(EventContent)
 
 # Register your models here.
 
