@@ -51,11 +51,11 @@ class Registration(models.Model):
         help_text='Log anything to do with this registration here.',
         blank=True)
 
-    def fullName(self):
+    def full_name(self):
         return '%s %s' % (self.first_name.encode('utf-8'),
             self.last_name.encode('utf-8'))
 
-    # full_name.admin_order_field = 'last_name'
+    full_name.admin_order_field = 'last_name'
 
     def needsToBeChecked(self):
         result = False

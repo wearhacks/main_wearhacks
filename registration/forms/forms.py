@@ -21,7 +21,7 @@ from events.models import Ticket
 
 @parsleyfy
 class WorkshopRegistrationForm(forms.Form):
-    fist_name = forms.CharField(widget=forms.TextInput(attrs={'required':True}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'required':True}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'required':True}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required':True}))
     tickets = forms.ModelChoiceField(queryset=Ticket.objects.all(),

@@ -6,6 +6,8 @@ from django.conf import settings
 from django.core.validators import RegexValidator#, URLValidator
 from django.core.exceptions import ValidationError
 
+from ..models import Registration
+
 
 class ChargeAttempt(models.Model):
     # Required fields
@@ -65,7 +67,7 @@ class ChargeAttempt(models.Model):
 
     @property
     def registration(self):
-        qs = Registration.objects.filter(charge=self)
+        qs = Registration.objects.filter(charge_attempt=self)
         if qs.exists():
             return qs.first()
         else:

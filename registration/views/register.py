@@ -58,7 +58,6 @@ def successCheckoutResponse():
     return JsonResponse('A confirmation email will be sent shortly.', status=200)
 
 def successTicketCheckResponse(ticket):
-    print settings.TEST_STRIPE_PUBLIC_KEY
     return JsonResponse({
             'price': ticket.price,
             'name': ticket.title,
@@ -271,40 +270,42 @@ def register(request, event_slug=None):
                     return badTicketResponse()
 
                 token_id = request.POST.get('token_id', None)
-                print token_id
-                # order_id = request.POST.get('order_id', 'xxx')
-                order_id = Registration.generate_order_id()
                 if not token_id:
                     pass
                     # TODO
+
+                # order_id = request.POST.get('order_id', 'xxx')
+                order_id = Registration.generate_order_id()
+
                 registration_field = {
                     'first_name': form.cleaned_data['first_name'],
                     'last_name': form.cleaned_data['last_name'],
                     'email': form.cleaned_data['email'],
                     'ticket': ticket,
-                    'order_id':order_id
+                    'order_id':order_id,
+                    'has_read_conditions':form.cleaned_data['has_read_conditions']
                 }
 
                 charge_attempt_fields = {
                     'amount': ticket.price,
                     'source_id': token_id
                 }
-
                 charge_attempt = ChargeAttempt.objects.create(**charge_attempt_fields)
                 charge_attempt.save()
 
-                success, obj = callStripe(registration_field, charge_attempt, token_id, order_id)
-                if not success:
-                    return generateErrorResponse(_(obj
-                        +"</br>Please refresh and try again. <strong>Don't worry, you haven't been charged.</strong>"))
+                # success, obj = callStripe(registration_field, charge_attempt, token_id, order_id)
+                # if not success:
+                #     return generateErrorResponse(_(obj
+                #         +"</br>Please refresh and try again. <strong>Don't worry, you haven't been charged.</strong>"))
 
-                success, message = chargeUser(charge, charge_attempt)
-                if not success:
-                    return generateErrorResponse(message)
+                # success, message = chargeUser(charge, charge_attempt)
+                # if not success:
+                #     return generateErrorResponse(message)
 
-                registration_field['charge_attempt'] = obj
+                registration_field['charge_attempt'] = charge_attempt
                 registration = Registration.objects.create(**registration_field)
                 registration.save()
+                print 'saved'
 
                 success, message = sendConfirmationEmail(registration, charge_attempt)
                 if not success:
