@@ -1,5 +1,8 @@
 from django import forms
 from django.utils.safestring import mark_safe
+from parsley.decorators import parsleyfy
+
+from events.models import Ticket
 
 # from crispy_forms.helper import FormHelper
 # from crispy_forms.layout import Submit, Layout, Fieldset, Div, Field, HTML, MultiField
@@ -16,20 +19,28 @@ from django.utils.safestring import mark_safe
 #     get_challenge_question_header,
 # )
 
+@parsleyfy
 class WorkshopRegistrationForm(forms.Form):
     fist_name = forms.CharField(widget=forms.TextInput(attrs={'required':True}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'required':True}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required':True}))
+    tickets = forms.ModelChoiceField(queryset=Ticket.objects.all(),
+        empty_label='-- select --', required=True)
+    has_read_conditions = forms.BooleanField(required=True,
+        label = mark_safe('I have read and I agree with \
+            the <a class="terms" href="#"> Terms and Conditions</a> and the \
+            the <a class="conduct" href="#"> Code of Conduct</a> '))
 
-    def setTickets(self,ticketSet):
-        self.fields['tickets'] = forms.ModelChoiceField(queryset=ticketSet,
-            # empty_label='-- select --',
-            required=True)
-        self.fields['has_read_conditions'] = forms.BooleanField(required=True,
-            label = mark_safe('I have read and I agree with \
-                the <a class="terms" href="#"> Terms and Conditions</a> and the \
-                the <a class="conduct" href="#"> Code of Conduct</a> '))
-
+    def __init__(self, ticketSet=None, *args, **kwargs):
+        super(WorkshopRegistrationForm, self).__init__(*args, **kwargs)
+        if ticketSet:
+            self.fields['tickets'] = forms.ModelChoiceField(queryset=ticketSet,
+                empty_label='-- select --',
+                required=True)
+            # self.fields['has_read_conditions'] = forms.BooleanField(required=True,
+            #     label = mark_safe('I have read and I agree with \
+            #         the <a class="terms" href="#"> Terms and Conditions</a> and the \
+            #         the <a class="conduct" href="#"> Code of Conduct</a> '))
 
 # class ConfirmRegistrationForm(forms.ModelForm):
 #     class Meta:

@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'geoposition',
     'compressor',
     'tinymce',
+    'parsley'
 )
 
 

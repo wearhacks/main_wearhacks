@@ -22,7 +22,8 @@ urlpatterns = [
     url(r'^api/posts', 'events.views.get_sticky_post'),
     # Registration
     # url(r'^register/', include('registration.urls'))
-    url(r'^register/(?:(?P<event_slug>[\w-]+)/)?$', 'registration.views.register', name='register')
+    url(r'^register/(?:(?P<event_slug>[\w-]+)/)?$', 'registration.views.register', name='register'),
+    url(r'^ticket/', 'registration.views.ticket', name='ticket')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #

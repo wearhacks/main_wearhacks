@@ -1,4 +1,5 @@
 from django.views import generic
+from django.views.decorators.csrf import csrf_exempt
 
 from django.core.mail import EmailMultiAlternatives
 from django.core.urlresolvers import reverse
@@ -15,10 +16,14 @@ from django.utils import translation
 from django.utils.translation import ugettext as _
 from django.utils.translation import pgettext as __
 
+from django.http import HttpResponse,JsonResponse
+
 from ..models import Registration, ChargeAttempt#, Challenge
+from events.models import Event, Ticket
 from ..forms import WorkshopRegistrationForm
 
 from ..views.email import QRCodeView, TicketView, ConfirmationEmailView
+
 
 # from crispy_forms.utils import render_crispy_form
 # from jsonview.decorators import json_view
@@ -35,7 +40,7 @@ from time import gmtime, strftime
 #     return settings.STRIPE_PUBLIC_KEY
 
 def getEventTicket(ticket_pk, event):
-    return event.ticket_set.filter(pk=ticket_pk)
+    return event.ticket_set.filter(pk=ticket_pk).first()
     # if ticket.len() == 0:
     #     return False
     # return ticket
@@ -51,6 +56,14 @@ def generateErrorResponse(message):
 
 def successCheckoutResponse():
     return JsonResponse('A confirmation email will be sent shortly.', status=200)
+
+def successTicketCheckResponse(ticket):
+    print settings.TEST_STRIPE_PUBLIC_KEY
+    return JsonResponse({
+            'price': ticket.price,
+            'name': ticket.title,
+            'key': settings.STRIPE_PUBLIC_KEY
+        }, status=200)
 
 def saveAndLogError(self, charge_attempt, message, e):
     if charge_attempt:
@@ -230,18 +243,35 @@ def sendConfirmationEmail(new_registration, charge_attempt):
             'will send you a confirmation email shortly.</small>')
 
 
-# this should usually be called form ajax
+# these should usually be called form ajax
+@csrf_exempt
+def ticket(request):
+    if request.method == 'POST':
+        event_slug = request.POST.get('event_slug')
+        ticket_id = request.POST.get('ticket_id')
+        if not event_slug or not ticket_id:
+            return redirect('events')
+        event = Event.objects.get(slug = event_slug)
+        ticket = getEventTicket(ticket_id, event)
+        if not ticket:
+            return badTicketResponse()
+        else:
+            return successTicketCheckResponse(ticket)
+
+
+@csrf_exempt
 def register(request, event_slug=None):
     if event_slug and request.method == 'POST':
         try:
             event = Event.objects.get(slug = event_slug)
-            form = RegisterForm(request.POST)
+            form = WorkshopRegistrationForm(None, request.POST)
             if form.is_valid():
-                ticket = getEventTicket(form.cleaned_data['ticket'], event)
+                ticket = getEventTicket(form.cleaned_data['tickets'].id, event)
                 if not ticket:
                     return badTicketResponse()
 
                 token_id = request.POST.get('token_id', None)
+                print token_id
                 # order_id = request.POST.get('order_id', 'xxx')
                 order_id = Registration.generate_order_id()
                 if not token_id:

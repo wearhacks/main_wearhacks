@@ -49,3 +49,4 @@ static3==0.6.1
 watchdog==0.8.3
 whitenoise==2.0.4
 stripe
+django-parsley

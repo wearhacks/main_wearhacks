@@ -53,8 +53,7 @@ def events(request, event_slug=None):
             if event.event_type == 'workshop':
                 response['contents'] = event.eventcontent_set.all().order_by('priority')
                 response['tickets'] = event.ticket_set.all().order_by('priority')
-                response['form'] = WorkshopRegistrationForm()
-                response['form'].setTickets(response['tickets'])
+                response['form'] = WorkshopRegistrationForm(response['tickets'])
                 return render(request, 'workshop.html', response)
 
             past_event = event.pastevent
