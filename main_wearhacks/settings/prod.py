@@ -4,6 +4,9 @@ import dj_database_url
 import os
 from .common import SITE_NAME, DJANGO_ROOT, SITE_ROOT
 
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+
 DATABASES = {
     'default': dj_database_url.config()
 }
