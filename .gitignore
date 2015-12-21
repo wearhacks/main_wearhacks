@@ -15,6 +15,7 @@ static/media/
 static/admin/
 static/grappelli/
 static/geoposition/
+staticfiles/
 .idea/
 
 *.sqlite3
