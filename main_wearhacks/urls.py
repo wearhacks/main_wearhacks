@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^$', 'events.views.home', name='home'),
     url(r'^team/', 'events.views.team', name='aboutus'),
     url(r'^events/(?:(?P<event_slug>[\w-]+)/)?$', 'events.views.events', name='events'),
+    url(r'^workshops/(?:(?P<event_slug>[\w-]+)/)?$', 'events.views.workshops', name='workshops'),
     # url(r'^events/', 'events.views.events', name='events'),
     url(r'^partnerships/', 'events.views.partnerships', name='partnerships'),
     url(r'^ambassador/', 'events.views.ambassador', name='ambassador'),

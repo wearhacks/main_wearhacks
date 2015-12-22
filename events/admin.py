@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django import forms
 from events.models import Event,Project,TeamMember,Partner,PastEvent,\
-    Ticket,EventPicture,EventContent,Slider
+    Ticket,EventPicture,EventContent,Slider,\
+    EventExtend,EventExtendType,ExtendType
 # from registration.models import Registration,ChargeAttempt
 from django.contrib import messages
 # from django.utils.safestring import mark_safe
@@ -16,6 +17,9 @@ admin.site.register(Ticket)
 # admin.site.register(ChargeAttempt)
 admin.site.register(EventPicture)
 admin.site.register(EventContent)
+admin.site.register(EventExtendType)
+admin.site.register(EventExtend)
+admin.site.register(ExtendType)
 
 # Register your models here.
 
@@ -28,6 +32,10 @@ def retrieveProjects(modeladmin, request, queryset):
 
 class TicketsInLine(admin.TabularInline):
     model = Ticket
+    extra = 0
+
+class EventExtendInLine(admin.TabularInline):
+    model = EventExtend
     extra = 0
 
 class EventContentsInLine(admin.TabularInline):
@@ -47,7 +55,7 @@ class EventPicturesInLine(admin.TabularInline):
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('event_name', 'start_date', 'end_date')
-    inlines = [EventPicturesInLine, EventContentsInLine, TicketsInLine]
+    inlines = [EventPicturesInLine, EventContentsInLine, EventExtendInLine, TicketsInLine]
     def _tickets(self, obj):
         return obj.tickets.all().count()
 

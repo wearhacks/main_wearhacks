@@ -1,0 +1,141 @@
+
+{% extends "_base.html" %}
+
+{% load staticfiles%}
+{% block title %} Events {% endblock %}
+{% block stylesheets %}
+    <link href="{% static 'scss/events.scss' %}" media="screen, projection" rel="stylesheet" type="text/x-scss" />
+{% endblock %}
+{% block script_section %}
+
+<script src="{% static 'javascript/events.js' %}"></script>
+{% endblock %}
+{% block content %}
+
+<section id="body">
+
+    <div class="columns small-12 top-header" style="background-image: url({% static 'images/event.jpg' %}); background-position-y: 70%" alt="">
+            <div class="row"><h2 class="sub-header"><span><a href="/">Home </a> <i class="fa fa-angle-right"></i></span> {{ title }} {{ name }}</h2></div>
+    </div>
+    <div class="row text-center">
+
+     <div >
+        <img width="200px" src="{% static 'images/wolf_large.png' %}" alt="">
+        <br><h2 style="display:inline-block; margin:0px 20px;">
+        <b>WearHacks</b> presents<br>Workshops</h2>
+     </div>
+
+    </div>
+
+
+     <div id="event-mid-section" class="large-12-columns">
+    <div class="row">
+
+       <div class="small-12 medium-6 columns" style="text-align: center">
+        <div class="youtube-placeholder" style="background-image:url('{% static 'images/youtube.jpg'%}')">
+            <i class="fa fa-play"></i>
+        </div>
+
+       </div>
+        <div class="small-12 medium-6 columns">
+            <p class="maindesc col-sm-12"> {{config.EVENTS_HACKATHON_DESC | safe}}
+         </p></div>
+    </div>
+    </div>
+    <div class="large-12 columns">
+        <div class="row">
+           <div id="unique-section" class="columns small-12" >
+                <div class="columns large-3 medium-6 small-12">
+                    <div class="uniqueIcon" data-sr=' ease-in-out 100px'>
+                        <img src="{% static 'svg/iot.svg'%}" alt="">
+                    </div>
+                    <h6>Discover</h6>
+                    <p>Our Hackathons feature the latest and greatest connected technology. Join the early adopters of the community.</p>
+                </div>
+                 <div class="columns large-3 medium-6 small-12">
+                <div class="uniqueIcon" data-sr='ease-in-out 100px'>
+                        <img src="{% static 'svg/darthvader.svg'%}" alt=""/>
+
+                </div>
+                <h6>Attract</h6>
+                <div class="smallsep"></div>
+                <p> Our creators come from all walks of earth, from students to professionals. Identify and meet to expand your network. </p>
+              </div>
+                 <div class="columns large-3 medium-6  small-12">
+                <div class="uniqueIcon"  data-sr='ease-in-out 100px'>
+                     <img src="{% static 'svg/ref.svg'%}" alt=""/>
+                </div>
+                <h6>Connect</h6>
+                <div class="smallsep"></div>
+                <p>Our presence begins with a hackathon, stay involved and be part of the fun as our community grows.
+                </p>
+                </div>
+                 <div class="columns large-3 medium-6 small-12">
+              <div class="uniqueIcon" data-sr='ease-in-out 100px'>
+                      <img src="{% static 'svg/world.svg'%}" alt=""/>
+              </div>
+                <h6>Discover</h6>
+                <div class="smallsep"></div>
+                <p>
+                   Our presence begins with a hackathon, stay involved and gain global recognition (communities/locals?) as our community grows.
+                </p></div>
+           </div>
+       </div>
+    </div>
+          <!-- Swiper -->
+
+
+<div class="row">
+    <div class="large-12  columns">
+        <br/>
+        <div class="small-12"><h3 style="text-align:center">Upcoming Workshops</h3></div>
+
+        <br/>
+    </div>
+    </div>
+<div class="row">
+    <div class="large-12 columns">
+
+         {% for event in events %}
+        <div class="event {% if events.length > 1 %}large-6 {% endif %} columns">
+           <div class="event-photo" style="{% if event.photo %}background-image:url('{{ event.photo.url }}') {% endif %}">
+                <div class="event-desc">
+                <h4>{{ event.event_name }}</h4>
+                 <h5>{{ event.date }}</h5>
+                 <p>Venue: {{ event.address }}</p>
+
+                </div>
+             <a class="website" href="{{ event.slug }}" >View Details <i class="fa fa-external-link-square"></i></a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="small-brk"></div>
+<div class="row">
+    <div class="large-12  columns">
+        <div class="small-12"><h3 style="text-align:center">Past Workshops</h3></div>
+
+        <br/>
+    </div>
+    </div>
+<div class="row">
+    <div class="large-12 columns" style="position:relative">
+
+         {% for event in past_events %}
+           <div class="recent-event large-6 columns small-12">
+            <a class="recent-event-link invert" href="/events/{{ event.slug }}"  data-sr="enter bottom">
+                <h6>
+                {{ event.event_name }} <span> {{ event.date }}</span>
+                </h6>
+            </a>
+          </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+</section>
+
+{% endblock %}

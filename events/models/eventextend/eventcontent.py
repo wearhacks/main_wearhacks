@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator
 from tinymce import models as tinymce_models
 
+# Long text extension (can use this for blog too)
 class EventContent(models.Model):
 	event = models.ForeignKey('Event', on_delete=models.CASCADE)
 	priority = models.IntegerField(validators=[MinValueValidator(0)],

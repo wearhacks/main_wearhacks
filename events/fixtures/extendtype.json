@@ -1,0 +1,23 @@
+[
+  {
+    "model": "events.ExtendType",
+    "pk": 1,
+    "fields": {
+      "type": "number"
+    }
+  },
+  {
+    "model": "events.ExtendType",
+    "pk": 2,
+    "fields": {
+       "type": "text"
+    }
+  },
+  {
+    "model": "events.ExtendType",
+    "pk": 3,
+    "fields": {
+       "type": "list"
+    }
+  }
+]
