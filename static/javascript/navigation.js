@@ -10,7 +10,7 @@ $( ".footer-signup" ).submit(function( event ) {
 
   // Stop form from submitting normally
   event.preventDefault();
- 
+
   // Get some values from elements on the page:
   var $form = $( this ),
     email = $form.find( "input[name='email']" ).val(),
@@ -19,7 +19,7 @@ $( ".footer-signup" ).submit(function( event ) {
   $form.find( "i" ).toggle();
   // Send the data using post
   var posting = $.post( url, { email: email } );
- 
+
   // Put the results in a div
   posting.done(function( data ) {
     $("#success-message" ).empty().append( data.message );
@@ -57,7 +57,7 @@ cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
 
 $(function() {
   $(".right-off-canvas-toggle, .exit-off-canvas").click(function(e) {
-    e.preventDefault(); 
+    e.preventDefault();
     $(".top-bar").toggleClass("top-bar-close");
     $(".middle-bar").toggleClass("middle-bar-close");
     $(".bottom-bar").toggleClass("bottom-bar-close");
