@@ -29,7 +29,11 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = 'mainwearhacks'
 AWS_QUERYSTRING_AUTH = False
 #COMPRESS_ENABLED = True
+STRIPE_SECRET_KEY = os.environ.get('TEST_STRIPE_SECRET_KEY','')
+STRIPE_PUBLIC_KEY = os.environ.get('TEST_STRIPE_PUBLIC_KEY','')
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 COLLECTFAST_ENABLED = False
 STATICFILES_DIRS = (

@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = (
 
     'events',
+    'registration',
 
     'grappelli',
     'constance',
@@ -53,6 +54,8 @@ INSTALLED_APPS = (
     'pipeline',
     'geoposition',
     'compressor',
+    'tinymce',
+    'parsley'
 )
 
 
@@ -89,7 +92,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main_wearhacks.wsgi.application'
 
-
+TINYMCE_DEFAULT_CONFIG = {
+    'selector': "textarea",
+    'plugins': "table,spellchecker,autoresize",
+    'autoresize_min_height': 350,
+    'theme' : 'advanced',
+    'theme_advanced_blockformats': 'p,address,pre,h1,h2,h3,h4,h5,h6',
+    'theme_advanced_buttons1' : 'formatselect,bold,italic,underline,strikethrough,forecolor,backcolor,blockquote,\
+        separator,bullist,numlist,justifyleft,justifyright,justifycenter,indent,outdent,hr,sub,sup,\
+        separator,link,unlink,image',
+    'theme_advanced_buttons2' : 'tablecontrols',
+    'theme_advanced_buttons3' : '',
+    'theme_advanced_toolbar_location' : 'top',
+    'theme_advanced_toolbar_align': 'left',
+    'paste_text_sticky': True,
+    'paste_text_sticky_default' : True,
+    'valid_styles' : 'font-weight,font-style,text-decoration',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -197,3 +216,4 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+

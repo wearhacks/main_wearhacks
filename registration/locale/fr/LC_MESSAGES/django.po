@@ -1,0 +1,511 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-25 11:56-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: event/models.py:48
+msgid "Local Standard"
+msgstr ""
+
+#: event/models.py:49
+msgid "Local Premium"
+msgstr ""
+
+#: event/models.py:50
+msgid "Global Standard"
+msgstr ""
+
+#: event/models.py:51
+msgid "Global Premium"
+msgstr ""
+
+#: event/models.py:72
+msgid "Other"
+msgstr ""
+
+#: event/models.py:73
+msgid "Judge"
+msgstr ""
+
+#: event/models.py:74
+msgid "Mentor"
+msgstr ""
+
+#: event/models.py:77 registration/models/models.py:97
+msgid "Only letters are allowed."
+msgstr "Seules les lettres sont autorisées."
+
+#: event/models.py:78
+#, fuzzy
+#| msgid "Only letters are allowed."
+msgid "Only numbers are allowed."
+msgstr "Seules les lettres sont autorisées."
+
+#: event/models.py:89 registration/models/models.py:104
+msgid "Male"
+msgstr "Masculin"
+
+#: event/models.py:90 registration/models/models.py:105
+msgid "Female"
+msgstr "Féminin"
+
+#. Translators: Gender information
+#: event/models.py:92 registration/models/models.py:107
+msgid "Other / I prefer not to disclose"
+msgstr "Autre / Je préfère ne pas le signaler"
+
+#: event/models.py:97 registration/models/models.py:112
+msgid "gender"
+msgstr "Sexe"
+
+#: event/models.py:111
+msgid ""
+"For internal use. Determines the order in which this person appears on the "
+"website."
+msgstr ""
+
+#: registration/forms/forms.py:47
+msgid "Staff Actions"
+msgstr ""
+
+#: registration/forms/forms.py:53
+msgid "Attendee Information"
+msgstr "Informations Générales"
+
+#: registration/forms/forms.py:89
+msgid "Resume"
+msgstr "CV"
+
+#: registration/forms/forms.py:90
+msgid ""
+"Not required but this might reach our sponsors for targeted employment "
+"opportunities."
+msgstr ""
+"N'est pas obligatoire mais pourrait atteindre nos parrains pour des "
+"opportunités d'emploi ciblées."
+
+#: registration/forms/forms.py:93
+#, fuzzy
+#| msgid ""
+#| "I have read and I agree with the <a class=\"terms\" href=\"#\"> Terms and "
+#| "Conditions</a>, the <a class=\"conduct\" href=\"#\"> Code of Conduct</a> "
+#| "and the <a class=\"waiver\" href=\"#\"> Waiver</a>."
+msgid ""
+"I have read and I agree with the <a class=\"terms\" href=\"#\"> Terms and "
+"Conditions</a> and the the <a class=\"conduct\" href=\"#\"> Code of Conduct</"
+"a> "
+msgstr ""
+"J'ai bien lu et j'accepte les <a class=\"terms\" href=\"#\"> Termes et "
+"Conditions de l'évènement</a> et le <a class=\"conduct\" href=\"#\"> Code de "
+"Conduite </a>"
+
+#: registration/forms/forms.py:121
+msgid ""
+"There are no spots left for your category. Please uncheck this box to "
+"proceed."
+msgstr ""
+"Il n'y a plus de place disponible pour ta catégorie malheureusement. "
+"Déselectionne cete case pour continuer."
+
+#: registration/forms/forms.py:128
+msgid ""
+"Someone who solved the puzzle already registered with your email. Please "
+"uncheck this box to proceed."
+msgstr ""
+"Quelqu'un qui a résolu le casse-tête s'est déjà inscrit avec ton adresse "
+"courriel. Déselectionne cette case pour continuer."
+
+#: registration/forms/forms.py:131
+msgid "No luck :( Try again?"
+msgstr "Pas de bol :( Essaie encore?"
+
+#: registration/forms/forms.py:132
+msgid "Uncheck this if you'd like to proceed without a solution."
+msgstr "Déselectionne ça si tu voudrais continuer sans soumettre de solution"
+
+#: registration/forms/forms.py:145
+msgid "Sorry, this discount code is inactive."
+msgstr ""
+
+#: registration/forms/forms.py:147
+msgid "Sorry, we ran out of coupons for this discount code."
+msgstr ""
+
+#: registration/forms/forms.py:152
+msgid "Sorry, this discount code doesn't exist."
+msgstr ""
+
+#: registration/forms/forms.py:167
+msgid "Solution"
+msgstr "Solution"
+
+#: registration/forms/forms.py:169
+msgid ""
+"Unlimited number of trials as long as \"submit my solution\" is checked."
+msgstr ""
+"Le nombre de tentatives est illimité tant que la case \"Soumettre ma solution"
+"\" est cochée."
+
+#: registration/forms/forms.py:173
+msgid "Submit my solution to the challenge question"
+msgstr "Soumettre ma solution à la question défi"
+
+#: registration/forms/forms.py:181
+msgid "Discount Code"
+msgstr ""
+
+#: registration/forms/forms.py:195
+msgid "General Information"
+msgstr "Informations Générales"
+
+#: registration/forms/forms.py:202
+msgid "Tell us a bit about yourself."
+msgstr "À propos de vous"
+
+#: registration/forms/forms.py:215
+msgid "Experience"
+msgstr "Expérience"
+
+#: registration/forms/forms.py:221
+msgid "Misc."
+msgstr "Divers"
+
+#: registration/forms/forms.py:229
+msgid "Bonus"
+msgstr "Bonus"
+
+#: registration/forms/forms.py:232
+msgid "Easy, the answer is..."
+msgstr "Facile, la réponse est..."
+
+#: registration/forms/forms.py:240
+msgid "Payment Options"
+msgstr ""
+
+#: registration/forms/helpers.py:13 registration/forms/helpers.py:14
+msgid "No file was submitted."
+msgstr "Aucun fichier n'a été soumis."
+
+#: registration/forms/helpers.py:15
+msgid "The submitted file is empty."
+msgstr "Le fichier qui a été soumis est vide."
+
+#: registration/forms/helpers.py:16
+msgid "Upload a valid document. The file you uploaded appears to be corrupted."
+msgstr ""
+"Veuillez soumettre un document valide. Le document que vous avez soumis "
+"semble être corrompu."
+
+#: registration/forms/helpers.py:17
+msgid "Not a PDF file."
+msgstr "Ceci n'est pas un fichier PDF."
+
+#: registration/forms/helpers.py:18
+#, python-format
+msgid ""
+"Please keep file size under %(max_file_size)s. Current filesize "
+"%(current_file_size)s"
+msgstr ""
+"Veuillez soumettre un fichier plus petit que %(max_file_size)s. La taille du "
+"fichier est actuellement %(current_file_size)s"
+
+#: registration/forms/helpers.py:19
+msgid "There was an issue uploading your file. Try to submit again."
+msgstr ""
+"Nous n'avons pas pu recevoir votre fichier. Veuillez essayer de le soumettre "
+"une nouvelle fois."
+
+#: registration/forms/helpers.py:84
+msgid "Registration Failure Message"
+msgstr "Inscription échouée"
+
+#: registration/forms/helpers.py:85
+msgid "Register"
+msgstr "S'inscrire"
+
+#: registration/forms/helpers.py:86 registration/forms/helpers.py:152
+msgid "Temporary problem with our server"
+msgstr "Difficultés temporaires avec notre serveur"
+
+#: registration/forms/helpers.py:87
+msgid "Checkout Failure Message"
+msgstr "Paiement échoué"
+
+#: registration/forms/helpers.py:88 registration/forms/helpers.py:154
+msgid "Success"
+msgstr "Succès"
+
+#: registration/forms/helpers.py:89
+msgid "Checkout"
+msgstr "Procéder au paiement"
+
+#: registration/forms/helpers.py:90
+msgid ""
+"Payment is handled by <a target=\"_blank\" href=\"https://stripe.com/ca"
+"\">Stripe</a>. We do not have acces to your card information."
+msgstr ""
+"Le paiement est pris en charge par <a target=\"_blank\"  href=\"https://"
+"stripe.com/ca\">Stripe</a>. Nous n'avons pas accès aux informations de votre "
+"carte de crédit."
+
+#: registration/forms/helpers.py:100
+#, python-format
+msgid ""
+"Try to decrypt this message to win a free ticket.\n"
+"%(num_tickets_student)i tickets left out of %(total_num_tickets_student)i "
+"for students and %(num_tickets_non_student)i out of "
+"%(total_num_tickets_non_student)i tickets left for non-students."
+msgstr ""
+"Essaie de décrypter ce message pour gagner un billet gratuit.\n"
+"Il reste %(num_tickets_student)i billets gratuits sur "
+"%(total_num_tickets_student)i pour étudiants et %(num_tickets_non_student)i "
+"billets gratuits sur %(total_num_tickets_non_student)i  pour non-étudiants."
+
+#: registration/forms/helpers.py:104
+msgid "num_tickets_student"
+msgstr ""
+
+#: registration/forms/helpers.py:124
+msgid "Challenge Question"
+msgstr "Question Défi"
+
+#: registration/forms/helpers.py:150
+msgid "Confirmation Failure Message"
+msgstr "Inscription échouée"
+
+#: registration/forms/helpers.py:151
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: registration/forms/helpers.py:153
+msgid "Checkin Failure Message"
+msgstr "Checkin échoué"
+
+#: registration/models/helpers.py:38
+msgid "This field must be checked"
+msgstr "Cette case doit être cochée"
+
+#: registration/models/models.py:100
+msgid "first name"
+msgstr "Prénom"
+
+#: registration/models/models.py:102
+msgid "last name"
+msgstr "Nom de famille"
+
+#: registration/models/models.py:119
+msgid "Are you a student?"
+msgstr "Êtes-vous étudiant?"
+
+#: registration/models/models.py:121
+msgid "Where do/did you go to school?"
+msgstr "Nom du collège / de l'université"
+
+#: registration/models/models.py:124
+msgid "email"
+msgstr "courriel"
+
+#: registration/models/models.py:130
+msgid "Do you have any allergies or food restrictions?"
+msgstr "Avez-vous des allergies ou des restrictions alimentaires?"
+
+#. Translators: T-shirt sizes
+#: registration/models/models.py:133
+msgid "Small"
+msgstr "Petit"
+
+#: registration/models/models.py:134
+msgid "Medium"
+msgstr "Moyen"
+
+#: registration/models/models.py:135
+msgid "Large"
+msgstr "Grand"
+
+#: registration/models/models.py:136
+msgid "X-Large"
+msgstr "Très Grand"
+
+#: registration/models/models.py:140
+msgid "T-Shirt size"
+msgstr "Taille de T-shirt"
+
+#: registration/models/models.py:142
+msgid "Did you attend last year's event?"
+msgstr "Avez-vous assisté au hackathon de l'année dernière?"
+
+#: registration/models/models.py:143
+msgid "Is this your first hackathon?"
+msgstr "Est-ce votre premier hackathon?"
+
+#: registration/models/models.py:151
+msgid "resume"
+msgstr "CV"
+
+#. Translators: Ticket descriptions
+#: registration/models/models.py:183
+msgid "No ticket yet"
+msgstr "Pas de billet encore"
+
+#: registration/models/models.py:184
+msgid "Turing Ticket"
+msgstr "Billet Turing"
+
+#: registration/models/models.py:185
+msgid "Turing Student Ticket"
+msgstr "Billet Turing Étudiant"
+
+#: registration/models/models.py:186
+msgid "Regular Ticket"
+msgstr "Billet Régulier"
+
+#: registration/models/models.py:187
+msgid "Student Ticket"
+msgstr "Billet Étudiant"
+
+#: registration/models/models.py:188
+msgid "Early Bird Ticket"
+msgstr "Billet Lève-Tôt Étudiant"
+
+#: registration/models/models.py:189
+msgid "Early Bird Student Ticket"
+msgstr "Billet Lève-Tôt"
+
+#: registration/views/confirm.py:83
+msgid "Could not validate form"
+msgstr "On n'a pas pu valider ton formulaire"
+
+#: registration/views/confirm.py:92
+msgid "We had trouble saving your new information"
+msgstr "On a eu du mal à sauvegarder ton information"
+
+#: registration/views/confirm.py:104
+msgid "Confirmed attendee details"
+msgstr "Les détails de l'invité ont été confirmés"
+
+#: registration/views/email.py:28
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: registration/views/email.py:74 registration/views/register.py:546
+#, python-format
+msgid "We had some errors<pre>%s</pre>"
+msgstr "Nous éprouvons des difficultés<pre>%s</pre>"
+
+#: registration/views/email.py:83 registration/views/email.py:133
+msgid "Invalid arguments"
+msgstr "Arguments invalides"
+
+#: registration/views/register.py:79
+msgid "Checkout not attempted yet."
+msgstr "La soumission n'a pas encore été tentée"
+
+#: registration/views/register.py:119
+msgid "Please correct your registration information before proceeding."
+msgstr "Veuillez corriger vos infos avant de soumettre"
+
+#: registration/views/register.py:135
+msgid "Congrats, you have a free ticket! "
+msgstr "Félicitations, t'as eu un billet gratos! "
+
+#: registration/views/register.py:149
+msgid "</br>r u trying to hack us? u wot m8"
+msgstr "</br>Tu te crois malin(e)?"
+
+#: registration/views/register.py:164
+msgid "Registration Information Valid"
+msgstr "Infos d'inscription valides"
+
+#: registration/views/register.py:226 registration/views/register.py:252
+msgid "Something went wrong on Stripe's end. </br>"
+msgstr "Stripe éprouve des difficultés. </br>"
+
+#: registration/views/register.py:236
+#, fuzzy
+#| msgid "Something went wrong on Stripe's end. </br>"
+msgid "Something went wrong on our end. </br>"
+msgstr "Stripe éprouve des difficultés. </br>"
+
+#: registration/views/register.py:245
+#, fuzzy
+#| msgid "Network communication with Stripe failed. Please reload the page."
+msgid "Network communication with Stripe failed. </br>"
+msgstr ""
+"La communication avec Stripe a échoué. Essaie de rafraîchir la page pour "
+"tenter une nouvelle fois."
+
+#: registration/views/register.py:281
+msgid "Please refresh and try again."
+msgstr "Essaie de rafraîchir la page pour tenter une nouvelle fois."
+
+#: registration/views/register.py:283 registration/views/register.py:411
+#: registration/views/register.py:423
+msgid "</br><strong>Don't worry, you haven't been charged.</strong>"
+msgstr "</br><strong>Ne t'inquiète pas, tu n'as pas été facturé. </strong>"
+
+#: registration/views/register.py:329
+msgid "Your registration could not be saved."
+msgstr "Ton inscription n'a pas pu être sauvegardée."
+
+#: registration/views/register.py:345
+msgid "We could not charge you."
+msgstr "On n'a pas pu te facturer."
+
+#: registration/views/register.py:361
+msgid ""
+"Your confirmation email cannot be sent at the moment. </"
+"strong><small>Everything else went smoothly and your payment went through. "
+"Admins have been notified and will send you a confirmation email shortly.</"
+"small><strong>"
+msgstr ""
+"Ton courriel de confirmation ne peut pas être envoyé en ce moment</"
+"strong><small>Tout le rest s'est bien déroulé et tu as bien été facturé. Les "
+"administrateurs ont été notifiés et vont t'envoyer un courriel de "
+"confirmation dans les plus brefs délais. </small><strong>"
+
+#: registration/views/register.py:370
+msgid "A confirmation email will be sent shortly."
+msgstr "Un courriel de confirmation sera envoyé bientôt."
+
+#: registration/views/register.py:406 registration/views/register.py:418
+msgid ""
+"Oops, something went wrong on our end.</br>Please refresh and try again. If "
+"the problem persists, please contact our support team. </br>"
+msgstr ""
+"Mince, il y a quelque chose qui cloche de notre côté.</br> Essaie de "
+"rafraîchir la page et tenter de nouveau. Si le problème persiste, n'hésite "
+"pas à contacter  notre équipe de soutien </br>"
+
+#: registration/views/register.py:477
+msgid "Thanks for signing up!"
+msgstr "Hâte de te voir à WearHacks"
+
+#: registration/views/register.py:480
+msgid "WearHacks Montreal Team <montreal@wearhacks.com>"
+msgstr "Équipe WearHacks à Montréal <montreal@wearhacks.com>"
+
+#: wearhacks_website/settings/common.py:278
+msgid "English"
+msgstr ""
+
+#: wearhacks_website/settings/common.py:279
+msgid "French"
+msgstr ""
+
+#~ msgid "Something went wrong on Stripe's end."
+#~ msgstr "Stripe éprouve des difficultés"

@@ -14,11 +14,16 @@ urlpatterns = [
     url(r'^mission/', 'events.views.mission', name='mission'),
     url(r'^projects/', 'events.views.projects', name='projects'),
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
-    url(r'^admin/', include('smuggler.urls')),
+    # url(r'^admin/', include('smuggler.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     #apis
     url(r'^api/signup', 'events.views.mailchimp_signup'),
-    url(r'^api/posts', 'events.views.get_sticky_post')
+    url(r'^api/posts', 'events.views.get_sticky_post'),
+    # Registration
+    # url(r'^register/', include('registration.urls'))
+    url(r'^register/(?:(?P<event_slug>[\w-]+)/)?$', 'registration.views.register', name='register'),
+    url(r'^ticket/', 'registration.views.ticket', name='ticket')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#

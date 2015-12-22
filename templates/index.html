@@ -1,4 +1,3 @@
-
 {% extends "_base.html" %}
 
 {% load staticfiles%}
@@ -14,29 +13,29 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             {% if event %}
-            <div class="swiper-slide" style="{% if event.photo %}background-image:url('{{ event.photo.url }}'); {% endif %} 
+            <div class="swiper-slide" style="{% if event.photo %}background-image:url('{{ event.photo.url }}'); {% endif %}
             box-shadow: rgba(0, 0, 0, 0.30) 0px 400px 0px inset;">
-              
+
                   <div class="content">
-                  
+
                       <div style="padding: 20px 40px;">
                           <h6 style="color:white">Join our next event</h6>
                           <h2 style="color:white">{{ event.event_name }}</h2>
                            <h4>{{ event.date }}</h4>
 
                       </div>
-                       {% if event.link %} 
+                       {% if event.link %}
                        <a href="{{ event.link }}">Sign Up</a>
-                           {% endif %}  
+                           {% endif %}
                       <a href="/events/">View More</a>
-                          
-                  
+
+
                   </div>
             </div>
 
                 {% endif %}
-        
-            
+
+
          {% for slide in slides %}
           <div class="swiper-slide" style="background-image:url('{{slide.photo.url}}');
      box-shadow: inset 0px 400px 0px rgba(0, 0, 0, {{slide.overlay_percentage}}); ">
@@ -81,67 +80,67 @@
         <a href="{{blog_link }}"><h5>{{blog_title}}</h5></a>
       </div>
        <div class="content-blog" >
-           {{blog_excerpt | safe}} 
+           {{blog_excerpt | safe}}
            <a href="{{blog_link }} ">Read More <i class="fa fa-angle-double-right"></i></a>
 
 
         </div>
     </div>
     <div id="right-content" class="large-5 columns no-padding" >
-      
+
       <div class="sub-content small-12 columns">
-      
-        
+
+
           <div class="small-12 medium-4 columns no-padding">
             <a href="/events">
              <div class="content-img" style="background-image:url('{% static 'images/cta_events.jpg'%}')">
-          
+
               </div>
             </a>
-          </div>    
-        
+          </div>
+
           <div class="description small-12 medium-8 columns">
             <h6><a href="/events">Events</a></h6>
-            {{config.CTA_EVENTS | safe}} 
+            {{config.CTA_EVENTS | safe}}
           </div>
     </div>
     <div class="sub-content small-12 columns">
-      
+
       <div class="small-12 medium-4 columns no-padding">
          <a href="/ambassador"><div class="content-img" style="background-image:url('{% static 'images/stage.jpg'%}')">
- 
+
           </div></a>
-      </div>    
+      </div>
       <div class="description small-12 medium-8 columns">
         <h6><a href="/ambassador">Ambassador Program</a></h6>
         {{config.CTA_AMBASSADOR_PROGRAM | safe}}
       </div>
 
     </div>
-  
+
       <div class="sub-content small-12 columns">
-     
+
         <div class="small-12 medium-4 columns no-padding">
            <a href="/projects/">
            <div class="content-img" style="background-image:url('{% static 'images/cta_projects.jpg'%}')">
-     
+
             </div>
             </a>
-        </div>    
+        </div>
         <div class="description small-12 medium-8 columns">
          <h6> <a href="/projects/">Projects</a></h6>
           {{config.CTA_PROJECTS | safe}}
-          
+
         </div>
-      
+
     </div>
     <div class="sub-content small-12 columns top-margin">
-     
+
       <div class="small-12 medium-4 columns no-padding">
          <a href="/partnerships"><div class="content-img" style="background-image:url('{% static 'images/cta_partnerships.jpg'%}')">
-       
+
           </div></a>
-      </div>    
+      </div>
       <div class="description small-12 medium-8 columns">
         <h6> <a href="/partnerships">Partnerships</a></h6>
         {{config.CTA_PARTNERSHIPS | safe}}
@@ -153,7 +152,7 @@
   </div>
   <div class="row">
     <hr style="opacity:0.4">
-    
+
     <div class="large-12 columns" style="position:relative">
           <h6>Recent Events</h6>
          {% for event in past_events %}
@@ -168,10 +167,10 @@
         {% endfor %}
         <div class="recent-event large-6 columns small-12" >
             <a class="recent-event-link invert" href="/events/">
-               <h6>View more events <span><i class="fa fa-angle-right"></i></span></h6> 
+               <h6>View more events <span><i class="fa fa-angle-right"></i></span></h6>
             </a>
           </div>
-        
+
     </div>
 </div>
 </div>
