@@ -1,0 +1,28 @@
+.ticket-displayer{
+	margin-bottom:20px;
+
+	.event-ticket{
+		display:inline-block;
+		padding:8px 21px;
+		font-size: 20px;
+		background-color: rgba(7,102,169,0.6);
+		margin-left: 10px;
+		margin-bottom: 10px;
+		color: white;
+		b{
+			margin-left: 10px;
+			&:before{
+				display:inline-block;
+				content:'';
+				background-color: rgba(7,102,169,0.9);
+				width:2px;
+				height:30px;
+				margin: 0 10px -6px 0;
+			}
+		}
+	}
+
+	span{
+		font-size: 30px;
+	}
+}
