@@ -49,7 +49,7 @@
     display: inline-block;
     background-position-y: 30%;
     a.website {
-            position: absolute;
+        position: absolute;
         bottom: 0;
         right: 26px;
         color: white;
@@ -59,8 +59,28 @@
         text-transform: capitalize;
     }
 }
+.event-extend{
+  position: relative;
+  top: 0px;
+  left: 10px;
+  margin-top:-45px;
+  div{
+    background-color:white;
+    padding: 10px 15px;
+    margin-right:10px;
+    text-transform: capitalize;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 750px) {
+    .event-extend {
+      top:45px;
+    }
+}
+
 #event-mid-section {
-      background: whitesmoke;
+    background: whitesmoke;
     padding: 3em 0em;
     margin: 3em 0em;
 
@@ -105,7 +125,7 @@
     font-weight: bold;
     color:white;
     margin-top:0;
-    
+
   }
   p {
    color:white;
@@ -149,4 +169,3 @@ a.past-event-link {
       color: white;
     }
 }
-

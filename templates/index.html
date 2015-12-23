@@ -33,7 +33,28 @@
                   </div>
             </div>
 
-                {% endif %}
+            {% endif %}
+
+            {% if workshop %}
+            <div class="swiper-slide" style="{% if workshop.photo %}background-image:url('{{ workshop.photo.url }}'); {% endif %}
+            box-shadow: rgba(0, 0, 0, 0.30) 0px 400px 0px inset;">
+
+                  <div class="content">
+
+                      <div style="padding: 20px 40px;">
+                          <h6 style="color:white">Join our next workshop</h6>
+                          <h2 style="color:white">{{ workshop.event_name }}</h2>
+                           <h4>{{ workshop.date }}</h4>
+
+                      </div>
+                     <a href="/workshops/{{ workshop.slug }}">Sign Up</a>
+                      <a href="/workshops/">View More</a>
+
+
+                  </div>
+            </div>
+
+            {% endif %}
 
 
          {% for slide in slides %}

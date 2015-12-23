@@ -10,7 +10,10 @@ class EventExtend(models.Model):
 	event = models.ForeignKey('Event', on_delete=models.CASCADE)
 
 	def __unicode__(self):
-		return u"%s: %s" % (self.extendKey, self.value)
+		if self.extendKey.format:
+			formatted = self.extendKey.format.replace('[v]', self.value)
+			return u"%s" % formatted
+		return u"%s" % self.value
 
 	class Meta:
 		app_label = 'events'

@@ -18,10 +18,15 @@ import itertools as iTool
 def home(request):
     posts = json.loads(urlopen(config.A_BLOG_LINK + '/?json=1').read())["posts"]
     events = Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date')
+    event = None
+    workshop = None
     if len(events) > 0:
-        event = events[0]
-    else:
-        event = None
+        hackathons = events.filter(event_type='hackathon')
+        workshops = events.filter(event_type='workshop')
+        if hackathons:
+            event = hackathons[0]
+        if workshops:
+            workshop = workshops[0]
     content = {
         'title' : "Home",
         'config':config,
@@ -30,6 +35,7 @@ def home(request):
         'blog_link' : posts[0]["url"],
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"],
         'event' : event,
+        'workshop' : workshop,
         'slides' : Slider.objects.filter(slider_location = 0).order_by('order'),
         'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('-start_date')[:3],
     }
@@ -73,11 +79,12 @@ def events(request, event_slug=None):
         except ObjectDoesNotExist:
             return redirect('events')
 
+    allEvents = Event.objects.all().filter(event_type='hackathon')
     return render(request, 'events.html',
         {'config':config,
          'title':"Events",
-         'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
-         'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('start_date'),
+         'events':allEvents.filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
+         'past_events': allEvents.filter(start_date__lt = datetime.datetime.now()).order_by('start_date'),
          'config':config})
 
 def projects(request) :

@@ -37,11 +37,20 @@ class TicketsInLine(admin.TabularInline):
 class EventExtendInLine(admin.TabularInline):
     model = EventExtend
     extra = 0
+    fields = ('value','extendKey', 'extend_type', 'allowed_values')
+    readonly_fields = ('allowed_values','extend_type')
+    ordering = ('extendKey__priority',)
+
+    def allowed_values(self, obj):
+      return '%s' % obj.extendKey.values
+
+    def extend_type(self, obj):
+      return '%s' % obj.extendKey.type
 
 class EventContentsInLine(admin.TabularInline):
     model = EventContent
     extra = 0
-    ordering = ("priority",)
+    ordering = ('priority',)
     # formset = EventContentInLineForm
 
 class EventPicturesInLine(admin.TabularInline):

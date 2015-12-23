@@ -20,6 +20,12 @@ class Event(models.Model):
         else:
             return self.start_date.strftime('%d') + '-' + self.end_date.strftime('%d %b %Y')
 
+    def get_long_extensions(self):
+        return self.eventextend_set.all().filter(extendKey__icon__isnull=False).order_by('extendKey__priority')
+
+    def get_iconable_extensions(self):
+        return self.eventextend_set.all().filter(extendKey__icon__isnull=True).order_by('extendKey__priority')
+
     event_name = models.CharField(max_length = 50)
     slug = models.SlugField(blank=False,
          help_text="ie: Short name, required field for event page: http://wearhacks.com/events/<slug>")
@@ -33,6 +39,8 @@ class Event(models.Model):
     date = date_to_string
     event_type = models.CharField(max_length=10, choices=EVENTTYPES, default='hackathon')
     registration_closed = models.BooleanField(default=False)
+    long_extensions = get_long_extensions
+    iconable_extensions = get_iconable_extensions
 
     def __unicode__(self):
         return u"%s" % self.event_name
@@ -41,6 +49,8 @@ class Event(models.Model):
         if not self.slug:
             self.slug = slugify('%s %d' % (self.city, self.start_date.year))
         super(Event, self).save(*args, **kwargs)
+
+
 
     class Meta:
         app_label = 'events'
