@@ -21,11 +21,13 @@ class EventExtendType(models.Model):
 		help_text = 'Text to add around the value. Use [v] to indicate where the value should be added.')
 
 	def __unicode__(self):
-		return u"%s" % self.key
+		return u"%s: %s" % (self.key, self.description)
 
 	class Meta:
 		app_label = 'events'
 
 	def save(self, *args, **kwargs):
 	 	validate_extension_type(self)
+	 	if len(self.icon) < 1:
+	 		self.icon = None
 		super(EventExtendType, self).save(*args, **kwargs)

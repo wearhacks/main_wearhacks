@@ -107,6 +107,7 @@
              <a class="website" href="{{ event.slug }}" >View Details <i class="fa fa-external-link-square"></i></a>
             </div>
         </div>
+        {% if event.iconable_extensions|length %}
         <div class="event-extend">
          {% for extend in event.iconable_extensions %}
             <div>
@@ -114,6 +115,7 @@
             </div>
          {% endfor %}
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>

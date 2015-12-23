@@ -69,6 +69,20 @@
         <div class="row"><h2 class="sub-header"><span><a href="/">Home</a> &gt; <a href="/workshops">Workshops</a> &gt; </span> {{ title }}</h2></div>
     </div>
 
+    {% if event.iconable_extensions|length %}
+    <div class="workshop-extensions text-center">
+        {% for extend in event.iconable_extensions %}
+        <div>
+            <h1>
+                <i class="fa fa-{{ extend.extendKey.icon }}"></i>
+            </h1>
+                {{ extend }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="small-brk"></div>
+    {% endif %}
+
     <div class="row text-right ticket-displayer">
     	<span>Available for</span>
     	{% for ticket in tickets %}
@@ -94,8 +108,8 @@
     	{{ event.city }}<br>
     	<i class="fa fa-calendar"></i> {{ event.start_date }}<br>
   		<br>
-        <!-- TODO: change this to evenbrite -->
-    	<a href="#" data-reveal-id="register-modal" class="button">Register</a>
+        <a class="button" href="{{ event.link }}" target="_blank">Register</a>
+    	<!-- <button data-reveal-id="register-modal" class="button">Register</button> -->
     </div>
   	<br>
     <div class="row collapse">
@@ -108,7 +122,7 @@
 
 </section>
 
-<div id="register-modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+<!-- <div id="register-modal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
       <form id="register-form" data-validate="parsley" data-event="{{ event.slug }}" data-title="{{ title }}">
         <div class="small-10 columns medium-12 no-padding">
           <h6>Register for {{ title }}</h6>
@@ -119,6 +133,6 @@
       <div class="error-messages"></div>
       <button id="register-submit" class="button">Register</button>
       <a class="close-reveal-modal" aria-label="Close">×</a>
-</div>
+</div> -->
 
 {% endblock %}

@@ -2,8 +2,6 @@ from django.db import models
 from events.models.helpers import *
 from geoposition.fields import GeopositionField
 
-
-
 class Event(models.Model):
     EVENTTYPES = (
         ('workshop', 'Workshop'),
@@ -21,10 +19,10 @@ class Event(models.Model):
             return self.start_date.strftime('%d') + '-' + self.end_date.strftime('%d %b %Y')
 
     def get_long_extensions(self):
-        return self.eventextend_set.all().filter(extendKey__icon__isnull=False).order_by('extendKey__priority')
+        return self.eventextend_set.select_related().filter(extendKey__icon__isnull=True).order_by('extendKey__priority')
 
     def get_iconable_extensions(self):
-        return self.eventextend_set.all().filter(extendKey__icon__isnull=True).order_by('extendKey__priority')
+        return self.eventextend_set.select_related().filter(extendKey__icon__isnull=False).order_by('extendKey__priority')
 
     event_name = models.CharField(max_length = 50)
     slug = models.SlugField(blank=False,
@@ -39,7 +37,7 @@ class Event(models.Model):
     date = date_to_string
     event_type = models.CharField(max_length=10, choices=EVENTTYPES, default='hackathon')
     registration_closed = models.BooleanField(default=False)
-    long_extensions = get_long_extensions
+    long_extensions = get_long_extensions # note that front-end for displaying this is not implemented
     iconable_extensions = get_iconable_extensions
 
     def __unicode__(self):
