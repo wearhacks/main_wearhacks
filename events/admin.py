@@ -72,7 +72,6 @@ class PastEventAdmin(admin.ModelAdmin):
     actions = [retrieveProjects]
     def save_model(self, request, obj, form, change):
       obj.save()
-
       if 'source_projects' in form.changed_data:
         obj.retrieve_projects()
       retrieveProjects.short_description = "Parse devpost to get cache all the associated projects"

@@ -19,5 +19,12 @@
     "fields": {
        "type": "list"
     }
+  },
+  {
+    "model": "events.ExtendType",
+    "pk": 4,
+    "fields": {
+       "type": "modelpk"
+    }
   }
 ]
