@@ -55,10 +55,13 @@
                 {% endif %}
                 {% if event.facilitator %}
                     <div class="columns large-5 medium-12">
-                        <h4>FACILITATOR</h4>
                         <img src="{{ event.facilitator.photo.url }}">
+                        <h5>FACILITATOR</h5>
                         <strong>{{ event.facilitator.name }}</strong><br>
-                        {{ event.facilitator_description }}
+                        {{ event.facilitator.position }}<br>
+                        {% if event.facilitator_description %}
+                            {{ event.facilitator_description }}
+                        {% endif %}
                     </div>
                 {% endif %}
             </div>
@@ -70,9 +73,15 @@
             <a class="button expand" href="{{ event.slug }}" >View Details <i class="fa fa-external-link-square"></i></a>
         </div>
         {% if event.link %}
-        <div class="columns medium-6">
-            <a class="button success expand" target="_blank" href="{{ event.link }}" >Register <i class="fa fa-external-link-square"></i></a>
-        </div>
+            {% if event.registration_closed %}
+                <div class="columns medium-6">
+                    <button class="button expand" disabled>Registration Closed</button>
+                </div>
+            {% else %}
+            <div class="columns medium-6">
+                <a class="button success expand" target="_blank" href="{{ event.link }}" >Register <i class="fa fa-external-link-square"></i></a>
+            </div>
+            {% endif %}
         {% endif %}
     </div>
     {% endfor %}

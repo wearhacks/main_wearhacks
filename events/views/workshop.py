@@ -19,7 +19,7 @@ def workshops(request, event_slug=None):
                 'event':event,
                 'stats':{}}
             if event.event_type == 'workshop':
-                response['contents'] = event.eventcontent_set.all().order_by('priority')
+                response['contents'] = event.eventcontent_set.all().order_by('priority').filter(draft=False)
                 response['tickets'] = event.ticket_set.all().order_by('priority')
                 response['form'] = WorkshopRegistrationForm(response['tickets'])
                 return render(request, 'workshop_detail.html', response)

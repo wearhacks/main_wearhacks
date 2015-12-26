@@ -1,30 +1,110 @@
 [
-  {
-    "model": "events.ExtendType",
-    "pk": 1,
-    "fields": {
-      "type": "number"
-    }
+  {"fields":
+    {"description": "Number of hours the event lasts.",
+    "format": "[v] hours",
+    "priority": 2,
+    "values": "",
+    "key": "hours",
+    "type": 1,
+    "icon": "clock-o"
+    },
+  "model": "events.eventextendtype",
+  "pk": 1
   },
-  {
-    "model": "events.ExtendType",
-    "pk": 2,
-    "fields": {
-       "type": "text"
-    }
+  {"fields":
+    {"description": "The level of difficulty of the event.",
+    "format": null,
+    "priority": 1,
+    "values": "beginner,amateur,expert",
+    "key": "difficulty",
+    "type": 3,
+    "icon": "graduation-cap"
+    },
+  "model": "events.eventextendtype",
+  "pk": 2
   },
-  {
-    "model": "events.ExtendType",
-    "pk": 3,
-    "fields": {
-       "type": "list"
-    }
+  {"fields":
+    {"description": "List of skills required for the events (delimited by comma).",
+    "format": "",
+    "priority": 3,
+    "values": "",
+    "key": "skills",
+    "type": 2,
+    "icon": null
+    },
+  "model": "events.eventextendtype",
+  "pk": 3
   },
-  {
-    "model": "events.ExtendType",
-    "pk": 4,
-    "fields": {
-       "type": "modelpk"
-    }
+  {"fields":
+    {"description": "Short description on the technology",
+    "format": "",
+    "priority": 3,
+    "values": "",
+    "key": "focus",
+    "type": 2,
+    "icon": "wrench"
+    },
+  "model": "events.eventextendtype",
+  "pk": 4
+  },
+  {"fields":
+    {"description": "Get facilator from Team Member table. (Use primary key as the value.)",
+    "format": "",
+    "priority": 1,
+    "values": "events.TeamMember",
+    "key": "facilitatorModel",
+    "type": 4,
+    "icon": null
+    },
+  "model": "events.eventextendtype",
+  "pk": 5
+  },
+  {"fields":
+    {"description": "The description of the facilator.",
+    "format": "",
+    "priority": 1,
+    "values": "",
+    "key": "facilitatorDesc",
+    "type": 2,
+    "icon": null
+    },
+  "model": "events.eventextendtype",
+  "pk": 6
+  },
+  {"fields":
+    {"description": "Short description of the event.",
+    "format": "",
+    "priority": 1,
+    "values": "",
+    "key": "description",
+    "type": 2,
+    "icon": null
+    },
+  "model": "events.eventextendtype",
+  "pk": 7
+  },
+  {"fields":
+    {"type": "number"
+    },
+  "model": "events.extendtype",
+  "pk": 1
+  },
+  {"fields":
+    {"type": "text"
+    },
+  "model": "events.extendtype",
+  "pk": 2
+  },
+  {"fields":
+    {"type": "list"
+    },
+  "model": "events.extendtype",
+  "pk": 3
+  },
+  {"fields":
+    {"type": "modelpk"
+    },
+  "model": "events.extendtype",
+  "pk": 4
   }
 ]

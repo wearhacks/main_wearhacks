@@ -4,7 +4,7 @@ from extensionhelpers import validate_extension
 
 # Data for the extensions
 class EventExtend(models.Model):
-	value = models.CharField(max_length='250', help_text = 'Extension value')
+	value = models.TextField(help_text = 'Extension value')
 	extendKey = models.ForeignKey('EventExtendType', on_delete=models.CASCADE,
 		help_text = 'Extension key')
 	event = models.ForeignKey('Event', on_delete=models.CASCADE)

@@ -103,12 +103,16 @@
     <div class="small-brk"></div>
 
     <div class="row text-center">
-    	<h3>Join us</h3>
+    	<h3>Join Us</h3>
     	<i class="fa fa-map-marker"></i> {{ event.address }}<br>
     	{{ event.city }}<br>
     	<i class="fa fa-calendar"></i> {{ event.start_date }}<br>
   		<br>
-        <a class="button" href="{{ event.link }}" target="_blank">Register</a>
+        {% if event.registration_closed %}
+            <button class="button" disabled>Registration Closed</button>
+        {% else %}
+            <a class="button" href="{{ event.link }}" target="_blank">Register</a>
+        {% endif %}
     	<!-- <button data-reveal-id="register-modal" class="button">Register</button> -->
     </div>
   	<br>
