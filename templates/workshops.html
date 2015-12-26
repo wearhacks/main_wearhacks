@@ -27,38 +27,54 @@
         <b>WearHacks</b> presents<br>Workshops</h2>
      </div>
 
-    </div>
+    </div><br>
 
 {% if events|length %}
     {% for event in events %}
-    <div class="row" style="{% if event.photo %}background-image:url('{{ event.photo.url }}') {% endif %}">
-        {% if event.description_extensions %}
-            <div class="columns large-3">
-                {{ event.description_extensions }}
-            </div>
-        {% endif %}
-        {% if event.facilator %}
-            <div class="columns large-3">
-                {{ event.facilator.name }}
-            </div>
-        {% endif %}
-        <div class="columns large-3">
+    <div class="row workshop-listitem" style="{% if event.photo %}background-image:url('{{ event.photo.url }}') {% endif %}">
+        <div class="columns large-5 medium-6 text-right">
             <div class="event-desc">
             <h4>{{ event.event_name }}</h4>
              <h5>{{ event.date }}</h5>
              <p>Venue: {{ event.address }}</p>
+             <hr>
+             {% for extend in event.iconable_extensions %}
+                <div class="event-icon">
+                    <i class="fa fa-{{ extend.extendKey.icon }}"></i> {{ extend }}
+                </div>
+             {% endfor %}
             </div>
         </div>
-        {% if event.iconable_extensions|length %}
-        <div class="event-extend">
-         {% for extend in event.iconable_extensions %}
-            <div>
-                <i class="fa fa-{{ extend.extendKey.icon }}"></i> {{ extend }}
+        {% if event.description_extensions or event.facilitator %}
+        <div class="columns large-7 medium-6 event-long-extension">
+            <div class="row">
+                {% if event.description_extensions %}
+                    <div class="columns large-7 medium-12">
+                        {{ event.description_extensions }}
+                    </div>
+                {% endif %}
+                {% if event.facilitator %}
+                    <div class="columns large-5 medium-12">
+                        <h4>FACILITATOR</h4>
+                        <img src="{{ event.facilitator.photo.url }}">
+                        <strong>{{ event.facilitator.name }}</strong><br>
+                        {{ event.facilitator_description }}
+                    </div>
+                {% endif %}
             </div>
-         {% endfor %}
         </div>
         {% endif %}
-        <a class="website" href="{{ event.slug }}" >View Details <i class="fa fa-external-link-square"></i></a>
+    </div>
+    <div class="row event-links">
+        <div class="columns {% if event.link %}medium-6{% else %}medium-12{% endif %}">
+            <a class="button expand" href="{{ event.slug }}" >View Details <i class="fa fa-external-link-square"></i></a>
+        </div>
+        {% if event.link %}
+        <div class="columns medium-6">
+            <a class="button success expand" target="_blank" href="{{ event.link }}" >Register <i class="fa fa-external-link-square"></i></a>
+        </div>
+        {% endif %}
+    </div>
     {% endfor %}
 {% endif %}
 {% if past_events|length %}

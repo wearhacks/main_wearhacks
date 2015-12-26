@@ -28,18 +28,26 @@ class Event(models.Model):
 
     def get_extension(self, extendKey):
         if not extendKey in self.cache_extensions:
-            self.cache_extensions[extendKey] = self.eventextend_set.filter(extendKey__key = extendKey).first()
+            try:
+                extension = self.eventextend_set.filter(extendKey__key = extendKey).first()
+                self.cache_extensions[extendKey] = extension.value
+            except:
+                self.cache_extensions[extendKey] = None
+
         return self.cache_extensions[extendKey]
 
     def get_description_extension(self):
         return self.get_extension('description')
 
-    def get_facilator(self):
-        pk = self.get_extension('facilatorModel')
-        return TeamMember.objects.get(pk=int(pk))
+    def get_facilitator(self):
+        pk = self.get_extension('facilitatorModel')
+        if pk:
+            return TeamMember.objects.get(pk=int(pk))
+        else:
+            return None
 
-    def get_facilator_description(self):
-        return self.get_extension('facilatorDesc')
+    def get_facilitator_description(self):
+        return self.get_extension('facilitatorDesc')
 
     event_name = models.CharField(max_length = 50)
     slug = models.SlugField(blank=False,
@@ -58,8 +66,8 @@ class Event(models.Model):
     # long_extensions = get_long_extensions
     iconable_extensions = get_iconable_extensions
     description_extensions = get_description_extension
-    facilator = get_facilator
-    facilator_description = get_facilator_description
+    facilitator = get_facilitator
+    facilitator_description = get_facilitator_description
 
     cache_extensions = {}
 
