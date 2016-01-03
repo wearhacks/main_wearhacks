@@ -18,7 +18,7 @@ class Event(models.Model):
     slug = models.SlugField(blank=False,
          help_text="ie: Short name, required field for event page: http://wearhacks.com/events/<slug>")
     start_date = models.DateTimeField(blank=True)
-    end_date = models.DateTimeField(blank=True, )
+    end_date = models.DateTimeField(blank=True)
     address = models.CharField(max_length = 100)
     city = models.CharField(max_length= 50)
     photo = models.ImageField(upload_to = get_upload_path_event, blank = True, null = True, validators=[validate_large_image])
@@ -31,7 +31,7 @@ class Event(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify('%s %d' % (self.city, self.start_date.year))
+            self.slug = slugify('%s-%d' % (self.city, self.start_date.year))
         super(Event, self).save(*args, **kwargs)
 
     class Meta:

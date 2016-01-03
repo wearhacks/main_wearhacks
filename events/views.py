@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.forms.models import model_to_dict
 from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
-from models import TeamMember, Event, Partner, Slider, Project
+from models import TeamMember, Event, Partner, Slider, Project, WorkshopInstance
 from forms import PartnerForm
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
@@ -43,6 +43,9 @@ def team(request):
          'team_members':TeamMember.objects.all().order_by('name'),
          'config':config})
 
+def workshop(request, workshop):
+    workshop = WorkshopInstance.objects.get(slug = workshop)
+    return render(request, 'workshop.html', {'config':config, 'workshop':workshop})
 def events(request, event_slug=None):
     if (event_slug):
         try:
@@ -74,12 +77,12 @@ def events(request, event_slug=None):
             return render(request, 'event_pictures.html', response)
         except ObjectDoesNotExist:
             return redirect('events')
-
     return render(request, 'events.html',
         {'config':config,
          'title':"Events",
          'events':Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
          'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('start_date'),
+         'workshops': WorkshopInstance.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date'),
          'config':config})
 def projects(request) :
     return render(request, 'projects.html',

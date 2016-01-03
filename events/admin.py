@@ -1,5 +1,5 @@
 from django.contrib import admin
-from events.models import Event,Project,TeamMember,Partner,PastEvent,Slider
+from events.models import Event,Project,TeamMember,Partner,PastEvent,Slider,Workshop, WorkshopTutor, WorkshopInstance
 from django.contrib import messages
 
 admin.site.register(Project)
@@ -41,3 +41,21 @@ class SliderAdmin(admin.ModelAdmin):
 admin.site.register(PastEvent, PastEventAdmin)
 admin.site.register(Slider, SliderAdmin)
 admin.site.register(Event, EventAdmin)
+
+class TutorInline(admin.TabularInline):
+  model = WorkshopTutor
+  extra = 0
+
+class WorkshopInstanceAdmin(admin.ModelAdmin):
+  model = WorkshopInstance
+  inlines = [TutorInline]
+
+class WorkshopAdmin(admin.ModelAdmin):
+  class Media:
+    js = (
+        'bower_components/tinymce/tinymce.min.js',
+        'javascript/tinymceinit.js'  # app static folder
+    )
+
+admin.site.register(WorkshopInstance, WorkshopInstanceAdmin)
+admin.site.register(Workshop, WorkshopAdmin)

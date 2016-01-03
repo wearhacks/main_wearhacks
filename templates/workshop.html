@@ -1,0 +1,47 @@
+
+{% extends "_base.html" %}
+{% load staticfiles %}
+{% block title %} {{ title }} {% endblock %}
+{% block stylesheets %}
+    
+{% endblock %}
+{% block script_section %}
+    <script src="{% static 'bower_components/jquery.lazyload/jquery.lazyload.js' %}"></script>
+    <script>
+    </script>
+{% endblock %}
+{% block content %}
+
+<section id="body">
+    <div class="large-12" style="background-image:url({{workshop.photo.url}})">
+        
+    </div>
+    <div class="large-12">
+        <div class="row">
+            <div class="large-3 medium-4 small-6 columns">
+
+                {{workshop.parent_workshop.difficulty_text}}
+                <p>Difficulty</p>
+            </div>
+            <div class="large-3 medium-4 small-6 columns">
+                {{workshop.parent_workshop.required_tools}}
+                <p>Required Tools</p>
+            </div>
+            <div class="large-3 medium-4 small-6 columns">
+                {{workshop.parent_workshop.technologies}}
+                <p>Technologies</p>
+            </div>
+            <div class="large-3 medium-4 small-6 columns">
+                {{workshop.parent_workshop.duration}}
+                <p>Duration</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-3 pull-right"><a href="{{workshop.link}}">Register Now</a></div>
+        </div>
+    </div>
+    {{workshop}}
+</section>
+
+{% endblock %}

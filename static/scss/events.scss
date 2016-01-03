@@ -40,11 +40,12 @@
   }
 }
 
-
+.event {
+  margin-bottom:10px;
+}
 .event-photo {
     width: 100%;
     height: 200px;
-    margin-bottom:10px;
     background-size: cover;
     display: inline-block;
     background-position-y: 30%;
@@ -58,6 +59,7 @@
         padding: 10px 20px;
         text-transform: capitalize;
     }
+    border: 1px solid white;
 }
 #event-mid-section {
       background: whitesmoke;
@@ -89,14 +91,14 @@
     }
 }
 .event-desc {
-    display: inline-block;
     vertical-align: top;
     margin-top: 20px;
-    margin-left: 17px;
+    /* margin-left: 17px; */
     padding: 10px 20px;
     background: #333;
-    width: 95%;
-    max-width: 375px;
+    /* width: 95%; */
+    max-width: 385px;
+    margin-bottom: 20px;
   h4 {
     color:white;
     margin-bottom:0;
@@ -150,3 +152,118 @@ a.past-event-link {
     }
 }
 
+.event-icon {
+    color: white;
+    display: inline-block;
+    margin-right: 12px;
+}
+.workshop-listitem {
+  background-position-y: 30%;
+  h6 {
+    color:#CCC;
+    font-size:1em;
+  }
+  h4 {
+  font-size:2em;
+  }
+}
+.workshop-details {
+  padding: 20px 10px;
+  background: rgba(16, 16, 16, 0.66);
+  p {
+  color:white;
+  }
+  padding-bottom:0px;
+}
+.event-types a{
+      display: inline;
+    background: #F5F5F5;
+    color: white;
+    margin: 10px;
+    padding: 13px;
+    font-size: large;
+    box-shadow: -2px 2px 0px rgba(51, 51, 51, 0.06);
+    
+      color: #555;
+      &:hover {
+        color: #928F8F;
+      }
+}
+#hackathons {
+      padding: 50px 0px;
+    background: #1e699c;
+    h3 {
+      color:white;
+    }
+}
+#workshops {
+   padding: 50px 0px;
+}
+hr.primary {
+      width: 74px;
+    margin: auto;
+    margin-bottom: 30px;
+    border-width: 2px;
+    opacity: 0.6;
+}
+hr.secondary {
+      width: 74px;
+    margin: auto;
+    margin-bottom: 30px;
+    border-width: 2px;
+    opacity: 0.6;
+    border-color: #333;
+}
+.button-details,.button-register {
+  
+  color: white;
+  cursor:pointer;
+  a {
+    padding: 10px 30px;
+    color:white;
+    display:block;
+    &:hover {
+    color:white;
+    }
+  }
+}
+.button-details {
+  background-color: #333;
+  &:hover {
+
+    background-color: #555;
+  }
+}
+.button-register {
+  background-color: #1abc9c;
+  &:hover {
+    background-color: #16a085;
+  }
+}
+.facilitator {
+  h5 {color:white}
+  padding: 20px 10px;
+  background: rgba(16, 16, 16, 0.66);
+  color: white;
+  padding-top:0px;
+  a {
+   color:#CCC;
+   &:hover {
+    color:white;
+   }
+  }
+
+  .avatar {
+    width: 83px;
+    height: 83px;
+    background-size: contain;
+    display: inline-block;
+    border-radius: 50%;
+  }
+}
+a.dark {
+  color:#429DDA;
+  &:hover {
+  color:#2272A9;
+  }
+}
