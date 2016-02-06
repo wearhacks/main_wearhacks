@@ -15,9 +15,9 @@
   "dependencies": {
     "foundation": "~5.5.3",
     "swiper": "~3.1.7",
+    "scrollReveal.js":"~2.3.2",
     "jquery.lazyload": "~1.9.7",
     "tinymce": "~4.3.1",
-    "scrollreveal": "~3.0.0",
     "cheet.js": "~0.3.3"
   }
 }
