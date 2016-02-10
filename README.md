@@ -16,10 +16,9 @@ $ mkvirtualenv main_wearhacks
 $ workon main_wearhacks
 (main_wearhacks) $ pip install -r requirements.txt
 (main_wearhacks) $ bower install
-(main_wearhacks) $ cp main_wearhacks/settings/example_private_settings.py main_wearhacks/settings/private.py
+(main_wearhacks) $ cp main_wearhacks/settings/example_private.py main_wearhacks/settings/private.py
 (main_wearhacks) $ python manage.py makemigrations
 (main_wearhacks) $ python manage.py migrate
-(main_wearhacks) $ python manage.py generate_registrations 3
 (main_wearhacks) $ python manage.py runserver
 ```
 
@@ -33,6 +32,13 @@ Now, open <http://127.0.0.1:8000/>.
     $ workon wearhacks-website
     (wearhacks-website) $ python manage.py runserver
     ```
+* To access the website from a different IP (e.g. if you are hosting the sever on a VM and accessing the site from the host:
+
+    ```bash
+    $ workon wearhacks-website
+    (wearhacks-website) $ python manage.py runserver 0.0.0.0:8000
+    ```
+
     
 #Deploying on heroku
 In order to deploy on heroku, make sure all the environment variables are set properly. Before pushing to heroku, do the following commands to upload all the dependencies to amazon aws. Make sure to have your aws settings on private.py
