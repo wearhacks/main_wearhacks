@@ -154,25 +154,31 @@
   <div class="row">
     <hr style="opacity:0.4">
     
-    <div class="large-12 columns" style="position:relative">
-          <h6>Recent Events</h6>
-         {% for event in past_events %}
-         <div class="recent-event large-6 columns small-12">
-            <a class="recent-event-link invert" href="/events/{{ event.slug }}">
-                <h6>
-                {{ event.event_name }} <span> {{ event.date }}</span>
-                </h6>
-            </a>
-          </div>
-
+    {% if random_projects %}
+    <div id="all-projects">
+    <!-- Projects -->
+    <div class="columns large-12 margin-bottom" style="position:relative">
+        <h6>Some of our Winning Projects</h6>
+        {% for project in random_projects %}
+            <div id="{{project.project_name}}" class="large-3 medium-4 small-6 columns no-padding project-box">
+                <div class="project">
+                    <a href="{{project.url}}" target="_blank">
+                        <div class="winner-image lazy" data-original="{% if project.image %}{{project.image.url}}{% endif %}">
+                        </div>
+                    </a>
+                    <div class="project-description">{% if project.project_type == '2' %}<span class=" secondary label">Winner</span>{%endif%} <a href="/events/{{project.submitted_event.slug}}" class="primary label"> {{project.submitted_event.event_name }}</a><br/><h6>{{project.project_name }} </h6>
+                    <p>{{project.short_description }}</p> </div>
+                </div>
+            </div>
         {% endfor %}
         <div class="recent-event large-6 columns small-12" >
-            <a class="recent-event-link invert" href="/events/">
-               <h6>View more events <span><i class="fa fa-angle-right"></i></span></h6> 
+            <a class="recent-event-link invert" href="/projects/">
+               <h6>View more projects <span><i class="fa fa-angle-right"></i></span></h6> 
             </a>
-          </div>
-        
+        </div>
+    </div> <!--/Projects -->
     </div>
+    {% endif %}
 </div>
 </div>
 

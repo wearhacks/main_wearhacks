@@ -16,6 +16,15 @@ import itertools as iTool
 import random
 
 def home(request):
+    def get_random_projects(num_projects):
+        """
+        Get <num_projects> random projects to showcase on the homepage. 
+        Might need to find another way to handle random selection as this method
+         does not scale well.
+        """
+        projects = Project.objects.filter(project_type='2').order_by('?')[:num_projects]
+        return projects
+
     posts = json.loads(urlopen(config.A_BLOG_LINK + '/?json=1').read())["posts"]
     events = Event.objects.all().filter(start_date__gt = datetime.datetime.now()).order_by('start_date')
     if len(events) > 0:
@@ -31,7 +40,7 @@ def home(request):
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"],
         'event' : event,
         'slides' : Slider.objects.filter(slider_location = 0).order_by('order'),
-        'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('-start_date')[:3],
+        'random_projects': get_random_projects(4)
     }
 
 
