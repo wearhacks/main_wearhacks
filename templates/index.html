@@ -5,22 +5,28 @@
 {% block title %} Home {% endblock %}
 {% block content %}
 <style>
-    .winner-image {
+    .random-projects .winner-image {
         height:10em;
         margin-bottom:0;
+        background: whitesmoke;
         border-bottom:1px solid #EEE;
 
     }
-    .project-description {
-        height:8em;
-        background: white;
-        margin:0;
-        overflow: hidden;
+    .random-projects .project-description {
+      height:8em;
+      background: white;
+      margin:0;
+      overflow: visible;
+    }
+    .random-projects .project-description .label {
+        float:right;
+        background: #333;
+        margin-top: -22px;
     }
     
-    a.label:hover {
-        color:white;
-        opacity: 0.8;
+    .random-projects .label:hover {
+      color:white;
+      opacity: 0.8;
     }
 </style>
 
@@ -174,18 +180,23 @@
     <hr style="opacity:0.4">
     
     {% if random_projects %}
-    <div id="all-projects">
+    <div id="all-projects" class="random-projects">
     <!-- Projects -->
     <div class="columns large-12 margin-bottom" style="position:relative">
         <h6>Some of our Winning Projects</h6>
         {% for project in random_projects %}
             <div id="{{project.project_name}}" class="large-3 medium-4 small-6 columns no-padding project-box">
+              
                 <div class="project">
+                    
                     <a href="{{project.url}}" target="_blank">
-                        <div class="winner-image lazy" data-original="{% if project.image %}{{project.image.url}}{% endif %}">
+                        <div class="winner-image" data-original="{% if project.image %}{{project.image.url}}{% endif %}">
                         </div>
                     </a>
-                    <div class="project-description">{% if project.project_type == '2' %}<span class=" secondary label">Winner</span>{%endif%} <a href="/events/{{project.submitted_event.slug}}" class="primary label"> {{project.submitted_event.event_name }}</a><br/><h6>{{project.project_name }} </h6>
+                    <div class="project-description">
+                      <a href="/events/{{project.submitted_event.slug}}" class="primary label"> {{project.submitted_event.event_name }}</a>
+                      <h6>{{project.project_name }} </h6>
+
                     <p>{{project.short_description }}</p> </div>
                 </div>
             </div>
