@@ -21,7 +21,7 @@
     .random-projects .project-description .label {
         float:right;
         background: #333;
-        margin-top: -22px;
+        margin-top: -23px;
     }
     
     .random-projects .label:hover {
@@ -190,7 +190,8 @@
                 <div class="project">
                     
                     <a href="{{project.url}}" target="_blank">
-                        <div class="winner-image" data-original="{% if project.image %}{{project.image.url}}{% endif %}">
+                        <div class="winner-image" {% if project.image %}
+                        style="background-image:url('{{project.image.url}}')"{% endif %}>
                         </div>
                     </a>
                     <div class="project-description">
