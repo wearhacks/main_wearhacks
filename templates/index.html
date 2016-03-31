@@ -175,15 +175,37 @@
 
     </div>
   </div>
+
   </div>
   <div class="row">
-    <hr style="opacity:0.4">
     
+    <hr style="opacity:0.4">
+    <div class="large-12 columns" style="position:relative">
+           <h6 align="center"><i class="fa fa-angle-left"></i> Recent Events <i class="fa fa-angle-right"></i></h6>
+          {% for event in past_events %}
+          <div class="recent-event large-6 columns small-12">
+             <a class="recent-event-link invert" href="/events/{{ event.slug }}">
+                 <h6>
+                 {{ event.event_name }} <span> {{ event.date }}</span>
+                 </h6>
+             </a>
+           </div>
+           {% endfor %}
+              <div class="recent-event large-6 columns small-12" >
+            <a class="recent-event-link invert" href="/events/">
+                <h6>View more events <span><i class="fa fa-angle-right"></i></span></h6> 
+             </a>
+           </div>
+    </div>
+
+  </div>
     {% if random_projects %}
-    <div id="all-projects" class="random-projects">
+    <div id="all-projects" class="random-projects row">
+
+    <hr style="opacity:0">
     <!-- Projects -->
     <div class="columns large-12 margin-bottom" style="position:relative">
-        <h6>Some of our Winning Projects</h6>
+        <h6 align="center"><i class="fa fa-angle-left"></i> Some of our Winning Projects <i class="fa fa-angle-right"></i></h6>
         {% for project in random_projects %}
             <div id="{{project.project_name}}" class="large-3 medium-4 small-6 columns no-padding project-box">
               
