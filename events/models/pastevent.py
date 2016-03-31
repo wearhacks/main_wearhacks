@@ -34,7 +34,7 @@ class PastEvent(models.Model):
         super(PastEvent, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return u"Past event data for %s" % (self.event.event_name)
+        return u"%s" % (self.event)
 
     def fetch_album(self, username, album):
         if not self.album:

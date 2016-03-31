@@ -27,7 +27,7 @@ class Event(models.Model):
     date = date_to_string
   
     def __unicode__(self):
-        return u"%s" % self.event_name
+        return u"%s , %s" % (self.event_name, self.start_date.strftime('%d %b %Y'))
 
     def save(self, *args, **kwargs):
         if not self.slug:
