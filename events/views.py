@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.forms.models import model_to_dict
 from django.core.mail import EmailMessage
 from django.core.exceptions import ObjectDoesNotExist
-from models import TeamMember, Event, Partner, Slider, Project, WorkshopInstance
+from models import TeamMember, Event,PastEvent, Partner, Slider, Project, WorkshopInstance
 from forms import PartnerForm
 from django.http import HttpResponse,JsonResponse
 from urllib import urlopen
@@ -40,10 +40,11 @@ def home(request):
         'blog_image' : posts[0]["thumbnail_images"]["full"]["url"],
         'event' : event,
         'slides' : Slider.objects.filter(slider_location = 0).order_by('order'),
-        'past_events': Event.objects.all().filter(start_date__lt = datetime.datetime.now()).order_by('-start_date')[:3],
+        'past_events': Event.objects.filter(pastevent__in = PastEvent.objects.all())
+                                    .filter(start_date__lt = datetime.datetime.now())
+                                    .order_by('-start_date')[:3],
         'random_projects': get_random_projects(4)
     }
-
 
     return render(request, 'index.html',content)
 
